@@ -41,7 +41,6 @@
   <link rel="stylesheet" href="/css/bootstrap.yeti.min.css" media="screen" type="text/css">
   
   <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
   <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 
@@ -56,40 +55,57 @@
 
  <body>
   <!-- _partial/navigation -->
-<nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container">
-      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-		<span class="sr-only">Toggle navigation</span>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-	  <a class="navbar-brand" href="/">hmhv</a>
-      <div class="collapse navbar-collapse nav-menu">
-		<ul class="nav navbar-nav">
-		  
-		  <li>
-			<a href="/archives" title="All the articles.">
-			  <i class="fa fa-archive"></i>Archives
-			</a>
-		  </li>
-		  
-		  <li>
-			<a href="/categories" title="All the categories.">
-			  <i class="fa fa-folder"></i>Categories
-			</a>
-		  </li>
-		  
-		  <li>
-			<a href="/tags" title="All the tags.">
-			  <i class="fa fa-tags"></i>Tags
-			</a>
-		  </li>
-		  
-		</ul>
-      </div>
-    </div> <!-- container -->
-</nav>
+      <a class="navbar-brand" href="/">@interface hmhv</a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Apps<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+              <li><a href="/apps/readytyped"><img src="/images/readytyped.png" alt="Ready Typed" width="25" height="25"> Ready Typed</a></li>
+              <li><a href="/apps/magicblue"><img src="/images/magicblue.png" alt="MagicBlue" width="25" height="25"> MagicBlue</a></li>
+              <li><a href="/apps/tvcamera"><img src="/images/tvcamera.png" alt="TVカメラ" width="25" height="25"> TVカメラ(TV Camera)</a></li>
+              <li><a href="/apps/iranking"><img src="/images/iranking.png" alt="iRanKing" width="25" height="25"> iRanKing</a></li>
+              <li><a href="/apps/yamasuki"><img src="/images/yamasuki.png" alt="ヤマスキ" width="25" height="25"> ヤマスキ(Yamasuki)</a></li>
+              <li><a href="/apps/eventviewer"><img src="/images/eventviewer.png" alt="毎日イベント" width="25" height="25"> 毎日イベント(Daily Events)</a></li>
+              <li><a href="/apps/rakugolf"><img src="/images/rakugolf.png" alt="楽ゴルフ(Raku Golf)" width="25" height="25"> 楽ゴルフ(Raku Golf)</a></li>
+              <li><a href="/apps/passphoto"><img src="/images/passphoto.png" alt="Pass Photo" width="25" height="25"> Pass Photo</a></li>
+              <li><a href="/apps/readytweet"><img src="/images/readytweet.png" alt="Ready Tweet" width="25" height="25"> Ready Tweet</a></li>
+              <li><a href="/apps/readycall"><img src="/images/readycall.png" alt="Ready Call" width="25" height="25"> Ready Call</a></li>
+              <li><a href="/apps/readysend"><img src="/images/readysend.png" alt="Ready Send" width="25" height="25"> Ready Send</a></li>
+              <li><a href="/apps/letsidea"><img src="/images/letsidea.png" alt="Let's Idea" width="25" height="25"> Let's Idea</a></li>
+              <li><a href="/apps/kanjinumerals"><img src="/images/kanjinumerals.png" alt="0=零" width="25" height="25"> 0=零</a></li>
+              <li><a href="/apps/rgbviewer"><img src="/images/rgbviewer.png" alt="RGB Viewer" width="25" height="25"> RGB Viewer</a></li>
+              <li><a href="/apps/orangeclock"><img src="/images/orangeclock.png" alt="Orange Clock" width="25" height="25"> Orange Clock</a></li>
+              <li class="divider"></li>
+              <li class="dropdown-header">Supported</li>
+              <li><a href="http://www.kidsnote.com/" target="”_blank”">KidsNote</a></li>
+              <li><a href="http://sweetieapp.com/" target="”_blank”">sweetie</a></li>
+              <li><a href="http://hinative.com/" target="”_blank”">HiNative</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Infomation<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+              <li><a href="/me">About me</a></li>
+              <li><a href="/privacy">Privacy Policy</a></li>
+              <li><a href="mailto:admin@hmhv.info">Contact</a></li>
+          </ul>
+        </li>
+
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+  </nav>
 <div class="clearfix"></div>
 
   <div class="container">
@@ -273,21 +289,13 @@ DESIGN: LEEJINKI
   <span>▲</span>
 </a>
 
-<script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
+<!-- <script src="/js/jquery.imagesloaded.min.js"></script> -->
+<!-- <script src="/js/gallery.js"></script> -->
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/main.js"></script>
 
 
 
-
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-(function($){
-  $('.fancybox').fancybox();
-})(jQuery);
-</script>
 
 
 </body></html>
