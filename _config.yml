@@ -4,17 +4,17 @@
 
 # Site
 title: hmhv
-subtitle: sub..
-description: desc..
+subtitle: 
+description: "hmhv's blog & app galary"
 author: hmhv
 email: admin@hmhv.info
 language:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://hmhv.github.io/
+url: http://hmhv.info/
 root: /
-permalink: blog/:title/
+permalink: :title/
 tag_dir: tags
 archive_dir: archives
 category_dir: categories
