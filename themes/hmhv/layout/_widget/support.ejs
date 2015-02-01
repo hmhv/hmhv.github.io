@@ -1,0 +1,19 @@
+<!-- _widget/support -->
+<% if (theme.support.length){ %>
+<div class="widget">
+	<h4>Supported</h4>
+	<ul class="blogroll list-unstyled">
+	<% for (var i in theme.support){ %>
+		<li>
+            <% if (theme.support[i].icon) { %>
+            <i class="<%- theme.support[i].icon %>"></i>
+            <% } %>
+            <% if (theme.support[i].image) { %>
+            <img class="linkimage" src="<%- theme.support[i].image %>">
+            <% } %>
+            <a href="<%- theme.support[i].url %>" title="<%- theme.support[i].intro %>" target="_blank");"><%= theme.support[i].title %></a>
+        </li>
+	<% } %>
+	</ul>
+</div>
+<% } %>

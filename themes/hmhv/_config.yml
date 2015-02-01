@@ -1,0 +1,116 @@
+bootswatch: yeti
+
+slogan: "hmhv's blog"
+
+menu:
+  - title: Apps
+    url: apps
+    intro: "app gallery"
+    icon: "fa fa-cubes"
+  - title: Infomation
+    intro: "infomation"
+    icon: "fa fa-info-circle"
+    dropdown: true
+    submenu:
+    - title: "About me"
+      url: aboutme
+      intro: "About me"
+      icon: "fa fa-user"
+    - title: "Privacy Policy"
+      url: privacy
+      intro: "Privacy Policy"
+      icon: "fa fa-lock"
+    - title: Contact
+      fullurl: true
+      url: "mailto:admin@hmhv.info"
+      intro: "Contact"
+      icon: "fa fa-paper-plane"
+
+apps:
+  - title: "Ready Typed"
+    url: /apps/readytyped/
+    intro: "Ready Typed"
+    image: "/images/readytyped.png"
+  - title: "MagicBlue"
+    url: /apps/magicblue/
+    intro: "MagicBlue"
+    image: "/images/magicblue.png"
+  - title: "TVカメラ"
+    url: /apps/tvcamera/
+    intro: "TVカメラ"
+    image: "/images/tvcamera.png"
+  - title: "iRanKing"
+    url: /apps/iranking/
+    intro: "iRanKing"
+    image: "/images/iranking.png"
+  - title: "ヤマスキ"
+    url: /apps/yamasuki/
+    intro: "ヤマスキ"
+    image: "/images/yamasuki.png"
+  - title: "毎日イベント"
+    url: /apps/eventviewer/
+    intro: "毎日イベント"
+    image: "/images/eventviewer.png"
+  - title: "楽ゴルフ"
+    url: /apps/rakugolf/
+    intro: "楽ゴルフ"
+    image: "/images/rakugolf.png"
+  - title: "Pass Photo"
+    url: /apps/passphoto/
+    intro: "Pass Photo"
+    image: "/images/passphoto.png"
+  - title: "Ready Tweet"
+    url: /apps/readytweet/
+    intro: "Ready Tweet"
+    image: "/images/readytweet.png"
+  - title: "Ready Call"
+    url: /apps/readycall/
+    intro: "Ready Call"
+    image: "/images/readycall.png"
+  - title: "Ready Send"
+    url: /apps/readysend/
+    intro: "Ready Send"
+    image: "/images/readysend.png"
+  - title: "Let's Idea"
+    url: /apps/letsidea/
+    intro: "Let's Idea"
+    image: "/images/letsidea.png"
+  - title: "0=零"
+    url: /apps/kanjinumerals/
+    intro: "0=零"
+    image: "/images/kanjinumerals.png"
+  - title: "RGB Viewer"
+    url: /apps/rgbviewer/
+    intro: "RGB Viewer"
+    image: "/images/rgbviewer.png"
+  - title: "Orange Clock"
+    url: /apps/orangeclock/
+    intro: "Orange Clock"
+    image: "/images/orangeclock.png"
+
+support:
+  - title: "KidsNote"
+    url: http://www.kidsnote.com/
+    intro: "KidsNote"
+    image: "/images/kidsnote.jpeg"
+  - title: "sweetie"
+    url: http://sweetieapp.com/
+    intro: "sweetie"
+    image: "/images/sweetie.png"
+  - title: "HiNative"
+    url: http://hinative.com/
+    intro: "HiNative"
+    image: "/images/hinative.png"
+
+widgets:
+- search
+- category
+- tagcloud
+- recent_posts
+- apps
+- support
+
+rss: true
+fancybox: false
+favicon: favicon.ico
+google_analytics: UA-40299127-1

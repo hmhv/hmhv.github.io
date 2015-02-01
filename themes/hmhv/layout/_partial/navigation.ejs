@@ -1,0 +1,47 @@
+<!-- _partial/navigation -->
+<nav id="main-nav" class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="<%- config.root %>"><%= config.title %></a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav navbar-right">
+		  <% theme.menu.forEach(function(m){ %>
+            <% if (m.dropdown) { %>
+        <li class="dropdown ">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="<%- m.icon %>"></i><%- m.title %> <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+		  <% m.submenu.forEach(function(sm){ %>
+		  <li>
+              <% if (sm.fullurl) { %>
+			<a href="<%- sm.url %>" title="<%- sm.intro %>">
+              <% } else { %>
+			<a href="<%- config.root %><%- sm.url %>" title="<%- sm.intro %>">
+              <% } %>
+			  <i class="<%- sm.icon %>"></i><%- sm.title %>
+			</a>
+		  </li>
+		  <% }) %>
+        </ul>
+		</li>
+            <% } else { %>
+		  <li>
+              <% if (m.fullurl) { %>
+			<a href="<%- m.url %>" title="<%- m.intro %>">
+              <% } else { %>
+			<a href="<%- config.root %><%- m.url %>" title="<%- m.intro %>">
+              <% } %>
+			  <i class="<%- m.icon %>"></i><%- m.title %>
+			</a>
+		  </li>
+            <% } %>
+		  <% }) %>
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>

@@ -1,0 +1,19 @@
+<!-- _widget/apps -->
+<% if (theme.apps.length){ %>
+<div class="widget">
+	<h4>Apps</h4>
+	<ul class="blogroll list-unstyled">
+	<% for (var i in theme.apps){ %>
+		<li>
+            <% if (theme.apps[i].icon) { %>
+            <i class="<%- theme.apps[i].icon %>"></i>
+            <% } %>
+            <% if (theme.apps[i].image) { %>
+            <img class="linkimage" src="<%- theme.apps[i].image %>">
+            <% } %>
+            <a href="<%- theme.apps[i].url %>" title="<%- theme.apps[i].intro %>");"><%= theme.apps[i].title %></a>
+        </li>
+	<% } %>
+	</ul>
+</div>
+<% } %>
