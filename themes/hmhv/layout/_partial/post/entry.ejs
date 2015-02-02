@@ -9,9 +9,9 @@
         
     <% if (index) { %>
         <% if (item.excerpt) { %>
-          <%- strip_html(item.excerpt).replace(/^\s*/, '').replace(/\s*$/, '').substring(0, 300) %>
+          <%- strip_html(item.excerpt).replace(/^\s*/, '').replace(/\s*$/, '').substring(0, 150) %>
         <% } else { %>
-          <%- strip_html(item.content).replace(/^\s*/, '').replace(/\s*$/, '').substring(0, 300) %>
+          <%- strip_html(item.content).replace(/^\s*/, '').replace(/\s*$/, '').substring(0, 150) %>
         <% } %>
 	<% } else { %>
         <% if (item.excerpt) { %>
