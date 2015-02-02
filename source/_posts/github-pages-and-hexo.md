@@ -29,5 +29,3 @@ tags:
 참고로 [Static Site Generators](https://staticsitegenerators.net/)에서 각 언어별 정적 사이트 작성툴의 인기를 확인할 수 있다.
 
 Github Pages & Hexo 조합으로 블로그를 운영할 경우 [git](http://git-scm.com/book/ko/v1), [Github](https://github.com/), [node.js](http://nodejs.org/), [Hexo](http://hexo.io/)등 개발관련 기반 지식이 필요하지만 기존 블로그 서비스들 보다 훨씬 자유로운 블로깅이 가능할듯 하다. 
-
-

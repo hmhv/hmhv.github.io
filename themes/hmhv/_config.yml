@@ -1,8 +1,12 @@
-bootswatch: yeti
+bootswatch: simplex
 
 slogan: "hmhv's blog"
 
 menu:
+  - title: Archives
+    url: archives
+    intro: "Archives"
+    icon: "fa fa-archive"
   - title: Apps
     url: apps
     intro: "app gallery"
