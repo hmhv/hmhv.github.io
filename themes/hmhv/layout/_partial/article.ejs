@@ -3,8 +3,8 @@
 <%- partial('post/title', {item: item, index: false}) %>
 
 <div class="row <% if (post) { %>post<% } else { %>page<% } %>">
-	<!-- cols -->
-	<% if (post) { %>
+
+    <% if (theme.widgets.length) { %>
 	<div class="col-md-9">
 	<% } else { %>
 	<div class="col-md-12">
@@ -37,10 +37,10 @@
 
 	<% if (post) { %>
 		<%- partial('post/meta', {item: item}) %>
-
-        <% if (theme.widgets.length) { %>
-            <%- partial('sidebar') %>
-        <% } %>
 	<% } %>
+
+    <% if (theme.widgets.length) { %>
+        <%- partial('sidebar') %>
+    <% } %>
 
 </div><!-- row -->
