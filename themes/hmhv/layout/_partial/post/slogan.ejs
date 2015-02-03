@@ -2,3 +2,30 @@
     <i class="fa fa-book"></i>
     <%= theme.slogan %>
 </div>
+
+<% if (theme.apps.length){ %>
+<div class="well well-sm">
+    <div class="app_galary_outter">
+        <div class="app_galary_inner">
+            <table class="app_galary_table">
+                <tr>
+	<% for (var i in theme.apps){ %>
+                <td>
+                    <div style="display: inline-block; margin: 5px;">
+                        <a href="<%- theme.apps[i].url %>" title="<%- theme.apps[i].intro %>">
+                            <% if (theme.apps[i].icon) { %>
+                            <i class="<%- theme.apps[i].icon %>"></i>
+                            <% } %>
+                            <% if (theme.apps[i].image) { %>
+                            <img class="img-rounded" src="<%- theme.apps[i].image %>" width="90%" height="90%">
+                            <% } %>
+                        </a>
+                    </div>
+                </td>
+	<% } %>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<% } %>
