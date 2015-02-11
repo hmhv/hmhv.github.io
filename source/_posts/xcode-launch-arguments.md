@@ -7,35 +7,36 @@ tags:
 - iOS
 - Xcode
 ---
-## CoreData関連
+### CoreData関連
 
-#### 実行するSQL文をログで出力
+- #### `-com.apple.CoreData.SQLDebug [1,2,3]`
 
-> -com.apple.CoreData.SQLDebug [1,2,3]
+> 実行するSQL文をログで出力
 > 1,2,3は大きくなるほど詳細情報を出力
 
-#### マルチスレッド時のデバッグ
+- #### `-com.apple.CoreData.ConcurrencyDebug 1`
 
-> -com.apple.CoreData.ConcurrencyDebug 1
+> CoreDataのマルチスレッド時のデバッグ
 > [Qiita投稿：CoreDataによる並列処理](http://qiita.com/hongmhoon/items/606a352b1e96dfb0bec5)
 
-## ローカライズ関連
 
-#### 端末の基本言語設定を上書き
+### ローカライズ関連
 
-> -AppleLanguages (en)
+- #### `-AppleLanguages (en)`
 
-#### 端末のロケール基本を上書き
+> 端末の基本言語設定を上書き
 
-> -AppleLocale en_US
+- #### `-AppleLocale en_US`
 
-#### GUI上の文字列を２倍に表示して長い文字列の表示確認
+> 端末のロケール基本を上書き
 
-> -NSDoubleLocalizedStrings YES
+- #### `-NSDoubleLocalizedStrings YES`
 
+> GUI上の文字列を２倍に表示して長い文字列の表示確認
 
+- #### `国コード＆ロケール`
 
-|言語|国コード|
+> |言語|国コード|
 |------|---|
 |日本語    |ja|
 |英語（アメリカ）|    en|
@@ -72,8 +73,9 @@ tags:
 |ハンガリー語 | hu|
 |ベトナム語  | vi|
 
+---
 
-|言語(国)|ロケール|
+> |言語(国)|ロケール|
 |------|---|
 |日本語（日本） | ja_JP|
 |英語（アメリカ）  |  en_US|

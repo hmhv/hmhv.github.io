@@ -183,14 +183,14 @@ li i {
   border-radius:7px;
   text-decoration:none;
   display:none;
-  background-color:#d9230f;
+  background-color:#f5f5f5;
 }
 #gotop span{
   display:block;
-  color:#ffffff;
+  color:#158cba;
 }
 #gotop span:hover{
-  color:#dddddd;
+  color:#158cff;
 }
 #gotop span{
   font-size:24px;
