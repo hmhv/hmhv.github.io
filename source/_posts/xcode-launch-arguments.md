@@ -1,7 +1,6 @@
 title: Xcodeの有用な起動時引数
 category:
   - Tech
-toc: true
 date: 2015-02-10 21:00:00
 tags:
 - iOS

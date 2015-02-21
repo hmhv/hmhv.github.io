@@ -1,7 +1,6 @@
 title: "Github Pages & Hexoでブログ開始"
 category:
   - Tech
-toc: true
 date: 2015-02-02
 tags:
 - Github Pages

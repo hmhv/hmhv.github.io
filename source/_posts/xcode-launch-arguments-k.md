@@ -1,7 +1,6 @@
 title: Xcode의 유용한 기동시 인수들
 category:
   - Tech
-toc: true
 date: 2015-02-10 20:00:00
 tags:
 - iOS

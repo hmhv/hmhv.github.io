@@ -78,6 +78,10 @@ li i {
    widget and tag box
    ========================================================================== */
 
+.meta-align {
+  text-align: right;
+}
+
 .meta-widget {
   margin: 10px 0;
 }
