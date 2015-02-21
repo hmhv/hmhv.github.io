@@ -107,14 +107,13 @@ support:
     image: "/images/hinative.png"
 
 widgets:
-- search
 - category
 - tagcloud
 - recent_posts
 - apps
 - support
 
-rss: true
+rss: false
 fancybox: false
 favicon: favicon.ico
 google_analytics: UA-40299127-1

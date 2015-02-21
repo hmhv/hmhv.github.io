@@ -6,8 +6,6 @@ tags:
 - iOS
 - Objectivc-C
 ---
-*＊こちらの内容は[Qiita](http://qiita.com/hongmhoon/items/f450e92da47b085c9e39)にも投稿されています。*
-
 # Objective-Cのクラス初期化
 
 1. `+ (void)initialize`を利用
@@ -199,3 +197,5 @@ static void initialize_class1()
 // initialize_class 2
 // initialize_class 3
 ```
+
+*＊こちらの内容は[Qiita](http://qiita.com/hongmhoon/items/f450e92da47b085c9e39)にも投稿されています。*
