@@ -83,14 +83,6 @@ apps:
     url: /apps/kanjinumerals/
     intro: "0=零"
     image: "/images/kanjinumerals.png"
-  - title: "RGB Viewer"
-    url: /apps/rgbviewer/
-    intro: "RGB Viewer"
-    image: "/images/rgbviewer.png"
-  - title: "Orange Clock"
-    url: /apps/orangeclock/
-    intro: "Orange Clock"
-    image: "/images/orangeclock.png"
 
 support:
   - title: "KidsNote"
