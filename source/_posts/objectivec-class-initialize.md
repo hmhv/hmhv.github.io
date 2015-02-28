@@ -6,8 +6,6 @@ tags:
 - iOS
 - Objectivc-C
 ---
-# Objective-Cのクラス初期化
-
 1. `+ (void)initialize`を利用
 2. `+ (void)load`を利用
 3. `__attribute__((constructor))`を利用

@@ -6,8 +6,6 @@ tags:
 - iOS
 - AutoLayout
 ---
-### UILableのAutoLayoutの警告と回避策
-　
 #### 警告内容
 
 <a href="https://qiita-image-store.s3.amazonaws.com/0/25832/c4482da0-5959-5459-18c4-bb15877ec887.png" title="sb_warning.png" class="fancybox" rel="gallery0"><img src="https://qiita-image-store.s3.amazonaws.com/0/25832/c4482da0-5959-5459-18c4-bb15877ec887.png" style="max-width: 100%"  alt="sb_warning.png"></a>

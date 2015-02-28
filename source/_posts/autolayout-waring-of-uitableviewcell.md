@@ -6,10 +6,6 @@ tags:
 - iOS
 - AutoLayout
 ---
-### UITableViewCellのAutoLayoutの警告と回避策
-
-　
-
 #### 警告内容
 ```
 CoreDataTest[2010:60b] Unable to simultaneously satisfy constraints.

@@ -15,6 +15,7 @@ tags:
 
 - #### `-com.apple.CoreData.ConcurrencyDebug 1`
 
+> iOS 8 から動作
 > CoreDataのマルチスレッド時のデバッグ
 > [Qiita投稿：CoreDataによる並列処理](http://qiita.com/hongmhoon/items/606a352b1e96dfb0bec5)
 

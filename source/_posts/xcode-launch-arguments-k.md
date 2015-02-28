@@ -15,6 +15,7 @@ tags:
 
 #### `-com.apple.CoreData.ConcurrencyDebug 1`
 
+> iOS 8 부터 동작
 > 멀티스레드 디버깅
 > CoreData관련 병렬처리 위반시 예외를 발생시켜 알려줌
 > [참조：Core Data Concurrency Debugging](http://oleb.net/blog/2014/06/core-data-concurrency-debugging/)
