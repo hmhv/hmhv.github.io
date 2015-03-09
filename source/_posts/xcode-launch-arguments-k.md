@@ -20,6 +20,10 @@ tags:
 > CoreData관련 병렬처리 위반시 예외를 발생시켜 알려줌
 > [참조：Core Data Concurrency Debugging](http://oleb.net/blog/2014/06/core-data-concurrency-debugging/)
 
+#### `-com.apple.coredata.ubiquity.logLevel 3`
+
+> CoreData의 iCloud관련 로그 출력
+
 ### 로컬라이즈 관련
 
 #### `-AppleLanguages (en)`

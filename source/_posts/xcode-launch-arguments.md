@@ -19,6 +19,9 @@ tags:
 > CoreDataのマルチスレッド時のデバッグ
 > [Qiita投稿：CoreDataによる並列処理](http://qiita.com/hongmhoon/items/606a352b1e96dfb0bec5)
 
+#### `-com.apple.coredata.ubiquity.logLevel 3`
+
+> CoreDataのiCloud関連ログ出力
 
 ### ローカライズ関連
 
