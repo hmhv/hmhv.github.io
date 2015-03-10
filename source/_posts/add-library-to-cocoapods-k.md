@@ -21,12 +21,12 @@ CocoaPods에도 등록한 메모
 ## CocoaPods에 등록 방법
 
 
-> **_이전에 [CocoaPodsのSpecs](https://github.com/CocoaPods/Specs)에 풀리퀘스트로 했던것 같은데_**
+> **_예전에는 [CocoaPodsのSpecs](https://github.com/CocoaPods/Specs)에 풀리퀘스트로 했던것 같은데_**
 > **_요즘은 `pod trunk` 커멘드로 함_**
 
 #### 1. `podspec`파일 작성
 
-이번엔 `HobjectiveRecord.podspec`을 작성
+`HobjectiveRecord.podspec`을 작성
 
 ``` bash
  $ pod spec create HobjectiveRecord
@@ -85,7 +85,7 @@ $ pod trunk push
 ```
 
 이것으로 작성한 `podspec`파일이 `podspec.json`파일로 변화되어
-[CocoaPodsのSpecs](https://github.com/CocoaPods/Specs)에 등록됨.
+[CocoaPods의Specs](https://github.com/CocoaPods/Specs)에 등록됨.
 
 이제 라이브러리를 사용하고자 하는 프로젝트의 `Podfile`에 `pod 'HobjectiveRecord'`를 추가하면 이용가능하게 됨
 
