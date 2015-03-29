@@ -99,7 +99,6 @@ support:
     image: "/images/hinative.png"
 
 widgets:
-- category
 - tagcloud
 - recent_posts
 - apps
