@@ -31,6 +31,10 @@ menu:
       icon: "fa fa-paper-plane"
 
 apps:
+  - title: "HOTWORD"
+    url: /apps/hotword/
+    intro: "HOTWORD"
+    image: "/images/hotword.png"
   - title: "Ready Typed"
     url: /apps/readytyped/
     intro: "Ready Typed"
