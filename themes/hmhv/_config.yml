@@ -35,6 +35,10 @@ apps:
     url: /apps/hotword/
     intro: "HOTWORD"
     image: "/images/hotword.png"
+  - title: "iRanKing"
+    url: /apps/iranking/
+    intro: "iRanKing"
+    image: "/images/iranking.png"
   - title: "Ready Typed"
     url: /apps/readytyped/
     intro: "Ready Typed"
@@ -47,10 +51,6 @@ apps:
     url: /apps/tvcamera/
     intro: "TVカメラ"
     image: "/images/tvcamera.png"
-  - title: "iRanKing"
-    url: /apps/iranking/
-    intro: "iRanKing"
-    image: "/images/iranking.png"
   - title: "ヤマスキ"
     url: /apps/yamasuki/
     intro: "ヤマスキ"
