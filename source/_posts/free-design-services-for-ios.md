@@ -41,6 +41,13 @@ http://cupcake.nilssonlee.se/
 http://www.lifeofpix.com/
 http://kaboompics.com/
 http://dummyimage.com/
+http://photocollections.io/
+http://jaymantri.com/
+http://www.camarama.de/
+http://streetwill.co/
+http://freenaturestock.com/
+http://realisticshots.com/
+http://photoshopvip.net/archives/68729
 
 ### UI Design Patterns
 
