@@ -31,6 +31,10 @@ menu:
       icon: "fa fa-paper-plane"
 
 apps:
+  - title: "Cocoa Stars"
+    url: /apps/ioscontrols/
+    intro: "Cocoa Stars"
+    image: "/images/ioscontrols.png"
   - title: "HOTWORD"
     url: /apps/hotword/
     intro: "HOTWORD"
