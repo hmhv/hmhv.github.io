@@ -29,8 +29,17 @@ http://icons8.com/
 https://github.com/PrideChung/FontAwesomeKit
 https://itunes.apple.com/app/icon-set-creator/id939343785
 
+### Screen Shot
+
+http://beemapp.me/
+
+https://gyazo.com/
+
 ### Images
 
+http://zoommyapp.com/ (app for mac)
+
+http://www.pexels.com/
 https://unsplash.com/
 http://magdeleine.co/
 http://foodiesfeed.com/
@@ -51,6 +60,7 @@ http://photoshopvip.net/archives/68729
 
 ### UI Design Patterns
 
+http://dbfreebies.co/
 http://www.pttrns.com/
 http://beta.pttrns.com/
 http://ios-patterns.com/
@@ -64,3 +74,7 @@ http://www.mobilemozaic.com/
 http://www.iospirations.com/
 http://capptivate.co/
 https://www.cocoacontrols.com/
+
+### etc
+
+http://makerbook.net/
