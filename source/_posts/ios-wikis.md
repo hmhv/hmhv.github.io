@@ -20,3 +20,16 @@ tags:
 * the iPhone Wiki : https://www.theiphonewiki.com/
 
 * iPhoneDevWiki : http://iphonedevwiki.net/
+
+* iOS Support Matrix : http://iossupportmatrix.com/
+
+
+
+* etc
+
+http://damnvulnerableiosapp.com/
+http://www.ipswdownloader.com/
+http://www.libimobiledevice.org/
+http://www.cycript.org/
+http://www.idbtool.com/
+https://www.veracode.com/iret-ios-reverse-engineering-toolkit

@@ -16,6 +16,9 @@ tags:
 |-[UIView recursiveDescription]|Viewの構造表示|
 |-[UIView _autolayoutTrace]|ViewのAutoLayout関連情報表示|
 |-[UIViewController _printHierarchy]|ViewControllerの構造表示|
+|-[UIView constraintsAffectingLayoutForAxis:UILayoutConstraintAxisHorizontal]|Viewのx(又はy)軸のconstraints表示|
+|-[UIView hasAmbiguousLayout]|ViewのLayoutが複数に可能か|
+|-[UIView exerciseAmbiguityInLayout]|Viewの別のLayout表示を行う|
 
 ## 使用例
 
