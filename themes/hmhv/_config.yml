@@ -35,26 +35,14 @@ apps:
     url: /apps/ioscontrols/
     intro: "Cocoa Stars"
     image: "/images/ioscontrols.png"
-  - title: "HOTWORD"
-    url: /apps/hotword/
-    intro: "HOTWORD"
-    image: "/images/hotword.png"
   - title: "iRanKing"
     url: /apps/iranking/
     intro: "iRanKing"
     image: "/images/iranking.png"
-  - title: "Ready Typed"
-    url: /apps/readytyped/
-    intro: "Ready Typed"
-    image: "/images/readytyped.png"
   - title: "MagicBlue"
     url: /apps/magicblue/
     intro: "MagicBlue"
     image: "/images/magicblue.png"
-  - title: "TVカメラ"
-    url: /apps/tvcamera/
-    intro: "TVカメラ"
-    image: "/images/tvcamera.png"
   - title: "ヤマスキ"
     url: /apps/yamasuki/
     intro: "ヤマスキ"
@@ -63,30 +51,10 @@ apps:
     url: /apps/eventviewer/
     intro: "毎日イベント"
     image: "/images/eventviewer.png"
-  - title: "楽ゴルフ"
-    url: /apps/rakugolf/
-    intro: "楽ゴルフ"
-    image: "/images/rakugolf.png"
   - title: "Pass Photo"
     url: /apps/passphoto/
     intro: "Pass Photo"
     image: "/images/passphoto.png"
-  - title: "Ready Tweet"
-    url: /apps/readytweet/
-    intro: "Ready Tweet"
-    image: "/images/readytweet.png"
-  - title: "Ready Call"
-    url: /apps/readycall/
-    intro: "Ready Call"
-    image: "/images/readycall.png"
-  - title: "Ready Send"
-    url: /apps/readysend/
-    intro: "Ready Send"
-    image: "/images/readysend.png"
-  - title: "Let's Idea"
-    url: /apps/letsidea/
-    intro: "Let's Idea"
-    image: "/images/letsidea.png"
   - title: "0=零"
     url: /apps/kanjinumerals/
     intro: "0=零"
