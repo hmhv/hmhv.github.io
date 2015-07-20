@@ -23,6 +23,12 @@ tags:
 
 > CoreDataのiCloud関連ログ出力
 
+### AutoLayout関連
+
+#### `-UIViewShowAlignmentRects YES`
+
+> Viewのレイアウト確認
+
 ### ローカライズ関連
 
 - #### `-AppleLanguages (en)`
