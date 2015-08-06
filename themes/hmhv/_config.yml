@@ -31,6 +31,10 @@ menu:
       icon: "fa fa-paper-plane"
 
 apps:
+  - title: "Ready Tweet 2"
+    url: /apps/readytweet2/
+    intro: "Ready Tweet 2"
+    image: "/images/readytweet.png"
   - title: "Cocoa Stars"
     url: /apps/ioscontrols/
     intro: "Cocoa Stars"
