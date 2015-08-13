@@ -31,6 +31,10 @@ menu:
       icon: "fa fa-paper-plane"
 
 apps:
+  - title: "MP3 Folders"
+    url: /apps/mp3folders/
+    intro: "MP3 Folders"
+    image: "/images/mp3folders.png"
   - title: "Ready Tweet 2"
     url: /apps/readytweet2/
     intro: "Ready Tweet 2"
