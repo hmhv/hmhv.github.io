@@ -24,8 +24,8 @@ https://mitmproxy.org/
 ```
 $ curl -O https://mitmproxy.org/download/osx-mitmproxy-0.13.tgz
 $ tar zxvf osx-mitmproxy-0.13.tgz 
-$ mv ./mitmdump /usr/local/bin
-$ mv ./mitmproxy /usr/local/bin
+$ mv ./mitmdump /usr/local/bin/
+$ mv ./mitmproxy /usr/local/bin/
 $ rm ./osx-mitmproxy-0.13.tgz 
 $ mitmproxy
 ```
