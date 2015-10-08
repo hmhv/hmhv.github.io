@@ -13,7 +13,7 @@ tags:
 
 https://mitmproxy.org/
 
-![mitmproxy](https://mitmproxy.org/images/mitmproxy-small.png)
+<a href="https://mitmproxy.org/images/mitmproxy-small.png" class="fancybox" rel="gallery0"><img src="https://mitmproxy.org/images/mitmproxy-small.png" style="max-width: 100%"></a>
 
 >An interactive console program that allows traffic flows to be intercepted, inspected, modified and replayed.
 
