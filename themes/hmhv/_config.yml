@@ -11,19 +11,34 @@ menu:
     url: apps
     intro: "app gallery"
     icon: "fa fa-cubes"
-  - title: Infomation
+  - title: More
     intro: "infomation"
     icon: "fa fa-info-circle"
     dropdown: true
     submenu:
-    - title: "About me"
-      url: aboutme
-      intro: "About me"
-      icon: "fa fa-user"
     - title: "Privacy Policy"
       url: privacy
       intro: "Privacy Policy"
       icon: "fa fa-lock"
+    - title: "About me"
+      url: aboutme
+      intro: "About me"
+      icon: "fa fa-user"
+    - title: "Qiita"
+      fullurl: true
+      url: "http://qiita.com/hongmhoon"
+      intro: "Qiita"
+      icon: "fa fa-circle-o"
+    - title: "github"
+      fullurl: true
+      url: "https://github.com/hmhv"
+      intro: "github"
+      icon: "fa fa-github"
+    - title: Linkedin
+      fullurl: true
+      url: "http://jp.linkedin.com/in/hongmhoon"
+      intro: Linkedin
+      icon: "fa fa-linkedin-square"
     - title: Contact
       fullurl: true
       url: "mailto:admin@hmhv.info"
