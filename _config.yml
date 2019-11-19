@@ -18,10 +18,6 @@ keywords: "hmhv,blog,app,galary,ios,iphone"
 url: http://hmhv.info/
 root: /
 permalink: :year/:month/:title/
-tag_dir: tags
-archive_dir: archives
-category_dir: categories
-code_dir: downloads/code
 permalink_defaults:
 
 # Directory

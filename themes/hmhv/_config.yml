@@ -58,14 +58,6 @@ apps:
     url: /apps/ioscontrols/
     intro: "Cocoa Stars"
     image: "/images/ioscontrols.png"
-  - title: "iRanKing"
-    url: /apps/iranking/
-    intro: "iRanKing"
-    image: "/images/iranking.png"
-  - title: "MagicBlue"
-    url: /apps/magicblue/
-    intro: "MagicBlue"
-    image: "/images/magicblue.png"
   - title: "ヤマスキ"
     url: /apps/yamasuki/
     intro: "ヤマスキ"
