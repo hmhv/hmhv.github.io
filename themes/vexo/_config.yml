@@ -1,0 +1,62 @@
+author: hmhv # 作者
+description: "hmhv's blog & app galary"
+keyword: "hmhv,blog,app,galary,ios,iphone"
+favicon: favicon.ico
+
+excerpt_link: Read more
+
+menu:
+ Home: /
+ Tags: /tags/
+ Archives: /archives/
+ Projects: /project/
+ About: /about/
+
+# highlight
+highlight:
+  tomorrow
+
+# catalog
+catalog: true
+
+# donate
+donate: false
+
+# qrcode
+qrcode: false
+
+# comment
+# you can set gitment, uyan or disqus
+
+comment:
+
+# gitment config
+gitment_owner: 
+gitment_repo: 
+gitment_oauth_id: 
+gitment_oauth_secret: 
+
+# uyan config
+# if you want to use uyan as your blog comment, plz remove/comment out gitment config
+baidu_id: 
+
+# disqus config
+disqus_shortname: hmhv
+
+about: 
+  banner: http://file.muyutech.com/about.jpg
+  avatar: http://hmhv.info/images/profile_square.jpg
+  description: “Stay hungry, stay foolish”
+  weibo_username: 
+  twitter_username: hongmhoon
+  github_username: hmhv
+  zhihu_username: 
+  douban_username: 
+  linkedin_username: hongmhoon
+  qiita_username: hongmhoon
+
+# MathJax Support
+mathjax:
+  enable: false
+  per_page: false
+  cdn: //cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML
