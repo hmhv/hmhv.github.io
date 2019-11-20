@@ -33,11 +33,11 @@ App Storeからダウンロードするアプリのサイズを小さくする�
 
 #### slicing詳細
 
-例えば、`image.png`, `image@2x.png`, `image@3x.png`の三つのイメージファイルがアプリに含まれている場合、
+例えば、image.png, image@2x.png, image@3x.pngの三つのイメージファイルがアプリに含まれている場合、
 今までは全端末に三つのファイルすべてがダウンロードされていたが、slicingによって
-iPhone4以前の非Retina端末には`image.png`のみ、
-iPhone6+端末には`image@3x.png`のみ、
-それ以外のRetina端末には`image@2x.png`のみがダウンロードされるようになる。
+iPhone4以前の非Retina端末にはimage.pngのみ、
+iPhone6+端末にはimage@3x.pngのみ、
+それ以外のRetina端末にはimage@2x.pngのみがダウンロードされるようになる。
 
 アプリ開発者はイメージファイルの管理をアセットで行うだけでそれ以外の面倒はApp Store側がすべて行う。
 
