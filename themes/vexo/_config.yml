@@ -44,8 +44,8 @@ baidu_id:
 disqus_shortname: hmhv
 
 about: 
-  banner: http://file.muyutech.com/about.jpg
-  avatar: http://hmhv.info/images/profile_square.jpg
+  banner: ../images/mt_fuji.jpg
+  avatar: ../images/profile_square.jpg
   description: “Stay hungry, stay foolish”
   weibo_username: 
   twitter_username: hongmhoon
