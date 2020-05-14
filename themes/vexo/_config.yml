@@ -14,8 +14,7 @@ menu:
  About: /about/
 
 # highlight
-highlight:
-  tomorrow
+highlight: foundation
 
 # catalog
 catalog: true
@@ -29,7 +28,7 @@ qrcode: false
 # comment
 # you can set gitment, uyan or disqus
 
-comment:
+comment: disqus
 
 # gitment config
 gitment_owner: 
