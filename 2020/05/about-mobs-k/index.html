@@ -141,6 +141,12 @@
 <li>RxSwift의 강력함에 좌절한 경험이 있으신 분</li>
 <li>SwiftUI+Combine만으로 개발을 진행하기는 아직 이르다고 생각하는 분</li>
 </ul>
+<h2 id="MobS의-특징"><a href="#MobS의-특징" class="headerlink" title="MobS의 특징"></a>MobS의 특징</h2><ul>
+<li>간단한 인터페이스</li>
+<li>메모리관리는 거의 자동</li>
+<li>State변경에 의한 View의 갱신처리에 집중</li>
+<li>모든 처리는 메인 스레드에서 실행</li>
+</ul>
 <h2 id="용어설명"><a href="#용어설명" class="headerlink" title="용어설명"></a>용어설명</h2><h4 id="Observable"><a href="#Observable" class="headerlink" title="Observable"></a>Observable</h4><p>변수의 값을 소유하며 새로운 값이 설정될때 마다 Observer에 통지를 보냄<br>MobX, RxSwift의 Observable、Combine의 Publisher와 동등</p>
 <h4 id="Observer"><a href="#Observer" class="headerlink" title="Observer"></a>Observer</h4><p>Observable에 추가되어 Observable으로부터의 통지를 받아 액션을 실행<br>MobXのaction, RxSwiftのObserver、Combine의 Subscriber와 동등</p>
 <h4 id="Removable-Remover"><a href="#Removable-Remover" class="headerlink" title="Removable (Remover)"></a>Removable (Remover)</h4><p>Observable에 추가된 Observer를 Observable로부터 삭제하는 방법<br>RxSwift의 Disposable、Combine의 Cancellable와 동등</p>
@@ -168,7 +174,7 @@
 <blockquote>
 <p>위의 코드에서는 <code>count += 1</code>로 Observer에 자동으로 통지되어 <code>self.countLabel.text = &quot;\(self.count)&quot;</code>가 실행됩니다.</p>
 </blockquote>
-<h2 id="마지막으로"><a href="#마지막으로" class="headerlink" title="마지막으로"></a>마지막으로</h2><p>이상으로 MobS의 기본을 설명했습니다.</p>
+<h2 id="마지막으로"><a href="#마지막으로" class="headerlink" title="마지막으로"></a>마지막으로</h2><p>이상으로 MobS의 기본에 대하여 설명했습니다.</p>
 <p>실무에서 사용하기 위해서는 아래의 내용도 이해할 필요가 있습니다. 자세한 내용은 코드와 예제를 확인해주세요.</p>
 <ul>
 <li>UITableViewCellでの利用</li>
@@ -247,7 +253,7 @@
   <div class="toc-main">
     <strong class="toc-title">Catalog</strong>
     
-      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#MobS란"><span class="toc-nav-text">MobS란?</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#MobS의-대상-유저"><span class="toc-nav-text">MobS의 대상 유저</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#용어설명"><span class="toc-nav-text">용어설명</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Observable"><span class="toc-nav-text">Observable</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Observer"><span class="toc-nav-text">Observer</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Removable-Remover"><span class="toc-nav-text">Removable (Remover)</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#MobS의-기본"><span class="toc-nav-text">MobS의 기본</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#①Observable의-생성"><span class="toc-nav-text">①Observable의 생성</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#②Observer의-생성-amp-Observable에-추가"><span class="toc-nav-text">②Observer의 생성 &amp; Observable에 추가</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#③Observable의-갱신"><span class="toc-nav-text">③Observable의 갱신</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#마지막으로"><span class="toc-nav-text">마지막으로</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#참조"><span class="toc-nav-text">참조</span></a></li></ol>
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#MobS란"><span class="toc-nav-text">MobS란?</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#MobS의-대상-유저"><span class="toc-nav-text">MobS의 대상 유저</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#MobS의-특징"><span class="toc-nav-text">MobS의 특징</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#용어설명"><span class="toc-nav-text">용어설명</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Observable"><span class="toc-nav-text">Observable</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Observer"><span class="toc-nav-text">Observer</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Removable-Remover"><span class="toc-nav-text">Removable (Remover)</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#MobS의-기본"><span class="toc-nav-text">MobS의 기본</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#①Observable의-생성"><span class="toc-nav-text">①Observable의 생성</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#②Observer의-생성-amp-Observable에-추가"><span class="toc-nav-text">②Observer의 생성 &amp; Observable에 추가</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#③Observable의-갱신"><span class="toc-nav-text">③Observable의 갱신</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#마지막으로"><span class="toc-nav-text">마지막으로</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#참조"><span class="toc-nav-text">참조</span></a></li></ol>
     
   </div>
 </aside>

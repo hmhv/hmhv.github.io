@@ -141,6 +141,13 @@
 <li>RxSwiftは強すぎて息が苦しい方</li>
 <li>SwiftUI+Combineのみで開発を進めるのはまだ早いと思う方</li>
 </ul>
+<h2 id="MobSの特徴"><a href="#MobSの特徴" class="headerlink" title="MobSの特徴"></a>MobSの特徴</h2><ul>
+<li>簡単なインタフェース</li>
+<li>宣言のみでReactiveっぽい記述がない</li>
+<li>State変更によるViewの更新処理に集中</li>
+<li>全ての処理はメインスレッドで処理</li>
+<li>メモリ管理はほぼ自動</li>
+</ul>
 <h2 id="用語説明"><a href="#用語説明" class="headerlink" title="用語説明"></a>用語説明</h2><h4 id="Observable"><a href="#Observable" class="headerlink" title="Observable"></a>Observable</h4><p>変数の値を保持し、新しい値が設定されるたび、Observerに通知を行う。<br>MobX, RxSwiftのObservable、CombineのPublisherと同様の物</p>
 <h4 id="Observer"><a href="#Observer" class="headerlink" title="Observer"></a>Observer</h4><p>Observableに追加され、Observableからの通知を受けてアクションを実行する。<br>MobXのaction, RxSwiftのObserver、CombineのSubscriberと同様の物</p>
 <h4 id="Removable-Remover"><a href="#Removable-Remover" class="headerlink" title="Removable (Remover)"></a>Removable (Remover)</h4><p>Observableに追加されたObserverをObservableから削除するための仕組み。<br>RxSwiftのDisposable、CombineのCancellableと同様の物</p>
@@ -168,7 +175,7 @@
 <blockquote>
 <p>上のコードでは<code>count += 1</code>でObserverに自動で通知され、<code>self.countLabel.text = &quot;\(self.count)&quot;</code>が実行されます。</p>
 </blockquote>
-<h2 id="まとめ"><a href="#まとめ" class="headerlink" title="まとめ"></a>まとめ</h2><p>以上でMobSの基本を説明しました。</p>
+<h2 id="まとめ"><a href="#まとめ" class="headerlink" title="まとめ"></a>まとめ</h2><p>以上でMobSの基本について説明しました。</p>
 <p>実践で使うには以下の内容も理解する必要がありますので詳しくはコードとExampleをご確認ください。</p>
 <ul>
 <li>UITableViewCellでの利用</li>
@@ -240,7 +247,7 @@
   <div class="toc-main">
     <strong class="toc-title">Catalog</strong>
     
-      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#MobSとは"><span class="toc-nav-text">MobSとは</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#MobSの対象ユーザ"><span class="toc-nav-text">MobSの対象ユーザ</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#用語説明"><span class="toc-nav-text">用語説明</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Observable"><span class="toc-nav-text">Observable</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Observer"><span class="toc-nav-text">Observer</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Removable-Remover"><span class="toc-nav-text">Removable (Remover)</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#MobSの基本"><span class="toc-nav-text">MobSの基本</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#①Observableの生成"><span class="toc-nav-text">①Observableの生成</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#②Observerの生成-amp-Observableに追加"><span class="toc-nav-text">②Observerの生成&amp;Observableに追加</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#③Observableの更新"><span class="toc-nav-text">③Observableの更新</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#まとめ"><span class="toc-nav-text">まとめ</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#参考"><span class="toc-nav-text">参考</span></a></li></ol>
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#MobSとは"><span class="toc-nav-text">MobSとは</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#MobSの対象ユーザ"><span class="toc-nav-text">MobSの対象ユーザ</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#MobSの特徴"><span class="toc-nav-text">MobSの特徴</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#用語説明"><span class="toc-nav-text">用語説明</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Observable"><span class="toc-nav-text">Observable</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Observer"><span class="toc-nav-text">Observer</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Removable-Remover"><span class="toc-nav-text">Removable (Remover)</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#MobSの基本"><span class="toc-nav-text">MobSの基本</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#①Observableの生成"><span class="toc-nav-text">①Observableの生成</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#②Observerの生成-amp-Observableに追加"><span class="toc-nav-text">②Observerの生成&amp;Observableに追加</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#③Observableの更新"><span class="toc-nav-text">③Observableの更新</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#まとめ"><span class="toc-nav-text">まとめ</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#参考"><span class="toc-nav-text">参考</span></a></li></ol>
     
   </div>
 </aside>
