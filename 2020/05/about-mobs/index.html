@@ -143,10 +143,9 @@
 </ul>
 <h2 id="MobSの特徴"><a href="#MobSの特徴" class="headerlink" title="MobSの特徴"></a>MobSの特徴</h2><ul>
 <li>簡単なインタフェース</li>
-<li>宣言のみでReactiveっぽい記述がない</li>
+<li>メモリ管理はほぼ自動</li>
 <li>State変更によるViewの更新処理に集中</li>
 <li>全ての処理はメインスレッドで処理</li>
-<li>メモリ管理はほぼ自動</li>
 </ul>
 <h2 id="用語説明"><a href="#用語説明" class="headerlink" title="用語説明"></a>用語説明</h2><h4 id="Observable"><a href="#Observable" class="headerlink" title="Observable"></a>Observable</h4><p>変数の値を保持し、新しい値が設定されるたび、Observerに通知を行う。<br>MobX, RxSwiftのObservable、CombineのPublisherと同様の物</p>
 <h4 id="Observer"><a href="#Observer" class="headerlink" title="Observer"></a>Observer</h4><p>Observableに追加され、Observableからの通知を受けてアクションを実行する。<br>MobXのaction, RxSwiftのObserver、CombineのSubscriberと同様の物</p>
