@@ -15,8 +15,15 @@ __SIMPLE & SAFE__を目指したSwift製リアクティブライブラリです�
 　
 ## MobSの対象ユーザ
 
-- RxSwiftは強すぎて息が苦しい方
-- SwiftUI+Combineのみで開発を進めるのはまだ早いと思う方
+- RxSwiftは強すぎて息が苦しい人
+- SwiftUI+Combineのみで開発を進めるのはまだ早いと思う人
+
+## MobSの特徴
+
+- 簡単なインタフェース
+- メモリ管理はほぼ自動
+- State変更によるViewの更新処理に集中
+- 全ての処理はメインスレッドで処理
 
 ## 用語説明
 
@@ -53,8 +60,8 @@ class CountUpViewController: UIViewController {
         super.viewDidLoad()
 
         // ②Observerの生成&Observableに追加
-        addObserver { (self) in
-            self.countLabel.text = "\(self.count)"
+        $count.addObserver(with: self) { (self, count) in
+            self.countLabel.text = "\(count)"
         }
     }
     
@@ -84,30 +91,21 @@ ObservableはObserverのクロージャの中で参照される瞬間、自動�
 #### ②Observerの生成&Observableに追加
 
 ``` swift
-addObserver { (self) in
-    self.countLabel.text = "\(self.count)"
+$count.addObserver(with: self) { (self, count) in
+    self.countLabel.text = "\(count)"
 }
 ```
 
 MobSのObserverはaddObserverメソッドに通知時に実行するアクションをクロージャとして渡して生成します。
-生成されたObserverはクロージャの中で参照しているObservable(s)に自動で追加されて、Observableに新しい値が設定されるたび、実行されます。
+生成されたObserverはObservableに自動で追加されて、Observableに新しい値が設定されるたび、実行されます。
 
-> 上のコードではクロージャの中で`count`が参照されているので、`count`に新しい値が設定されるたび、`self.countLabel.text = "\(self.count)"`が実行されます。
+> 上のコードでは`count`に新しい値が設定されるたび、`self.countLabel.text = "\(count)"`が実行されます。
 
-そして上の`addObserver`メソッドはNSObjectの拡張メソッドで、以下のような`MobS.addObserver`メソッドのラッパです。
-
-``` swift
-MobS.addObserver { [weak self] in
-    guard let self = self else { return }
-    self.countLabel.text = "\(self.count)"
-}.removed(by: remover)
-```
-
-addObserverで追加されたObserverは通知をうける必要がなくなると削除される必要があります。
-NSObjectの拡張メソッドでは内部で`removed(by: remover)`の呼出で自動で削除されるようになってます。
+addObserverで追加されたObserverは通知をうける必要がなくなると削除される必要がありますが、
+MobSでは必要がなくなったObserverは自動で削除されます。
 (これはRxSwiftのDisposable、DisposeBag、NSObject+Rxを合わせたのと同様の処理です)
 
-> 上のコードでは`CountUpViewController`でaddObserverを呼出したので`CountUpViewController`のdeinitのタイミングで自動で削除されます。
+> 上のコードでは`with: self`パラメータで渡した`CountUpViewController`のdeinitのタイミングで自動で削除されます。
 
 #### ③Observableの更新
 
@@ -117,17 +115,16 @@ count += 1
 
 Observableの更新は一般的なプロパティと同じく値を設定するだけでいです。それでObservableは自分に追加されている全てのObserverに通知を行い、アクションが実行されます。
 
-> 上のコードでは`count += 1`でObserverに自動で通知され、`self.countLabel.text = "\(self.count)"`が実行されます。
+> 上のコードでは`count += 1`でObserverに自動で通知され、`self.countLabel.text = "\(count)"`が実行されます。
 
 ## まとめ
 
-以上でMobSの基本を説明しました。
+以上でMobSの基本について説明しました。
 
 実践で使うには以下の内容も理解する必要がありますので詳しくはコードとExampleをご確認ください。
 
 - UITableViewCellでの利用
 - updateState
-- Computed
 - Bind
 
 > コードとExampleは https://github.com/hmhv/MobS にあります

@@ -9,6 +9,8 @@ tags:
 date: 2020-02-09 11:28:15
 ---
 
+## 以下の方法は`Flutter 1.17`以上では動かなくなりました。
+
 <a href="https://github.com/hmhv/flutter_today_extension_example/raw/master/storage/demo.gif" class="fancybox" rel="gallery0"><img src="https://github.com/hmhv/flutter_today_extension_example/raw/master/storage/demo.gif" style="max-width: 100%"></a>
 
 ## 1. Flutterプロジェクトを新規作成
