@@ -138,19 +138,19 @@
   <!-- Article START -->
   <article class="post-article">
     <section class="markdown-content"><h2 id="mitmproxy"><a href="#mitmproxy" class="headerlink" title="mitmproxy"></a>mitmproxy</h2><p>通信内容(http(s))を覗いたり、編集したりするプログラム</p>
-<p><a href="https://mitmproxy.org/" target="_blank" rel="noopener">https://mitmproxy.org/</a></p>
-<p><a href="https://mitmproxy.org/images/mitmproxy-small.png" class="fancybox" rel="noopener" target="_blank"><img src="https://mitmproxy.org/images/mitmproxy-small.png" style="max-width: 100%"></a></p>
+<p><a target="_blank" rel="noopener" href="https://mitmproxy.org/">https://mitmproxy.org/</a></p>
+<p><a target="_blank" href="https://mitmproxy.org/images/mitmproxy-small.png" class="fancybox" rel="gallery0 noopener"><img src="https://mitmproxy.org/images/mitmproxy-small.png" style="max-width: 100%"></a></p>
 <blockquote>
 <p>An interactive console program that allows traffic flows to be intercepted, inspected, modified and replayed.</p>
 </blockquote>
 <h3 id="インストール"><a href="#インストール" class="headerlink" title="インストール"></a>インストール</h3><ul>
 <li>mitmproxyのインストール</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ curl -O https://mitmproxy.org/download/osx-mitmproxy-0.13.tgz</span><br><span class="line">$ tar zxvf osx-mitmproxy-0.13.tgz </span><br><span class="line">$ mv ./mitmdump /usr/local/bin/</span><br><span class="line">$ mv ./mitmproxy /usr/local/bin/</span><br><span class="line">$ rm ./osx-mitmproxy-0.13.tgz </span><br><span class="line">$ mitmproxy</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ curl -O https://mitmproxy.org/download/osx-mitmproxy-0.13.tgz</span><br><span class="line">$ tar zxvf osx-mitmproxy-0.13.tgz </span><br><span class="line">$ mv ./mitmdump /usr/local/bin/</span><br><span class="line">$ mv ./mitmproxy /usr/local/bin/</span><br><span class="line">$ rm ./osx-mitmproxy-0.13.tgz </span><br><span class="line">$ mitmproxy</span><br></pre></td></tr></table></figure>
 <ul>
 <li>httpsのために証明書をインストール</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ curl -O https://raw.githubusercontent.com/ADVTOOLS/ADVTrustStore/master/iosCertTrustManager.py</span><br><span class="line">$ chmod 744 ./iosCertTrustManager.py</span><br><span class="line">$ ./iosCertTrustManager.py -a ~/.mitmproxy/mitmproxy-ca-cert.pem</span><br><span class="line">$ rm ./iosCertTrustManager.py</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ curl -O https://raw.githubusercontent.com/ADVTOOLS/ADVTrustStore/master/iosCertTrustManager.py</span><br><span class="line">$ chmod 744 ./iosCertTrustManager.py</span><br><span class="line">$ ./iosCertTrustManager.py -a ~/.mitmproxy/mitmproxy-ca-cert.pem</span><br><span class="line">$ rm ./iosCertTrustManager.py </span><br></pre></td></tr></table></figure>
 <h3 id="利用"><a href="#利用" class="headerlink" title="利用"></a>利用</h3><ul>
 <li>スクリプト実行でWi-Fiネットワークのプロキシ設定をオンにしてmitmproxyを起動し、終了時にオフにする</li>
 </ul>

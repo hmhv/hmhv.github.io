@@ -151,7 +151,7 @@
 <h4 id="2-iMovieの「新規アプリケーションプレビュー」で上で作成した動画クルップを編集し共有で保存"><a href="#2-iMovieの「新規アプリケーションプレビュー」で上で作成した動画クルップを編集し共有で保存" class="headerlink" title="2. iMovieの「新規アプリケーションプレビュー」で上で作成した動画クルップを編集し共有で保存"></a>2. iMovieの「新規アプリケーションプレビュー」で上で作成した動画クルップを編集し共有で保存</h4><blockquote>
 <p>例：AppPreview.mp4で保存</p>
 </blockquote>
-<h4 id="3-iPhone5-6-用にffmpegで動画サイズを変換-750x1334-gt-1080x1920"><a href="#3-iPhone5-6-用にffmpegで動画サイズを変換-750x1334-gt-1080x1920" class="headerlink" title="3. iPhone5/6+用にffmpegで動画サイズを変換(750x1334)-&gt;(1080x1920)"></a>3. iPhone5/6+用にffmpegで動画サイズを変換(750x1334)-&gt;(1080x1920)</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ffmpeg -i AppPreview.mp4 -vf <span class="string">"scale=-1:1920, pad=1080:1920:0:0"</span> AppPreviewBig.mp4</span><br></pre></td></tr></table></figure>
+<h4 id="3-iPhone5-6-用にffmpegで動画サイズを変換-750x1334-gt-1080x1920"><a href="#3-iPhone5-6-用にffmpegで動画サイズを変換-750x1334-gt-1080x1920" class="headerlink" title="3. iPhone5/6+用にffmpegで動画サイズを変換(750x1334)-&gt;(1080x1920)"></a>3. iPhone5/6+用にffmpegで動画サイズを変換(750x1334)-&gt;(1080x1920)</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ffmpeg -i AppPreview.mp4 -vf <span class="string">&quot;scale=-1:1920, pad=1080:1920:0:0&quot;</span> AppPreviewBig.mp4</span><br></pre></td></tr></table></figure>
 <blockquote>
 <h4 id="brewでffmpegのインストール"><a href="#brewでffmpegのインストール" class="headerlink" title="brewでffmpegのインストール"></a><em>brewでffmpegのインストール</em></h4></blockquote>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ brew doctor</span><br><span class="line">$ brew install ffmpeg --with-fdk-aac --with-ffplay --with-freetype --with-frei0r --with-libass --with-libvo-aacenc --with-libvorbis --with-libvpx --with-opencore-amr --with-openjpeg --with-opus --with-rtmpdump --with-schroedinger --with-speex --with-theora --with-tools</span><br></pre></td></tr></table></figure>
@@ -181,7 +181,7 @@
 </tr>
 </tbody>
 </table>
-<p><a href="https://developer.apple.com/library/ios/documentation/LanguagesUtilities/Conceptual/iTunesConnect_Guide/Appendices/Properties.html#//apple_ref/doc/uid/TP40011225-CH26-SW10" target="_blank" rel="noopener">参考：App Preview</a></p>
+<p><a target="_blank" rel="noopener" href="https://developer.apple.com/library/ios/documentation/LanguagesUtilities/Conceptual/iTunesConnect_Guide/Appendices/Properties.html#//apple_ref/doc/uid/TP40011225-CH26-SW10">参考：App Preview</a></p>
 </section>
     <!-- Tags START -->
     

@@ -138,8 +138,8 @@
   <!-- Article START -->
   <article class="post-article">
     <section class="markdown-content"><p>AVPlayer の<code>automaticallyWaitsToMinimizeStalling</code>を<code>NO</code>にしても通信環境などによっては<br>遅延が発生して再生される。そのときは直接<code>seekToTime</code>で最新にする</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">double time = MAXFLOAT;</span><br><span class="line">[player seekToTime: CMTimeMakeWithSeconds(time, NSEC_PER_SEC)];</span><br></pre></td></tr></table></figure>
-<p><a href="https://developer.apple.com/documentation/avfoundation/avplayer/1643482-automaticallywaitstominimizestal" target="_blank" rel="noopener">https://developer.apple.com/documentation/avfoundation/avplayer/1643482-automaticallywaitstominimizestal</a><br><a href="https://stackoverflow.com/questions/13145048/hls-avplayer-on-ios-return-to-live" target="_blank" rel="noopener">https://stackoverflow.com/questions/13145048/hls-avplayer-on-ios-return-to-live</a></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">double time = MAXFLOAT;</span><br><span class="line">[player seekToTime: CMTimeMakeWithSeconds(time, NSEC_PER_SEC)];</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://developer.apple.com/documentation/avfoundation/avplayer/1643482-automaticallywaitstominimizestal">https://developer.apple.com/documentation/avfoundation/avplayer/1643482-automaticallywaitstominimizestal</a><br><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/13145048/hls-avplayer-on-ios-return-to-live">https://stackoverflow.com/questions/13145048/hls-avplayer-on-ios-return-to-live</a></p>
 </section>
     <!-- Tags START -->
     
