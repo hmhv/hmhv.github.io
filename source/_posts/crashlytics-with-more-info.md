@@ -20,7 +20,7 @@ Crashlyticsは入れておくだけでクラッシュ時のコールスタック
     [[Crashlytics sharedInstance] setUserIdentifier:@"12344556789"];
     [[Crashlytics sharedInstance] setUserName:@"test user"];
     
-    [[Crashlytics sharedInstance] crash];?
+    [[Crashlytics sharedInstance] crash];
 }
 ```
 
