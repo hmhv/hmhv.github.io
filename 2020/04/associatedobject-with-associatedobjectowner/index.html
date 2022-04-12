@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="hmhv&#39;s blog &amp; app galary">
+  <meta name="keyword" content="hmhv,blog,app,galary,ios,iphone">
+  
+    <link rel="shortcut icon" type="image/ico" href="favicon.ico"/>
+  
+  <title>
+    
+      AssociatedObjectOwnerでobjc_g(s)etAssociatedObjectを利用 | hmhv
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/styles/foundation.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+  
+  
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>hmhv</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/apps/" class="item-link">Apps</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/apps/" class="menu-link">Apps</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>AssociatedObjectOwnerでobjc_g(s)etAssociatedObjectを利用</h2>
+  <p class="post-date">2020-04-27</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><h2 id="AssociatedObjectOwnerの利用"><a href="#AssociatedObjectOwnerの利用" class="headerlink" title="AssociatedObjectOwnerの利用"></a>AssociatedObjectOwnerの利用</h2><figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestClass</span> </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">TestClass</span>: <span class="title">AssociatedObjectOwner</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">var</span> test1Key = <span class="number">0</span></span><br><span class="line">    <span class="keyword">var</span> test1: <span class="type">TestClass</span> &#123;</span><br><span class="line">        <span class="keyword">get</span> &#123; getAssociatedObject(key: &amp;<span class="type">TestClass</span>.test1Key, initialObject: <span class="type">TestClass</span>()) &#125;</span><br><span class="line">        <span class="keyword">set</span> &#123; setAssociatedObject(key: &amp;<span class="type">TestClass</span>.test1Key, object: newValue) &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">var</span> test2Key = <span class="number">0</span></span><br><span class="line">    <span class="keyword">var</span> test2: <span class="type">String</span> &#123;</span><br><span class="line">        <span class="keyword">get</span> &#123; getAssociatedObject(key: &amp;<span class="type">TestClass</span>.test2Key, initialObject: <span class="string">""</span> ) &#125;</span><br><span class="line">        <span class="keyword">set</span> &#123; setAssociatedObject(key: &amp;<span class="type">TestClass</span>.test2Key, object: newValue) &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="AssociatedObjectOwner定義"><a href="#AssociatedObjectOwner定義" class="headerlink" title="AssociatedObjectOwner定義"></a>AssociatedObjectOwner定義</h2><figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">AssociatedObjectOwner</span>: <span class="title">AnyObject</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">getAssociatedObject</span>&lt;T&gt;<span class="params">(key: UnsafeRawPointer, initialObject: @autoclosure <span class="params">()</span></span></span> -&gt; <span class="type">T</span>) -&gt; <span class="type">T</span></span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">setAssociatedObject</span>&lt;T&gt;<span class="params">(key: UnsafeRawPointer, object: T?)</span></span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">AssociatedObjectOwner</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">getAssociatedObject</span>&lt;T&gt;<span class="params">(key: UnsafeRawPointer, initialObject: @autoclosure <span class="params">()</span></span></span> -&gt; <span class="type">T</span>) -&gt; <span class="type">T</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">let</span> object = objc_getAssociatedObject(<span class="keyword">self</span>, key) <span class="keyword">as</span>? <span class="type">T</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> object</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">let</span> object = initialObject()</span><br><span class="line">        objc_setAssociatedObject(<span class="keyword">self</span>, key, object, .<span class="type">OBJC_ASSOCIATION_RETAIN_NONATOMIC</span>)</span><br><span class="line">        <span class="keyword">return</span> object</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">setAssociatedObject</span>&lt;T&gt;<span class="params">(key: UnsafeRawPointer, object: T?)</span></span> &#123;</span><br><span class="line">        objc_setAssociatedObject(<span class="keyword">self</span>, key, object, .<span class="type">OBJC_ASSOCIATION_RETAIN_NONATOMIC</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#iOS" >
+    <span class="tag-code">iOS</span>
+  </a>
+
+  <a href="/tags#Swift" >
+    <span class="tag-code">Swift</span>
+  </a>
+
+  <a href="/tags#AssociatedObjectOwner" >
+    <span class="tag-code">AssociatedObjectOwner</span>
+  </a>
+
+  <a href="/tags#objc_getAssociatedObject" >
+    <span class="tag-code">objc_getAssociatedObject</span>
+  </a>
+
+  <a href="/tags#objc_setAssociatedObject" >
+    <span class="tag-code">objc_setAssociatedObject</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2020/02/flutter-today-extension-ios/">
+        <span class="nav-arrow">← </span>
+        
+          flutterでiosのtoday-extensionを作って見る
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2020/05/about-mobs-k/">
+        
+          MobS 소개
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+      <!-- Disqus START -->
+      <div id="disqus_thread"></div>
+      <!-- Disqus END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#AssociatedObjectOwner%E3%81%AE%E5%88%A9%E7%94%A8"><span class="toc-nav-text">AssociatedObjectOwnerの利用</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#AssociatedObjectOwner%E5%AE%9A%E7%BE%A9"><span class="toc-nav-text">AssociatedObjectOwner定義</span></a></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'https://hmhv.info/2020/04/associatedobject-with-associatedobjectowner/';
+    var banner = 'undefined'
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+
+
+
+
+  <script>
+    var disqus_shortname = 'hmhv';
+    
+    var disqus_url = 'https://hmhv.info/2020/04/associatedobject-with-associatedobjectowner/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//go.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme by <a target="_blank" rel="noopener" href="https://github.com/yanm1ng">yanm1ng</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'false';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script src="/js/script.js"></script>
+
+  </body>
+</html>

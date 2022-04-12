@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="hmhv&#39;s blog &amp; app galary">
+  <meta name="keyword" content="hmhv,blog,app,galary,ios,iphone">
+  
+    <link rel="shortcut icon" type="image/ico" href="favicon.ico"/>
+  
+  <title>
+    
+      Github Pages &amp; Hexo 로 블로그 시작 | hmhv
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/styles/foundation.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+  
+  
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>hmhv</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/apps/" class="item-link">Apps</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/apps/" class="menu-link">Apps</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>Github Pages & Hexo 로 블로그 시작</h2>
+  <p class="post-date">2015-02-01</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><h3 id="Github-Pages-란"><a href="#Github-Pages-란" class="headerlink" title="Github Pages 란?"></a>Github Pages 란?</h3><p><a href="https://pages.github.com/" target="_blank" rel="noopener">Github Pages</a>는 <a href="http://git-scm.com/book/ko/v1" target="_blank" rel="noopener">git</a>호스팅 서비스로 유명한 <a href="https://github.com/" target="_blank" rel="noopener">Github</a>에서 제공하는 무료 웹사이트 서비스다.<br>용량, 트레픽, 광고등의 제약도 없다. 커스텀 URL도 무료로 제공된다. 다만 서버쪽 처리나 데이터베이스등은 제공되지 않는다.</p>
+<p>예를들어 유저의 웹사이트를 만들 경우 Github에 자신의 유저명을 포함한 <code>유저명.github.io</code> 라는 리포지토리를 만들고<br>그 리포지토리에 html, js, css, 이미지파일등을 올려놓으면 그 내용이 <code>http://유저명.github.io</code> 에 표시된다.</p>
+<p>또한 표준으로 루비로 만들어진 <a href="http://jekyllrb.com/" target="_blank" rel="noopener">jekyll</a>를 이용하여 웹사이트나 블로그등을 보다 쉽게 관리할수 있는 기능도 제공한다.</p>
+<h3 id="Hexo-란"><a href="#Hexo-란" class="headerlink" title="Hexo 란?"></a>Hexo 란?</h3><p><a href="http://hexo.io/" target="_blank" rel="noopener">Hexo</a>는 <a href="http://nodejs.org/" target="_blank" rel="noopener">node.js</a>를 기반으로 만들어진 블로그 프레임워크다.<br><a href="http://getbootstrap.com/" target="_blank" rel="noopener">Bootstrap</a>을 이용한 테마등 나름 다양한 <a href="https://github.com/hexojs/hexo/wiki/themes" target="_blank" rel="noopener">테마</a>가 제공된다.</p>
+<h3 id="Github-Pages-amp-Hexo-로-하는-이유"><a href="#Github-Pages-amp-Hexo-로-하는-이유" class="headerlink" title="Github Pages &amp; Hexo 로 하는 이유"></a>Github Pages &amp; Hexo 로 하는 이유</h3><p>가장 큰 이유는 <a href="http://ko.wikipedia.org/wiki/%EB%A7%88%ED%81%AC%EB%8B%A4%EC%9A%B4" target="_blank" rel="noopener">마크다운</a>을 사용하여 블로그를 작성하고 싶어서이다.<br>기존 티스토리의 경우 마크다운으로 작성하려 하면 결국 HTML로 수동 변환을 한후 작성해야하는데 <a href="https://pages.github.com/" target="_blank" rel="noopener">Github Pages</a>용 블로그 툴들은 대부분 마크다운을 지원하고 그 외에도 제한이 적은 느낌이다.<br>또한 루비기반의 <a href="http://jekyllrb.com/" target="_blank" rel="noopener">jekyll</a>나 <a href="http://octopress.org/" target="_blank" rel="noopener">Octopress</a>등 보다 유명하고 널리 사용되는 툴이 아닌 <a href="http://hexo.io/" target="_blank" rel="noopener">Hexo</a>를 선택한 이유는 <a href="http://nodejs.org/" target="_blank" rel="noopener">node.js</a>기반의 툴로 하고 싶다는 단순한 이유에서다.</p>
+<p>참고로 <a href="https://staticsitegenerators.net/" target="_blank" rel="noopener">Static Site Generators</a>에서 각 언어별 정적 사이트 작성툴의 인기를 확인할 수 있다.</p>
+<p>Github Pages &amp; Hexo 조합으로 블로그를 운영할 경우 <a href="http://git-scm.com/book/ko/v1" target="_blank" rel="noopener">git</a>, <a href="https://github.com/" target="_blank" rel="noopener">Github</a>, <a href="http://nodejs.org/" target="_blank" rel="noopener">node.js</a>, <a href="http://hexo.io/" target="_blank" rel="noopener">Hexo</a>등 개발관련 기반 지식이 필요하지만 기존 블로그 서비스들 보다 훨씬 자유로운 블로깅이 가능할듯 하다. </p>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#Github Pages" >
+    <span class="tag-code">Github Pages</span>
+  </a>
+
+  <a href="/tags#Hexo" >
+    <span class="tag-code">Hexo</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+    
+      <a class="nav-right" href="/2015/02/github-pages-with-hexo/">
+        
+          Github Pages &amp; Hexoでブログ開始
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+      <!-- Disqus START -->
+      <div id="disqus_thread"></div>
+      <!-- Disqus END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Github-Pages-%EB%9E%80"><span class="toc-nav-text">Github Pages 란?</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Hexo-%EB%9E%80"><span class="toc-nav-text">Hexo 란?</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Github-Pages-amp-Hexo-%EB%A1%9C-%ED%95%98%EB%8A%94-%EC%9D%B4%EC%9C%A0"><span class="toc-nav-text">Github Pages &amp; Hexo 로 하는 이유</span></a></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'https://hmhv.info/2015/02/github-pages-and-hexo/';
+    var banner = 'undefined'
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+
+
+
+
+  <script>
+    var disqus_shortname = 'hmhv';
+    
+    var disqus_url = 'https://hmhv.info/2015/02/github-pages-and-hexo/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//go.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme by <a target="_blank" rel="noopener" href="https://github.com/yanm1ng">yanm1ng</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'false';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script src="/js/script.js"></script>
+
+  </body>
+</html>

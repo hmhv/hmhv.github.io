@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="hmhv&#39;s blog &amp; app galary">
+  <meta name="keyword" content="hmhv,blog,app,galary,ios,iphone">
+  
+    <link rel="shortcut icon" type="image/ico" href="favicon.ico"/>
+  
+  <title>
+    
+      Xcodeの有用な起動時引数 | hmhv
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/styles/foundation.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+  
+  
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>hmhv</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/apps/" class="item-link">Apps</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/apps/" class="menu-link">Apps</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>Xcodeの有用な起動時引数</h2>
+  <p class="post-date">2015-02-10</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><h3 id="CoreData関連"><a href="#CoreData関連" class="headerlink" title="CoreData関連"></a>CoreData関連</h3><ul>
+<li><h4 id="com-apple-CoreData-SQLDebug-1-2-3"><a href="#com-apple-CoreData-SQLDebug-1-2-3" class="headerlink" title="-com.apple.CoreData.SQLDebug [1,2,3]"></a><code>-com.apple.CoreData.SQLDebug [1,2,3]</code></h4></li>
+</ul>
+<blockquote>
+<p>実行するSQL文をログで出力<br>1,2,3は大きくなるほど詳細情報を出力</p>
+</blockquote>
+<ul>
+<li><h4 id="com-apple-CoreData-ConcurrencyDebug-1"><a href="#com-apple-CoreData-ConcurrencyDebug-1" class="headerlink" title="-com.apple.CoreData.ConcurrencyDebug 1"></a><code>-com.apple.CoreData.ConcurrencyDebug 1</code></h4></li>
+</ul>
+<blockquote>
+<p>iOS 8 から動作<br>CoreDataのマルチスレッド時のデバッグ<br><a href="http://qiita.com/hongmhoon/items/606a352b1e96dfb0bec5" target="_blank" rel="noopener">Qiita投稿：CoreDataによる並列処理</a></p>
+</blockquote>
+<h4 id="com-apple-coredata-ubiquity-logLevel-3"><a href="#com-apple-coredata-ubiquity-logLevel-3" class="headerlink" title="-com.apple.coredata.ubiquity.logLevel 3"></a><code>-com.apple.coredata.ubiquity.logLevel 3</code></h4><blockquote>
+<p>CoreDataのiCloud関連ログ出力</p>
+</blockquote>
+<h3 id="AutoLayout関連"><a href="#AutoLayout関連" class="headerlink" title="AutoLayout関連"></a>AutoLayout関連</h3><h4 id="UIViewShowAlignmentRects-YES"><a href="#UIViewShowAlignmentRects-YES" class="headerlink" title="-UIViewShowAlignmentRects YES"></a><code>-UIViewShowAlignmentRects YES</code></h4><blockquote>
+<p>Viewのレイアウト確認</p>
+</blockquote>
+<h3 id="ローカライズ関連"><a href="#ローカライズ関連" class="headerlink" title="ローカライズ関連"></a>ローカライズ関連</h3><ul>
+<li><h4 id="AppleLanguages-en"><a href="#AppleLanguages-en" class="headerlink" title="-AppleLanguages (en)"></a><code>-AppleLanguages (en)</code></h4></li>
+</ul>
+<blockquote>
+<p>端末の基本言語設定を上書き</p>
+</blockquote>
+<ul>
+<li><h4 id="AppleLocale-en-US"><a href="#AppleLocale-en-US" class="headerlink" title="-AppleLocale en_US"></a><code>-AppleLocale en_US</code></h4></li>
+</ul>
+<blockquote>
+<p>端末のロケール基本を上書き</p>
+</blockquote>
+<ul>
+<li><h4 id="NSDoubleLocalizedStrings-YES"><a href="#NSDoubleLocalizedStrings-YES" class="headerlink" title="-NSDoubleLocalizedStrings YES"></a><code>-NSDoubleLocalizedStrings YES</code></h4></li>
+</ul>
+<blockquote>
+<p>GUI上の文字列を２倍に表示して長い文字列の表示確認</p>
+</blockquote>
+<ul>
+<li><h4 id="国コード＆ロケール"><a href="#国コード＆ロケール" class="headerlink" title="国コード＆ロケール"></a><code>国コード＆ロケール</code></h4></li>
+</ul>
+<blockquote>
+<table>
+<thead>
+<tr>
+<th>言語</th>
+<th>国コード</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>日本語</td>
+<td>ja</td>
+</tr>
+<tr>
+<td>英語（アメリカ）</td>
+<td>en</td>
+</tr>
+<tr>
+<td>フランス語</td>
+<td>fr</td>
+</tr>
+<tr>
+<td>ドイツ語</td>
+<td>de</td>
+</tr>
+<tr>
+<td>オランダ語</td>
+<td>nl</td>
+</tr>
+<tr>
+<td>イタリア語</td>
+<td>it</td>
+</tr>
+<tr>
+<td>スペイン語</td>
+<td>es</td>
+</tr>
+<tr>
+<td>ポルトガル語</td>
+<td>pt</td>
+</tr>
+<tr>
+<td>ポルトガル語（ポルトガル）</td>
+<td>pt-PT</td>
+</tr>
+<tr>
+<td>デンマーク語</td>
+<td>da</td>
+</tr>
+<tr>
+<td>フィンランド語</td>
+<td>fi</td>
+</tr>
+<tr>
+<td>ノルウェー語</td>
+<td>nb</td>
+</tr>
+<tr>
+<td>スウェーデン語</td>
+<td>sv</td>
+</tr>
+<tr>
+<td>韓国語</td>
+<td>ko</td>
+</tr>
+<tr>
+<td>中国語（簡体字）</td>
+<td>zh-Hans</td>
+</tr>
+<tr>
+<td>中国語（繁体字）</td>
+<td>zh-Hant</td>
+</tr>
+<tr>
+<td>ロシア語</td>
+<td>ru</td>
+</tr>
+<tr>
+<td>ポーランド語</td>
+<td>pl</td>
+</tr>
+<tr>
+<td>トルコ語</td>
+<td>tr</td>
+</tr>
+<tr>
+<td>ウクライナ語</td>
+<td>uk</td>
+</tr>
+<tr>
+<td>アラビア語</td>
+<td>ar</td>
+</tr>
+<tr>
+<td>クロアチア語</td>
+<td>hr</td>
+</tr>
+<tr>
+<td>チェコ語</td>
+<td>cs</td>
+</tr>
+<tr>
+<td>ギリシャ語</td>
+<td>el</td>
+</tr>
+<tr>
+<td>ヘブライ語</td>
+<td>he</td>
+</tr>
+<tr>
+<td>ルーマニア語</td>
+<td>ro</td>
+</tr>
+<tr>
+<td>スロバキア語</td>
+<td>sk</td>
+</tr>
+<tr>
+<td>タイ語</td>
+<td>th</td>
+</tr>
+<tr>
+<td>インドネシア語</td>
+<td>id</td>
+</tr>
+<tr>
+<td>マレー語</td>
+<td>ms</td>
+</tr>
+<tr>
+<td>英語（イギリス）</td>
+<td>en-GB</td>
+</tr>
+<tr>
+<td>カタロニア語</td>
+<td>ca</td>
+</tr>
+<tr>
+<td>ハンガリー語</td>
+<td>hu</td>
+</tr>
+<tr>
+<td>ベトナム語</td>
+<td>vi</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<hr>
+<blockquote>
+<table>
+<thead>
+<tr>
+<th>言語(国)</th>
+<th>ロケール</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>日本語（日本）</td>
+<td>ja_JP</td>
+</tr>
+<tr>
+<td>英語（アメリカ）</td>
+<td>en_US</td>
+</tr>
+<tr>
+<td>英語（イギリス）</td>
+<td>en_GB</td>
+</tr>
+<tr>
+<td>英語（カナダ）</td>
+<td>en_CA</td>
+</tr>
+<tr>
+<td>中国語（シンガポール）</td>
+<td>zh_SG</td>
+</tr>
+<tr>
+<td>中国語（台湾）</td>
+<td>zh_TW</td>
+</tr>
+<tr>
+<td>中国語（マカオ特別行政区）</td>
+<td>zh_MO</td>
+</tr>
+<tr>
+<td>中国語（香港特別行政区）</td>
+<td>zh_HK</td>
+</tr>
+<tr>
+<td>中国語（中国）</td>
+<td>zh_CN</td>
+</tr>
+<tr>
+<td>韓国語（韓国）</td>
+<td>ko_KR</td>
+</tr>
+<tr>
+<td>イタリア語（イタリア）</td>
+<td>it_IT</td>
+</tr>
+<tr>
+<td>オランダ語（オランダ）</td>
+<td>nl_NL</td>
+</tr>
+<tr>
+<td>スペイン語（スペイン）</td>
+<td>es_ES</td>
+</tr>
+<tr>
+<td>タイ語（タイ）</td>
+<td>th_TH</td>
+</tr>
+<tr>
+<td>ドイツ語（ドイツ）</td>
+<td>de_DE</td>
+</tr>
+<tr>
+<td>フランス語（フランス）</td>
+<td>fr_FR</td>
+</tr>
+<tr>
+<td>ロシア語（ロシア）</td>
+<td>ru_RU</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p><a href="http://tools4hack.santalab.me/howto-change-app-language-and-locate-for-jailbreak-ifile.html" target="_blank" rel="noopener">＊コード参考：tools4hack</a></p>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#iOS" >
+    <span class="tag-code">iOS</span>
+  </a>
+
+  <a href="/tags#Xcode" >
+    <span class="tag-code">Xcode</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2015/02/xcode-launch-arguments-k/">
+        <span class="nav-arrow">← </span>
+        
+          Xcode의 유용한 기동시 인수들
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2015/02/objectivec-class-initialize/">
+        
+          Objective-Cのクラス初期化
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+      <!-- Disqus START -->
+      <div id="disqus_thread"></div>
+      <!-- Disqus END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#CoreData%E9%96%A2%E9%80%A3"><span class="toc-nav-text">CoreData関連</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#com-apple-CoreData-SQLDebug-1-2-3"><span class="toc-nav-text">-com.apple.CoreData.SQLDebug [1,2,3]</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#com-apple-CoreData-ConcurrencyDebug-1"><span class="toc-nav-text">-com.apple.CoreData.ConcurrencyDebug 1</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#com-apple-coredata-ubiquity-logLevel-3"><span class="toc-nav-text">-com.apple.coredata.ubiquity.logLevel 3</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#AutoLayout%E9%96%A2%E9%80%A3"><span class="toc-nav-text">AutoLayout関連</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#UIViewShowAlignmentRects-YES"><span class="toc-nav-text">-UIViewShowAlignmentRects YES</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%A9%E3%82%A4%E3%82%BA%E9%96%A2%E9%80%A3"><span class="toc-nav-text">ローカライズ関連</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#AppleLanguages-en"><span class="toc-nav-text">-AppleLanguages (en)</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#AppleLocale-en-US"><span class="toc-nav-text">-AppleLocale en_US</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#NSDoubleLocalizedStrings-YES"><span class="toc-nav-text">-NSDoubleLocalizedStrings YES</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%9B%BD%E3%82%B3%E3%83%BC%E3%83%89%EF%BC%86%E3%83%AD%E3%82%B1%E3%83%BC%E3%83%AB"><span class="toc-nav-text">国コード＆ロケール</span></a></li></ol></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'https://hmhv.info/2015/02/xcode-launch-arguments/';
+    var banner = 'undefined'
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+
+
+
+
+  <script>
+    var disqus_shortname = 'hmhv';
+    
+    var disqus_url = 'https://hmhv.info/2015/02/xcode-launch-arguments/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//go.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme by <a target="_blank" rel="noopener" href="https://github.com/yanm1ng">yanm1ng</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'false';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script src="/js/script.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="hmhv&#39;s blog &amp; app galary">
+  <meta name="keyword" content="hmhv,blog,app,galary,ios,iphone">
+  
+    <link rel="shortcut icon" type="image/ico" href="favicon.ico"/>
+  
+  <title>
+    
+      iOS9からの3D Touch実装の簡単メモ | hmhv
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/styles/foundation.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+  
+  
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>hmhv</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/apps/" class="item-link">Apps</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/apps/" class="menu-link">Apps</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>iOS9からの3D Touch実装の簡単メモ</h2>
+  <p class="post-date">2015-10-07</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><h2 id="3D-Touchの種類"><a href="#3D-Touchの種類" class="headerlink" title="3D Touchの種類"></a>3D Touchの種類</h2><ol>
+<li>Home Screen Quick Actions</li>
+<li>Peek and Pop</li>
+<li>Force Properties</li>
+</ol>
+<h3 id="1-Home-Screen-Quick-Actions"><a href="#1-Home-Screen-Quick-Actions" class="headerlink" title="1. Home Screen Quick Actions"></a>1. Home Screen Quick Actions</h3><p>ホーム画面でアプリのアイコンを強く押すと表示される</p>
+<p><a href="https://qiita-image-store.s3.amazonaws.com/0/25832/6d4c12de-83e6-05a0-85c2-f05f74e843be.png" class="fancybox" rel="noopener" target="_blank"><img src="https://qiita-image-store.s3.amazonaws.com/0/25832/6d4c12de-83e6-05a0-85c2-f05f74e843be.png" style="max-width: 100%"></a></p>
+<p>　</p>
+<h4 id="実装方法"><a href="#実装方法" class="headerlink" title="実装方法"></a>実装方法</h4><h5 id="info-plistで追加"><a href="#info-plistで追加" class="headerlink" title="- info.plistで追加"></a>- info.plistで追加</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;key&gt;UIApplicationShortcutItems&lt;/key&gt;</span><br><span class="line">&lt;array&gt;</span><br><span class="line">	&lt;dict&gt;</span><br><span class="line">		&lt;key&gt;UIApplicationShortcutItemIconType&lt;/key&gt;</span><br><span class="line">		&lt;string&gt;UIApplicationShortcutIconTypePlay&lt;/string&gt;</span><br><span class="line">		&lt;key&gt;UIApplicationShortcutItemTitle&lt;/key&gt;</span><br><span class="line">		&lt;string&gt;Play&lt;/string&gt;</span><br><span class="line">		&lt;key&gt;UIApplicationShortcutItemType&lt;/key&gt;</span><br><span class="line">		&lt;string&gt;static&lt;/string&gt;</span><br><span class="line">		&lt;key&gt;UIApplicationShortcutItemUserInfo&lt;/key&gt;</span><br><span class="line">		&lt;dict&gt;</span><br><span class="line">			&lt;key&gt;key1&lt;/key&gt;</span><br><span class="line">			&lt;string&gt;value1&lt;/string&gt;</span><br><span class="line">		&lt;/dict&gt;</span><br><span class="line">	&lt;/dict&gt;</span><br><span class="line">&lt;/array&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="コードで追加"><a href="#コードで追加" class="headerlink" title="- コードで追加"></a>- コードで追加</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">UIApplicationShortcutItem *item1 = [[UIApplicationShortcutItem alloc] initWithType:@&quot;dynamic1&quot; localizedTitle:@&quot;title1&quot; localizedSubtitle:@&quot;sub1&quot; icon:[UIApplicationShortcutIcon iconWithType:UIApplicationShortcutIconTypeLocation] userInfo:nil];</span><br><span class="line">UIApplicationShortcutItem *item2 = [[UIApplicationShortcutItem alloc] initWithType:@&quot;dynamic2&quot; localizedTitle:@&quot;title2&quot; localizedSubtitle:@&quot;sub2&quot; icon:[UIApplicationShortcutIcon iconWithType:UIApplicationShortcutIconTypePause] userInfo:nil];</span><br><span class="line">UIApplicationShortcutItem *item3 = [[UIApplicationShortcutItem alloc] initWithType:@&quot;dynamic3&quot; localizedTitle:@&quot;title3&quot; localizedSubtitle:@&quot;sub3&quot; icon:[UIApplicationShortcutIcon iconWithType:UIApplicationShortcutIconTypeShare] userInfo:nil];</span><br><span class="line"></span><br><span class="line">[[UIApplication sharedApplication] setShortcutItems: @[ item1, item2, item3 ]];</span><br></pre></td></tr></table></figure>
+<p>　　</p>
+<h3 id="2-Peek-and-Pop"><a href="#2-Peek-and-Pop" class="headerlink" title="2. Peek and Pop"></a>2. Peek and Pop</h3><p>特定のビューを強く押すとプレビューが表示される(Peek)</p>
+<p><a href="https://qiita-image-store.s3.amazonaws.com/0/25832/d506a5db-91a2-d6c3-6a53-a14d5b17a6ad.png" class="fancybox" rel="noopener" target="_blank"><img src="https://qiita-image-store.s3.amazonaws.com/0/25832/d506a5db-91a2-d6c3-6a53-a14d5b17a6ad.png" style="max-width: 100%"></a></p>
+<p>Peekで上にスワイプするとメニューが表示される</p>
+<p><a href="https://qiita-image-store.s3.amazonaws.com/0/25832/a5a5aa64-46f3-b32c-d84a-b5af5a56ee09.png" class="fancybox" rel="noopener" target="_blank"><img src="https://qiita-image-store.s3.amazonaws.com/0/25832/a5a5aa64-46f3-b32c-d84a-b5af5a56ee09.png" style="max-width: 100%"></a></p>
+<p>Peekでさらに強く押すと全表示で表示される(Pop)</p>
+<p><a href="https://qiita-image-store.s3.amazonaws.com/0/25832/b0789509-e864-114f-7aa9-99202c988d24.png" class="fancybox" rel="noopener" target="_blank"><img src="https://qiita-image-store.s3.amazonaws.com/0/25832/b0789509-e864-114f-7aa9-99202c988d24.png" style="max-width: 100%"></a></p>
+<p>  　　</p>
+<h4 id="実装方法-1"><a href="#実装方法-1" class="headerlink" title="実装方法"></a>実装方法</h4><h5 id="１-3D-Touchに対応するビューをビューコントローラで登録"><a href="#１-3D-Touchに対応するビューをビューコントローラで登録" class="headerlink" title="- １. 3D Touchに対応するビューをビューコントローラで登録"></a>- １. 3D Touchに対応するビューをビューコントローラで登録</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if (self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable) &#123;</span><br><span class="line">    [self registerForPreviewingWithDelegate:self sourceView:self.imageView];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="２-UIViewControllerPreviewingDelegateを実装"><a href="#２-UIViewControllerPreviewingDelegateを実装" class="headerlink" title="- ２. UIViewControllerPreviewingDelegateを実装"></a>- ２. <code>UIViewControllerPreviewingDelegate</code>を実装</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@interface ViewController () &lt;UIViewControllerPreviewingDelegate&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- (nullable UIViewController *)previewingContext:(id &lt;UIViewControllerPreviewing&gt;)previewingContext viewControllerForLocation:(CGPoint)location</span><br><span class="line">&#123;</span><br><span class="line">    NSLog(@&quot;peek&quot;);</span><br><span class="line">    </span><br><span class="line">    previewingContext.sourceRect = CGRectMake(0, 0, previewingContext.sourceView.frame.size.width, previewingContext.sourceView.frame.size.height);</span><br><span class="line"></span><br><span class="line">    RedImageViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@&quot;RedImageViewController&quot;];</span><br><span class="line">    vc.preferredContentSize = CGSizeMake(0, 300);</span><br><span class="line">    return vc;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- (void)previewingContext:(id &lt;UIViewControllerPreviewing&gt;)previewingContext commitViewController:(UIViewController *)viewControllerToCommit</span><br><span class="line">&#123;</span><br><span class="line">    NSLog(@&quot;pop&quot;);</span><br><span class="line">    </span><br><span class="line">    RedImageViewController *vc = (RedImageViewController *)viewControllerToCommit;</span><br><span class="line">    vc.closeButton.hidden = NO;</span><br><span class="line">    vc.view.backgroundColor = [UIColor yellowColor];</span><br><span class="line">    [self presentViewController:viewControllerToCommit animated:YES completion:nil];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>　　</p>
+<h5 id="３-プレビュー用メニュー追加"><a href="#３-プレビュー用メニュー追加" class="headerlink" title="- ３. プレビュー用メニュー追加"></a>- ３. プレビュー用メニュー追加</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- (NSArray &lt;id &lt;UIPreviewActionItem&gt;&gt; *)previewActionItems</span><br><span class="line">&#123;</span><br><span class="line">    UIPreviewAction *action1 = [UIPreviewAction actionWithTitle:@&quot;action1&quot; style:UIPreviewActionStyleDefault handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) &#123;</span><br><span class="line">        NSLog(@&quot;action1 selected.&quot;);</span><br><span class="line">    &#125;];</span><br><span class="line">    UIPreviewAction *action2 = [UIPreviewAction actionWithTitle:@&quot;action2&quot; style:UIPreviewActionStyleSelected handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) &#123;</span><br><span class="line">        NSLog(@&quot;action1 selected.&quot;);</span><br><span class="line">    &#125;];</span><br><span class="line">    UIPreviewAction *action3_1 = [UIPreviewAction actionWithTitle:@&quot;action3-1&quot; style:UIPreviewActionStyleDefault handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) &#123;</span><br><span class="line">        NSLog(@&quot;action1 selected.&quot;);</span><br><span class="line">    &#125;];</span><br><span class="line">    UIPreviewAction *action3_2 = [UIPreviewAction actionWithTitle:@&quot;action3-2&quot; style:UIPreviewActionStyleDefault handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) &#123;</span><br><span class="line">        NSLog(@&quot;action1 selected.&quot;);</span><br><span class="line">    &#125;];</span><br><span class="line">    UIPreviewActionGroup *action3 = [UIPreviewActionGroup actionGroupWithTitle:@&quot;action3&quot; style:UIPreviewActionStyleDestructive actions:@[action3_1, action3_2]];</span><br><span class="line">    </span><br><span class="line">    return @[action1, action2, action3];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-Force-Properties"><a href="#3-Force-Properties" class="headerlink" title="3. Force Properties"></a>3. Force Properties</h3><p>UITouchに追加されたプロパティー<code>force</code>と<code>maximumPossibleForce</code>を利用</p>
+<h4 id="実装方法-2"><a href="#実装方法-2" class="headerlink" title="実装方法"></a>実装方法</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- (void)touchesMoved:(NSSet&lt;UITouch *&gt; *)touches withEvent:(UIEvent *)event</span><br><span class="line">&#123;</span><br><span class="line">    UITouch *t = touches.anyObject;</span><br><span class="line">    </span><br><span class="line">    NSLog(@&quot;touchesMoved : %f / %f&quot;, t.force, t.maximumPossibleForce);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>サンプルコード：<br><a href="https://github.com/hmhv/3DTouchSample" target="_blank" rel="noopener">https://github.com/hmhv/3DTouchSample</a></p>
+<p>参考：<br><a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual" target="_blank" rel="noopener">Adopting3DTouchOniPhone</a></p>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#iOS" >
+    <span class="tag-code">iOS</span>
+  </a>
+
+  <a href="/tags#3D Touch" >
+    <span class="tag-code">3D Touch</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2015/10/info-plist-for-ios9/">
+        <span class="nav-arrow">← </span>
+        
+          iOS9からのinfo.plist
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2015/11/fabric-and-crashlytics/">
+        
+          Fabric、Crashlyticsでエラー
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+      <!-- Disqus START -->
+      <div id="disqus_thread"></div>
+      <!-- Disqus END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3D-Touch%E3%81%AE%E7%A8%AE%E9%A1%9E"><span class="toc-nav-text">3D Touchの種類</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-Home-Screen-Quick-Actions"><span class="toc-nav-text">1. Home Screen Quick Actions</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%AE%9F%E8%A3%85%E6%96%B9%E6%B3%95"><span class="toc-nav-text">実装方法</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#info-plist%E3%81%A7%E8%BF%BD%E5%8A%A0"><span class="toc-nav-text">- info.plistで追加</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%E3%82%B3%E3%83%BC%E3%83%89%E3%81%A7%E8%BF%BD%E5%8A%A0"><span class="toc-nav-text">- コードで追加</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-Peek-and-Pop"><span class="toc-nav-text">2. Peek and Pop</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%AE%9F%E8%A3%85%E6%96%B9%E6%B3%95-1"><span class="toc-nav-text">実装方法</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%EF%BC%91-3D-Touch%E3%81%AB%E5%AF%BE%E5%BF%9C%E3%81%99%E3%82%8B%E3%83%93%E3%83%A5%E3%83%BC%E3%82%92%E3%83%93%E3%83%A5%E3%83%BC%E3%82%B3%E3%83%B3%E3%83%88%E3%83%AD%E3%83%BC%E3%83%A9%E3%81%A7%E7%99%BB%E9%8C%B2"><span class="toc-nav-text">- １. 3D Touchに対応するビューをビューコントローラで登録</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%EF%BC%92-UIViewControllerPreviewingDelegate%E3%82%92%E5%AE%9F%E8%A3%85"><span class="toc-nav-text">- ２. UIViewControllerPreviewingDelegateを実装</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%EF%BC%93-%E3%83%97%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC%E7%94%A8%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC%E8%BF%BD%E5%8A%A0"><span class="toc-nav-text">- ３. プレビュー用メニュー追加</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-Force-Properties"><span class="toc-nav-text">3. Force Properties</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%AE%9F%E8%A3%85%E6%96%B9%E6%B3%95-2"><span class="toc-nav-text">実装方法</span></a></li></ol></li></ol></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'https://hmhv.info/2015/10/3d-touch-on-ios9/';
+    var banner = 'undefined'
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+
+
+
+
+  <script>
+    var disqus_shortname = 'hmhv';
+    
+    var disqus_url = 'https://hmhv.info/2015/10/3d-touch-on-ios9/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//go.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme by <a target="_blank" rel="noopener" href="https://github.com/yanm1ng">yanm1ng</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'false';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script src="/js/script.js"></script>
+
+  </body>
+</html>

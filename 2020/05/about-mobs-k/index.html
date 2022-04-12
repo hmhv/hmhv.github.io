@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="hmhv&#39;s blog &amp; app galary">
+  <meta name="keyword" content="hmhv,blog,app,galary,ios,iphone">
+  
+    <link rel="shortcut icon" type="image/ico" href="favicon.ico"/>
+  
+  <title>
+    
+      MobS 소개 | hmhv
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/styles/foundation.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+  
+  
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>hmhv</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/apps/" class="item-link">Apps</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/apps/" class="menu-link">Apps</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>MobS 소개</h2>
+  <p class="post-date">2020-05-03</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><h2 id="MobS란"><a href="#MobS란" class="headerlink" title="MobS란?"></a>MobS란?</h2><p>MobS는 <a href="https://mobx.js.org/" target="_blank" rel="noopener">MobX</a>, <a href="https://github.com/ReactiveX/RxSwift" target="_blank" rel="noopener">RxSwift</a>, <a href="https://developer.apple.com/documentation/combine" target="_blank" rel="noopener">Combine</a>로부터 인스피레이션을 얻은、<br><strong>SIMPLE &amp; SAFE</strong>을 목표로 하는 Swift 리엑티브 라이프러리 입니다.
+　</p>
+<h2 id="MobS의-대상-유저"><a href="#MobS의-대상-유저" class="headerlink" title="MobS의 대상 유저"></a>MobS의 대상 유저</h2><ul>
+<li>RxSwift의 강력함에 좌절한 경험이 있으신 분</li>
+<li>SwiftUI+Combine만으로 개발을 진행하기는 아직 이르다고 생각하는 분</li>
+</ul>
+<h2 id="MobS의-특징"><a href="#MobS의-특징" class="headerlink" title="MobS의 특징"></a>MobS의 특징</h2><ul>
+<li>간단한 인터페이스</li>
+<li>메모리관리는 거의 자동</li>
+<li>State변경에 의한 View의 갱신처리에 집중</li>
+<li>모든 처리는 메인 스레드에서 실행</li>
+</ul>
+<h2 id="용어설명"><a href="#용어설명" class="headerlink" title="용어설명"></a>용어설명</h2><h4 id="Observable"><a href="#Observable" class="headerlink" title="Observable"></a>Observable</h4><p>변수의 값을 소유하며 새로운 값이 설정될때 마다 Observer에 통지를 보냄<br>MobX, RxSwift의 Observable、Combine의 Publisher와 동등</p>
+<h4 id="Observer"><a href="#Observer" class="headerlink" title="Observer"></a>Observer</h4><p>Observable에 추가되어 Observable으로부터의 통지를 받아 액션을 실행<br>MobXのaction, RxSwiftのObserver、Combine의 Subscriber와 동등</p>
+<h4 id="Removable-Remover"><a href="#Removable-Remover" class="headerlink" title="Removable (Remover)"></a>Removable (Remover)</h4><p>Observable에 추가된 Observer를 Observable로부터 삭제하는 방법<br>RxSwift의 Disposable、Combine의 Cancellable와 동등</p>
+<h2 id="MobS의-기본"><a href="#MobS의-기본" class="headerlink" title="MobS의 기본"></a>MobS의 기본</h2><p>그럼 일단 코드를 확인합니다.</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CountUpViewController</span>: <span class="title">UIViewController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ①Observable의 생성</span></span><br><span class="line">    @<span class="type">MobS</span>.<span class="type">Observable</span>(value: <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">var</span> <span class="built_in">count</span>: <span class="type">Int</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@IBOutlet</span> <span class="keyword">weak</span> <span class="keyword">var</span> countLabel: <span class="type">UILabel!</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.viewDidLoad()</span><br><span class="line"></span><br><span class="line">        <span class="comment">// ②Observer의 생성 &amp; Observable에 추가</span></span><br><span class="line">        $<span class="built_in">count</span>.addObserver(with: <span class="keyword">self</span>) &#123; (<span class="keyword">self</span>, <span class="built_in">count</span>) <span class="keyword">in</span></span><br><span class="line">            <span class="keyword">self</span>.countLabel.text = <span class="string">"\(count)"</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@IBAction</span> <span class="function"><span class="keyword">func</span> <span class="title">buttonTapped</span><span class="params">(<span class="number">_</span> sender: <span class="keyword">Any</span>)</span></span> &#123;</span><br><span class="line">        <span class="comment">// ③Observable의 갱신</span></span><br><span class="line">        <span class="built_in">count</span> += <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>이것은 버튼을 누를때마다 <code>count</code>가 1씩 증가하여 라벨에 표시되는 코드입니다.</p>
+<h4 id="①Observable의-생성"><a href="#①Observable의-생성" class="headerlink" title="①Observable의 생성"></a>①Observable의 생성</h4><figure class="highlight swift"><table><tr><td class="code"><pre><span class="line">@<span class="type">MobS</span>.<span class="type">Observable</span>(value: <span class="number">0</span>)</span><br><span class="line"><span class="keyword">var</span> <span class="built_in">count</span>: <span class="type">Int</span></span><br></pre></td></tr></table></figure>
+<p>MobS의 Observable은 <code>property wrapper</code>으로 구현되어 있어서 이와같이 <code>@MobS.Observable</code>를 붙여서 생성합니다.<br>Observable은 Observer의 클로저 안에서 참조되는 순간 자동적으로 Observer를 자신에게 추가합니다.<br>거꾸로 Observer의 클로저 이외에서의 참조는 일반적인 프로퍼티와 같습니다.</p>
+<blockquote>
+<p>위의 코드에서는 초기값 <code>0</code>의 Int형 Observable、<code>count</code>를 생성합니다.</p>
+</blockquote>
+<h4 id="②Observer의-생성-amp-Observable에-추가"><a href="#②Observer의-생성-amp-Observable에-추가" class="headerlink" title="②Observer의 생성 &amp; Observable에 추가"></a>②Observer의 생성 &amp; Observable에 추가</h4><figure class="highlight swift"><table><tr><td class="code"><pre><span class="line">$<span class="built_in">count</span>.addObserver(with: <span class="keyword">self</span>) &#123; (<span class="keyword">self</span>, <span class="built_in">count</span>) <span class="keyword">in</span></span><br><span class="line">    <span class="keyword">self</span>.countLabel.text = <span class="string">"\(count)"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>MobS의 Observer는 addObserver메소드에 통지시 실행할 액션을 클로저로 넘겨서 생성합니다.<br>생성된 Observer는 Observable에 자동적으로 추가되어 Observable에 새로운 값이 설정될 때 마다 실행됩니다.</p>
+<blockquote>
+<p>위의 코드에서는 <code>count</code>에 새로운 값이 설정될 때 마다 <code>self.countLabel.text = &quot;\(count)&quot;</code>가 실행됩니다.</p>
+</blockquote>
+<p>addObserver로 추가된 Observer는 더이상 통지를 받을 필요가 없어지면 삭제할 필요가 있습니다.<br>다만 MobS에서는 필요가 없어진 Observer는 자동적으로 삭제되도록 되어 있습니다.<br>(이것은 RxSwift의 Disposable, DisposeBag, NSObject+Rx을 합친 처리와 비슷합니다.)</p>
+<blockquote>
+<p>위의 코드에서는 <code>with: self</code> 파라미터로 전달된 <code>CountUpViewController</code>가 deinit되는 타이밍에 자동으로 삭제됩니다.</p>
+</blockquote>
+<h4 id="③Observable의-갱신"><a href="#③Observable의-갱신" class="headerlink" title="③Observable의 갱신"></a>③Observable의 갱신</h4><figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="built_in">count</span> += <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>Observable의 변경은 일반적인 프로퍼티와 같이 값을 설정하는면 됩니다. 이것으로 Observable은 자신에게 추가된 모든 Observer에 통지를 보내 액션이 실행됩니다.</p>
+<blockquote>
+<p>위의 코드에서는 <code>count += 1</code>로 Observer에 자동으로 통지되어 <code>self.countLabel.text = &quot;\(count)&quot;</code>가 실행됩니다.</p>
+</blockquote>
+<h2 id="마지막으로"><a href="#마지막으로" class="headerlink" title="마지막으로"></a>마지막으로</h2><p>이상으로 MobS의 기본에 대하여 설명했습니다.</p>
+<p>실무에서 사용하기 위해서는 아래의 내용도 이해할 필요가 있습니다. 자세한 내용은 코드와 예제를 확인해주세요.</p>
+<ul>
+<li>UITableViewCellでの利用</li>
+<li>updateState</li>
+<li>Computed</li>
+<li>Bind</li>
+</ul>
+<blockquote>
+<p>코드와 예제는  <a href="https://github.com/hmhv/MobS" target="_blank" rel="noopener">https://github.com/hmhv/MobS</a> 에 있습니다.</p>
+</blockquote>
+<h2 id="참조"><a href="#참조" class="headerlink" title="참조"></a>참조</h2><ul>
+<li><a href="https://mobx.js.org/" target="_blank" rel="noopener">MobX</a></li>
+<li><a href="https://github.com/ReactiveX/RxSwift" target="_blank" rel="noopener">RxSwift</a></li>
+<li><a href="https://developer.apple.com/documentation/combine" target="_blank" rel="noopener">Combine</a></li>
+</ul>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#iOS" >
+    <span class="tag-code">iOS</span>
+  </a>
+
+  <a href="/tags#Swift" >
+    <span class="tag-code">Swift</span>
+  </a>
+
+  <a href="/tags#MobS" >
+    <span class="tag-code">MobS</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2020/04/associatedobject-with-associatedobjectowner/">
+        <span class="nav-arrow">← </span>
+        
+          AssociatedObjectOwnerでobjc_g(s)etAssociatedObjectを利用
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2020/05/about-mobs/">
+        
+          MobSの紹介
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+      <!-- Disqus START -->
+      <div id="disqus_thread"></div>
+      <!-- Disqus END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#MobS%EB%9E%80"><span class="toc-nav-text">MobS란?</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#MobS%EC%9D%98-%EB%8C%80%EC%83%81-%EC%9C%A0%EC%A0%80"><span class="toc-nav-text">MobS의 대상 유저</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#MobS%EC%9D%98-%ED%8A%B9%EC%A7%95"><span class="toc-nav-text">MobS의 특징</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%EC%9A%A9%EC%96%B4%EC%84%A4%EB%AA%85"><span class="toc-nav-text">용어설명</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Observable"><span class="toc-nav-text">Observable</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Observer"><span class="toc-nav-text">Observer</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Removable-Remover"><span class="toc-nav-text">Removable (Remover)</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#MobS%EC%9D%98-%EA%B8%B0%EB%B3%B8"><span class="toc-nav-text">MobS의 기본</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E2%91%A0Observable%EC%9D%98-%EC%83%9D%EC%84%B1"><span class="toc-nav-text">①Observable의 생성</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E2%91%A1Observer%EC%9D%98-%EC%83%9D%EC%84%B1-amp-Observable%EC%97%90-%EC%B6%94%EA%B0%80"><span class="toc-nav-text">②Observer의 생성 &amp; Observable에 추가</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E2%91%A2Observable%EC%9D%98-%EA%B0%B1%EC%8B%A0"><span class="toc-nav-text">③Observable의 갱신</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%EB%A7%88%EC%A7%80%EB%A7%89%EC%9C%BC%EB%A1%9C"><span class="toc-nav-text">마지막으로</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%EC%B0%B8%EC%A1%B0"><span class="toc-nav-text">참조</span></a></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'https://hmhv.info/2020/05/about-mobs-k/';
+    var banner = 'undefined'
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+
+
+
+
+  <script>
+    var disqus_shortname = 'hmhv';
+    
+    var disqus_url = 'https://hmhv.info/2020/05/about-mobs-k/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//go.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme by <a target="_blank" rel="noopener" href="https://github.com/yanm1ng">yanm1ng</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'false';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script src="/js/script.js"></script>
+
+  </body>
+</html>

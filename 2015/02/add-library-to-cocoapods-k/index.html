@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="hmhv&#39;s blog &amp; app galary">
+  <meta name="keyword" content="hmhv,blog,app,galary,ios,iphone">
+  
+    <link rel="shortcut icon" type="image/ico" href="favicon.ico"/>
+  
+  <title>
+    
+      자작 라이브러리를 CocoaPods에 등록 | hmhv
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/styles/foundation.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+  
+  
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>hmhv</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/apps/" class="item-link">Apps</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/apps/" class="menu-link">Apps</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>자작 라이브러리를 CocoaPods에 등록</h2>
+  <p class="post-date">2015-02-28</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><p><a href="https://github.com/hmhv/HobjectiveRecord" target="_blank" rel="noopener">HobjectiveRecord</a>라는 CoreData용 라이브러리를GitHub에 공개하고<br>CocoaPods에도 등록한 메모</p>
+<h2 id="GitHub상의-파일구조"><a href="#GitHub상의-파일구조" class="headerlink" title="GitHub상의 파일구조"></a>GitHub상의 파일구조</h2><p><a href="https://qiita-image-store.s3.amazonaws.com/0/25832/47126434-e7bd-de68-7db3-16f564ae9be8.png" title="folder" class="fancybox" rel="noopener" target="_blank"><img src="https://qiita-image-store.s3.amazonaws.com/0/25832/47126434-e7bd-de68-7db3-16f564ae9be8.png" style="max-width: 100%" alt="folder"></a></p>
+<ul>
+<li><code>HobjectiveRecord</code>는 라이브러리의 코드용 폴더</li>
+<li><code>HobjectiveRecordDemo</code>는 라이브러리의 데모앱용 폴더</li>
+<li><code>.gitignore</code>, <code>LICENSE</code>, <code>README.md</code>는 유명한 파일들</li>
+<li><code>HobjectiveRecord.podspec</code> 이것이 CocoaPods에 등록하기 위해 필요한 파일</li>
+</ul>
+<h2 id="CocoaPods에-등록-방법"><a href="#CocoaPods에-등록-방법" class="headerlink" title="CocoaPods에 등록 방법"></a>CocoaPods에 등록 방법</h2><blockquote>
+<p><strong><em>예전에는 <a href="https://github.com/CocoaPods/Specs" target="_blank" rel="noopener">CocoaPodsのSpecs</a>에 풀리퀘스트로 했던것 같은데</em></strong><br><strong><em>요즘은 <code>pod trunk</code> 커멘드로 함</em></strong></p>
+</blockquote>
+<h4 id="1-podspec파일-작성"><a href="#1-podspec파일-작성" class="headerlink" title="1. podspec파일 작성"></a>1. <code>podspec</code>파일 작성</h4><p><code>HobjectiveRecord.podspec</code>을 작성</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ pod spec create HobjectiveRecord</span><br></pre></td></tr></table></figure>
+<h4 id="2-podspec파일-편집"><a href="#2-podspec파일-편집" class="headerlink" title="2. podspec파일 편집"></a>2. <code>podspec</code>파일 편집</h4><p>이것은 Fork해 온 <a href="https://github.com/supermarin/ObjectiveRecord" target="_blank" rel="noopener">ObjectiveRecord</a>에서 수정<br>상세한 내용은 <a href="http://guides.cocoapods.org/making/specs-and-specs-repo.html" target="_blank" rel="noopener">여기를 참조</a></p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">@version = <span class="string">"0.1.4"</span></span><br><span class="line">Pod::Spec.new <span class="keyword">do</span> <span class="params">|s|</span></span><br><span class="line">  s.name         = <span class="string">"HobjectiveRecord"</span></span><br><span class="line">  s.version      = @version</span><br><span class="line">  s.summary      = <span class="string">"Lightweight and sexy CoreData Library. using NSPrivateQueueConcurrencyType MOC and [performBlock:]"</span></span><br><span class="line">  s.homepage     = <span class="string">"https://github.com/hmhv/HobjectiveRecord"</span></span><br><span class="line">  s.license      = &#123; <span class="symbol">:type</span> =&gt; <span class="string">'MIT'</span>, <span class="symbol">:file</span> =&gt; <span class="string">'LICENSE'</span> &#125;</span><br><span class="line">  s.author       = &#123; <span class="string">"hmhv"</span> =&gt; <span class="string">"admin@hmhv.info"</span> &#125;</span><br><span class="line">  s.source       = &#123; <span class="symbol">:git</span> =&gt; <span class="string">"https://github.com/hmhv/HobjectiveRecord.git"</span>, <span class="symbol">:tag</span> =&gt; @version &#125;</span><br><span class="line">  s.source_files = <span class="string">'HobjectiveRecord/**/*.&#123;h,m&#125;'</span></span><br><span class="line">  s.framework  = <span class="string">'CoreData'</span></span><br><span class="line">  s.requires_arc = <span class="literal">true</span></span><br><span class="line">  s.ios.deployment_target = <span class="string">'6.0'</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<h4 id="3-podspec파일-체크"><a href="#3-podspec파일-체크" class="headerlink" title="3. podspec파일 체크"></a>3. <code>podspec</code>파일 체크</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ pod spec lint</span><br></pre></td></tr></table></figure>
+<h4 id="4-유저-등록-컴퓨터-등록"><a href="#4-유저-등록-컴퓨터-등록" class="headerlink" title="4. 유저 등록(컴퓨터 등록?)"></a>4. 유저 등록(컴퓨터 등록?)</h4><p>상세한 내용은 <a href="http://guides.cocoapods.org/making/getting-setup-with-trunk.html" target="_blank" rel="noopener">여기를 참조</a></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ pod trunk register your@email.com <span class="string">'your name'</span> --description=<span class="string">'my macbook'</span></span><br></pre></td></tr></table></figure>
+<h4 id="5-등록-확인"><a href="#5-등록-확인" class="headerlink" title="5. 등록 확인"></a>5. 등록 확인</h4><p>등록한 멜주소로 확인 메일을 확인하여 등록을 완료<br>이후 아래의 커멘드로 터미널에서도 확인 가능</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ pod trunk me</span><br></pre></td></tr></table></figure>
+<h4 id="6-podspec파일-푸시"><a href="#6-podspec파일-푸시" class="headerlink" title="6. podspec파일 푸시"></a>6. <code>podspec</code>파일 푸시</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ pod trunk push</span><br></pre></td></tr></table></figure>
+<p>이것으로 작성한 <code>podspec</code>파일이 <code>podspec.json</code>파일로 변화되어<br><a href="https://github.com/CocoaPods/Specs" target="_blank" rel="noopener">CocoaPods의Specs</a>에 등록됨.</p>
+<p>이제 라이브러리를 사용하고자 하는 프로젝트의 <code>Podfile</code>에 <code>pod &#39;HobjectiveRecord&#39;</code>를 추가하면 이용가능하게 됨</p>
+<blockquote>
+<p><strong><em>버젼업도 위의 등록 방법과 동일</em></strong></p>
+</blockquote>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#HobjectiveRecord" >
+    <span class="tag-code">HobjectiveRecord</span>
+  </a>
+
+  <a href="/tags#CocoaPods" >
+    <span class="tag-code">CocoaPods</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2015/02/autolayout-waring-of-uitableviewcell/">
+        <span class="nav-arrow">← </span>
+        
+          UITableViewCellのAutoLayoutの警告と回避策
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2015/02/add-library-to-cocoapods/">
+        
+          自作ライブラリをCocoaPodsへ登録
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+      <!-- Disqus START -->
+      <div id="disqus_thread"></div>
+      <!-- Disqus END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#GitHub%EC%83%81%EC%9D%98-%ED%8C%8C%EC%9D%BC%EA%B5%AC%EC%A1%B0"><span class="toc-nav-text">GitHub상의 파일구조</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#CocoaPods%EC%97%90-%EB%93%B1%EB%A1%9D-%EB%B0%A9%EB%B2%95"><span class="toc-nav-text">CocoaPods에 등록 방법</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#1-podspec%ED%8C%8C%EC%9D%BC-%EC%9E%91%EC%84%B1"><span class="toc-nav-text">1. podspec파일 작성</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#2-podspec%ED%8C%8C%EC%9D%BC-%ED%8E%B8%EC%A7%91"><span class="toc-nav-text">2. podspec파일 편집</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#3-podspec%ED%8C%8C%EC%9D%BC-%EC%B2%B4%ED%81%AC"><span class="toc-nav-text">3. podspec파일 체크</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#4-%EC%9C%A0%EC%A0%80-%EB%93%B1%EB%A1%9D-%EC%BB%B4%ED%93%A8%ED%84%B0-%EB%93%B1%EB%A1%9D"><span class="toc-nav-text">4. 유저 등록(컴퓨터 등록?)</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#5-%EB%93%B1%EB%A1%9D-%ED%99%95%EC%9D%B8"><span class="toc-nav-text">5. 등록 확인</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#6-podspec%ED%8C%8C%EC%9D%BC-%ED%91%B8%EC%8B%9C"><span class="toc-nav-text">6. podspec파일 푸시</span></a></li></ol></li></ol></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'https://hmhv.info/2015/02/add-library-to-cocoapods-k/';
+    var banner = 'undefined'
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+
+
+
+
+  <script>
+    var disqus_shortname = 'hmhv';
+    
+    var disqus_url = 'https://hmhv.info/2015/02/add-library-to-cocoapods-k/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//go.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme by <a target="_blank" rel="noopener" href="https://github.com/yanm1ng">yanm1ng</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'false';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script src="/js/script.js"></script>
+
+  </body>
+</html>

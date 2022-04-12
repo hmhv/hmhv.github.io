@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="hmhv&#39;s blog &amp; app galary">
+  <meta name="keyword" content="hmhv,blog,app,galary,ios,iphone">
+  
+    <link rel="shortcut icon" type="image/ico" href="favicon.ico"/>
+  
+  <title>
+    
+      MobSの紹介 | hmhv
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/styles/foundation.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+  
+  
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>hmhv</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/apps/" class="item-link">Apps</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/apps/" class="menu-link">Apps</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>MobSの紹介</h2>
+  <p class="post-date">2020-05-03</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><h2 id="MobSとは"><a href="#MobSとは" class="headerlink" title="MobSとは"></a>MobSとは</h2><p>MobSは<a href="https://mobx.js.org/" target="_blank" rel="noopener">MobX</a>, <a href="https://github.com/ReactiveX/RxSwift" target="_blank" rel="noopener">RxSwift</a>, <a href="https://developer.apple.com/documentation/combine" target="_blank" rel="noopener">Combine</a>からインスピレーションを受け、<br><strong>SIMPLE &amp; SAFE</strong>を目指したSwift製リアクティブライブラリです。
+　</p>
+<h2 id="MobSの対象ユーザ"><a href="#MobSの対象ユーザ" class="headerlink" title="MobSの対象ユーザ"></a>MobSの対象ユーザ</h2><ul>
+<li>RxSwiftは強すぎて息が苦しい人</li>
+<li>SwiftUI+Combineのみで開発を進めるのはまだ早いと思う人</li>
+</ul>
+<h2 id="MobSの特徴"><a href="#MobSの特徴" class="headerlink" title="MobSの特徴"></a>MobSの特徴</h2><ul>
+<li>簡単なインタフェース</li>
+<li>メモリ管理はほぼ自動</li>
+<li>State変更によるViewの更新処理に集中</li>
+<li>全ての処理はメインスレッドで処理</li>
+</ul>
+<h2 id="用語説明"><a href="#用語説明" class="headerlink" title="用語説明"></a>用語説明</h2><h4 id="Observable"><a href="#Observable" class="headerlink" title="Observable"></a>Observable</h4><p>変数の値を保持し、新しい値が設定されるたび、Observerに通知を行う。<br>MobX, RxSwiftのObservable、CombineのPublisherと同様の物</p>
+<h4 id="Observer"><a href="#Observer" class="headerlink" title="Observer"></a>Observer</h4><p>Observableに追加され、Observableからの通知を受けてアクションを実行する。<br>MobXのaction, RxSwiftのObserver、CombineのSubscriberと同様の物</p>
+<h4 id="Removable-Remover"><a href="#Removable-Remover" class="headerlink" title="Removable (Remover)"></a>Removable (Remover)</h4><p>Observableに追加されたObserverをObservableから削除するための仕組み。<br>RxSwiftのDisposable、CombineのCancellableと同様の物</p>
+<h2 id="MobSの基本"><a href="#MobSの基本" class="headerlink" title="MobSの基本"></a>MobSの基本</h2><p>それでは早速コードを確認しましょう。</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CountUpViewController</span>: <span class="title">UIViewController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ①Observableの生成</span></span><br><span class="line">    @<span class="type">MobS</span>.<span class="type">Observable</span>(value: <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">var</span> <span class="built_in">count</span>: <span class="type">Int</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@IBOutlet</span> <span class="keyword">weak</span> <span class="keyword">var</span> countLabel: <span class="type">UILabel!</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.viewDidLoad()</span><br><span class="line"></span><br><span class="line">        <span class="comment">// ②Observerの生成&amp;Observableに追加</span></span><br><span class="line">        $<span class="built_in">count</span>.addObserver(with: <span class="keyword">self</span>) &#123; (<span class="keyword">self</span>, <span class="built_in">count</span>) <span class="keyword">in</span></span><br><span class="line">            <span class="keyword">self</span>.countLabel.text = <span class="string">"\(count)"</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@IBAction</span> <span class="function"><span class="keyword">func</span> <span class="title">buttonTapped</span><span class="params">(<span class="number">_</span> sender: <span class="keyword">Any</span>)</span></span> &#123;</span><br><span class="line">        <span class="comment">// ③Observableの更新</span></span><br><span class="line">        <span class="built_in">count</span> += <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>こちらはボタンをタップすると<code>count</code>が１増えてラベルに表示されるコードです。</p>
+<h4 id="①Observableの生成"><a href="#①Observableの生成" class="headerlink" title="①Observableの生成"></a>①Observableの生成</h4><figure class="highlight swift"><table><tr><td class="code"><pre><span class="line">@<span class="type">MobS</span>.<span class="type">Observable</span>(value: <span class="number">0</span>)</span><br><span class="line"><span class="keyword">var</span> <span class="built_in">count</span>: <span class="type">Int</span></span><br></pre></td></tr></table></figure>
+<p>MobSのObservableは<code>property wrapper</code>で実装されているのでこのようにプロパティに<code>@MobS.Observable</code>を付けて生成します。<br>ObservableはObserverのクロージャの中で参照される瞬間、自動的にObserverを自分に追加します。<br>逆にObserverのクロージャ以外で参照されると一般のプロパティと同じです。</p>
+<blockquote>
+<p>上のコードでは初期値<code>0</code>のInt型のObservable、<code>count</code>が生成されます。</p>
+</blockquote>
+<h4 id="②Observerの生成-amp-Observableに追加"><a href="#②Observerの生成-amp-Observableに追加" class="headerlink" title="②Observerの生成&amp;Observableに追加"></a>②Observerの生成&amp;Observableに追加</h4><figure class="highlight swift"><table><tr><td class="code"><pre><span class="line">$<span class="built_in">count</span>.addObserver(with: <span class="keyword">self</span>) &#123; (<span class="keyword">self</span>, <span class="built_in">count</span>) <span class="keyword">in</span></span><br><span class="line">    <span class="keyword">self</span>.countLabel.text = <span class="string">"\(count)"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>MobSのObserverはaddObserverメソッドに通知時に実行するアクションをクロージャとして渡して生成します。<br>生成されたObserverはObservableに自動で追加されて、Observableに新しい値が設定されるたび、実行されます。</p>
+<blockquote>
+<p>上のコードでは<code>count</code>に新しい値が設定されるたび、<code>self.countLabel.text = &quot;\(count)&quot;</code>が実行されます。</p>
+</blockquote>
+<p>addObserverで追加されたObserverは通知をうける必要がなくなると削除される必要がありますが、<br>MobSでは必要がなくなったObserverは自動で削除されます。<br>(これはRxSwiftのDisposable、DisposeBag、NSObject+Rxを合わせたのと同様の処理です)</p>
+<blockquote>
+<p>上のコードでは<code>with: self</code>パラメータで渡した<code>CountUpViewController</code>のdeinitのタイミングで自動で削除されます。</p>
+</blockquote>
+<h4 id="③Observableの更新"><a href="#③Observableの更新" class="headerlink" title="③Observableの更新"></a>③Observableの更新</h4><figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="built_in">count</span> += <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>Observableの更新は一般的なプロパティと同じく値を設定するだけでいです。それでObservableは自分に追加されている全てのObserverに通知を行い、アクションが実行されます。</p>
+<blockquote>
+<p>上のコードでは<code>count += 1</code>でObserverに自動で通知され、<code>self.countLabel.text = &quot;\(count)&quot;</code>が実行されます。</p>
+</blockquote>
+<h2 id="まとめ"><a href="#まとめ" class="headerlink" title="まとめ"></a>まとめ</h2><p>以上でMobSの基本について説明しました。</p>
+<p>実践で使うには以下の内容も理解する必要がありますので詳しくはコードとExampleをご確認ください。</p>
+<ul>
+<li>UITableViewCellでの利用</li>
+<li>updateState</li>
+<li>Bind</li>
+</ul>
+<blockquote>
+<p>コードとExampleは <a href="https://github.com/hmhv/MobS" target="_blank" rel="noopener">https://github.com/hmhv/MobS</a> にあります</p>
+</blockquote>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://mobx.js.org/" target="_blank" rel="noopener">MobX</a></li>
+<li><a href="https://github.com/ReactiveX/RxSwift" target="_blank" rel="noopener">RxSwift</a></li>
+<li><a href="https://developer.apple.com/documentation/combine" target="_blank" rel="noopener">Combine</a></li>
+</ul>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#iOS" >
+    <span class="tag-code">iOS</span>
+  </a>
+
+  <a href="/tags#Swift" >
+    <span class="tag-code">Swift</span>
+  </a>
+
+  <a href="/tags#MobS" >
+    <span class="tag-code">MobS</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2020/05/about-mobs-k/">
+        <span class="nav-arrow">← </span>
+        
+          MobS 소개
+        
+      </a>
+    
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+      <!-- Disqus START -->
+      <div id="disqus_thread"></div>
+      <!-- Disqus END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#MobS%E3%81%A8%E3%81%AF"><span class="toc-nav-text">MobSとは</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#MobS%E3%81%AE%E5%AF%BE%E8%B1%A1%E3%83%A6%E3%83%BC%E3%82%B6"><span class="toc-nav-text">MobSの対象ユーザ</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#MobS%E3%81%AE%E7%89%B9%E5%BE%B4"><span class="toc-nav-text">MobSの特徴</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%94%A8%E8%AA%9E%E8%AA%AC%E6%98%8E"><span class="toc-nav-text">用語説明</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Observable"><span class="toc-nav-text">Observable</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Observer"><span class="toc-nav-text">Observer</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Removable-Remover"><span class="toc-nav-text">Removable (Remover)</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#MobS%E3%81%AE%E5%9F%BA%E6%9C%AC"><span class="toc-nav-text">MobSの基本</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E2%91%A0Observable%E3%81%AE%E7%94%9F%E6%88%90"><span class="toc-nav-text">①Observableの生成</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E2%91%A1Observer%E3%81%AE%E7%94%9F%E6%88%90-amp-Observable%E3%81%AB%E8%BF%BD%E5%8A%A0"><span class="toc-nav-text">②Observerの生成&amp;Observableに追加</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E2%91%A2Observable%E3%81%AE%E6%9B%B4%E6%96%B0"><span class="toc-nav-text">③Observableの更新</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E3%81%BE%E3%81%A8%E3%82%81"><span class="toc-nav-text">まとめ</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%8F%82%E8%80%83"><span class="toc-nav-text">参考</span></a></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'https://hmhv.info/2020/05/about-mobs/';
+    var banner = 'undefined'
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+
+
+
+
+  <script>
+    var disqus_shortname = 'hmhv';
+    
+    var disqus_url = 'https://hmhv.info/2020/05/about-mobs/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//go.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme by <a target="_blank" rel="noopener" href="https://github.com/yanm1ng">yanm1ng</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'false';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script src="/js/script.js"></script>
+
+  </body>
+</html>
