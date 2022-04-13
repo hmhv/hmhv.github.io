@@ -16,7 +16,7 @@ date: 2015-10-07 21:22:02
 
 ホーム画面でアプリのアイコンを強く押すと表示される
 
-<a href="https://qiita-image-store.s3.amazonaws.com/0/25832/6d4c12de-83e6-05a0-85c2-f05f74e843be.png" class="fancybox" rel="gallery0"><img src="https://qiita-image-store.s3.amazonaws.com/0/25832/6d4c12de-83e6-05a0-85c2-f05f74e843be.png" style="max-width: 100%"></a>
+<a class="fancybox" rel="gallery0"><img src="https://qiita-image-store.s3.amazonaws.com/0/25832/6d4c12de-83e6-05a0-85c2-f05f74e843be.png" style="max-width: 100%"></a>
 
 　
 #### 実装方法
@@ -59,22 +59,16 @@ UIApplicationShortcutItem *item3 = [[UIApplicationShortcutItem alloc] initWithTy
 
 特定のビューを強く押すとプレビューが表示される(Peek)
 
-<a href="https://qiita-image-store.s3.amazonaws.com/0/25832/d506a5db-91a2-d6c3-6a53-a14d5b17a6ad.png" class="fancybox" rel="gallery0"><img src="https://qiita-image-store.s3.amazonaws.com/0/25832/d506a5db-91a2-d6c3-6a53-a14d5b17a6ad.png" style="max-width: 100%"></a>
+<a class="fancybox" rel="gallery0"><img src="https://qiita-image-store.s3.amazonaws.com/0/25832/d506a5db-91a2-d6c3-6a53-a14d5b17a6ad.png" style="max-width: 100%"></a>
 
 Peekで上にスワイプするとメニューが表示される
 
-<a href="https://qiita-image-store.s3.amazonaws.com/0/25832/a5a5aa64-46f3-b32c-d84a-b5af5a56ee09.png" class="fancybox" rel="gallery0"><img src="https://qiita-image-store.s3.amazonaws.com/0/25832/a5a5aa64-46f3-b32c-d84a-b5af5a56ee09.png" style="max-width: 100%"></a>
+<a class="fancybox" rel="gallery0"><img src="https://qiita-image-store.s3.amazonaws.com/0/25832/a5a5aa64-46f3-b32c-d84a-b5af5a56ee09.png" style="max-width: 100%"></a>
 
 
 Peekでさらに強く押すと全表示で表示される(Pop)
 
-<a href="https://qiita-image-store.s3.amazonaws.com/0/25832/b0789509-e864-114f-7aa9-99202c988d24.png" class="fancybox" rel="gallery0"><img src="https://qiita-image-store.s3.amazonaws.com/0/25832/b0789509-e864-114f-7aa9-99202c988d24.png" style="max-width: 100%"></a>
-
-
-
-  　　
-
-
+<a class="fancybox" rel="gallery0"><img src="https://qiita-image-store.s3.amazonaws.com/0/25832/b0789509-e864-114f-7aa9-99202c988d24.png" style="max-width: 100%"></a>
 
 
 #### 実装方法

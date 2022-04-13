@@ -26,7 +26,7 @@ Crashlyticsは入れておくだけでクラッシュ時のコールスタック
 
 - 結果
 
-<a href="https://qiita-image-store.s3.amazonaws.com/0/25832/09ddd1bd-c0ab-aa93-2a8a-058bf6b42b44.png" class="fancybox" rel="gallery0"><img src="https://qiita-image-store.s3.amazonaws.com/0/25832/09ddd1bd-c0ab-aa93-2a8a-058bf6b42b44.png" style="max-width: 100%"></a>
+<a class="fancybox" rel="gallery0"><img src="https://qiita-image-store.s3.amazonaws.com/0/25832/09ddd1bd-c0ab-aa93-2a8a-058bf6b42b44.png" style="max-width: 100%"></a>
 
 ### 2. Key,Valueで送る
 
@@ -44,7 +44,7 @@ Crashlyticsは入れておくだけでクラッシュ時のコールスタック
 
 - 結果
 
-<a href="https://qiita-image-store.s3.amazonaws.com/0/25832/b71b2b63-7f7d-e11c-3e9e-b93398368ecd.png" class="fancybox" rel="gallery0"><img src="https://qiita-image-store.s3.amazonaws.com/0/25832/b71b2b63-7f7d-e11c-3e9e-b93398368ecd.png" style="max-width: 100%"></a>
+<a class="fancybox" rel="gallery0"><img src="https://qiita-image-store.s3.amazonaws.com/0/25832/b71b2b63-7f7d-e11c-3e9e-b93398368ecd.png" style="max-width: 100%"></a>
 
 ### 3. ログ情報を送る
 
@@ -59,7 +59,7 @@ Crashlyticsは入れておくだけでクラッシュ時のコールスタック
 
 - 結果
 
-<a href="https://qiita-image-store.s3.amazonaws.com/0/25832/1f18738b-f988-0f26-1f01-6810a39da456.png" class="fancybox" rel="gallery0"><img src="https://qiita-image-store.s3.amazonaws.com/0/25832/1f18738b-f988-0f26-1f01-6810a39da456.png" style="max-width: 100%"></a>
+<a class="fancybox" rel="gallery0"><img src="https://qiita-image-store.s3.amazonaws.com/0/25832/1f18738b-f988-0f26-1f01-6810a39da456.png" style="max-width: 100%"></a>
 
 ### 4. NSException以外のカスタム例外を送る
 
@@ -74,7 +74,7 @@ Crashlyticsは入れておくだけでクラッシュ時のコールスタック
 
 - 結果
 
-<a href="https://qiita-image-store.s3.amazonaws.com/0/25832/3ffa7e4b-1878-d778-7d48-8b785015603c.png" class="fancybox" rel="gallery0"><img src="https://qiita-image-store.s3.amazonaws.com/0/25832/3ffa7e4b-1878-d778-7d48-8b785015603c.png" style="max-width: 100%"></a>
+<a class="fancybox" rel="gallery0"><img src="https://qiita-image-store.s3.amazonaws.com/0/25832/3ffa7e4b-1878-d778-7d48-8b785015603c.png" style="max-width: 100%"></a>
 
 参考：
 http://support.crashlytics.com/knowledgebase/articles/92519-how-do-i-use-logging-

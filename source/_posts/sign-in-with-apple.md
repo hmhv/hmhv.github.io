@@ -10,11 +10,11 @@ date: 2019-11-24 17:30:40
 
 - Xcodeで選択
 
-<a href="../../../images/as-xcode.png" class="fancybox" rel="gallery0"><img src="../../../images/as-xcode.png" style="max-width: 100%"></a>
+<a class="fancybox" rel="gallery0"><img src="../../../images/as-xcode.png" style="max-width: 100%"></a>
 
 - Apple Developerサイトで選択
 
-<a href="../../../images/as-web.png" class="fancybox" rel="gallery0"><img src="../../../images/as-web.png" style="max-width: 100%"></a>
+<a class="fancybox" rel="gallery0"><img src="../../../images/as-web.png" style="max-width: 100%"></a>
 
 ### 2. コード実装
 
@@ -84,11 +84,11 @@ extension LoginViewController: ASAuthorizationControllerPresentationContextProvi
 
 - Apple Developerサイトで設定
 
-<a href="../../../images/as-config1.png" class="fancybox" rel="gallery0"><img src="../../../images/as-config1.png" style="max-width: 100%"></a>
+<a class="fancybox" rel="gallery0"><img src="../../../images/as-config1.png" style="max-width: 100%"></a>
 
 - ドメインとメアドの登録
 
-<a href="../../../images/as-config2.png" class="fancybox" rel="gallery0"><img src="../../../images/as-config2.png" style="max-width: 100%"></a>
+<a class="fancybox" rel="gallery0"><img src="../../../images/as-config2.png" style="max-width: 100%"></a>
 
 
 ### 4. Sign out方法

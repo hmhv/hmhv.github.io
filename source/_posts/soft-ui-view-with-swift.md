@@ -12,9 +12,9 @@ date: 2020-02-08 23:06:30
 New skeuomorphismというUI designの新しいトレンドっぽい
 [Soft-UI(Neumorphism)](https://uxdesign.cc/neumorphism-in-user-interfaces-b47cef3bf3a6)
 
-<a href="https://miro.medium.com/max/2644/1*BO4cJTJyGovxXwaNJRoS-w.jpeg" class="fancybox" rel="gallery0"><img src="https://miro.medium.com/max/2644/1*BO4cJTJyGovxXwaNJRoS-w.jpeg" style="max-width: 100%"></a>
+<a class="fancybox" rel="gallery0"><img src="https://miro.medium.com/max/2644/1*BO4cJTJyGovxXwaNJRoS-w.jpeg" style="max-width: 100%"></a>
 
-<a href="https://raw.githubusercontent.com/hmhv/SoftUIView/master/assets/softuiview.png" class="fancybox" rel="gallery0"><img src="https://raw.githubusercontent.com/hmhv/SoftUIView/master/assets/softuiview.png" style="max-width: 100%"></a>
+<a class="fancybox" rel="gallery0"><img src="https://raw.githubusercontent.com/hmhv/SoftUIView/master/assets/softuiview.png" style="max-width: 100%"></a>
 
 
 ### 2. コード実装
@@ -112,7 +112,7 @@ func createInnerShadowMask() -> CALayer {
 全ソースコードはこちらに
 https://github.com/hmhv/SoftUIView
 
-<a href="https://raw.githubusercontent.com/hmhv/SoftUIView/master/assets/softuiview.gif" class="fancybox" rel="gallery0"><img src="https://raw.githubusercontent.com/hmhv/SoftUIView/master/assets/softuiview.gif" style="max-width: 100%"></a>
+<a class="fancybox" rel="gallery0"><img src="https://raw.githubusercontent.com/hmhv/SoftUIView/master/assets/softuiview.gif" style="max-width: 100%"></a>
 
 ### 参考
 https://neumorphism.io/#55b9f3

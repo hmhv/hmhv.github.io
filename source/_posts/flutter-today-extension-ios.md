@@ -11,36 +11,36 @@ date: 2020-02-09 11:28:15
 
 ## 以下の方法は`Flutter 1.17`以上では動かなくなりました。
 
-<a href="https://github.com/hmhv/flutter_today_extension_example/raw/master/storage/demo.gif" class="fancybox" rel="gallery0"><img src="https://github.com/hmhv/flutter_today_extension_example/raw/master/storage/demo.gif" style="max-width: 100%"></a>
+<a class="fancybox" rel="gallery0"><img src="https://github.com/hmhv/flutter_today_extension_example/raw/master/storage/demo.gif" style="max-width: 100%"></a>
 
 ## 1. Flutterプロジェクトを新規作成
 
-<a href="https://github.com/hmhv/flutter_today_extension_example/raw/master/storage/1.png" class="fancybox" rel="gallery0"><img src="https://github.com/hmhv/flutter_today_extension_example/raw/master/storage/1.png" style="max-width: 100%"></a>
+<a class="fancybox" rel="gallery0"><img src="https://github.com/hmhv/flutter_today_extension_example/raw/master/storage/1.png" style="max-width: 100%"></a>
 
 ## 2. ビルドして確認
 
 ### AndroidStudioでビルドして確認
 
-<a href="https://github.com/hmhv/flutter_today_extension_example/raw/master/storage/2.png" class="fancybox" rel="gallery0"><img src="https://github.com/hmhv/flutter_today_extension_example/raw/master/storage/2.png" style="max-width: 100%"></a>
+<a class="fancybox" rel="gallery0"><img src="https://github.com/hmhv/flutter_today_extension_example/raw/master/storage/2.png" style="max-width: 100%"></a>
 
 ### Xcodeでビルドして確認
 `ios/Runner.xcworkspace`を開いて
 
-<a href="https://github.com/hmhv/flutter_today_extension_example/raw/master/storage/2-1.png" class="fancybox" rel="gallery0"><img src="https://github.com/hmhv/flutter_today_extension_example/raw/master/storage/2-1.png" style="max-width: 100%"></a>
+<a class="fancybox" rel="gallery0"><img src="https://github.com/hmhv/flutter_today_extension_example/raw/master/storage/2-1.png" style="max-width: 100%"></a>
 
 ## 3. Today Extenstionを作成
 
 - テンプレートからToday Extenstion選択して作成
 
-<a href="https://github.com/hmhv/flutter_today_extension_example/raw/master/storage/3.png" class="fancybox" rel="gallery0"><img src="https://github.com/hmhv/flutter_today_extension_example/raw/master/storage/3.png" style="max-width: 100%"></a>
+<a class="fancybox" rel="gallery0"><img src="https://github.com/hmhv/flutter_today_extension_example/raw/master/storage/3.png" style="max-width: 100%"></a>
 
 - today Targetに `App.framework` , `Flutter.framework` を追加
 
-<a href="https://github.com/hmhv/flutter_today_extension_example/raw/master/storage/4.png" class="fancybox" rel="gallery0"><img src="https://github.com/hmhv/flutter_today_extension_example/raw/master/storage/4.png" style="max-width: 100%"></a>
+<a class="fancybox" rel="gallery0"><img src="https://github.com/hmhv/flutter_today_extension_example/raw/master/storage/4.png" style="max-width: 100%"></a>
 
-<a href="https://github.com/hmhv/flutter_today_extension_example/raw/master/storage/5.png" class="fancybox" rel="gallery0"><img src="https://github.com/hmhv/flutter_today_extension_example/raw/master/storage/5.png" style="max-width: 100%"></a>
+<a class="fancybox" rel="gallery0"><img src="https://github.com/hmhv/flutter_today_extension_example/raw/master/storage/5.png" style="max-width: 100%"></a>
 
-<a href="https://github.com/hmhv/flutter_today_extension_example/raw/master/storage/6.png" class="fancybox" rel="gallery0"><img src="https://github.com/hmhv/flutter_today_extension_example/raw/master/storage/6.png" style="max-width: 100%"></a>
+<a class="fancybox" rel="gallery0"><img src="https://github.com/hmhv/flutter_today_extension_example/raw/master/storage/6.png" style="max-width: 100%"></a>
 
 ## 4. Today Extenstionの修正
 
@@ -78,7 +78,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
 }
 ```
 
-<a href="https://github.com/hmhv/flutter_today_extension_example/raw/master/storage/7.png" class="fancybox" rel="gallery0"><img src="https://github.com/hmhv/flutter_today_extension_example/raw/master/storage/7.png" style="max-width: 100%"></a>
+<a class="fancybox" rel="gallery0"><img src="https://github.com/hmhv/flutter_today_extension_example/raw/master/storage/7.png" style="max-width: 100%"></a>
 
 ## 5. ナビゲーションバーを削除
 
@@ -162,7 +162,7 @@ override func viewDidLoad() {
 }
 ```
 
-<a href="https://github.com/hmhv/flutter_today_extension_example/raw/master/storage/8.png" class="fancybox" rel="gallery0"><img src="https://github.com/hmhv/flutter_today_extension_example/raw/master/storage/8.png" style="max-width: 100%"></a>
+<a class="fancybox" rel="gallery0"><img src="https://github.com/hmhv/flutter_today_extension_example/raw/master/storage/8.png" style="max-width: 100%"></a>
 
 ## 6. Today Extenstionの高さ変更可能に
 
@@ -185,11 +185,11 @@ func widgetActiveDisplayModeDidChange(_ activeDisplayMode: NCWidgetDisplayMode, 
 }
 ```
 
-<a href="https://github.com/hmhv/flutter_today_extension_example/raw/master/storage/9.png" class="fancybox" rel="gallery0"><img src="https://github.com/hmhv/flutter_today_extension_example/raw/master/storage/9.png" style="max-width: 100%"></a>
+<a class="fancybox" rel="gallery0"><img src="https://github.com/hmhv/flutter_today_extension_example/raw/master/storage/9.png" style="max-width: 100%"></a>
 
 ## 7. Today Extenstionのタイトル修正
 
-<a href="https://github.com/hmhv/flutter_today_extension_example/raw/master/storage/10.png" class="fancybox" rel="gallery0"><img src="https://github.com/hmhv/flutter_today_extension_example/raw/master/storage/10.png" style="max-width: 100%"></a>
+<a class="fancybox" rel="gallery0"><img src="https://github.com/hmhv/flutter_today_extension_example/raw/master/storage/10.png" style="max-width: 100%"></a>
 
 全ソースコードはこちらに
 https://github.com/hmhv/flutter_today_extension_example
@@ -199,5 +199,5 @@ https://github.com/hmhv/flutter_today_extension_example
 
 - Today Extenstionはアプリアイコンの長押しでも表示される
 
-<a href="https://github.com/hmhv/flutter_today_extension_example/raw/master/storage/11.png" class="fancybox" rel="gallery0"><img src="https://github.com/hmhv/flutter_today_extension_example/raw/master/storage/11.png" style="max-width: 100%"></a>
+<a class="fancybox" rel="gallery0"><img src="https://github.com/hmhv/flutter_today_extension_example/raw/master/storage/11.png" style="max-width: 100%"></a>
 

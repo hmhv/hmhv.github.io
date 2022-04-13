@@ -11,7 +11,7 @@ CocoaPods에도 등록한 메모
 
 ## GitHub상의 파일구조
 
-<a href="https://qiita-image-store.s3.amazonaws.com/0/25832/47126434-e7bd-de68-7db3-16f564ae9be8.png" title="folder" class="fancybox" rel="gallery0"><img src="https://qiita-image-store.s3.amazonaws.com/0/25832/47126434-e7bd-de68-7db3-16f564ae9be8.png" style="max-width: 100%"  alt="folder"></a>
+<a title="folder" class="fancybox" rel="gallery0"><img src="https://qiita-image-store.s3.amazonaws.com/0/25832/47126434-e7bd-de68-7db3-16f564ae9be8.png" style="max-width: 100%"  alt="folder"></a>
 
 - `HobjectiveRecord`는 라이브러리의 코드용 폴더
 - `HobjectiveRecordDemo`는 라이브러리의 데모앱용 폴더

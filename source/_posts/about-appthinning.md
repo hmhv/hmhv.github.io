@@ -51,10 +51,10 @@ iPhone6+端末にはimage@3x.pngのみ、
 以下のような二つの方法でOFFにできるようだ。
 
 ##### - プロジェクト設定にて
-<a href="https://qiita-image-store.s3.amazonaws.com/0/25832/c944e2cf-34a3-2b9f-227e-110635d9e3e4.png" title="folder" class="fancybox" rel="gallery0"><img src="https://qiita-image-store.s3.amazonaws.com/0/25832/c944e2cf-34a3-2b9f-227e-110635d9e3e4.png" style="max-width: 100%"  alt="folder"></a>
+<a title="folder" class="fancybox" rel="gallery0"><img src="https://qiita-image-store.s3.amazonaws.com/0/25832/c944e2cf-34a3-2b9f-227e-110635d9e3e4.png" style="max-width: 100%"  alt="folder"></a>
 
 ##### - App Storeへアップロード時
-<a href="https://qiita-image-store.s3.amazonaws.com/0/25832/9f9e6c08-2d47-a11b-5480-df8e340f9853.png" title="folder" class="fancybox" rel="gallery0"><img src="https://qiita-image-store.s3.amazonaws.com/0/25832/9f9e6c08-2d47-a11b-5480-df8e340f9853.png" style="max-width: 100%"  alt="folder"></a>
+<a title="folder" class="fancybox" rel="gallery0"><img src="https://qiita-image-store.s3.amazonaws.com/0/25832/9f9e6c08-2d47-a11b-5480-df8e340f9853.png" style="max-width: 100%"  alt="folder"></a>
 
 #### on-demand resources詳細
 
@@ -64,13 +64,13 @@ iPhone6+端末にはimage@3x.pngのみ、
 
 1.  プロジェクト設定画面でon-demand resourcesをONに
 
-<a href="https://developer.apple.com/library/prerelease/ios/documentation/FileManagement/Conceptual/On_Demand_Resources_Guide/Art/ODR_Enabling_ODR_2x.png" title="folder" class="fancybox" rel="gallery0"><img src="https://developer.apple.com/library/prerelease/ios/documentation/FileManagement/Conceptual/On_Demand_Resources_Guide/Art/ODR_Enabling_ODR_2x.png" style="max-width: 100%"  alt="folder"></a>
+<a title="folder" class="fancybox" rel="gallery0"><img src="https://developer.apple.com/library/prerelease/ios/documentation/FileManagement/Conceptual/On_Demand_Resources_Guide/Art/ODR_Enabling_ODR_2x.png" style="max-width: 100%"  alt="folder"></a>
 2.  リソース管理用のタグを作成
 
-<a href="https://developer.apple.com/library/prerelease/ios/documentation/FileManagement/Conceptual/On_Demand_Resources_Guide/Art/ODR_Add_New_Tag_2x.png" title="folder" class="fancybox" rel="gallery0"><img src="https://developer.apple.com/library/prerelease/ios/documentation/FileManagement/Conceptual/On_Demand_Resources_Guide/Art/ODR_Add_New_Tag_2x.png" style="max-width: 100%"  alt="folder"></a>
+<a title="folder" class="fancybox" rel="gallery0"><img src="https://developer.apple.com/library/prerelease/ios/documentation/FileManagement/Conceptual/On_Demand_Resources_Guide/Art/ODR_Add_New_Tag_2x.png" style="max-width: 100%"  alt="folder"></a>
 3. 作成したタグにリソースファイルの関連付け
-<a href="https://developer.apple.com/library/prerelease/ios/documentation/FileManagement/Conceptual/On_Demand_Resources_Guide/Art/ODR_asset_tag_completion_2x.png" title="folder" class="fancybox" rel="gallery0"><img src="https://developer.apple.com/library/prerelease/ios/documentation/FileManagement/Conceptual/On_Demand_Resources_Guide/Art/ODR_asset_tag_completion_2x.png" style="max-width: 100%"  alt="folder"></a>
-<a href="https://developer.apple.com/library/prerelease/ios/documentation/FileManagement/Conceptual/On_Demand_Resources_Guide/Art/ODR_asset_tag_completion_file_2x.png" title="folder" class="fancybox" rel="gallery0"><img src="https://developer.apple.com/library/prerelease/ios/documentation/FileManagement/Conceptual/On_Demand_Resources_Guide/Art/ODR_asset_tag_completion_file_2x.png" style="max-width: 100%"  alt="folder"></a>
+<a title="folder" class="fancybox" rel="gallery0"><img src="https://developer.apple.com/library/prerelease/ios/documentation/FileManagement/Conceptual/On_Demand_Resources_Guide/Art/ODR_asset_tag_completion_2x.png" style="max-width: 100%"  alt="folder"></a>
+<a title="folder" class="fancybox" rel="gallery0"><img src="https://developer.apple.com/library/prerelease/ios/documentation/FileManagement/Conceptual/On_Demand_Resources_Guide/Art/ODR_asset_tag_completion_file_2x.png" style="max-width: 100%"  alt="folder"></a>
 4.  必要になったら`NSBundleResourceRequest`クラスでダウンロード
 
 ```objc
