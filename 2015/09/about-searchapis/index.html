@@ -16,6 +16,7 @@
   <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
   <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/styles/foundation.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/themes/prism-coy.min.css" integrity="sha512-LOT5F67SMZVdXMrvQe4S1ZHu5l6xk3CST2qqno9kY329OsJBBpybnq+fM9qG4ZSaNzPOjoGzHAeBamSSJyyuZg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   
 <link rel="stylesheet" href="/css/style.css">
 
@@ -23,6 +24,8 @@
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/prism.min.js" integrity="sha512-/Swpp6aCQ0smuZ+zpklJqMClcUlvxhpLf9aAcM7JjJrj2waCU4dikm3biOtMVAflOOeniW9qzaNXNrbOAOWFCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-GP4x8UWxWyh4BMbyJGOGneiTbkrWEF5izsVJByzVLodP8CuJH/n936+yQDMJJrOPUHLgyPbLiGw2rXmdvGdXHA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   
   
   
@@ -157,13 +160,84 @@
 <p>アプリ側の対応ではなく関連ウェブページで対応</p>
 </blockquote>
 <h3 id="NSUserActivity-APIの実装例"><a href="#NSUserActivity-APIの実装例" class="headerlink" title="NSUserActivity APIの実装例"></a>NSUserActivity APIの実装例</h3><p>まず検索インデックスに登録</p>
-<figure class="highlight objc"><table><tr><td class="code"><pre><span class="line">- (<span class="type">void</span>)addToSearchableIndex</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">NSClassFromString</span>(<span class="string">@&quot;NSUserActivity&quot;</span>)) &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">NSUserActivity</span> *activity = [[<span class="built_in">NSUserActivity</span> alloc] initWithActivityType:<span class="string">@&quot;info.hmhv.myapp.search&quot;</span>];</span><br><span class="line">        </span><br><span class="line">        activity.title = <span class="string">@&quot;タイトル&quot;</span>;</span><br><span class="line">        activity.webpageURL = [<span class="built_in">NSURL</span> URLWithString:<span class="string">@&quot;http://hmhv.info&quot;</span>];;</span><br><span class="line"></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> ([activity respondsToSelector:<span class="keyword">@selector</span>(setEligibleForSearch:)])</span><br><span class="line">        &#123;</span><br><span class="line">            activity.eligibleForSearch = <span class="literal">YES</span>;</span><br><span class="line">            activity.keywords = [<span class="built_in">NSSet</span> setWithArray:@[<span class="string">@&quot;keyword1&quot;</span>, <span class="string">@&quot;keyword2&quot;</span>]];</span><br><span class="line"></span><br><span class="line">            activity.needsSave = <span class="literal">YES</span>;</span><br><span class="line">            <span class="comment">//このuserInfoが重要</span></span><br><span class="line">            activity.userInfo = @&#123;<span class="string">@&quot;key1&quot;</span> : <span class="string">@&quot;value1&quot;</span>,</span><br><span class="line">                                  <span class="string">@&quot;key2&quot;</span> : <span class="string">@&quot;value2&quot;</span>&#125;;</span><br><span class="line">            activity.requiredUserInfoKeys = [<span class="built_in">NSSet</span> setWithArray:@[<span class="string">@&quot;key1&quot;</span>, <span class="string">@&quot;key2&quot;</span>]];</span><br><span class="line">            <span class="comment">// 30日間有効</span></span><br><span class="line">            activity.expirationDate = [<span class="built_in">NSDate</span> dateWithTimeIntervalSinceNow:(<span class="number">60</span> * <span class="number">60</span> * <span class="number">24</span> * <span class="number">30</span>)];</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        [activity becomeCurrent];</span><br><span class="line">        <span class="keyword">self</span>.userActivity = activity;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="language-objc" data-language="objc"><code class="language-objc">- (void)addToSearchableIndex
+&#123;
+    if (NSClassFromString(@&quot;NSUserActivity&quot;)) &#123;
+        
+        NSUserActivity *activity &#x3D; [[NSUserActivity alloc] initWithActivityType:@&quot;info.hmhv.myapp.search&quot;];
+        
+        activity.title &#x3D; @&quot;タイトル&quot;;
+        activity.webpageURL &#x3D; [NSURL URLWithString:@&quot;http:&#x2F;&#x2F;hmhv.info&quot;];;
+
+        
+        if ([activity respondsToSelector:@selector(setEligibleForSearch:)])
+        &#123;
+            activity.eligibleForSearch &#x3D; YES;
+            activity.keywords &#x3D; [NSSet setWithArray:@[@&quot;keyword1&quot;, @&quot;keyword2&quot;]];
+
+            activity.needsSave &#x3D; YES;
+            &#x2F;&#x2F;このuserInfoが重要
+            activity.userInfo &#x3D; @&#123;@&quot;key1&quot; : @&quot;value1&quot;,
+                                  @&quot;key2&quot; : @&quot;value2&quot;&#125;;
+            activity.requiredUserInfoKeys &#x3D; [NSSet setWithArray:@[@&quot;key1&quot;, @&quot;key2&quot;]];
+            &#x2F;&#x2F; 30日間有効
+            activity.expirationDate &#x3D; [NSDate dateWithTimeIntervalSinceNow:(60 * 60 * 24 * 30)];
+        &#125;
+        
+        [activity becomeCurrent];
+        self.userActivity &#x3D; activity;
+    &#125;
+&#125;</code></pre>
 <p>検索結果がタップされたら<code>AppDelegate</code>で処理する</p>
-<figure class="highlight objc"><table><tr><td class="code"><pre><span class="line">- (<span class="type">BOOL</span>)application:(<span class="built_in">UIApplication</span> *)application continueUserActivity:(<span class="built_in">NSUserActivity</span> *)userActivity restorationHandler:(<span class="type">void</span> (^)(<span class="built_in">NSArray</span> * _Nullable))restorationHandler</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> ([userActivity.activityType isEqualToString:<span class="string">@&quot;info.hmhv.myapp.search&quot;</span>])</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//userActivity.userInfoを用いて画面表示</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">YES</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">NO</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="language-objc" data-language="objc"><code class="language-objc">- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray * _Nullable))restorationHandler
+&#123;
+    if ([userActivity.activityType isEqualToString:@&quot;info.hmhv.myapp.search&quot;])
+    &#123;
+        &#x2F;&#x2F;userActivity.userInfoを用いて画面表示
+        return YES;
+    &#125;
+    
+    return NO;
+&#125;</code></pre>
 <h3 id="CoreSpotlight-APIの実装例"><a href="#CoreSpotlight-APIの実装例" class="headerlink" title="CoreSpotlight APIの実装例"></a>CoreSpotlight APIの実装例</h3><p>まず検索インデックスに登録</p>
-<figure class="highlight objc"><table><tr><td class="code"><pre><span class="line"><span class="meta">#import <span class="string">&lt;CoreSpotlight/CoreSpotlight.h&gt;</span></span></span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">- (<span class="type">void</span>)addToSearchableIndex</span><br><span class="line">&#123;</span><br><span class="line">    CSSearchableItemAttributeSet *attributeSet = [[CSSearchableItemAttributeSet alloc]</span><br><span class="line">                                                  initWithItemContentType:(<span class="built_in">NSString</span> *)kUTTypeText];</span><br><span class="line">    attributeSet.title = <span class="string">@&quot;タイトル&quot;</span>;</span><br><span class="line">    attributeSet.contentDescription = <span class="string">@&quot;説明文&quot;</span>;</span><br><span class="line">    attributeSet.keywords = @[<span class="string">@&quot;keyword1&quot;</span>, <span class="string">@&quot;keyword2&quot;</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//このuniqueIdentifierが重要</span></span><br><span class="line">    <span class="built_in">NSString</span> *uniqueIdentifier = [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@&quot;myapp://hmhv.info/%@&quot;</span>, <span class="keyword">self</span>.recordId];</span><br><span class="line"></span><br><span class="line">    CSSearchableItem *item = [[CSSearchableItem alloc] initWithUniqueIdentifier:uniqueIdentifier</span><br><span class="line">                                                               domainIdentifier:<span class="string">@&quot;info.hmhv.myapp.search&quot;</span></span><br><span class="line">                                                                   attributeSet:attributeSet];</span><br><span class="line">    </span><br><span class="line">    [[CSSearchableIndex defaultSearchableIndex] indexSearchableItems:@[item]</span><br><span class="line">                                                   completionHandler: ^(<span class="built_in">NSError</span> * __<span class="keyword">nullable</span> error) &#123;</span><br><span class="line">            <span class="built_in">NSLog</span>(<span class="string">@&quot;Search item indexed (%@)&quot;</span>, error);</span><br><span class="line">    &#125;];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="language-objc" data-language="objc"><code class="language-objc">#import &lt;CoreSpotlight&#x2F;CoreSpotlight.h&gt;
+
+...
+
+- (void)addToSearchableIndex
+&#123;
+    CSSearchableItemAttributeSet *attributeSet &#x3D; [[CSSearchableItemAttributeSet alloc]
+                                                  initWithItemContentType:(NSString *)kUTTypeText];
+    attributeSet.title &#x3D; @&quot;タイトル&quot;;
+    attributeSet.contentDescription &#x3D; @&quot;説明文&quot;;
+    attributeSet.keywords &#x3D; @[@&quot;keyword1&quot;, @&quot;keyword2&quot;];
+    
+    &#x2F;&#x2F;このuniqueIdentifierが重要
+    NSString *uniqueIdentifier &#x3D; [NSString stringWithFormat:@&quot;myapp:&#x2F;&#x2F;hmhv.info&#x2F;%@&quot;, self.recordId];
+
+    CSSearchableItem *item &#x3D; [[CSSearchableItem alloc] initWithUniqueIdentifier:uniqueIdentifier
+                                                               domainIdentifier:@&quot;info.hmhv.myapp.search&quot;
+                                                                   attributeSet:attributeSet];
+    
+    [[CSSearchableIndex defaultSearchableIndex] indexSearchableItems:@[item]
+                                                   completionHandler: ^(NSError * __nullable error) &#123;
+            NSLog(@&quot;Search item indexed (%@)&quot;, error);
+    &#125;];
+&#125;</code></pre>
 <p>検索結果がタップされたら<code>AppDelegate</code>で処理する</p>
-<figure class="highlight objc"><table><tr><td class="code"><pre><span class="line">- (<span class="type">BOOL</span>)application:(<span class="built_in">UIApplication</span> *)application continueUserActivity:(<span class="built_in">NSUserActivity</span> *)userActivity restorationHandler:(<span class="type">void</span> (^)(<span class="built_in">NSArray</span> * _Nullable))restorationHandler</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> ([userActivity.activityType isEqualToString:CSSearchableItemActionType])</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//検索インデックスに登録時に指定したuniqueIdentifierを取得</span></span><br><span class="line">        <span class="built_in">NSString</span> *uniqueIdentifier = userActivity.userInfo[CSSearchableItemActivityIdentifier];</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//uniqueIdentifierを用いて画面表示</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">YES</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">NO</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="language-objc" data-language="objc"><code class="language-objc">- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray * _Nullable))restorationHandler
+&#123;
+    if ([userActivity.activityType isEqualToString:CSSearchableItemActionType])
+    &#123;
+        &#x2F;&#x2F;検索インデックスに登録時に指定したuniqueIdentifierを取得
+        NSString *uniqueIdentifier &#x3D; userActivity.userInfo[CSSearchableItemActivityIdentifier];
+        
+        &#x2F;&#x2F;uniqueIdentifierを用いて画面表示
+        return YES;
+    &#125;
+    
+    return NO;
+&#125;</code></pre>
 <p><a target="_blank" rel="noopener" href="https://developer.apple.com/library/prerelease/ios/technotes/tn2416/_index.html">参考：iOS Search API Best Practices and FAQs</a></p>
 </section>
     <!-- Tags START -->
@@ -332,7 +406,7 @@
 </script>
 
 <script>
-  var hasLine = 'false';
+  var hasLine = 'true';
   async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
     $('figure pre').each(function(i, block) {
       var figure = $(this).parents('figure');

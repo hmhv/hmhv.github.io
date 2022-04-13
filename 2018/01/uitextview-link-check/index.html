@@ -16,6 +16,7 @@
   <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
   <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/styles/foundation.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/themes/prism-coy.min.css" integrity="sha512-LOT5F67SMZVdXMrvQe4S1ZHu5l6xk3CST2qqno9kY329OsJBBpybnq+fM9qG4ZSaNzPOjoGzHAeBamSSJyyuZg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   
 <link rel="stylesheet" href="/css/style.css">
 
@@ -23,6 +24,8 @@
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/prism.min.js" integrity="sha512-/Swpp6aCQ0smuZ+zpklJqMClcUlvxhpLf9aAcM7JjJrj2waCU4dikm3biOtMVAflOOeniW9qzaNXNrbOAOWFCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-GP4x8UWxWyh4BMbyJGOGneiTbkrWEF5izsVJByzVLodP8CuJH/n936+yQDMJJrOPUHLgyPbLiGw2rXmdvGdXHA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   
   
   
@@ -138,7 +141,47 @@
   <!-- Article START -->
   <article class="post-article">
     <section class="markdown-content"><p>UITextViewでのタップがattributedTextでNSLinkAttributeNameを指定したリンク文のタップか確認</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">- (void)touchesBegan:(NSSet&lt;UITouch *&gt; *)touches withEvent:(UIEvent *)event</span><br><span class="line">&#123;</span><br><span class="line">    if (touches.count &gt; 1) &#123;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    UITouch *touch = touches.anyObject;</span><br><span class="line">    CGPoint point = [touch locationInView:self];</span><br><span class="line"></span><br><span class="line">    BOOL linkTouched = [self checkTouchedPoint:point];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (BOOL)checkTouchedPoint:(CGPoint)point</span><br><span class="line">&#123;</span><br><span class="line">    NSUInteger touchedLocation;</span><br><span class="line">    NSURL *touchedUrl;</span><br><span class="line"></span><br><span class="line">    UITextPosition *postion = [self closestPositionToPoint:point];</span><br><span class="line">    UITextRange *range = [self.tokenizer rangeEnclosingPosition:postion withGranularity:UITextGranularityCharacter inDirection:UITextLayoutDirectionLeft];</span><br><span class="line">    NSInteger offset = [self offsetFromPosition:self.beginningOfDocument toPosition:range.start];</span><br><span class="line">    id value = [self.attributedText attribute:NSLinkAttributeName atIndex:offset effectiveRange:nil];</span><br><span class="line">    NSURL *url = [NSURL URLWithString:value];</span><br><span class="line">    </span><br><span class="line">    if (url) &#123;</span><br><span class="line">        __block BOOL isLink = NO;</span><br><span class="line">        NSUInteger glyphIndex = [self.layoutManager glyphIndexForCharacterAtIndex:offset];</span><br><span class="line">        [self.layoutManager enumerateLineFragmentsForGlyphRange:NSMakeRange(glyphIndex, 1) usingBlock:^(CGRect rect, CGRect usedRect, NSTextContainer * _Nonnull textContainer, NSRange glyphRange, BOOL * _Nonnull stop) &#123;</span><br><span class="line">            if (CGRectContainsPoint(usedRect, point)) &#123;</span><br><span class="line">                isLink = YES;</span><br><span class="line">                *stop = YES;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;];</span><br><span class="line">        </span><br><span class="line">        if (isLink) &#123;</span><br><span class="line">            touchedUrl = url;</span><br><span class="line">            touchedLocation = offset;</span><br><span class="line">            return YES;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return NO;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></section>
+<pre class="language-none"><code class="language-none">- (void)touchesBegan:(NSSet&lt;UITouch *&gt; *)touches withEvent:(UIEvent *)event
+&#123;
+    if (touches.count &gt; 1) &#123;
+        return;
+    &#125;
+    UITouch *touch &#x3D; touches.anyObject;
+    CGPoint point &#x3D; [touch locationInView:self];
+
+    BOOL linkTouched &#x3D; [self checkTouchedPoint:point];
+&#125;
+
+- (BOOL)checkTouchedPoint:(CGPoint)point
+&#123;
+    NSUInteger touchedLocation;
+    NSURL *touchedUrl;
+
+    UITextPosition *postion &#x3D; [self closestPositionToPoint:point];
+    UITextRange *range &#x3D; [self.tokenizer rangeEnclosingPosition:postion withGranularity:UITextGranularityCharacter inDirection:UITextLayoutDirectionLeft];
+    NSInteger offset &#x3D; [self offsetFromPosition:self.beginningOfDocument toPosition:range.start];
+    id value &#x3D; [self.attributedText attribute:NSLinkAttributeName atIndex:offset effectiveRange:nil];
+    NSURL *url &#x3D; [NSURL URLWithString:value];
+    
+    if (url) &#123;
+        __block BOOL isLink &#x3D; NO;
+        NSUInteger glyphIndex &#x3D; [self.layoutManager glyphIndexForCharacterAtIndex:offset];
+        [self.layoutManager enumerateLineFragmentsForGlyphRange:NSMakeRange(glyphIndex, 1) usingBlock:^(CGRect rect, CGRect usedRect, NSTextContainer * _Nonnull textContainer, NSRange glyphRange, BOOL * _Nonnull stop) &#123;
+            if (CGRectContainsPoint(usedRect, point)) &#123;
+                isLink &#x3D; YES;
+                *stop &#x3D; YES;
+            &#125;
+        &#125;];
+        
+        if (isLink) &#123;
+            touchedUrl &#x3D; url;
+            touchedLocation &#x3D; offset;
+            return YES;
+            
+        &#125;
+    &#125;
+    return NO;
+&#125;</code></pre></section>
     <!-- Tags START -->
     
       <div class="tags">
@@ -301,7 +344,7 @@
 </script>
 
 <script>
-  var hasLine = 'false';
+  var hasLine = 'true';
   async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
     $('figure pre').each(function(i, block) {
       var figure = $(this).parents('figure');

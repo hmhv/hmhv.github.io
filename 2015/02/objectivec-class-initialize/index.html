@@ -16,6 +16,7 @@
   <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
   <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/styles/foundation.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/themes/prism-coy.min.css" integrity="sha512-LOT5F67SMZVdXMrvQe4S1ZHu5l6xk3CST2qqno9kY329OsJBBpybnq+fM9qG4ZSaNzPOjoGzHAeBamSSJyyuZg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   
 <link rel="stylesheet" href="/css/style.css">
 
@@ -23,6 +24,8 @@
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/prism.min.js" integrity="sha512-/Swpp6aCQ0smuZ+zpklJqMClcUlvxhpLf9aAcM7JjJrj2waCU4dikm3biOtMVAflOOeniW9qzaNXNrbOAOWFCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-GP4x8UWxWyh4BMbyJGOGneiTbkrWEF5izsVJByzVLodP8CuJH/n936+yQDMJJrOPUHLgyPbLiGw2rXmdvGdXHA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   
   
   
@@ -149,11 +152,47 @@
 <h4 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h4><ul>
 <li>サブクラスで<code>+ (void)initialize</code>を実装しないとスーパークラスの<code>+ (void)initialize</code>が呼ばれるので複数呼ばれる前提で実装する</li>
 </ul>
-<figure class="highlight objc"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">Parent</span> : <span class="title">NSObject</span></span></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">Parent</span></span></span><br><span class="line"><span class="comment">// このinitializeはParentクラスとChildクラスが最初に使われる時に</span></span><br><span class="line"><span class="comment">// 呼ばれるので２回呼ばれることになる。</span></span><br><span class="line"><span class="comment">// なのでクラスを確認するかdispatch_onceなどを利用して初期化する</span></span><br><span class="line">+ (<span class="type">void</span>)initialize</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">self</span> == [Parent <span class="keyword">self</span>]) &#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@&quot;initialize %@&quot;</span>, [<span class="keyword">self</span> <span class="keyword">class</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line"><span class="comment">//    dispatch_onceを利用</span></span><br><span class="line"><span class="comment">//    static dispatch_once_t onceToken;</span></span><br><span class="line"><span class="comment">//    dispatch_once(&amp;onceToken, ^&#123;</span></span><br><span class="line"><span class="comment">//        NSLog(@&quot;initialize %@&quot;, [self class]);</span></span><br><span class="line"><span class="comment">//    &#125;);</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">Child</span> : <span class="title">Parent</span></span></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">Child</span></span></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<pre class="language-objc" data-language="objc"><code class="language-objc">@interface Parent : NSObject
+@end
+@implementation Parent
+&#x2F;&#x2F; このinitializeはParentクラスとChildクラスが最初に使われる時に
+&#x2F;&#x2F; 呼ばれるので２回呼ばれることになる。
+&#x2F;&#x2F; なのでクラスを確認するかdispatch_onceなどを利用して初期化する
++ (void)initialize
+&#123;
+    if (self &#x3D;&#x3D; [Parent self]) &#123;
+        NSLog(@&quot;initialize %@&quot;, [self class]);
+    &#125;
+    
+&#x2F;&#x2F;    dispatch_onceを利用
+&#x2F;&#x2F;    static dispatch_once_t onceToken;
+&#x2F;&#x2F;    dispatch_once(&amp;onceToken, ^&#123;
+&#x2F;&#x2F;        NSLog(@&quot;initialize %@&quot;, [self class]);
+&#x2F;&#x2F;    &#125;);
+&#125;
+@end
+ 
+@interface Child : Parent
+@end
+@implementation Child
+@end</code></pre>
 <ul>
 <li><code>+ (void)initialize</code>は各クラスで一度しか呼ばれないのでクラス本体でのみ実装してカテゴリでは実装しない</li>
 </ul>
-<figure class="highlight objc"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">Parent</span></span></span><br><span class="line">+ (<span class="type">void</span>)initialize</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@&quot;initialize %@&quot;</span>, [<span class="keyword">self</span> <span class="keyword">class</span>]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">Parent</span> (<span class="title">category</span>)</span></span><br><span class="line"><span class="comment">// NG !!</span></span><br><span class="line">+ (<span class="type">void</span>)initialize</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@&quot;initialize %@&quot;</span>, [<span class="keyword">self</span> <span class="keyword">class</span>]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<pre class="language-objc" data-language="objc"><code class="language-objc">@implementation Parent
++ (void)initialize
+&#123;
+    NSLog(@&quot;initialize %@&quot;, [self class]);
+&#125;
+@end
+ 
+@implementation Parent (category)
+&#x2F;&#x2F; NG !!
++ (void)initialize
+&#123;
+    NSLog(@&quot;initialize %@&quot;, [self class]);
+&#125;
+@end</code></pre>
 <ul>
 <li>クラスがプログラム内で利用されなければ呼ばれない</li>
 </ul>
@@ -163,15 +202,75 @@
 <h4 id="注意点-1"><a href="#注意点-1" class="headerlink" title="注意点"></a>注意点</h4><ul>
 <li>他のクラスはまだロードされてない可能性があるので他のクラスは利用しない</li>
 </ul>
-<figure class="highlight objc"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">Parent</span></span></span><br><span class="line">+ (<span class="type">void</span>)load</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// NG !!</span></span><br><span class="line">    OtherClass *otherClass = [OtherClass new];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<pre class="language-objc" data-language="objc"><code class="language-objc">@implementation Parent
++ (void)load
+&#123;
+    &#x2F;&#x2F; NG !!
+    OtherClass *otherClass &#x3D; [OtherClass new];
+&#125;
+@end</code></pre>
 <ul>
 <li>クラス本体とカテゴリで複数実装すると全て呼ばれる</li>
 </ul>
-<figure class="highlight objc"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">Parent</span></span></span><br><span class="line">+ (<span class="type">void</span>)load</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@&quot;load&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">Parent</span> (<span class="title">category</span>)</span></span><br><span class="line">+ (<span class="type">void</span>)load</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@&quot;load by category&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">Parent</span> (<span class="title">category2</span>)</span></span><br><span class="line">+ (<span class="type">void</span>)load</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@&quot;load by category2&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<pre class="language-objc" data-language="objc"><code class="language-objc">@implementation Parent
++ (void)load
+&#123;
+    NSLog(@&quot;load&quot;);
+&#125;
+@end
+ 
+@implementation Parent (category)
++ (void)load
+&#123;
+    NSLog(@&quot;load by category&quot;);
+&#125;
+@end
+ 
+@implementation Parent (category2)
++ (void)load
+&#123;
+    NSLog(@&quot;load by category2&quot;);
+&#125;
+@end</code></pre>
 <h3 id="3-attribute-constructor-を利用"><a href="#3-attribute-constructor-を利用" class="headerlink" title="3. __attribute__((constructor))を利用"></a>3. <code>__attribute__((constructor))</code>を利用</h3><h4 id="呼ばれるタイミング-2"><a href="#呼ばれるタイミング-2" class="headerlink" title="呼ばれるタイミング"></a>呼ばれるタイミング</h4><ul>
 <li>main関数が呼ばれる直前、全クラスがロード済み</li>
 </ul>
-<figure class="highlight objc"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">Parent</span> : <span class="title">NSObject</span></span></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"> </span><br><span class="line">__attribute__((constructor))</span><br><span class="line"><span class="keyword">static</span> <span class="type">void</span> initialize_class()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@&quot;initialize_class&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">Parent</span></span></span><br><span class="line">+ (<span class="type">void</span>)initialize</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">self</span> == [Parent <span class="keyword">self</span>]) &#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@&quot;initialize %@&quot;</span>, [<span class="keyword">self</span> <span class="keyword">class</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">+ (<span class="type">void</span>)load</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@&quot;load&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"> </span><br><span class="line"><span class="type">int</span> main(<span class="type">int</span> argc, <span class="type">char</span> * argv[]) &#123;</span><br><span class="line">    <span class="keyword">@autoreleasepool</span> &#123;</span><br><span class="line">        </span><br><span class="line">        Parent *p = [Parent new];</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@&quot;%@&quot;</span>, p);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// ログは以下のように表示される</span></span><br><span class="line"><span class="comment">// load</span></span><br><span class="line"><span class="comment">// initialize_class</span></span><br><span class="line"><span class="comment">// initialize Parent</span></span><br><span class="line"><span class="comment">// &lt;Parent: 0xXXXXXXXXXXX&gt;</span></span><br></pre></td></tr></table></figure>
+<pre class="language-objc" data-language="objc"><code class="language-objc">@interface Parent : NSObject
+@end
+ 
+__attribute__((constructor))
+static void initialize_class()
+&#123;
+    NSLog(@&quot;initialize_class&quot;);
+&#125;
+ 
+@implementation Parent
++ (void)initialize
+&#123;
+    if (self &#x3D;&#x3D; [Parent self]) &#123;
+        NSLog(@&quot;initialize %@&quot;, [self class]);
+    &#125;
+&#125;
+ 
++ (void)load
+&#123;
+    NSLog(@&quot;load&quot;);
+&#125;
+@end
+ 
+int main(int argc, char * argv[]) &#123;
+    @autoreleasepool &#123;
+        
+        Parent *p &#x3D; [Parent new];
+        NSLog(@&quot;%@&quot;, p);
+    &#125;
+&#125;
+ 
+&#x2F;&#x2F; ログは以下のように表示される
+&#x2F;&#x2F; load
+&#x2F;&#x2F; initialize_class
+&#x2F;&#x2F; initialize Parent
+&#x2F;&#x2F; &lt;Parent: 0xXXXXXXXXXXX&gt;</code></pre>
 <h4 id="注意点-2"><a href="#注意点-2" class="headerlink" title="注意点"></a>注意点</h4><ul>
 <li><p>これは正確に言うとObjective-Cの機能ではなくGCC提供の関数属性機能です。</p>
 <p><a target="_blank" rel="noopener" href="https://gcc.gnu.org/onlinedocs/gcc/Function-Attributes.html">GCC - Declaring Attributes of Functions</a></p>
@@ -180,7 +279,28 @@
 <ul>
 <li>複数の<code>__attribute__((constructor))</code>は優先度を指定して呼ばれる順番を指定可能</li>
 </ul>
-<figure class="highlight objc"><table><tr><td class="code"><pre><span class="line">__attribute__((constructor(<span class="number">2</span>)))</span><br><span class="line"><span class="keyword">static</span> <span class="type">void</span> initialize_class2()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@&quot;initialize_class 2&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">__attribute__((constructor(<span class="number">3</span>)))</span><br><span class="line"><span class="keyword">static</span> <span class="type">void</span> initialize_class3()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@&quot;initialize_class 3&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">__attribute__((constructor(<span class="number">1</span>)))</span><br><span class="line"><span class="keyword">static</span> <span class="type">void</span> initialize_class1()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@&quot;initialize_class 1&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// ログは以下のように表示される</span></span><br><span class="line"><span class="comment">// initialize_class 1</span></span><br><span class="line"><span class="comment">// initialize_class 2</span></span><br><span class="line"><span class="comment">// initialize_class 3</span></span><br></pre></td></tr></table></figure>
+<pre class="language-objc" data-language="objc"><code class="language-objc">__attribute__((constructor(2)))
+static void initialize_class2()
+&#123;
+    NSLog(@&quot;initialize_class 2&quot;);
+&#125;
+ 
+__attribute__((constructor(3)))
+static void initialize_class3()
+&#123;
+    NSLog(@&quot;initialize_class 3&quot;);
+&#125;
+ 
+__attribute__((constructor(1)))
+static void initialize_class1()
+&#123;
+    NSLog(@&quot;initialize_class 1&quot;);
+&#125;
+ 
+&#x2F;&#x2F; ログは以下のように表示される
+&#x2F;&#x2F; initialize_class 1
+&#x2F;&#x2F; initialize_class 2
+&#x2F;&#x2F; initialize_class 3</code></pre>
 <p><em>＊こちらの内容は<a target="_blank" rel="noopener" href="http://qiita.com/hongmhoon/items/f450e92da47b085c9e39">Qiita</a>にも投稿されています。</em></p>
 </section>
     <!-- Tags START -->
@@ -345,7 +465,7 @@
 </script>
 
 <script>
-  var hasLine = 'false';
+  var hasLine = 'true';
   async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
     $('figure pre').each(function(i, block) {
       var figure = $(this).parents('figure');

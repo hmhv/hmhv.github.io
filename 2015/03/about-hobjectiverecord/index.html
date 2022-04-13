@@ -16,6 +16,7 @@
   <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
   <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/styles/foundation.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/themes/prism-coy.min.css" integrity="sha512-LOT5F67SMZVdXMrvQe4S1ZHu5l6xk3CST2qqno9kY329OsJBBpybnq+fM9qG4ZSaNzPOjoGzHAeBamSSJyyuZg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   
 <link rel="stylesheet" href="/css/style.css">
 
@@ -23,6 +24,8 @@
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/prism.min.js" integrity="sha512-/Swpp6aCQ0smuZ+zpklJqMClcUlvxhpLf9aAcM7JjJrj2waCU4dikm3biOtMVAflOOeniW9qzaNXNrbOAOWFCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-GP4x8UWxWyh4BMbyJGOGneiTbkrWEF5izsVJByzVLodP8CuJH/n936+yQDMJJrOPUHLgyPbLiGw2rXmdvGdXHA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   
   
   
@@ -150,22 +153,162 @@
 <li><a target="_blank" rel="noopener" href="https://github.com/hmhv/HobjectiveRecord">Github -&gt; HobjectiveRecord</a>からダウンロードして<code>HobjectiveRecord</code>フォルダを利用するプロジェクトにコピー、<br>又は<a target="_blank" rel="noopener" href="http://cocoapods.org">CocoaPods</a>を利用 <code>pod &#39;HobjectiveRecord&#39;</code></li>
 <li>必要なファイルに<code>#import &quot;HobjectiveRecord.h&quot;</code>を追加</li>
 </ol>
-<h4 id="初期化"><a href="#初期化" class="headerlink" title="初期化"></a>初期化</h4><figure class="highlight objc"><table><tr><td class="code"><pre><span class="line">- (<span class="type">BOOL</span>)application:(<span class="built_in">UIApplication</span> *)application didFinishLaunchingWithOptions:(<span class="built_in">NSDictionary</span> *)launchOptions</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// まずCoreDataの利用前にストアを初期化</span></span><br><span class="line">    [<span class="built_in">NSPersistentStoreCoordinator</span> setupDefaultStore];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// your code here</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">YES</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">+ (void)setupDefaultStore;</span></span><br><span class="line"><span class="comment">+ (void)setupDefaultStoreWithModelURL:(NSURL *)modelURL storeURL:(NSURL *)storeURL useInMemoryStore:(BOOL)useInMemoryStore;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<h4 id="初期化"><a href="#初期化" class="headerlink" title="初期化"></a>初期化</h4><pre class="language-objc" data-language="objc"><code class="language-objc">- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+&#123;
+    &#x2F;&#x2F; まずCoreDataの利用前にストアを初期化
+    [NSPersistentStoreCoordinator setupDefaultStore];
+    
+    &#x2F;&#x2F; your code here
+    
+    return YES;
+&#125;
+&#x2F;*
++ (void)setupDefaultStore;
++ (void)setupDefaultStoreWithModelURL:(NSURL *)modelURL storeURL:(NSURL *)storeURL useInMemoryStore:(BOOL)useInMemoryStore;
+*&#x2F;</code></pre>
 <h3 id="Basic"><a href="#Basic" class="headerlink" title="Basic"></a>Basic</h3><p>基本、全ての処理は<code>performBlock:</code>内で行う。</p>
-<figure class="highlight objc"><table><tr><td class="code"><pre><span class="line">[[<span class="built_in">NSManagedObjectContext</span> defaultContext] performBlock:^&#123;</span><br><span class="line">  <span class="comment">// your code here</span></span><br><span class="line">&#125;];</span><br><span class="line"><span class="built_in">NSManagedObjectContext</span> *childContext = [[<span class="built_in">NSManagedObjectContext</span> defaultContext] createChildContext];</span><br><span class="line">[childContext performBlock:^&#123;</span><br><span class="line">  <span class="comment">// your code here</span></span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
-<h4 id="Create-Save-Delete"><a href="#Create-Save-Delete" class="headerlink" title="Create / Save / Delete"></a>Create / Save / Delete</h4><figure class="highlight objc"><table><tr><td class="code"><pre><span class="line">[[<span class="built_in">NSManagedObjectContext</span> defaultContext] performBlock:^&#123;</span><br><span class="line">    Tweet *tweet = [Tweet create];</span><br><span class="line">    tweet.text = <span class="string">@&quot;I am here&quot;</span>;</span><br><span class="line">    [tweet save];</span><br><span class="line">    [tweet delete];</span><br><span class="line">    </span><br><span class="line">    tweet = [Tweet create:@&#123;<span class="string">@&quot;text&quot;</span> : <span class="string">@&quot;hello!!&quot;</span>,</span><br><span class="line">                            <span class="string">@&quot;lang&quot;</span> : <span class="string">@&quot;en&quot;</span>&#125; ];</span><br><span class="line">    [tweet saveToStore];</span><br><span class="line">    </span><br><span class="line">    [Tweet deleteAll];</span><br><span class="line">&#125;];</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">+ (instancetype)create;</span></span><br><span class="line"><span class="comment">+ (instancetype)create:(NSDictionary *)attributes;</span></span><br><span class="line"><span class="comment">+ (void)deleteAll;</span></span><br><span class="line"><span class="comment">+ (void)deleteWithCondition:(id)condition;</span></span><br><span class="line"><span class="comment">- (void)save;</span></span><br><span class="line"><span class="comment">- (void)saveToStore;</span></span><br><span class="line"><span class="comment">- (void)delete;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-<h4 id="Finders"><a href="#Finders" class="headerlink" title="Finders"></a>Finders</h4><figure class="highlight objc"><table><tr><td class="code"><pre><span class="line">[[<span class="built_in">NSManagedObjectContext</span> defaultContext] performBlock:^&#123;</span><br><span class="line">    <span class="built_in">NSArray</span> *tweets = [Tweet all];</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">NSArray</span> *tweetsInEnglish = [Tweet find:<span class="string">@&quot;lang == &#x27;en&#x27;&quot;</span>];</span><br><span class="line">    </span><br><span class="line">    User *hmhv = [User first:<span class="string">@&quot;screenName == &#x27;hmhv&#x27;&quot;</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">NSArray</span> *englishMen = [User find:@&#123;<span class="string">@&quot;lang&quot;</span> : <span class="string">@&quot;en&quot;</span>,</span><br><span class="line">                                       <span class="string">@&quot;timeZone&quot;</span> : <span class="string">@&quot;London&quot;</span></span><br><span class="line">                                       &#125;];</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">NSPredicate</span> *predicate = [<span class="built_in">NSPredicate</span> predicateWithFormat:<span class="string">@&quot;friendsCount &gt; 100&quot;</span>];</span><br><span class="line">    <span class="built_in">NSArray</span> *manyFriendsUsers = [User find:predicate];</span><br><span class="line">&#125;];</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">+ (NSArray *)all;</span></span><br><span class="line"><span class="comment">+ (NSArray *)find:(id)condition;</span></span><br><span class="line"><span class="comment">+ (instancetype)first:(id)condition;</span></span><br><span class="line"><span class="comment">+ (instancetype)firstOrCreate:(NSDictionary *)condition;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-<h4 id="Order-and-Limit"><a href="#Order-and-Limit" class="headerlink" title="Order and Limit"></a>Order and Limit</h4><figure class="highlight objc"><table><tr><td class="code"><pre><span class="line">[[<span class="built_in">NSManagedObjectContext</span> defaultContext] performBlock:^&#123;</span><br><span class="line">    <span class="built_in">NSArray</span> *sortedUsers = [User allWithOrder:<span class="string">@&quot;name&quot;</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">NSArray</span> *allUsers = [User allWithOrder:<span class="string">@&quot;screenName ASC, name DESC&quot;</span>];</span><br><span class="line">    <span class="comment">// or</span></span><br><span class="line">    <span class="built_in">NSArray</span> *allUsers2 = [User allWithOrder:<span class="string">@&quot;screenName A, name D&quot;</span>];</span><br><span class="line">    <span class="comment">// or</span></span><br><span class="line">    <span class="built_in">NSArray</span> *allUsers3 = [User allWithOrder:<span class="string">@&quot;screenName, name d&quot;</span>];</span><br><span class="line"></span><br><span class="line">    <span class="built_in">NSArray</span> *manyFriendsUsers = [User find:<span class="string">@&quot;friendsCount &gt; 100&quot;</span> order:<span class="string">@&quot;screenName DESC&quot;</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">NSArray</span> *fiveEnglishUsers = [User find:<span class="string">@&quot;lang == &#x27;en&#x27;&quot;</span> order:<span class="string">@&quot;screenName ASC&quot;</span> limit:@(<span class="number">5</span>)];</span><br><span class="line">&#125;];</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">+ (NSArray *)allWithOrder:(NSString *)order;</span></span><br><span class="line"><span class="comment">+ (NSArray *)find:(id)condition order:(NSString *)order;</span></span><br><span class="line"><span class="comment">+ (NSArray *)find:(id)condition limit:(NSNumber *)limit;</span></span><br><span class="line"><span class="comment">+ (NSArray *)find:(id)condition order:(NSString *)order limit:(NSNumber *)limit;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-<h4 id="Aggregation"><a href="#Aggregation" class="headerlink" title="Aggregation"></a>Aggregation</h4><figure class="highlight objc"><table><tr><td class="code"><pre><span class="line">[[<span class="built_in">NSManagedObjectContext</span> defaultContext] performBlock:^&#123;</span><br><span class="line">    <span class="built_in">NSUInteger</span> allUserCount = [User count];</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">NSUInteger</span> englishUserCount = [User countWithCondition:<span class="string">@&quot;lang == &#x27;en&#x27;&quot;</span>];</span><br><span class="line">&#125;];</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">+ (NSUInteger)count;</span></span><br><span class="line"><span class="comment">+ (NSUInteger)countWithCondition:(id)condition;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-<h4 id="BatchUpdate"><a href="#BatchUpdate" class="headerlink" title="BatchUpdate"></a>BatchUpdate</h4><figure class="highlight objc"><table><tr><td class="code"><pre><span class="line">[[<span class="built_in">NSManagedObjectContext</span> defaultContext] performBlock:^&#123;</span><br><span class="line">    </span><br><span class="line">    [User batchUpdateWithCondition:<span class="string">@&quot;friendsCount &gt; 10&quot;</span> propertiesToUpdate:@&#123;<span class="string">@&quot;friendsCount&quot;</span>: @<span class="number">0</span>&#125;];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// update all entities</span></span><br><span class="line">    [User batchUpdateWithCondition:<span class="literal">nil</span> propertiesToUpdate:@&#123;<span class="string">@&quot;friendsCount&quot;</span>: @<span class="number">100</span>&#125;];</span><br><span class="line">&#125;];</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">+ (NSUInteger)batchUpdateWithCondition:(id)condition propertiesToUpdate:(NSDictionary *)propertiesToUpdate;</span></span><br><span class="line"><span class="comment">+ (NSUInteger)batchUpdateWithCondition:(id)condition propertiesToUpdate:(NSDictionary *)propertiesToUpdate inContext:(NSManagedObjectContext *)context;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-<h4 id="NSFetchedResultsController"><a href="#NSFetchedResultsController" class="headerlink" title="NSFetchedResultsController"></a>NSFetchedResultsController</h4><figure class="highlight objc"><table><tr><td class="code"><pre><span class="line">    [[<span class="built_in">NSManagedObjectContext</span> defaultContext] performBlock:^&#123;</span><br><span class="line">        <span class="built_in">NSFetchedResultsController</span> *frc = [User createFetchedResultsControllerWithCondition:<span class="literal">nil</span> order:<span class="string">@&quot;name&quot;</span> sectionNameKeyPath:<span class="literal">nil</span>];</span><br><span class="line">        frc.delegate = <span class="keyword">self</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">NSError</span> *error = <span class="literal">nil</span>;</span><br><span class="line">        <span class="keyword">if</span> ([frc performFetch:&amp;error]) &#123;</span><br><span class="line">            [<span class="keyword">self</span> reloadData];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;];</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">+ (NSFetchedResultsController *)createFetchedResultsControllerWithCondition:(id)condition order:(NSString *)order sectionNameKeyPath:(NSString *)sectionNameKeyPath;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-<h4 id="Custom-ManagedObjectContext"><a href="#Custom-ManagedObjectContext" class="headerlink" title="Custom ManagedObjectContext"></a>Custom ManagedObjectContext</h4><figure class="highlight objc"><table><tr><td class="code"><pre><span class="line"><span class="built_in">NSManagedObjectContext</span> *childContext = [[<span class="built_in">NSManagedObjectContext</span> defaultContext] createChildContext];</span><br><span class="line"></span><br><span class="line">[childContext performBlock:^&#123;</span><br><span class="line">    User *john = [User createInContext:childContext];</span><br><span class="line">    john.name = <span class="string">@&quot;John&quot;</span>;</span><br><span class="line">    [john save];</span><br><span class="line">    </span><br><span class="line">    john = [User first:<span class="string">@&quot;name == &#x27;John&#x27;&quot;</span> inContext:childContext];</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">NSArray</span> *manyFriendsUsers = [User find:<span class="string">@&quot;friendsCount &gt; 100&quot;</span> order:<span class="string">@&quot;screenName DESC&quot;</span> inContext:childContext];</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">NSArray</span> *allUsers = [User allInContext:childContext];</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
-<h4 id="カスタムモデル、カスタムsqliteファイルの利用"><a href="#カスタムモデル、カスタムsqliteファイルの利用" class="headerlink" title="カスタムモデル、カスタムsqliteファイルの利用"></a>カスタムモデル、カスタムsqliteファイルの利用</h4><figure class="highlight objc"><table><tr><td class="code"><pre><span class="line"><span class="built_in">NSURL</span> *modelURL = [<span class="built_in">NSURL</span> defaultModelURL:<span class="string">@&quot;model_name&quot;</span>];</span><br><span class="line">[<span class="built_in">NSPersistentStoreCoordinator</span> setupDefaultStoreWithModelURL:modelURL storeURL:<span class="literal">nil</span> useInMemoryStore:<span class="literal">NO</span>];</span><br><span class="line">    </span><br><span class="line"><span class="comment">// or</span></span><br><span class="line"><span class="built_in">NSURL</span> *storeURL = [<span class="built_in">NSURL</span> defaultStoreURL:<span class="string">@&quot;file_name.sqlite&quot;</span>];</span><br><span class="line">[<span class="built_in">NSPersistentStoreCoordinator</span> setupDefaultStoreWithModelURL:<span class="literal">nil</span> storeURL:storeURL useInMemoryStore:<span class="literal">NO</span>];</span><br></pre></td></tr></table></figure>
+<pre class="language-objc" data-language="objc"><code class="language-objc">[[NSManagedObjectContext defaultContext] performBlock:^&#123;
+  &#x2F;&#x2F; your code here
+&#125;];
+NSManagedObjectContext *childContext &#x3D; [[NSManagedObjectContext defaultContext] createChildContext];
+[childContext performBlock:^&#123;
+  &#x2F;&#x2F; your code here
+&#125;];</code></pre>
+<h4 id="Create-Save-Delete"><a href="#Create-Save-Delete" class="headerlink" title="Create / Save / Delete"></a>Create / Save / Delete</h4><pre class="language-objc" data-language="objc"><code class="language-objc">[[NSManagedObjectContext defaultContext] performBlock:^&#123;
+    Tweet *tweet &#x3D; [Tweet create];
+    tweet.text &#x3D; @&quot;I am here&quot;;
+    [tweet save];
+    [tweet delete];
+    
+    tweet &#x3D; [Tweet create:@&#123;@&quot;text&quot; : @&quot;hello!!&quot;,
+                            @&quot;lang&quot; : @&quot;en&quot;&#125; ];
+    [tweet saveToStore];
+    
+    [Tweet deleteAll];
+&#125;];
+&#x2F;*
++ (instancetype)create;
++ (instancetype)create:(NSDictionary *)attributes;
++ (void)deleteAll;
++ (void)deleteWithCondition:(id)condition;
+- (void)save;
+- (void)saveToStore;
+- (void)delete;
+*&#x2F;</code></pre>
+<h4 id="Finders"><a href="#Finders" class="headerlink" title="Finders"></a>Finders</h4><pre class="language-objc" data-language="objc"><code class="language-objc">[[NSManagedObjectContext defaultContext] performBlock:^&#123;
+    NSArray *tweets &#x3D; [Tweet all];
+    
+    NSArray *tweetsInEnglish &#x3D; [Tweet find:@&quot;lang &#x3D;&#x3D; &#39;en&#39;&quot;];
+    
+    User *hmhv &#x3D; [User first:@&quot;screenName &#x3D;&#x3D; &#39;hmhv&#39;&quot;];
+    
+    NSArray *englishMen &#x3D; [User find:@&#123;@&quot;lang&quot; : @&quot;en&quot;,
+                                       @&quot;timeZone&quot; : @&quot;London&quot;
+                                       &#125;];
+    
+    NSPredicate *predicate &#x3D; [NSPredicate predicateWithFormat:@&quot;friendsCount &gt; 100&quot;];
+    NSArray *manyFriendsUsers &#x3D; [User find:predicate];
+&#125;];
+&#x2F;*
++ (NSArray *)all;
++ (NSArray *)find:(id)condition;
++ (instancetype)first:(id)condition;
++ (instancetype)firstOrCreate:(NSDictionary *)condition;
+*&#x2F;</code></pre>
+<h4 id="Order-and-Limit"><a href="#Order-and-Limit" class="headerlink" title="Order and Limit"></a>Order and Limit</h4><pre class="language-objc" data-language="objc"><code class="language-objc">[[NSManagedObjectContext defaultContext] performBlock:^&#123;
+    NSArray *sortedUsers &#x3D; [User allWithOrder:@&quot;name&quot;];
+    
+    NSArray *allUsers &#x3D; [User allWithOrder:@&quot;screenName ASC, name DESC&quot;];
+    &#x2F;&#x2F; or
+    NSArray *allUsers2 &#x3D; [User allWithOrder:@&quot;screenName A, name D&quot;];
+    &#x2F;&#x2F; or
+    NSArray *allUsers3 &#x3D; [User allWithOrder:@&quot;screenName, name d&quot;];
+
+    NSArray *manyFriendsUsers &#x3D; [User find:@&quot;friendsCount &gt; 100&quot; order:@&quot;screenName DESC&quot;];
+    
+    NSArray *fiveEnglishUsers &#x3D; [User find:@&quot;lang &#x3D;&#x3D; &#39;en&#39;&quot; order:@&quot;screenName ASC&quot; limit:@(5)];
+&#125;];
+&#x2F;*
++ (NSArray *)allWithOrder:(NSString *)order;
++ (NSArray *)find:(id)condition order:(NSString *)order;
++ (NSArray *)find:(id)condition limit:(NSNumber *)limit;
++ (NSArray *)find:(id)condition order:(NSString *)order limit:(NSNumber *)limit;
+*&#x2F;</code></pre>
+<h4 id="Aggregation"><a href="#Aggregation" class="headerlink" title="Aggregation"></a>Aggregation</h4><pre class="language-objc" data-language="objc"><code class="language-objc">[[NSManagedObjectContext defaultContext] performBlock:^&#123;
+    NSUInteger allUserCount &#x3D; [User count];
+    
+    NSUInteger englishUserCount &#x3D; [User countWithCondition:@&quot;lang &#x3D;&#x3D; &#39;en&#39;&quot;];
+&#125;];
+&#x2F;*
++ (NSUInteger)count;
++ (NSUInteger)countWithCondition:(id)condition;
+*&#x2F;</code></pre>
+<h4 id="BatchUpdate"><a href="#BatchUpdate" class="headerlink" title="BatchUpdate"></a>BatchUpdate</h4><pre class="language-objc" data-language="objc"><code class="language-objc">[[NSManagedObjectContext defaultContext] performBlock:^&#123;
+    
+    [User batchUpdateWithCondition:@&quot;friendsCount &gt; 10&quot; propertiesToUpdate:@&#123;@&quot;friendsCount&quot;: @0&#125;];
+    
+    &#x2F;&#x2F; update all entities
+    [User batchUpdateWithCondition:nil propertiesToUpdate:@&#123;@&quot;friendsCount&quot;: @100&#125;];
+&#125;];
+&#x2F;*
++ (NSUInteger)batchUpdateWithCondition:(id)condition propertiesToUpdate:(NSDictionary *)propertiesToUpdate;
++ (NSUInteger)batchUpdateWithCondition:(id)condition propertiesToUpdate:(NSDictionary *)propertiesToUpdate inContext:(NSManagedObjectContext *)context;
+*&#x2F;</code></pre>
+<h4 id="NSFetchedResultsController"><a href="#NSFetchedResultsController" class="headerlink" title="NSFetchedResultsController"></a>NSFetchedResultsController</h4><pre class="language-objc" data-language="objc"><code class="language-objc">    [[NSManagedObjectContext defaultContext] performBlock:^&#123;
+        NSFetchedResultsController *frc &#x3D; [User createFetchedResultsControllerWithCondition:nil order:@&quot;name&quot; sectionNameKeyPath:nil];
+        frc.delegate &#x3D; self;
+        
+        NSError *error &#x3D; nil;
+        if ([frc performFetch:&amp;error]) &#123;
+            [self reloadData];
+        &#125;
+    &#125;
+&#125;];
+&#x2F;*
++ (NSFetchedResultsController *)createFetchedResultsControllerWithCondition:(id)condition order:(NSString *)order sectionNameKeyPath:(NSString *)sectionNameKeyPath;
+*&#x2F;</code></pre>
+<h4 id="Custom-ManagedObjectContext"><a href="#Custom-ManagedObjectContext" class="headerlink" title="Custom ManagedObjectContext"></a>Custom ManagedObjectContext</h4><pre class="language-objc" data-language="objc"><code class="language-objc">NSManagedObjectContext *childContext &#x3D; [[NSManagedObjectContext defaultContext] createChildContext];
+
+[childContext performBlock:^&#123;
+    User *john &#x3D; [User createInContext:childContext];
+    john.name &#x3D; @&quot;John&quot;;
+    [john save];
+    
+    john &#x3D; [User first:@&quot;name &#x3D;&#x3D; &#39;John&#39;&quot; inContext:childContext];
+    
+    NSArray *manyFriendsUsers &#x3D; [User find:@&quot;friendsCount &gt; 100&quot; order:@&quot;screenName DESC&quot; inContext:childContext];
+    
+    NSArray *allUsers &#x3D; [User allInContext:childContext];
+&#125;];</code></pre>
+<h4 id="カスタムモデル、カスタムsqliteファイルの利用"><a href="#カスタムモデル、カスタムsqliteファイルの利用" class="headerlink" title="カスタムモデル、カスタムsqliteファイルの利用"></a>カスタムモデル、カスタムsqliteファイルの利用</h4><pre class="language-objc" data-language="objc"><code class="language-objc">NSURL *modelURL &#x3D; [NSURL defaultModelURL:@&quot;model_name&quot;];
+[NSPersistentStoreCoordinator setupDefaultStoreWithModelURL:modelURL storeURL:nil useInMemoryStore:NO];
+    
+&#x2F;&#x2F; or
+NSURL *storeURL &#x3D; [NSURL defaultStoreURL:@&quot;file_name.sqlite&quot;];
+[NSPersistentStoreCoordinator setupDefaultStoreWithModelURL:nil storeURL:storeURL useInMemoryStore:NO];</code></pre>
 <h4 id="マッピング"><a href="#マッピング" class="headerlink" title="マッピング"></a>マッピング</h4><p>ウェブサービスからのJSONは<code>first_name</code>, <code>last_name</code>のようなスネークケースの場合が多いですが、<br>Objective-Cでは<code>firstName</code>, <code>lastName</code>のようにキャメルケースが主流です。<br>なのでスネークケースからキャメルケースへのマッピングは自動で行われます。<br>それ以外の特別な名前マッピングが必要な場合は各モデルスラスでmappingsをオーバライドして設定可能です。</p>
 <p><strong>!! Date, Transformableタイプはマッピング対象外です。 !!</strong></p>
-<figure class="highlight objc"><table><tr><td class="code"><pre><span class="line"><span class="comment">// just override +mappings in your NSManagedObject subclass</span></span><br><span class="line"><span class="meta">#import <span class="string">&quot;User+Mappings.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">User</span> (<span class="title">Mappings</span>)</span></span><br><span class="line"></span><br><span class="line">+ (<span class="built_in">NSDictionary</span> *)mappings</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> @&#123;<span class="string">@&quot;description&quot;</span> : <span class="string">@&quot;userDescription&quot;</span>,</span><br><span class="line">             <span class="string">@&quot;name&quot;</span> : <span class="string">@&quot;fullName&quot;</span>&#125;;</span><br><span class="line">&#125;</span><br><span class="line">  <span class="comment">// first_name =&gt; firstNameは自動でマッピングされる。</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">+ (NSDictionary *)mappings</span></span><br><span class="line"><span class="comment">+ (BOOL)useFindOrCreate</span></span><br><span class="line"><span class="comment">+ (BOOL)returnsObjectsAsFaults</span></span><br><span class="line"><span class="comment">+ (NSArray *)relationshipKeyPathsForPrefetching</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<pre class="language-objc" data-language="objc"><code class="language-objc">&#x2F;&#x2F; just override +mappings in your NSManagedObject subclass
+#import &quot;User+Mappings.h&quot;
+
+@implementation User (Mappings)
+
++ (NSDictionary *)mappings
+&#123;
+    return @&#123;@&quot;description&quot; : @&quot;userDescription&quot;,
+             @&quot;name&quot; : @&quot;fullName&quot;&#125;;
+&#125;
+  &#x2F;&#x2F; first_name &#x3D;&gt; firstNameは自動でマッピングされる。
+
+@end
+&#x2F;*
++ (NSDictionary *)mappings
++ (BOOL)useFindOrCreate
++ (BOOL)returnsObjectsAsFaults
++ (NSArray *)relationshipKeyPathsForPrefetching
+*&#x2F;</code></pre>
 <h4 id="テスト"><a href="#テスト" class="headerlink" title="テスト"></a>テスト</h4><p>HobjectiveRecordはメモリ内ストアを設定可能です。テストなどで利用すると便利です。</p>
-<figure class="highlight objc"><table><tr><td class="code"><pre><span class="line">[<span class="built_in">NSPersistentStoreCoordinator</span> setupDefaultStoreWithModelURL:<span class="literal">nil</span> storeURL:<span class="literal">nil</span> useInMemoryStore:<span class="literal">YES</span>];</span><br></pre></td></tr></table></figure>
+<pre class="language-objc" data-language="objc"><code class="language-objc">[NSPersistentStoreCoordinator setupDefaultStoreWithModelURL:nil storeURL:nil useInMemoryStore:YES];</code></pre>
 </section>
     <!-- Tags START -->
     
@@ -333,7 +476,7 @@
 </script>
 
 <script>
-  var hasLine = 'false';
+  var hasLine = 'true';
   async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
     $('figure pre').each(function(i, block) {
       var figure = $(this).parents('figure');

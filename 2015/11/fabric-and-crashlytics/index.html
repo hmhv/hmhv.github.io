@@ -16,6 +16,7 @@
   <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
   <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/styles/foundation.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/themes/prism-coy.min.css" integrity="sha512-LOT5F67SMZVdXMrvQe4S1ZHu5l6xk3CST2qqno9kY329OsJBBpybnq+fM9qG4ZSaNzPOjoGzHAeBamSSJyyuZg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   
 <link rel="stylesheet" href="/css/style.css">
 
@@ -23,6 +24,8 @@
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/prism.min.js" integrity="sha512-/Swpp6aCQ0smuZ+zpklJqMClcUlvxhpLf9aAcM7JjJrj2waCU4dikm3biOtMVAflOOeniW9qzaNXNrbOAOWFCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-GP4x8UWxWyh4BMbyJGOGneiTbkrWEF5izsVJByzVLodP8CuJH/n936+yQDMJJrOPUHLgyPbLiGw2rXmdvGdXHA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   
   
   
@@ -142,12 +145,33 @@
 <li><p>プロジェクトからFabric、Crashlytics.frameworkを削除</p>
 </li>
 <li><p>以下のコマンドでFabric、Crashlytics.frameworkをデスクトップへコピー</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ditto -xk ~/Library/Caches/com.crashlytics.mac/5b91b14e832a7b1c29441ec5ba109810/sdks/ios/com.twitter.crashlytics.ios-default.zip ~/Desktop/﻿</span><br><span class="line">ditto -xk ~/Library/Caches/com.crashlytics.mac/5b91b14e832a7b1c29441ec5ba109810/sdks/ios/io.fabric.sdk.ios-default.zip ~/Desktop/</span><br></pre></td></tr></table></figure>
+<pre class="language-Bash" data-language="Bash"><code class="language-Bash">ditto -xk ~&#x2F;Library&#x2F;Caches&#x2F;com.crashlytics.mac&#x2F;5b91b14e832a7b1c29441ec5ba109810&#x2F;sdks&#x2F;ios&#x2F;com.twitter.crashlytics.ios-default.zip ~&#x2F;Desktop&#x2F;﻿
+ditto -xk ~&#x2F;Library&#x2F;Caches&#x2F;com.crashlytics.mac&#x2F;5b91b14e832a7b1c29441ec5ba109810&#x2F;sdks&#x2F;ios&#x2F;io.fabric.sdk.ios-default.zip ~&#x2F;Desktop&#x2F;</code></pre>
 </li>
 <li><p>コピーしたFabric、Crashlytics.frameworkをプロジェクトへ追加</p>
 </li>
 </ol>
-<h4 id="SourceTree使用でtypechangeが更新できない場合"><a href="#SourceTree使用でtypechangeが更新できない場合" class="headerlink" title="SourceTree使用でtypechangeが更新できない場合"></a>SourceTree使用でtypechangeが更新できない場合</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git status</span><br><span class="line">Changes not staged <span class="keyword">for</span> commit:</span><br><span class="line">  (use <span class="string">&quot;git add &lt;file&gt;...&quot;</span> to update what will be committed)</span><br><span class="line">  (use <span class="string">&quot;git checkout -- &lt;file&gt;...&quot;</span> to discard changes <span class="keyword">in</span> working directory)</span><br><span class="line"></span><br><span class="line">	typechange: app/platforms/ios/Crashlytics.framework/Crashlytics</span><br><span class="line">	typechange: app/platforms/ios/Fabric.framework/Fabric</span><br><span class="line"></span><br><span class="line">no changes added to commit (use <span class="string">&quot;git add&quot;</span> and/or <span class="string">&quot;git commit -a&quot;</span>)</span><br><span class="line"></span><br><span class="line">$ git add .</span><br><span class="line">$ git status</span><br><span class="line">On branch feature/Update_Crashlytics_Framework</span><br><span class="line">Your branch is up-to-date with <span class="string">&#x27;origin/feature/Update_Crashlytics_Framework&#x27;</span>.</span><br><span class="line">Changes to be committed:</span><br><span class="line">  (use <span class="string">&quot;git reset HEAD &lt;file&gt;...&quot;</span> to unstage)</span><br><span class="line"></span><br><span class="line">	typechange: app/platforms/ios/Crashlytics.framework/Crashlytics</span><br><span class="line">	typechange: app/platforms/ios/Fabric.framework/Fabric</span><br><span class="line"></span><br><span class="line">$ git commit -m <span class="string">&#x27;Commit typechanges&#x27;</span></span><br></pre></td></tr></table></figure>
+<h4 id="SourceTree使用でtypechangeが更新できない場合"><a href="#SourceTree使用でtypechangeが更新できない場合" class="headerlink" title="SourceTree使用でtypechangeが更新できない場合"></a>SourceTree使用でtypechangeが更新できない場合</h4><pre class="language-Bash" data-language="Bash"><code class="language-Bash">$ git status
+Changes not staged for commit:
+  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
+  (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)
+
+	typechange: app&#x2F;platforms&#x2F;ios&#x2F;Crashlytics.framework&#x2F;Crashlytics
+	typechange: app&#x2F;platforms&#x2F;ios&#x2F;Fabric.framework&#x2F;Fabric
+
+no changes added to commit (use &quot;git add&quot; and&#x2F;or &quot;git commit -a&quot;)
+
+$ git add .
+$ git status
+On branch feature&#x2F;Update_Crashlytics_Framework
+Your branch is up-to-date with &#39;origin&#x2F;feature&#x2F;Update_Crashlytics_Framework&#39;.
+Changes to be committed:
+  (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)
+
+	typechange: app&#x2F;platforms&#x2F;ios&#x2F;Crashlytics.framework&#x2F;Crashlytics
+	typechange: app&#x2F;platforms&#x2F;ios&#x2F;Fabric.framework&#x2F;Fabric
+
+$ git commit -m &#39;Commit typechanges&#39;</code></pre>
 <p>参考：<br><a target="_blank" rel="noopener" href="https://twittercommunity.com/t/error-upgrading-from-crashlytics-on-ios/36196/2">https://twittercommunity.com/t/error-upgrading-from-crashlytics-on-ios/36196/2</a><br><a target="_blank" rel="noopener" href="https://twittercommunity.com/t/getting-linker-error-framework-not-found-crashlytics/38185/20">https://twittercommunity.com/t/getting-linker-error-framework-not-found-crashlytics/38185/20</a></p>
 </section>
     <!-- Tags START -->
@@ -316,7 +340,7 @@
 </script>
 
 <script>
-  var hasLine = 'false';
+  var hasLine = 'true';
   async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
     $('figure pre').each(function(i, block) {
       var figure = $(this).parents('figure');

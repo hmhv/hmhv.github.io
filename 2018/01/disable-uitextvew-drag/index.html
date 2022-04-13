@@ -16,6 +16,7 @@
   <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
   <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/styles/foundation.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/themes/prism-coy.min.css" integrity="sha512-LOT5F67SMZVdXMrvQe4S1ZHu5l6xk3CST2qqno9kY329OsJBBpybnq+fM9qG4ZSaNzPOjoGzHAeBamSSJyyuZg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   
 <link rel="stylesheet" href="/css/style.css">
 
@@ -23,6 +24,8 @@
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/prism.min.js" integrity="sha512-/Swpp6aCQ0smuZ+zpklJqMClcUlvxhpLf9aAcM7JjJrj2waCU4dikm3biOtMVAflOOeniW9qzaNXNrbOAOWFCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-GP4x8UWxWyh4BMbyJGOGneiTbkrWEF5izsVJByzVLodP8CuJH/n936+yQDMJJrOPUHLgyPbLiGw2rXmdvGdXHA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   
   
   
@@ -138,7 +141,19 @@
   <!-- Article START -->
   <article class="post-article">
     <section class="markdown-content"><p>UITextViewのUITextDragDelegateのメッソド[textDraggableView: textDraggableView: itemsForDrag:dragRequest]で空配列を返す<br>iOS10以下も対応中なら<code>@available(iOS 11.0, *)</code>, <code>NS_AVAILABLE_IOS(11.0)</code> も追加</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">- (void)viewDidLoad</span><br><span class="line">&#123;</span><br><span class="line">    [super viewDidLoad];</span><br><span class="line">    self.textView = [[UITextView alloc] initWithFrame:CGRectZero];</span><br><span class="line">    if (@available(iOS 11.0, *)) &#123;</span><br><span class="line">        self.textView.textDragDelegate = self;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (NSArray&lt;UIDragItem *&gt; *)textDraggableView:(UIView&lt;UITextDraggable&gt; *)textDraggableView itemsForDrag:(id&lt;UITextDragRequest&gt;)dragRequest NS_AVAILABLE_IOS(11.0)</span><br><span class="line">&#123;</span><br><span class="line">    return @[];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="language-objc" data-language="objc"><code class="language-objc">- (void)viewDidLoad
+&#123;
+    [super viewDidLoad];
+    self.textView &#x3D; [[UITextView alloc] initWithFrame:CGRectZero];
+    if (@available(iOS 11.0, *)) &#123;
+        self.textView.textDragDelegate &#x3D; self;
+    &#125;
+&#125;
+
+- (NSArray&lt;UIDragItem *&gt; *)textDraggableView:(UIView&lt;UITextDraggable&gt; *)textDraggableView itemsForDrag:(id&lt;UITextDragRequest&gt;)dragRequest NS_AVAILABLE_IOS(11.0)
+&#123;
+    return @[];
+&#125;</code></pre>
 <p><a target="_blank" rel="noopener" href="https://developer.apple.com/documentation/uikit/uitextdragdelegate/2890908-textdraggableview">https://developer.apple.com/documentation/uikit/uitextdragdelegate/2890908-textdraggableview</a></p>
 </section>
     <!-- Tags START -->
@@ -307,7 +322,7 @@
 </script>
 
 <script>
-  var hasLine = 'false';
+  var hasLine = 'true';
   async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
     $('figure pre').each(function(i, block) {
       var figure = $(this).parents('figure');

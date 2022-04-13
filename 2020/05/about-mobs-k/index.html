@@ -16,6 +16,7 @@
   <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
   <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/styles/foundation.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/themes/prism-coy.min.css" integrity="sha512-LOT5F67SMZVdXMrvQe4S1ZHu5l6xk3CST2qqno9kY329OsJBBpybnq+fM9qG4ZSaNzPOjoGzHAeBamSSJyyuZg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   
 <link rel="stylesheet" href="/css/style.css">
 
@@ -23,6 +24,8 @@
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/prism.min.js" integrity="sha512-/Swpp6aCQ0smuZ+zpklJqMClcUlvxhpLf9aAcM7JjJrj2waCU4dikm3biOtMVAflOOeniW9qzaNXNrbOAOWFCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-GP4x8UWxWyh4BMbyJGOGneiTbkrWEF5izsVJByzVLodP8CuJH/n936+yQDMJJrOPUHLgyPbLiGw2rXmdvGdXHA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   
   
   
@@ -153,14 +156,39 @@
 <h4 id="Observer"><a href="#Observer" class="headerlink" title="Observer"></a>Observer</h4><p>Observable에 추가되어 Observable으로부터의 통지를 받아 액션을 실행<br>MobXのaction, RxSwiftのObserver、Combine의 Subscriber와 동등</p>
 <h4 id="Removable-Remover"><a href="#Removable-Remover" class="headerlink" title="Removable (Remover)"></a>Removable (Remover)</h4><p>Observable에 추가된 Observer를 Observable로부터 삭제하는 방법<br>RxSwift의 Disposable、Combine의 Cancellable와 동등</p>
 <h2 id="MobS의-기본"><a href="#MobS의-기본" class="headerlink" title="MobS의 기본"></a>MobS의 기본</h2><p>그럼 일단 코드를 확인합니다.</p>
-<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">CountUpViewController</span>: <span class="title class_">UIViewController</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ①Observable의 생성</span></span><br><span class="line">    <span class="meta">@MobS</span>.<span class="type">Observable</span>(value: <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">var</span> count: <span class="type">Int</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">@IBOutlet</span> <span class="keyword">weak</span> <span class="keyword">var</span> countLabel: <span class="type">UILabel</span>!</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="keyword">func</span> <span class="title function_">viewDidLoad</span>() &#123;</span><br><span class="line">        <span class="keyword">super</span>.viewDidLoad()</span><br><span class="line"></span><br><span class="line">        <span class="comment">// ②Observer의 생성 &amp; Observable에 추가</span></span><br><span class="line">        <span class="variable">$count</span>.addObserver(with: <span class="keyword">self</span>) &#123; (<span class="keyword">self</span>, count) <span class="keyword">in</span></span><br><span class="line">            <span class="keyword">self</span>.countLabel.text <span class="operator">=</span> <span class="string">&quot;<span class="subst">\(count)</span>&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">@IBAction</span> <span class="keyword">func</span> <span class="title function_">buttonTapped</span>(<span class="keyword">_</span> <span class="params">sender</span>: <span class="keyword">Any</span>) &#123;</span><br><span class="line">        <span class="comment">// ③Observable의 갱신</span></span><br><span class="line">        count <span class="operator">+=</span> <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="language-swift" data-language="swift"><code class="language-swift"><span class="token keyword">class</span> <span class="token class-name">CountUpViewController</span><span class="token punctuation">:</span> <span class="token class-name">UIViewController</span> <span class="token punctuation">&#123;</span>
+
+    <span class="token comment">// ①Observable의 생성</span>
+    <span class="token attribute atrule">@MobS</span><span class="token punctuation">.</span><span class="token class-name">Observable</span><span class="token punctuation">(</span>value<span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">)</span>
+    <span class="token keyword">var</span> count<span class="token punctuation">:</span> <span class="token class-name">Int</span>
+
+    <span class="token attribute atrule">@IBOutlet</span> <span class="token keyword">weak</span> <span class="token keyword">var</span> countLabel<span class="token punctuation">:</span> <span class="token class-name">UILabel</span><span class="token operator">!</span>
+
+    <span class="token keyword">override</span> <span class="token keyword">func</span> <span class="token function-definition function">viewDidLoad</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">viewDidLoad</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+        <span class="token comment">// ②Observer의 생성 &amp; Observable에 추가</span>
+        $count<span class="token punctuation">.</span><span class="token function">addObserver</span><span class="token punctuation">(</span>with<span class="token punctuation">:</span> <span class="token keyword">self</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token punctuation">(</span><span class="token keyword">self</span><span class="token punctuation">,</span> count<span class="token punctuation">)</span> <span class="token keyword">in</span>
+            <span class="token keyword">self</span><span class="token punctuation">.</span>countLabel<span class="token punctuation">.</span>text <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"</span><span class="token interpolation-punctuation punctuation">\(</span><span class="token interpolation">count</span><span class="token interpolation-punctuation punctuation">)</span><span class="token string">"</span></span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+    
+    <span class="token attribute atrule">@IBAction</span> <span class="token keyword">func</span> <span class="token function-definition function">buttonTapped</span><span class="token punctuation">(</span><span class="token omit keyword">_</span> sender<span class="token punctuation">:</span> <span class="token keyword">Any</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// ③Observable의 갱신</span>
+        count <span class="token operator">+=</span> <span class="token number">1</span>
+    <span class="token punctuation">&#125;</span>
+
+<span class="token punctuation">&#125;</span></code></pre>
 <p>이것은 버튼을 누를때마다 <code>count</code>가 1씩 증가하여 라벨에 표시되는 코드입니다.</p>
-<h4 id="①Observable의-생성"><a href="#①Observable의-생성" class="headerlink" title="①Observable의 생성"></a>①Observable의 생성</h4><figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="meta">@MobS</span>.<span class="type">Observable</span>(value: <span class="number">0</span>)</span><br><span class="line"><span class="keyword">var</span> count: <span class="type">Int</span></span><br></pre></td></tr></table></figure>
+<h4 id="①Observable의-생성"><a href="#①Observable의-생성" class="headerlink" title="①Observable의 생성"></a>①Observable의 생성</h4><pre class="language-swift" data-language="swift"><code class="language-swift"><span class="token attribute atrule">@MobS</span><span class="token punctuation">.</span><span class="token class-name">Observable</span><span class="token punctuation">(</span>value<span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">)</span>
+<span class="token keyword">var</span> count<span class="token punctuation">:</span> <span class="token class-name">Int</span></code></pre>
 <p>MobS의 Observable은 <code>property wrapper</code>으로 구현되어 있어서 이와같이 <code>@MobS.Observable</code>를 붙여서 생성합니다.<br>Observable은 Observer의 클로저 안에서 참조되는 순간 자동적으로 Observer를 자신에게 추가합니다.<br>거꾸로 Observer의 클로저 이외에서의 참조는 일반적인 프로퍼티와 같습니다.</p>
 <blockquote>
 <p>위의 코드에서는 초기값 <code>0</code>의 Int형 Observable、<code>count</code>를 생성합니다.</p>
 </blockquote>
-<h4 id="②Observer의-생성-amp-Observable에-추가"><a href="#②Observer의-생성-amp-Observable에-추가" class="headerlink" title="②Observer의 생성 &amp; Observable에 추가"></a>②Observer의 생성 &amp; Observable에 추가</h4><figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="variable">$count</span>.addObserver(with: <span class="keyword">self</span>) &#123; (<span class="keyword">self</span>, count) <span class="keyword">in</span></span><br><span class="line">    <span class="keyword">self</span>.countLabel.text <span class="operator">=</span> <span class="string">&quot;<span class="subst">\(count)</span>&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="②Observer의-생성-amp-Observable에-추가"><a href="#②Observer의-생성-amp-Observable에-추가" class="headerlink" title="②Observer의 생성 &amp; Observable에 추가"></a>②Observer의 생성 &amp; Observable에 추가</h4><pre class="language-swift" data-language="swift"><code class="language-swift">$count<span class="token punctuation">.</span><span class="token function">addObserver</span><span class="token punctuation">(</span>with<span class="token punctuation">:</span> <span class="token keyword">self</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token punctuation">(</span><span class="token keyword">self</span><span class="token punctuation">,</span> count<span class="token punctuation">)</span> <span class="token keyword">in</span>
+    <span class="token keyword">self</span><span class="token punctuation">.</span>countLabel<span class="token punctuation">.</span>text <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"</span><span class="token interpolation-punctuation punctuation">\(</span><span class="token interpolation">count</span><span class="token interpolation-punctuation punctuation">)</span><span class="token string">"</span></span>
+<span class="token punctuation">&#125;</span></code></pre>
 <p>MobS의 Observer는 addObserver메소드에 통지시 실행할 액션을 클로저로 넘겨서 생성합니다.<br>생성된 Observer는 Observable에 자동적으로 추가되어 Observable에 새로운 값이 설정될 때 마다 실행됩니다.</p>
 <blockquote>
 <p>위의 코드에서는 <code>count</code>에 새로운 값이 설정될 때 마다 <code>self.countLabel.text = &quot;\(count)&quot;</code>가 실행됩니다.</p>
@@ -169,7 +197,7 @@
 <blockquote>
 <p>위의 코드에서는 <code>with: self</code> 파라미터로 전달된 <code>CountUpViewController</code>가 deinit되는 타이밍에 자동으로 삭제됩니다.</p>
 </blockquote>
-<h4 id="③Observable의-갱신"><a href="#③Observable의-갱신" class="headerlink" title="③Observable의 갱신"></a>③Observable의 갱신</h4><figure class="highlight swift"><table><tr><td class="code"><pre><span class="line">count <span class="operator">+=</span> <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<h4 id="③Observable의-갱신"><a href="#③Observable의-갱신" class="headerlink" title="③Observable의 갱신"></a>③Observable의 갱신</h4><pre class="language-swift" data-language="swift"><code class="language-swift">count <span class="token operator">+=</span> <span class="token number">1</span></code></pre>
 <p>Observable의 변경은 일반적인 프로퍼티와 같이 값을 설정하는면 됩니다. 이것으로 Observable은 자신에게 추가된 모든 Observer에 통지를 보내 액션이 실행됩니다.</p>
 <blockquote>
 <p>위의 코드에서는 <code>count += 1</code>로 Observer에 자동으로 통지되어 <code>self.countLabel.text = &quot;\(count)&quot;</code>가 실행됩니다.</p>
@@ -357,7 +385,7 @@
 </script>
 
 <script>
-  var hasLine = 'false';
+  var hasLine = 'true';
   async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
     $('figure pre').each(function(i, block) {
       var figure = $(this).parents('figure');

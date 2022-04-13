@@ -16,6 +16,7 @@
   <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
   <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/styles/foundation.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/themes/prism-coy.min.css" integrity="sha512-LOT5F67SMZVdXMrvQe4S1ZHu5l6xk3CST2qqno9kY329OsJBBpybnq+fM9qG4ZSaNzPOjoGzHAeBamSSJyyuZg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   
 <link rel="stylesheet" href="/css/style.css">
 
@@ -23,6 +24,8 @@
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/prism.min.js" integrity="sha512-/Swpp6aCQ0smuZ+zpklJqMClcUlvxhpLf9aAcM7JjJrj2waCU4dikm3biOtMVAflOOeniW9qzaNXNrbOAOWFCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-GP4x8UWxWyh4BMbyJGOGneiTbkrWEF5izsVJByzVLodP8CuJH/n936+yQDMJJrOPUHLgyPbLiGw2rXmdvGdXHA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   
   
   
@@ -138,22 +141,49 @@
   <!-- Article START -->
   <article class="post-article">
     <section class="markdown-content"><p>Crashlyticsは入れておくだけでクラッシュ時のコールスタックが表示されるので調査に便利<br>また追加情報も送信できる仕組みもある。</p>
-<h3 id="1-ユーザ情報を送る"><a href="#1-ユーザ情報を送る" class="headerlink" title="1. ユーザ情報を送る"></a>1. ユーザ情報を送る</h3><figure class="highlight objc"><table><tr><td class="code"><pre><span class="line"><span class="meta">#import <span class="string">&lt;Crashlytics/Crashlytics.h&gt;</span></span></span><br><span class="line"></span><br><span class="line">- (<span class="type">void</span>)testMethod2</span><br><span class="line">&#123;</span><br><span class="line">    [[Crashlytics sharedInstance] setUserEmail:<span class="string">@&quot;user@email.com&quot;</span>];</span><br><span class="line">    [[Crashlytics sharedInstance] setUserIdentifier:<span class="string">@&quot;12344556789&quot;</span>];</span><br><span class="line">    [[Crashlytics sharedInstance] setUserName:<span class="string">@&quot;test user&quot;</span>];</span><br><span class="line">    </span><br><span class="line">    [[Crashlytics sharedInstance] crash];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="1-ユーザ情報を送る"><a href="#1-ユーザ情報を送る" class="headerlink" title="1. ユーザ情報を送る"></a>1. ユーザ情報を送る</h3><pre class="language-objc" data-language="objc"><code class="language-objc">#import &lt;Crashlytics&#x2F;Crashlytics.h&gt;
+
+- (void)testMethod2
+&#123;
+    [[Crashlytics sharedInstance] setUserEmail:@&quot;user@email.com&quot;];
+    [[Crashlytics sharedInstance] setUserIdentifier:@&quot;12344556789&quot;];
+    [[Crashlytics sharedInstance] setUserName:@&quot;test user&quot;];
+    
+    [[Crashlytics sharedInstance] crash];
+&#125;</code></pre>
 <ul>
 <li>結果</li>
 </ul>
 <p><a class="fancybox" rel="gallery0"><img src="https://qiita-image-store.s3.amazonaws.com/0/25832/09ddd1bd-c0ab-aa93-2a8a-058bf6b42b44.png" style="max-width: 100%"></a></p>
-<h3 id="2-Key-Valueで送る"><a href="#2-Key-Valueで送る" class="headerlink" title="2. Key,Valueで送る"></a>2. Key,Valueで送る</h3><figure class="highlight objc"><table><tr><td class="code"><pre><span class="line">- (<span class="type">void</span>)testMethod2</span><br><span class="line">&#123;</span><br><span class="line">    [[Crashlytics sharedInstance] setBoolValue:<span class="literal">YES</span> forKey:<span class="string">@&quot;boolLog&quot;</span>];</span><br><span class="line">    [[Crashlytics sharedInstance] setFloatValue:<span class="number">0.12345</span> forKey:<span class="string">@&quot;floatLog&quot;</span>];</span><br><span class="line">    [[Crashlytics sharedInstance] setIntValue:<span class="number">3</span> forKey:<span class="string">@&quot;intLog&quot;</span>];</span><br><span class="line">    [[Crashlytics sharedInstance] setObjectValue:<span class="string">@&quot;objectValue..test&quot;</span> forKey:<span class="string">@&quot;objectLog&quot;</span>];</span><br><span class="line">    </span><br><span class="line">    [[Crashlytics sharedInstance] crash];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-Key-Valueで送る"><a href="#2-Key-Valueで送る" class="headerlink" title="2. Key,Valueで送る"></a>2. Key,Valueで送る</h3><pre class="language-objc" data-language="objc"><code class="language-objc">- (void)testMethod2
+&#123;
+    [[Crashlytics sharedInstance] setBoolValue:YES forKey:@&quot;boolLog&quot;];
+    [[Crashlytics sharedInstance] setFloatValue:0.12345 forKey:@&quot;floatLog&quot;];
+    [[Crashlytics sharedInstance] setIntValue:3 forKey:@&quot;intLog&quot;];
+    [[Crashlytics sharedInstance] setObjectValue:@&quot;objectValue..test&quot; forKey:@&quot;objectLog&quot;];
+    
+    [[Crashlytics sharedInstance] crash];
+&#125;</code></pre>
 <ul>
 <li>結果</li>
 </ul>
 <p><a class="fancybox" rel="gallery0"><img src="https://qiita-image-store.s3.amazonaws.com/0/25832/b71b2b63-7f7d-e11c-3e9e-b93398368ecd.png" style="max-width: 100%"></a></p>
-<h3 id="3-ログ情報を送る"><a href="#3-ログ情報を送る" class="headerlink" title="3. ログ情報を送る"></a>3. ログ情報を送る</h3><figure class="highlight objc"><table><tr><td class="code"><pre><span class="line">- (<span class="type">void</span>)testMethod2</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">CLS_LOG</span>(<span class="string">@&quot;CLS_LOG for Dict %@&quot;</span>, @&#123;<span class="string">@&quot;key1&quot;</span>:<span class="string">@&quot;value1&quot;</span>, <span class="string">@&quot;key2&quot;</span>:<span class="string">@&quot;value2&quot;</span>, <span class="string">@&quot;key3&quot;</span>:<span class="string">@&quot;value3&quot;</span>&#125;);</span><br><span class="line">    </span><br><span class="line">    [[Crashlytics sharedInstance] crash];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-ログ情報を送る"><a href="#3-ログ情報を送る" class="headerlink" title="3. ログ情報を送る"></a>3. ログ情報を送る</h3><pre class="language-objc" data-language="objc"><code class="language-objc">- (void)testMethod2
+&#123;
+    CLS_LOG(@&quot;CLS_LOG for Dict %@&quot;, @&#123;@&quot;key1&quot;:@&quot;value1&quot;, @&quot;key2&quot;:@&quot;value2&quot;, @&quot;key3&quot;:@&quot;value3&quot;&#125;);
+    
+    [[Crashlytics sharedInstance] crash];
+&#125;</code></pre>
 <ul>
 <li>結果</li>
 </ul>
 <p><a class="fancybox" rel="gallery0"><img src="https://qiita-image-store.s3.amazonaws.com/0/25832/1f18738b-f988-0f26-1f01-6810a39da456.png" style="max-width: 100%"></a></p>
-<h3 id="4-NSException以外のカスタム例外を送る"><a href="#4-NSException以外のカスタム例外を送る" class="headerlink" title="4. NSException以外のカスタム例外を送る"></a>4. NSException以外のカスタム例外を送る</h3><figure class="highlight objc"><table><tr><td class="code"><pre><span class="line">- (<span class="type">void</span>)testMethod2</span><br><span class="line">&#123;</span><br><span class="line">    [[Crashlytics sharedInstance] recordCustomExceptionName:<span class="string">@&quot;customEx...&quot;</span> reason:<span class="string">@&quot;custom_reason..&quot;</span> frameArray:@[[<span class="built_in">CLSStackFrame</span> stackFrameWithAddress:<span class="number">1234567</span>]]];</span><br><span class="line">    </span><br><span class="line">    [[Crashlytics sharedInstance] crash];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4-NSException以外のカスタム例外を送る"><a href="#4-NSException以外のカスタム例外を送る" class="headerlink" title="4. NSException以外のカスタム例外を送る"></a>4. NSException以外のカスタム例外を送る</h3><pre class="language-objc" data-language="objc"><code class="language-objc">- (void)testMethod2
+&#123;
+    [[Crashlytics sharedInstance] recordCustomExceptionName:@&quot;customEx...&quot; reason:@&quot;custom_reason..&quot; frameArray:@[[CLSStackFrame stackFrameWithAddress:1234567]]];
+    
+    [[Crashlytics sharedInstance] crash];
+&#125;</code></pre>
 <ul>
 <li>結果</li>
 </ul>
@@ -322,7 +352,7 @@
 </script>
 
 <script>
-  var hasLine = 'false';
+  var hasLine = 'true';
   async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
     $('figure pre').each(function(i, block) {
       var figure = $(this).parents('figure');
