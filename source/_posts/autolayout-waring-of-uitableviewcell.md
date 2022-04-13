@@ -7,7 +7,7 @@ tags:
 - AutoLayout
 ---
 #### 警告内容
-```
+```bash
 CoreDataTest[2010:60b] Unable to simultaneously satisfy constraints.
 	Probably at least one of the constraints in the following list is one you don't want. Try this: (1) look at each constraint and try to figure out which you don't expect; (2) find the code that added the unwanted constraint or constraints and fix it. (Note: If you're seeing NSAutoresizingMaskLayoutConstraints that you don't understand, refer to the documentation for the UIView property translatesAutoresizingMaskIntoConstraints) 
 (
@@ -51,7 +51,7 @@ iOS7のみで発生する。
 
 - UITableViewCellのサブクラスでの方法
 
-```
+``` objc
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];

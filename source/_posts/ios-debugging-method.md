@@ -24,7 +24,7 @@ tags:
 
 - -[NSObject _ivarDescription]
 
-```
+``` bash
 (lldb) po [self _ivarDescription]
 <DetailViewController: 0x7fc94b637db0>:
 in DetailViewController:
@@ -89,7 +89,7 @@ in UIViewController:
 
 - -[NSObject _shortMethodDescription]
 
-```
+``` bash
 (lldb) po [self _shortMethodDescription]
 <DetailViewController: 0x7fc94b637db0>:
 in DetailViewController:
@@ -102,7 +102,7 @@ in DetailViewController:
 
 - -[NSObject _methodDescription]
 
-```
+``` bash
 (lldb) po [self _methodDescription]
 <DetailViewController: 0x7fc94b637db0>:
 in DetailViewController:
@@ -298,7 +298,7 @@ in UIViewController:
 
 - -[UIView recursiveDescription]
 
-```
+``` bash
 (lldb) po [self.view recursiveDescription]
 <UIView: 0x7fc94b63c360; frame = (0 0; 375 667); autoresize = W+H; layer = <CALayer: 0x7fc94b63c340>>
    | <UIView: 0x7fc94b63c470; frame = (0 0; 375 667); autoresize = RM+BM; layer = <CALayer: 0x7fc94b63c580>>
@@ -311,7 +311,7 @@ in UIViewController:
 
 - -[UIView _autolayoutTrace]
 
-```
+``` bash
 (lldb) po [self.view _autolayoutTrace]
 
 UIWindow:0x7fc94b735440
@@ -338,7 +338,7 @@ UIWindow:0x7fc94b735440
 
 - -[UIViewController _printHierarchy]
 
-```
+``` bash
 (lldb) po [self.navigationController _printHierarchy]
 <UINavigationController 0x7fc94b71dbc0>, state: appeared, view: <UILayoutContainerView 0x7fc94b469c40>
    | <ViewController 0x7fc94b71e090>, state: disappeared, view: <UIView 0x7fc94b48cf00> not in the window

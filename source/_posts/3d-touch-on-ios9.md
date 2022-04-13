@@ -23,7 +23,7 @@ date: 2015-10-07 21:22:02
 
 ##### - info.plistで追加
 
-```
+```xml
 <key>UIApplicationShortcutItems</key>
 <array>
 	<dict>
@@ -44,7 +44,7 @@ date: 2015-10-07 21:22:02
 
 ##### - コードで追加
 
-```
+``` objc
 UIApplicationShortcutItem *item1 = [[UIApplicationShortcutItem alloc] initWithType:@"dynamic1" localizedTitle:@"title1" localizedSubtitle:@"sub1" icon:[UIApplicationShortcutIcon iconWithType:UIApplicationShortcutIconTypeLocation] userInfo:nil];
 UIApplicationShortcutItem *item2 = [[UIApplicationShortcutItem alloc] initWithType:@"dynamic2" localizedTitle:@"title2" localizedSubtitle:@"sub2" icon:[UIApplicationShortcutIcon iconWithType:UIApplicationShortcutIconTypePause] userInfo:nil];
 UIApplicationShortcutItem *item3 = [[UIApplicationShortcutItem alloc] initWithType:@"dynamic3" localizedTitle:@"title3" localizedSubtitle:@"sub3" icon:[UIApplicationShortcutIcon iconWithType:UIApplicationShortcutIconTypeShare] userInfo:nil];
@@ -75,7 +75,7 @@ Peekでさらに強く押すと全表示で表示される(Pop)
 
 ##### - １. 3D Touchに対応するビューをビューコントローラで登録
 
-```
+``` objc
 if (self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable) {
     [self registerForPreviewingWithDelegate:self sourceView:self.imageView];
 }
@@ -83,11 +83,11 @@ if (self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable
 
 ##### - ２. `UIViewControllerPreviewingDelegate`を実装
 
-```
+``` objc
 @interface ViewController () <UIViewControllerPreviewingDelegate>
 ```
 
-```
+``` objc
 - (nullable UIViewController *)previewingContext:(id <UIViewControllerPreviewing>)previewingContext viewControllerForLocation:(CGPoint)location
 {
     NSLog(@"peek");
@@ -100,7 +100,7 @@ if (self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable
 }
 ```
 
-```
+``` objc
 - (void)previewingContext:(id <UIViewControllerPreviewing>)previewingContext commitViewController:(UIViewController *)viewControllerToCommit
 {
     NSLog(@"pop");
@@ -118,7 +118,7 @@ if (self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable
 
 ##### - ３. プレビュー用メニュー追加
 
-```
+``` objc
 - (NSArray <id <UIPreviewActionItem>> *)previewActionItems
 {
     UIPreviewAction *action1 = [UIPreviewAction actionWithTitle:@"action1" style:UIPreviewActionStyleDefault handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
@@ -145,7 +145,7 @@ UITouchに追加されたプロパティー`force`と`maximumPossibleForce`を�
 
 #### 実装方法
 
-```
+``` objc
 - (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
     UITouch *t = touches.anyObject;

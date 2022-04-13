@@ -8,7 +8,7 @@ date: 2015-10-07 21:14:49
 ---
 - 通信先がhttps(TLSv1.2)未対応時
 
-```
+``` xml
 <key>NSAppTransportSecurity</key>
 <dict>
     <key>NSAllowsArbitraryLoads</key>
@@ -21,7 +21,7 @@ date: 2015-10-07 21:14:49
 
 - canOpenURLを使うために
     
-```
+``` xml
 <key>LSApplicationQueriesSchemes</key>
 <array>
     <string>scheme</string>
@@ -30,14 +30,14 @@ date: 2015-10-07 21:14:49
 
 - iPadのSplit Viewに対応しないように
 
-```
+``` xml
 <key>UIRequiresFullScreen</key>
 <true/>
 ```
 
 - 3D Touchでホーム画面のアイコンにメニューを追加のために
 
-```
+``` xml
 <key>UIApplicationShortcutItems</key>
 <array>
     <dict>

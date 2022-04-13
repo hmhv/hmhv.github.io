@@ -8,7 +8,7 @@ tags:
 ---
 iOSデバッグ時にたまに直面する問題
 
-```
+``` bash
 (lldb) p self.view.window.bounds
 error: property 'bounds' not found on object of type 'id'
 error: 1 errors parsing expression
@@ -16,14 +16,14 @@ error: 1 errors parsing expression
 
 これは型情報がなくて発生するようで以下のようにすれば表示できる
 
-```
+``` bash
 (lldb) p (CGRect)[self.view.window bounds]
 (CGRect) $0 = (origin = (x = 0, y = 0), size = (width = 320, height = 568))
 ```
 
 でもXcode6.3からはモジュールのインポートでも解決できる
 
-```
+``` bash
 (lldb) p @import UIKit
 (lldb) p self.view.window.bounds
 (CGRect) $1 = (origin = (x = 0, y = 0), size = (width = 320, height = 568))

@@ -21,7 +21,7 @@ https://mitmproxy.org/
 
 - mitmproxyのインストール
 
-```
+``` bash
 $ curl -O https://mitmproxy.org/download/osx-mitmproxy-0.13.tgz
 $ tar zxvf osx-mitmproxy-0.13.tgz 
 $ mv ./mitmdump /usr/local/bin/
@@ -32,7 +32,7 @@ $ mitmproxy
 
 - httpsのために証明書をインストール
 
-```
+``` bash
 $ curl -O https://raw.githubusercontent.com/ADVTOOLS/ADVTrustStore/master/iosCertTrustManager.py
 $ chmod 744 ./iosCertTrustManager.py
 $ ./iosCertTrustManager.py -a ~/.mitmproxy/mitmproxy-ca-cert.pem
@@ -43,7 +43,7 @@ $ rm ./iosCertTrustManager.py
 
 - スクリプト実行でWi-Fiネットワークのプロキシ設定をオンにしてmitmproxyを起動し、終了時にオフにする
 
-```Bash
+``` bash
 #!/bin/sh
 sudo networksetup -setwebproxy Wi-Fi localhost 8080
 sudo networksetup -setsecurewebproxy Wi-Fi localhost 8080

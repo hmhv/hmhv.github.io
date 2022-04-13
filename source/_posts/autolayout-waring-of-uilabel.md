@@ -10,7 +10,7 @@ tags:
 
 <a title="sb_warning.png" class="fancybox" rel="gallery0"><img src="https://qiita-image-store.s3.amazonaws.com/0/25832/c4482da0-5959-5459-18c4-bb15877ec887.png" style="max-width: 100%"  alt="sb_warning.png"></a>
 
-```
+```bash
 Main.storyboard: warning: Attribute Unavailable: Automatic Preferred Max Layout Width is not available on iOS versions prior to 8.0
 ```
 　

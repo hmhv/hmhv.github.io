@@ -10,7 +10,7 @@ date: 2018-01-10 23:47:19
 UITextViewのUITextDragDelegateのメッソド[textDraggableView: textDraggableView: itemsForDrag:dragRequest]で空配列を返す
 iOS10以下も対応中なら`@available(iOS 11.0, *)`, ` NS_AVAILABLE_IOS(11.0)` も追加
 
-```
+``` objc
 - (void)viewDidLoad
 {
     [super viewDidLoad];

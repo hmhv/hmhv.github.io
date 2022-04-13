@@ -20,7 +20,7 @@ date: 2019-11-24 17:30:40
 
 - Sign in with Apple用ボタン＆ハンドラ作成
 
-```
+``` swift
 func setupProviderLoginView() {
     authorizationButton = ASAuthorizationAppleIDButton(authorizationButtonType: .signIn, authorizationButtonStyle: .whiteOutline)
     authorizationButton.addTarget(self, action: #selector(handleAuthorizationAppleIDButtonPress), for: .touchUpInside)
@@ -42,7 +42,7 @@ func handleAuthorizationAppleIDButtonPress() {
 ```
 - Sign in with Apple用Delegate実装
 
-```
+```swift
 extension LoginViewController: ASAuthorizationControllerDelegate {
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
@@ -71,7 +71,7 @@ extension LoginViewController: ASAuthorizationControllerPresentationContextProvi
 
 - Sign in成功時のログ例
 
-```
+``` bash
 "userIdentifier : 000000.00000000000000000000000000000000.0000"
 "fullName : Optional(givenName: XXXXXXX familyName: XXXXX )"
 "email : Optional(\"xxxxxxxxx@privaterelay.appleid.com\")"

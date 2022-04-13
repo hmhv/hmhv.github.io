@@ -9,7 +9,7 @@ date: 2018-01-17 20:57:19
 AVPlayer の`automaticallyWaitsToMinimizeStalling`を`NO`にしても通信環境などによっては
 遅延が発生して再生される。そのときは直接`seekToTime `で最新にする
 
-```
+``` objc
  double time = MAXFLOAT;
  [player seekToTime: CMTimeMakeWithSeconds(time, NSEC_PER_SEC)];
 ```
