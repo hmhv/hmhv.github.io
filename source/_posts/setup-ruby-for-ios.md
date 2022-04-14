@@ -7,7 +7,7 @@ tags:
   - fastlane
   - chruby
   - ruby-install
-date: 2022-04-14 23:03:50
+date: 2022-04-15 00:00:00
 ---
 
 # 概要
