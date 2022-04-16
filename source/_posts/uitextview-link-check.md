@@ -8,7 +8,7 @@ date: 2018-01-10 23:57:19
 ---
 UITextViewでのタップがattributedTextでNSLinkAttributeNameを指定したリンク文のタップか確認
 
-```
+```objc
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
     if (touches.count > 1) {
