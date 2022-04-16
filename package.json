@@ -20,6 +20,7 @@
   },
   "scripts": {
     "build": "hexo clean && hexo g",
-    "server": "hexo server"
+    "server": "hexo server",
+    "new": "hexo new "
   }
 }
