@@ -141,11 +141,10 @@
   <!-- Article START -->
   <article class="post-article">
     <section class="markdown-content"><p>何かしらの理由でiOSシミュレーターのキーチェーン情報を削除したい時のためのメモ</p>
-<p>まずシミュレーターのUUIDを取得</p>
-<pre class="language-bash" data-language="bash"><code class="language-bash">xcrun simctl list <span class="token operator">|</span> <span class="token function">egrep</span> <span class="token string">'(Booted)'</span>
+<h3 id="シミュレーターのUUIDを取得"><a href="#シミュレーターのUUIDを取得" class="headerlink" title="シミュレーターのUUIDを取得"></a>シミュレーターのUUIDを取得</h3><pre class="language-bash" data-language="bash"><code class="language-bash">xcrun simctl list <span class="token operator">|</span> <span class="token function">egrep</span> <span class="token string">'(Booted)'</span>
     iPhone <span class="token number">13</span> Pro Max <span class="token punctuation">(</span>シミュレーターのUUID<span class="token punctuation">)</span> <span class="token punctuation">(</span>Booted<span class="token punctuation">)</span>
     Phone: iPhone <span class="token number">13</span> Pro Max <span class="token punctuation">(</span>シミュレーターのUUID<span class="token punctuation">)</span> <span class="token punctuation">(</span>Booted<span class="token punctuation">)</span></code></pre>
-<p>キーチェーン情報は<code>SQLite</code>のファイルとして保存されている</p>
+<h3 id="ファイル確認"><a href="#ファイル確認" class="headerlink" title="ファイル確認"></a>ファイル確認</h3><p>キーチェーン情報は<code>SQLite</code>のファイルとして保存されている</p>
 <p>パス：<code>~/Library/Developer/CoreSimulator/Devices/(シミュレーターのUUID)/data/Library/Keychains</code><br>ファイル名：<code>keychain-2-debug.db</code></p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">la ~/Library/Developer/CoreSimulator/Devices/<span class="token punctuation">(</span>シミュレーターのUUID<span class="token punctuation">)</span>/data/Library/Keychains
 total <span class="token number">5832</span>
@@ -153,12 +152,24 @@ drwxrwxrwx  <span class="token number">17</span> u1  staff   544B Apr  <span cla
 -rw-------@  <span class="token number">1</span> u1  staff   788K Apr <span class="token number">17</span> <span class="token number">10</span>:50 keychain-2-debug.db
 -rw-------   <span class="token number">1</span> u1  staff    32K Apr <span class="token number">17</span> <span class="token number">10</span>:49 keychain-2-debug.db-shm
 -rw-------   <span class="token number">1</span> u1  staff   <span class="token number">1</span>.2M Apr <span class="token number">18</span> <span class="token number">20</span>:50 keychain-2-debug.db-wal</code></pre>
-<p>キーチェーン情報はテーブル<code>genp</code>に保存されて、カラム<code>agrp</code>に書き込んだアプリのバンドルIDがあるのでそこを参考に削除可能</p>
-<pre class="language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">DELETE</span> <span class="token keyword">FROM</span> genp <span class="token keyword">WHERE</span> agrp <span class="token operator">=</span> <span class="token string">'TEAMID.com.your.app.bundle.id'</span><span class="token punctuation">;</span></code></pre>
-<p><a class="fancybox" rel="gallery0"><img src="../../../images/simulator-keychain.png" style="max-width: 100%"></a><br><a class="fancybox" rel="gallery0"><img src="../../../images/simulator-keychain2.png" style="max-width: 100%"></a></p>
-<p>上のスクショは<a target="_blank" rel="noopener" href="https://tableplus.com/"><code>TablePlus</code></a>で<code>keychain-2-debug.db</code>の中身を確認中</p>
-<p><code>brew install --cask tableplus</code>でインストール可能でインストール済みならコマンドラインからも起動可能</p>
+<h3 id="ファイルを開く"><a href="#ファイルを開く" class="headerlink" title="ファイルを開く"></a>ファイルを開く</h3><ul>
+<li>sqlite3で開く</li>
+</ul>
+<pre class="language-bash" data-language="bash"><code class="language-bash">sqlite3 ~/Library/Developer/CoreSimulator/Devices/<span class="token punctuation">(</span>シミュレーターのUUID<span class="token punctuation">)</span>/data/Library/Keychains.keychain-2-debug.db
+SQLite version <span class="token number">3.37</span>.0 <span class="token number">2021</span>-12-09 01:34:53
+Enter <span class="token string">".help"</span> <span class="token keyword">for</span> usage hints.
+sqlite<span class="token operator">></span></code></pre>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://tableplus.com/"><code>TablePlus</code></a>で開く</li>
+</ul>
+<blockquote>
+<p><code>TablePlus</code>のインストールは<code>brew install --cask tableplus</code></p>
+</blockquote>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">open</span> ~/Library/Developer/CoreSimulator/Devices/<span class="token punctuation">(</span>シミュレーターのUUID<span class="token punctuation">)</span>/data/Library/Keychains/keychain-2-debug.db</code></pre>
+<p><a class="fancybox" rel="gallery0"><img src="../../../images/simulator-keychain.png" style="max-width: 100%"></a></p>
+<h3 id="情報の削除"><a href="#情報の削除" class="headerlink" title="情報の削除"></a>情報の削除</h3><p>キーチェーン情報はテーブル<code>genp</code>に保存されて、カラム<code>agrp</code>に書き込んだアプリのバンドルIDがあるのでそこを参考に削除可能</p>
+<pre class="language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">DELETE</span> <span class="token keyword">FROM</span> genp <span class="token keyword">WHERE</span> agrp <span class="token operator">=</span> <span class="token string">'TEAMID.com.your.app.bundle.id'</span><span class="token punctuation">;</span></code></pre>
+<p><a class="fancybox" rel="gallery0"><img src="../../../images/simulator-keychain2.png" style="max-width: 100%"></a></p>
 <p>参考：<a target="_blank" rel="noopener" href="https://stackoverflow.com/a/42564772">https://stackoverflow.com/a/42564772</a></p>
 </section>
     <!-- Tags START -->
@@ -220,7 +231,7 @@ drwxrwxrwx  <span class="token number">17</span> u1  staff   544B Apr  <span cla
   <div class="toc-main">
     <strong class="toc-title">Catalog</strong>
     
-      <ol class="nav">none</ol>
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E3%82%B7%E3%83%9F%E3%83%A5%E3%83%AC%E3%83%BC%E3%82%BF%E3%83%BC%E3%81%AEUUID%E3%82%92%E5%8F%96%E5%BE%97"><span class="toc-nav-text">シミュレーターのUUIDを取得</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E7%A2%BA%E8%AA%8D"><span class="toc-nav-text">ファイル確認</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E9%96%8B%E3%81%8F"><span class="toc-nav-text">ファイルを開く</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%83%85%E5%A0%B1%E3%81%AE%E5%89%8A%E9%99%A4"><span class="toc-nav-text">情報の削除</span></a></li></ol>
     
   </div>
 </aside>
