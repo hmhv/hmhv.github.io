@@ -134,6 +134,42 @@
   
     <article class="article-card">
       <h2 class="article-head">
+        <a href="/2022/04/check-ios-simulator-keychain/">iOSシミュレーターのキーチェーン情報削除</a>
+      </h2>
+      <p class="article-date">April 18, 2022</p>
+      
+        
+  <a href="/tags#iOS" >
+    <span class="tag-code">iOS</span>
+  </a>
+
+  <a href="/tags#Simulator" >
+    <span class="tag-code">Simulator</span>
+  </a>
+
+  <a href="/tags#Keychain" >
+    <span class="tag-code">Keychain</span>
+  </a>
+
+  <a href="/tags#TablePlus" >
+    <span class="tag-code">TablePlus</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          何かしらの理由でiOSシミュレーターのキーチェーン情報を削除したい時のためのメモ
+まずシミュレーターのUUIDを取得
+xcrun simctl list | egrep '(Booted)'
+    iPhone 13 Pro Max (シミュレーターのUUID) (Booted)
+     ...
+        
+      </div>
+      <a class="more" href="/2022/04/check-ios-simulator-keychain/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
         <a href="/2022/04/use-asdf/">asdfを使ってみる</a>
       </h2>
       <p class="article-date">April 16, 2022</p>
@@ -418,31 +454,6 @@ double time &#x3D; MAXFLOAT;
         
       </div>
       <a class="more" href="/2018/01/avplayer-seektotime/">Read more</a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/2018/01/uitextview-link-check/">UITextViewタップ時にlinkかの確認</a>
-      </h2>
-      <p class="article-date">January 10, 2018</p>
-      
-        
-  <a href="/tags#iOS" >
-    <span class="tag-code">iOS</span>
-  </a>
-
-  <a href="/tags#UITextView" >
-    <span class="tag-code">UITextView</span>
-  </a>
-
-      
-      <div class="article-summary">
-        
-          UITextViewでのタップがattributedTextでNSLinkAttributeNameを指定したリンク文のタップか確認
-- (void)touchesBegan:(NSSet&lt;UITouch *&gt; *)touches withEvent:(UIEvent *)eve ...
-        
-      </div>
-      <a class="more" href="/2018/01/uitextview-link-check/">Read more</a>
     </article>
   
 
