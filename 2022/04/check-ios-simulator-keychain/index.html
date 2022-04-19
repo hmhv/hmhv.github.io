@@ -155,7 +155,7 @@ drwxrwxrwx  <span class="token number">17</span> u1  staff   544B Apr  <span cla
 <h3 id="ファイルを開く"><a href="#ファイルを開く" class="headerlink" title="ファイルを開く"></a>ファイルを開く</h3><ul>
 <li>sqlite3で開く</li>
 </ul>
-<pre class="language-bash" data-language="bash"><code class="language-bash">sqlite3 ~/Library/Developer/CoreSimulator/Devices/<span class="token punctuation">(</span>シミュレーターのUUID<span class="token punctuation">)</span>/data/Library/Keychains.keychain-2-debug.db
+<pre class="language-bash" data-language="bash"><code class="language-bash">sqlite3 ~/Library/Developer/CoreSimulator/Devices/<span class="token punctuation">(</span>シミュレーターのUUID<span class="token punctuation">)</span>/data/Library/Keychains/keychain-2-debug.db
 SQLite version <span class="token number">3.37</span>.0 <span class="token number">2021</span>-12-09 01:34:53
 Enter <span class="token string">".help"</span> <span class="token keyword">for</span> usage hints.
 sqlite<span class="token operator">></span></code></pre>
@@ -168,7 +168,10 @@ sqlite<span class="token operator">></span></code></pre>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">open</span> ~/Library/Developer/CoreSimulator/Devices/<span class="token punctuation">(</span>シミュレーターのUUID<span class="token punctuation">)</span>/data/Library/Keychains/keychain-2-debug.db</code></pre>
 <p><a class="fancybox" rel="gallery0"><img src="../../../images/simulator-keychain.png" style="max-width: 100%"></a></p>
 <h3 id="情報の削除"><a href="#情報の削除" class="headerlink" title="情報の削除"></a>情報の削除</h3><p>キーチェーン情報はテーブル<code>genp</code>に保存されて、カラム<code>agrp</code>に書き込んだアプリのバンドルIDがあるのでそこを参考に削除可能</p>
-<pre class="language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">DELETE</span> <span class="token keyword">FROM</span> genp <span class="token keyword">WHERE</span> agrp <span class="token operator">=</span> <span class="token string">'TEAMID.com.your.app.bundle.id'</span><span class="token punctuation">;</span></code></pre>
+<pre class="language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> rowid<span class="token punctuation">,</span> agrp <span class="token keyword">FROM</span> genp<span class="token punctuation">;</span></code></pre>
+<pre class="language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">DELETE</span> <span class="token keyword">FROM</span> genp <span class="token keyword">WHERE</span> agrp <span class="token operator">=</span> <span class="token string">'TEAMID.com.your.app.bundle.id'</span><span class="token punctuation">;</span>
+または
+<span class="token keyword">DELETE</span> <span class="token keyword">FROM</span> genp <span class="token keyword">WHERE</span> agrp <span class="token operator">like</span> <span class="token string">'%xxxxx%'</span><span class="token punctuation">;</span></code></pre>
 <p><a class="fancybox" rel="gallery0"><img src="../../../images/simulator-keychain2.png" style="max-width: 100%"></a></p>
 <p>参考：<a target="_blank" rel="noopener" href="https://stackoverflow.com/a/42564772">https://stackoverflow.com/a/42564772</a></p>
 </section>
