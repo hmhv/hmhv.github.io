@@ -40,7 +40,7 @@ drwxrwxrwx  17 u1  staff   544B Apr  8 08:12 Analytics
 - sqlite3で開く
 
 ``` bash
-sqlite3 ~/Library/Developer/CoreSimulator/Devices/(シミュレーターのUUID)/data/Library/Keychains.keychain-2-debug.db
+sqlite3 ~/Library/Developer/CoreSimulator/Devices/(シミュレーターのUUID)/data/Library/Keychains/keychain-2-debug.db
 SQLite version 3.37.0 2021-12-09 01:34:53
 Enter ".help" for usage hints.
 sqlite>
@@ -61,7 +61,13 @@ open ~/Library/Developer/CoreSimulator/Devices/(シミュレーターのUUID)/da
 キーチェーン情報はテーブル`genp`に保存されて、カラム`agrp`に書き込んだアプリのバンドルIDがあるのでそこを参考に削除可能
 
 ```sql
+SELECT rowid, agrp FROM genp;
+```
+
+```sql
 DELETE FROM genp WHERE agrp = 'TEAMID.com.your.app.bundle.id';
+または
+DELETE FROM genp WHERE agrp like '%xxxxx%';
 ```
 
 <a class="fancybox" rel="gallery0"><img src="../../../images/simulator-keychain2.png" style="max-width: 100%"></a>
