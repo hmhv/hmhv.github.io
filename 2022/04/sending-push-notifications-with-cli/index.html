@@ -10,7 +10,7 @@
   
   <title>
     
-      hmhv
+      コマンドラインでiPhoneにプッシュ通知を送る方法 | hmhv
     
   </title>
   <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -131,7 +131,7 @@
 </header>
 
     <div id="article-banner">
-  <h2></h2>
+  <h2>コマンドラインでiPhoneにプッシュ通知を送る方法</h2>
   <p class="post-date">2022-04-26</p>
   <div class="arrow-down">
     <a href="javascript:;"></a>
@@ -140,20 +140,61 @@
 <main class="app-body flex-box">
   <!-- Article START -->
   <article class="post-article">
-    <section class="markdown-content"><div class="panel panel-primary ">
-  <div class="panel-heading">
-    <h3 class="panel-title">Ooops!</h3>
-  </div>
-  <div class="panel-body">
-    404 File Not Found
-  </div>
-</div>
+    <section class="markdown-content"><h3 id="1-ファイルをダウンロード"><a href="#1-ファイルをダウンロード" class="headerlink" title="1. ファイルをダウンロード"></a>1. ファイルをダウンロード</h3><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">curl</span> -o sender.sh https://gist.githubusercontent.com/hmhv/7ab39297bdb5efe8b63cd024d893f6bd/raw/29328be9e54a3c1fe36f97369bb1f5d13db286d4/sender.sh
+<span class="token function">chmod</span> <span class="token number">755</span> ./sender.sh
+<span class="token function">curl</span> -o params.sh https://gist.githubusercontent.com/hmhv/dd37cd462a63fa34b588d0eea1eb698d/raw/3db9e1616daa29a13e8afd13e0a14079cba2e781/params.sh
+<span class="token function">chmod</span> <span class="token number">755</span> ./params.sh</code></pre>
+<h3 id="2-以下のページを参考にparams-shの各パラメータを編集"><a href="#2-以下のページを参考にparams-shの各パラメータを編集" class="headerlink" title="2. 以下のページを参考にparams.shの各パラメータを編集"></a>2. 以下のページを参考に<code>params.sh</code>の各パラメータを編集</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/generating_a_remote_notification/">Generating a Remote Notification</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns/">Sending Notification Requests to APNs</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.apple.com/documentation/usernotifications/sending_push_notifications_using_command-line_tools/">Sending Push Notifications Using Command-Line Tools</a></li>
+</ul>
+<h3 id="3-sender-shを実行"><a href="#3-sender-shを実行" class="headerlink" title="3. sender.shを実行"></a>3. <code>sender.sh</code>を実行</h3><pre class="language-bash" data-language="bash"><code class="language-bash">./sender.sh ./params.sh</code></pre>
+<h3 id="4-sender-shの内容"><a href="#4-sender-shの内容" class="headerlink" title="4. sender.shの内容"></a>4. <code>sender.sh</code>の内容</h3><script src="https://gist.github.com/hmhv/7ab39297bdb5efe8b63cd024d893f6bd.js"></script>
+
+<h3 id="4-params-shの内容"><a href="#4-params-shの内容" class="headerlink" title="4. params.shの内容"></a>4. <code>params.sh</code>の内容</h3><script src="https://gist.github.com/hmhv/dd37cd462a63fa34b588d0eea1eb698d.js"></script>
+
+
 </section>
     <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#iOS" >
+    <span class="tag-code">iOS</span>
+  </a>
+
+  <a href="/tags#Push" >
+    <span class="tag-code">Push</span>
+  </a>
+
+  <a href="/tags#Notification" >
+    <span class="tag-code">Notification</span>
+  </a>
+
+  <a href="/tags#CLI" >
+    <span class="tag-code">CLI</span>
+  </a>
+
+      </div>
     
     <!-- Tags END -->
     <!-- NAV START -->
     
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2022/04/check-ios-simulator-keychain/">
+        <span class="nav-arrow">← </span>
+        
+          iOSシミュレーターのキーチェーン情報削除
+        
+      </a>
+    
+    
+  </div>
+
     <!-- NAV END -->
     <!-- 打赏 START -->
     
@@ -174,7 +215,7 @@
   <div class="toc-main">
     <strong class="toc-title">Catalog</strong>
     
-      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-text">Ooops!</span></a></li></ol>
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89"><span class="toc-nav-text">1. ファイルをダウンロード</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-%E4%BB%A5%E4%B8%8B%E3%81%AE%E3%83%9A%E3%83%BC%E3%82%B8%E3%82%92%E5%8F%82%E8%80%83%E3%81%ABparams-sh%E3%81%AE%E5%90%84%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF%E3%82%92%E7%B7%A8%E9%9B%86"><span class="toc-nav-text">2. 以下のページを参考にparams.shの各パラメータを編集</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-sender-sh%E3%82%92%E5%AE%9F%E8%A1%8C"><span class="toc-nav-text">3. sender.shを実行</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-sender-sh%E3%81%AE%E5%86%85%E5%AE%B9"><span class="toc-nav-text">4. sender.shの内容</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-params-sh%E3%81%AE%E5%86%85%E5%AE%B9"><span class="toc-nav-text">4. params.shの内容</span></a></li></ol>
     
   </div>
 </aside>
@@ -184,7 +225,7 @@
 
 <script>
   (function () {
-    var url = 'https://hmhv.info/404.html';
+    var url = 'https://hmhv.info/2022/04/sending-push-notifications-with-cli/';
     var banner = 'undefined'
     if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
       $('#article-banner').css({
@@ -240,7 +281,7 @@
   <script>
     var disqus_shortname = 'hmhv';
     
-    var disqus_url = 'https://hmhv.info/404.html';
+    var disqus_url = 'https://hmhv.info/2022/04/sending-push-notifications-with-cli/';
     
     (function(){
       var dsq = document.createElement('script');
