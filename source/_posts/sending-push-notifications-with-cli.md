@@ -33,7 +33,7 @@ chmod 755 ./params.sh
 
 <script src="https://gist.github.com/hmhv/7ab39297bdb5efe8b63cd024d893f6bd.js"></script>
 
-### 4. `params.sh`の内容
+### 5. `params.sh`の内容
 
 <script src="https://gist.github.com/hmhv/dd37cd462a63fa34b588d0eea1eb698d.js"></script>
 
