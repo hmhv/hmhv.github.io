@@ -9,7 +9,7 @@ tags:
   - Task
 date: 2022-06-05 11:44:48
 ---
-SwiftUIのViewのメソッドの[`.task()`](<https://developer.apple.com/documentation/swiftui/view/task(priority:_:)>)の中の処理はViewが表示されると非同期で実行されて、もしViewが非表示になるまでTaskが実行中ならそのTaskを自動でcancelされる。
+SwiftUIのViewのメソッドの[`.task()`](<https://developer.apple.com/documentation/swiftui/view/task(priority:_:\)>)の中の処理はViewが表示されると非同期で実行されて、もしViewが非表示になるまでTaskが実行中ならそのTaskを自動でcancelされる。
 もし自動でcancelされないようにしたい場合は`.onAppear()`の中で`Task`を直接に生成する。
 
 サンプルコードのログをみるとTaskViewを表示してRequestが完了する前にビューを非表示にすると`.task()`からの`Task`はcancelされるが`.onAppear()`からの`Task`はcancelされないことがわかる。
