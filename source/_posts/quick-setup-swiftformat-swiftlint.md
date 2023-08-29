@@ -1,4 +1,4 @@
-title: SwiftFormatとSwiftLintを最短で設定する方法
+title: 新規プロジェクトでSwiftFormatとSwiftLintを最短で設定する方法
 category:
   - Tech
 tags:
@@ -8,7 +8,8 @@ tags:
   - Xcode
 date: 2023-08-29 11:18:58
 ---
-[SwiftFormat](https://github.com/nicklockwood/SwiftFormat)と[SwiftLint](https://github.com/realm/SwiftLint)をシュッと設定
+- [SwiftFormat](https://github.com/nicklockwood/SwiftFormat)
+- [SwiftLint](https://github.com/realm/SwiftLint)
 
 `Build Phases`で`New Run Script Phase`を追加して以下のコードをコピーしてビルドするだけ
 
@@ -46,7 +47,7 @@ else
 fi
 ```
 
-- 権限エラー発生時は`Build Settings`で`ENABLE_USER_SCRIPT_SANDBOXING`をNO
+もし権限エラー発生時は`Build Settings`で`ENABLE_USER_SCRIPT_SANDBOXING`を`NO`に設定
 
 > `touch: .swiftformat: Operation not permitted`
 
