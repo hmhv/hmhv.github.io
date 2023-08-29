@@ -46,6 +46,7 @@ $ brew install ffmpeg --with-fdk-aac --with-ffplay --with-freetype --with-frei0r
 |iPhone6|　　|AppPreview.mp4|
 |iPhone6+|　　|AppPreviewBig.mp4|
 
+<img width="241" alt="スクリーンショット 2023-08-30 7 57 56" src="https://github.com/hmhv/hmhv.github.io/assets/10627645/cab905c5-3494-497a-9322-80078fa8713f">
 
 [参考：App Preview](https://developer.apple.com/library/ios/documentation/LanguagesUtilities/Conceptual/iTunesConnect_Guide/Appendices/Properties.html#//apple_ref/doc/uid/TP40011225-CH26-SW10
 )
