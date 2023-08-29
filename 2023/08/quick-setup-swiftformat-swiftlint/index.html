@@ -10,7 +10,7 @@
   
   <title>
     
-      SwiftFormatとSwiftLintを最短で設定する方法 | hmhv
+      新規プロジェクトでSwiftFormatとSwiftLintを最短で設定する方法 | hmhv
     
   </title>
   <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -131,7 +131,7 @@
 </header>
 
     <div id="article-banner">
-  <h2>SwiftFormatとSwiftLintを最短で設定する方法</h2>
+  <h2>新規プロジェクトでSwiftFormatとSwiftLintを最短で設定する方法</h2>
   <p class="post-date">2023-08-29</p>
   <div class="arrow-down">
     <a href="javascript:;"></a>
@@ -140,7 +140,10 @@
 <main class="app-body flex-box">
   <!-- Article START -->
   <article class="post-article">
-    <section class="markdown-content"><p><a target="_blank" rel="noopener" href="https://github.com/nicklockwood/SwiftFormat">SwiftFormat</a>と<a target="_blank" rel="noopener" href="https://github.com/realm/SwiftLint">SwiftLint</a>をシュッと設定</p>
+    <section class="markdown-content"><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/nicklockwood/SwiftFormat">SwiftFormat</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/realm/SwiftLint">SwiftLint</a></li>
+</ul>
 <p><code>Build Phases</code>で<code>New Run Script Phase</code>を追加して以下のコードをコピーしてビルドするだけ</p>
 <pre class="language-sh" data-language="sh"><code class="language-sh">if [ ! -e .swiftformat ]; then
     touch .swiftformat
@@ -173,9 +176,7 @@ if [ &quot;$&#123;CONFIGURATION&#125;&quot; &#x3D; &quot;Debug&quot; ] &amp;&amp
 else 
     echo &quot;swiftlint in skipped&quot;
 fi</code></pre>
-<ul>
-<li>権限エラー発生時は<code>Build Settings</code>で<code>ENABLE_USER_SCRIPT_SANDBOXING</code>をNO</li>
-</ul>
+<p>もし権限エラー発生時は<code>Build Settings</code>で<code>ENABLE_USER_SCRIPT_SANDBOXING</code>を<code>NO</code>に設定</p>
 <blockquote>
 <p><code>touch: .swiftformat: Operation not permitted</code></p>
 </blockquote>
