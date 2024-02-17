@@ -150,13 +150,14 @@
 fi
 
 if [ &quot;$&#123;CONFIGURATION&#125;&quot; &#x3D; &quot;Debug&quot; ] &amp;&amp; [ &quot;$&#123;ENABLE_PREVIEWS&#125;&quot; &#x3D; &quot;NO&quot; ]; then
-    if [ ! -e swiftformat ]; then
-        curl -OL https:&#x2F;&#x2F;github.com&#x2F;nicklockwood&#x2F;SwiftFormat&#x2F;releases&#x2F;download&#x2F;0.52.2&#x2F;swiftformat.zip
+    if [ ! -e swiftformat.0.53.1 ]; then
+        curl -OL https:&#x2F;&#x2F;github.com&#x2F;nicklockwood&#x2F;SwiftFormat&#x2F;releases&#x2F;download&#x2F;0.53.1&#x2F;swiftformat.zip
         unzip swiftformat.zip
+        mv swiftformat swiftformat.0.53.1
         rm swiftformat.zip
     fi
 
-    .&#x2F;swiftformat --cache ignore --swiftversion 5.8 .
+    .&#x2F;swiftformat.0.53.1 --cache ignore --swiftversion 5.9 .
 else 
     echo &quot;swiftformat in skipped&quot;
 fi
@@ -166,13 +167,14 @@ if [ ! -e .swiftlint.yml ]; then
 fi
 
 if [ &quot;$&#123;CONFIGURATION&#125;&quot; &#x3D; &quot;Debug&quot; ] &amp;&amp; [ &quot;$&#123;ENABLE_PREVIEWS&#125;&quot; &#x3D; &quot;NO&quot; ]; then
-    if [ ! -e swiftlint ]; then
-        curl -OL https:&#x2F;&#x2F;github.com&#x2F;realm&#x2F;SwiftLint&#x2F;releases&#x2F;download&#x2F;0.52.4&#x2F;portable_swiftlint.zip
+    if [ ! -e swiftlint.0.54.0 ]; then
+        curl -OL https:&#x2F;&#x2F;github.com&#x2F;realm&#x2F;SwiftLint&#x2F;releases&#x2F;download&#x2F;0.54.0&#x2F;portable_swiftlint.zip
         unzip portable_swiftlint.zip swiftlint
+        mv swiftlint swiftlint.0.54.0
         rm portable_swiftlint.zip
     fi
 
-    .&#x2F;swiftlint --no-cache
+    .&#x2F;swiftlint.0.54.0 --no-cache
 else 
     echo &quot;swiftlint in skipped&quot;
 fi</code></pre>
