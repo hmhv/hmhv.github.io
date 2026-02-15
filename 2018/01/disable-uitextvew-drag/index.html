@@ -141,19 +141,19 @@
   <!-- Article START -->
   <article class="post-article">
     <section class="markdown-content"><p>UITextViewのUITextDragDelegateのメッソド[textDraggableView: textDraggableView: itemsForDrag:dragRequest]で空配列を返す<br>iOS10以下も対応中なら<code>@available(iOS 11.0, *)</code>, <code>NS_AVAILABLE_IOS(11.0)</code> も追加</p>
-<pre class="language-objc" data-language="objc"><code class="language-objc">- (void)viewDidLoad
-&#123;
-    [super viewDidLoad];
-    self.textView &#x3D; [[UITextView alloc] initWithFrame:CGRectZero];
-    if (@available(iOS 11.0, *)) &#123;
-        self.textView.textDragDelegate &#x3D; self;
-    &#125;
-&#125;
+<pre class="language-objectivec" data-language="objectivec"><code class="language-objectivec"><span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>viewDidLoad
+<span class="token punctuation">&#123;</span>
+    <span class="token punctuation">[</span><span class="token keyword">super</span> viewDidLoad<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">self</span><span class="token punctuation">.</span>textView <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>UITextView alloc<span class="token punctuation">]</span> initWithFrame<span class="token punctuation">:</span>CGRectZero<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">@</span><span class="token function">available</span><span class="token punctuation">(</span>iOS <span class="token number">11.0</span><span class="token punctuation">,</span> <span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">self</span><span class="token punctuation">.</span>textView<span class="token punctuation">.</span>textDragDelegate <span class="token operator">=</span> <span class="token keyword">self</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
 
-- (NSArray&lt;UIDragItem *&gt; *)textDraggableView:(UIView&lt;UITextDraggable&gt; *)textDraggableView itemsForDrag:(id&lt;UITextDragRequest&gt;)dragRequest NS_AVAILABLE_IOS(11.0)
-&#123;
-    return @[];
-&#125;</code></pre>
+<span class="token operator">-</span> <span class="token punctuation">(</span>NSArray<span class="token operator">&lt;</span>UIDragItem <span class="token operator">*</span><span class="token operator">></span> <span class="token operator">*</span><span class="token punctuation">)</span>textDraggableView<span class="token punctuation">:</span><span class="token punctuation">(</span>UIView<span class="token operator">&lt;</span>UITextDraggable<span class="token operator">></span> <span class="token operator">*</span><span class="token punctuation">)</span>textDraggableView itemsForDrag<span class="token punctuation">:</span><span class="token punctuation">(</span>id<span class="token operator">&lt;</span>UITextDragRequest<span class="token operator">></span><span class="token punctuation">)</span>dragRequest <span class="token function">NS_AVAILABLE_IOS</span><span class="token punctuation">(</span><span class="token number">11.0</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token operator">@</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span></code></pre>
 <p><a target="_blank" rel="noopener" href="https://developer.apple.com/documentation/uikit/uitextdragdelegate/2890908-textdraggableview">https://developer.apple.com/documentation/uikit/uitextdragdelegate/2890908-textdraggableview</a></p>
 </section>
     <!-- Tags START -->

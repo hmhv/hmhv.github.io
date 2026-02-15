@@ -141,8 +141,8 @@
   <!-- Article START -->
   <article class="post-article">
     <section class="markdown-content"><p>AVPlayer の<code>automaticallyWaitsToMinimizeStalling</code>を<code>NO</code>にしても通信環境などによっては<br>遅延が発生して再生される。そのときは直接<code>seekToTime</code>で最新にする</p>
-<pre class="language-objc" data-language="objc"><code class="language-objc">double time &#x3D; MAXFLOAT;
-[player seekToTime: CMTimeMakeWithSeconds(time, NSEC_PER_SEC)];</code></pre>
+<pre class="language-objectivec" data-language="objectivec"><code class="language-objectivec"><span class="token keyword">double</span> time <span class="token operator">=</span> MAXFLOAT<span class="token punctuation">;</span>
+<span class="token punctuation">[</span>player seekToTime<span class="token punctuation">:</span> <span class="token function">CMTimeMakeWithSeconds</span><span class="token punctuation">(</span>time<span class="token punctuation">,</span> NSEC_PER_SEC<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span></code></pre>
 <p><a target="_blank" rel="noopener" href="https://developer.apple.com/documentation/avfoundation/avplayer/1643482-automaticallywaitstominimizestal">https://developer.apple.com/documentation/avfoundation/avplayer/1643482-automaticallywaitstominimizestal</a><br><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/13145048/hls-avplayer-on-ios-return-to-live">https://stackoverflow.com/questions/13145048/hls-avplayer-on-ios-return-to-live</a></p>
 </section>
     <!-- Tags START -->

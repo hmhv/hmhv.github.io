@@ -152,47 +152,47 @@
 <h4 id="주의점"><a href="#주의점" class="headerlink" title="주의점"></a>주의점</h4><ul>
 <li>서브클래스에서<code>+ (void)initialize</code>를 구현하지 않으면 슈퍼클래스트의 <code>+ (void)initialize</code>가 호출되므로 복수회 호출된다는 전제로 구현</li>
 </ul>
-<pre class="language-objc" data-language="objc"><code class="language-objc">@interface Parent : NSObject
-@end
-@implementation Parent
-&#x2F;&#x2F; 이 initialize는 Parent클래스와 Child클래스가 최초로 이용될때
-&#x2F;&#x2F; 회출되므로 2번 호출이 됨
-&#x2F;&#x2F; 그러므로 클래스체크나 dispatch_once등을 이용하여 초기화할 필요가 있슴
-+ (void)initialize
-&#123;
-    if (self &#x3D;&#x3D; [Parent self]) &#123;
-        NSLog(@&quot;initialize %@&quot;, [self class]);
-    &#125;
+<pre class="language-objectivec" data-language="objectivec"><code class="language-objectivec"><span class="token keyword">@interface</span> Parent <span class="token punctuation">:</span> NSObject
+<span class="token keyword">@end</span>
+<span class="token keyword">@implementation</span> Parent
+<span class="token comment">// 이 initialize는 Parent클래스와 Child클래스가 최초로 이용될때</span>
+<span class="token comment">// 회출되므로 2번 호출이 됨</span>
+<span class="token comment">// 그러므로 클래스체크나 dispatch_once등을 이용하여 초기화할 필요가 있슴</span>
+<span class="token operator">+</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>initialize
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">self</span> <span class="token operator">==</span> <span class="token punctuation">[</span>Parent <span class="token keyword">self</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"initialize %@"</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token keyword">self</span> class<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
     
-&#x2F;&#x2F;    dispatch_once를 이용
-&#x2F;&#x2F;    static dispatch_once_t onceToken;
-&#x2F;&#x2F;    dispatch_once(&amp;onceToken, ^&#123;
-&#x2F;&#x2F;        NSLog(@&quot;initialize %@&quot;, [self class]);
-&#x2F;&#x2F;    &#125;);
-&#125;
-@end
+<span class="token comment">//    dispatch_once를 이용</span>
+<span class="token comment">//    static dispatch_once_t onceToken;</span>
+<span class="token comment">//    dispatch_once(&amp;onceToken, ^&#123;</span>
+<span class="token comment">//        NSLog(@"initialize %@", [self class]);</span>
+<span class="token comment">//    &#125;);</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">@end</span>
  
-@interface Child : Parent
-@end
-@implementation Child
-@end</code></pre>
+<span class="token keyword">@interface</span> Child <span class="token punctuation">:</span> Parent
+<span class="token keyword">@end</span>
+<span class="token keyword">@implementation</span> Child
+<span class="token keyword">@end</span></code></pre>
 <ul>
 <li><code>+ (void)initialize</code>는 각 클래서에서 1번만 호출되므로 클래스 본체에서만 구현하고 카테고리에서는 구현하지 않음</li>
 </ul>
-<pre class="language-objc" data-language="objc"><code class="language-objc">@implementation Parent
-+ (void)initialize
-&#123;
-    NSLog(@&quot;initialize %@&quot;, [self class]);
-&#125;
-@end
+<pre class="language-objectivec" data-language="objectivec"><code class="language-objectivec"><span class="token keyword">@implementation</span> Parent
+<span class="token operator">+</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>initialize
+<span class="token punctuation">&#123;</span>
+    <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"initialize %@"</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token keyword">self</span> class<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">@end</span>
   
-@implementation Parent (category)
-&#x2F;&#x2F; NG !!
-+ (void)initialize
-&#123;
-    NSLog(@&quot;initialize %@&quot;, [self class]);
-&#125;
-@end</code></pre>
+<span class="token keyword">@implementation</span> <span class="token function">Parent</span> <span class="token punctuation">(</span>category<span class="token punctuation">)</span>
+<span class="token comment">// NG !!</span>
+<span class="token operator">+</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>initialize
+<span class="token punctuation">&#123;</span>
+    <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"initialize %@"</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token keyword">self</span> class<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">@end</span></code></pre>
 <ul>
 <li>클래스가 프로그램내에서 이용되지 않으면 호출되지 않음</li>
 </ul>
@@ -202,75 +202,75 @@
 <h4 id="주의점-1"><a href="#주의점-1" class="headerlink" title="주의점"></a>주의점</h4><ul>
 <li>다른 클래스는 아직 로드되지 않았을 가능성이 있으므로 다른 클래스는 이용하지 않음</li>
 </ul>
-<pre class="language-objc" data-language="objc"><code class="language-objc">@implementation Parent
-+ (void)load
-&#123;
-    &#x2F;&#x2F; NG !!
-    OtherClass *otherClass &#x3D; [OtherClass new];
-&#125;
-@end</code></pre>
+<pre class="language-objectivec" data-language="objectivec"><code class="language-objectivec"><span class="token keyword">@implementation</span> Parent
+<span class="token operator">+</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>load
+<span class="token punctuation">&#123;</span>
+    <span class="token comment">// NG !!</span>
+    OtherClass <span class="token operator">*</span>otherClass <span class="token operator">=</span> <span class="token punctuation">[</span>OtherClass new<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">@end</span></code></pre>
 <ul>
 <li>클래스 본체와 카테고리에서 복수 구현하면 모두 호출됨</li>
 </ul>
-<pre class="language-objc" data-language="objc"><code class="language-objc">@implementation Parent
-+ (void)load
-&#123;
-    NSLog(@&quot;load&quot;);
-&#125;
-@end
+<pre class="language-objectivec" data-language="objectivec"><code class="language-objectivec"><span class="token keyword">@implementation</span> Parent
+<span class="token operator">+</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>load
+<span class="token punctuation">&#123;</span>
+    <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"load"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">@end</span>
  
-@implementation Parent (category)
-+ (void)load
-&#123;
-    NSLog(@&quot;load by category&quot;);
-&#125;
-@end
+<span class="token keyword">@implementation</span> <span class="token function">Parent</span> <span class="token punctuation">(</span>category<span class="token punctuation">)</span>
+<span class="token operator">+</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>load
+<span class="token punctuation">&#123;</span>
+    <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"load by category"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">@end</span>
  
-@implementation Parent (category2)
-+ (void)load
-&#123;
-    NSLog(@&quot;load by category2&quot;);
-&#125;
-@end</code></pre>
+<span class="token keyword">@implementation</span> <span class="token function">Parent</span> <span class="token punctuation">(</span>category2<span class="token punctuation">)</span>
+<span class="token operator">+</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>load
+<span class="token punctuation">&#123;</span>
+    <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"load by category2"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">@end</span></code></pre>
 <h3 id="3-attribute-constructor-를-이용"><a href="#3-attribute-constructor-를-이용" class="headerlink" title="3. __attribute__((constructor))를 이용"></a>3. <code>__attribute__((constructor))</code>를 이용</h3><h4 id="호출-시점-2"><a href="#호출-시점-2" class="headerlink" title="호출 시점"></a>호출 시점</h4><ul>
 <li>main함수가 호출되기 직전, 모든 클래스가 로드된 후</li>
 </ul>
-<pre class="language-objc" data-language="objc"><code class="language-objc">@interface Parent : NSObject
-@end
+<pre class="language-objectivec" data-language="objectivec"><code class="language-objectivec"><span class="token keyword">@interface</span> Parent <span class="token punctuation">:</span> NSObject
+<span class="token keyword">@end</span>
  
-__attribute__((constructor))
-static void initialize_class()
-&#123;
-    NSLog(@&quot;initialize_class&quot;);
-&#125;
+<span class="token function">__attribute__</span><span class="token punctuation">(</span><span class="token punctuation">(</span>constructor<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">initialize_class</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"initialize_class"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
  
-@implementation Parent
-+ (void)initialize
-&#123;
-    if (self &#x3D;&#x3D; [Parent self]) &#123;
-        NSLog(@&quot;initialize %@&quot;, [self class]);
-    &#125;
-&#125;
+<span class="token keyword">@implementation</span> Parent
+<span class="token operator">+</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>initialize
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">self</span> <span class="token operator">==</span> <span class="token punctuation">[</span>Parent <span class="token keyword">self</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"initialize %@"</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token keyword">self</span> class<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
  
-+ (void)load
-&#123;
-    NSLog(@&quot;load&quot;);
-&#125;
-@end
+<span class="token operator">+</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>load
+<span class="token punctuation">&#123;</span>
+    <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"load"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">@end</span>
  
-int main(int argc, char * argv[]) &#123;
-    @autoreleasepool &#123;
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span> argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token operator">@</span>autoreleasepool <span class="token punctuation">&#123;</span>
         
-        Parent *p &#x3D; [Parent new];
-        NSLog(@&quot;%@&quot;, p);
-    &#125;
-&#125;
+        Parent <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token punctuation">[</span>Parent new<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"%@"</span><span class="token punctuation">,</span> p<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
  
-&#x2F;&#x2F; 로그는 아래와 같이 표시됨
-&#x2F;&#x2F; load
-&#x2F;&#x2F; initialize_class
-&#x2F;&#x2F; initialize Parent
-&#x2F;&#x2F; &lt;Parent: 0xXXXXXXXXXXX&gt;</code></pre>
+<span class="token comment">// 로그는 아래와 같이 표시됨</span>
+<span class="token comment">// load</span>
+<span class="token comment">// initialize_class</span>
+<span class="token comment">// initialize Parent</span>
+<span class="token comment">// &lt;Parent: 0xXXXXXXXXXXX></span></code></pre>
 <h4 id="주의점-2"><a href="#주의점-2" class="headerlink" title="주의점"></a>주의점</h4><ul>
 <li><p>이것은 정확히 말하면Objective-C의 기능이 아니고 GCC가 제공하는 함수속성 기능임</p>
 <p><a target="_blank" rel="noopener" href="https://gcc.gnu.org/onlinedocs/gcc/Function-Attributes.html">GCC - Declaring Attributes of Functions</a></p>
@@ -279,28 +279,28 @@ int main(int argc, char * argv[]) &#123;
 <ul>
 <li>복수의 <code>__attribute__((constructor))</code>는 우선도를 지정하여 호출순서를 지정가능</li>
 </ul>
-<pre class="language-objc" data-language="objc"><code class="language-objc">__attribute__((constructor(2)))
-static void initialize_class2()
-&#123;
-    NSLog(@&quot;initialize_class 2&quot;);
-&#125;
+<pre class="language-objectivec" data-language="objectivec"><code class="language-objectivec"><span class="token function">__attribute__</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token function">constructor</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">initialize_class2</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"initialize_class 2"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
  
-__attribute__((constructor(3)))
-static void initialize_class3()
-&#123;
-    NSLog(@&quot;initialize_class 3&quot;);
-&#125;
+<span class="token function">__attribute__</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token function">constructor</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">initialize_class3</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"initialize_class 3"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
  
-__attribute__((constructor(1)))
-static void initialize_class1()
-&#123;
-    NSLog(@&quot;initialize_class 1&quot;);
-&#125;
+<span class="token function">__attribute__</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token function">constructor</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">initialize_class1</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token function">NSLog</span><span class="token punctuation">(</span><span class="token string">@"initialize_class 1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
  
-&#x2F;&#x2F; 로그는 아래와 같이 표시됨
-&#x2F;&#x2F; initialize_class 1
-&#x2F;&#x2F; initialize_class 2
-&#x2F;&#x2F; initialize_class 3</code></pre>
+<span class="token comment">// 로그는 아래와 같이 표시됨</span>
+<span class="token comment">// initialize_class 1</span>
+<span class="token comment">// initialize_class 2</span>
+<span class="token comment">// initialize_class 3</span></code></pre>
 </section>
     <!-- Tags START -->
     

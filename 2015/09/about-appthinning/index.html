@@ -179,36 +179,36 @@
 <li>作成したタグにリソースファイルの関連付け<br><a title="folder" class="fancybox" rel="gallery0"><img src="https://developer.apple.com/library/prerelease/ios/documentation/FileManagement/Conceptual/On_Demand_Resources_Guide/Art/ODR_asset_tag_completion_2x.png" style="max-width: 100%"  alt="folder"></a><br><a title="folder" class="fancybox" rel="gallery0"><img src="https://developer.apple.com/library/prerelease/ios/documentation/FileManagement/Conceptual/On_Demand_Resources_Guide/Art/ODR_asset_tag_completion_file_2x.png" style="max-width: 100%"  alt="folder"></a></li>
 <li>必要になったら<code>NSBundleResourceRequest</code>クラスでダウンロード</li>
 </ol>
-<pre class="language-objc" data-language="objc"><code class="language-objc">- (void)downloadOnDemendResource
-&#123;
-    __weak typeof(self) wself &#x3D; self;
+<pre class="language-objectivec" data-language="objectivec"><code class="language-objectivec"><span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>downloadOnDemendResource
+<span class="token punctuation">&#123;</span>
+    __weak <span class="token keyword">typeof</span><span class="token punctuation">(</span><span class="token keyword">self</span><span class="token punctuation">)</span> wself <span class="token operator">=</span> <span class="token keyword">self</span><span class="token punctuation">;</span>
 
-        &#x2F;&#x2F; ダウンロードするリソースのタグを指定
-    NSSet *tags &#x3D; [NSSet setWithObject:@&quot;Tag1&quot;];
-    self.resourceRequest &#x3D; [[NSBundleResourceRequest alloc] initWithTags:tags];
+        <span class="token comment">// ダウンロードするリソースのタグを指定</span>
+    NSSet <span class="token operator">*</span>tags <span class="token operator">=</span> <span class="token punctuation">[</span>NSSet setWithObject<span class="token punctuation">:</span><span class="token string">@"Tag1"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">self</span><span class="token punctuation">.</span>resourceRequest <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>NSBundleResourceRequest alloc<span class="token punctuation">]</span> initWithTags<span class="token punctuation">:</span>tags<span class="token punctuation">]</span><span class="token punctuation">;</span>
     
-    &#x2F;&#x2F;ダウンロード済みか確認
-    [self.resourceRequest conditionallyBeginAccessingResourcesWithCompletionHandler: ^(BOOL resourcesAvailable) &#123;
-        if (resourcesAvailable) &#123;
-            &#x2F;&#x2F;ダウンロード済みなら利用する
-            &#x2F;&#x2F;UIImage *image &#x3D; [UIImage imageNamed:@&quot;downloaded.png&quot;];
-            &#x2F;&#x2F;[wself useResource];
-        &#125;
-        else &#123;
-            &#x2F;&#x2F;未ダウンロードなら優先順を設定してダウンロード開始する
-            wself.resourceRequest.loadingPriority &#x3D; NSBundleResourceRequestLoadingPriorityUrgent;
-            [wself.resourceRequest beginAccessingResourcesWithCompletionHandler:^(NSError * error) &#123;
-                if (error) &#123;
-                    &#x2F;&#x2F;エラー処理
-                    return;
-                &#125;
-                &#x2F;&#x2F;ダウンロード完了なら利用する
-                &#x2F;&#x2F;UIImage *image &#x3D; [UIImage imageNamed:@&quot;downloaded.png&quot;];
-                &#x2F;&#x2F;[wself useResource];
-            &#125;];
-        &#125;
-    &#125;];
-&#125;</code></pre>
+    <span class="token comment">//ダウンロード済みか確認</span>
+    <span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>resourceRequest conditionallyBeginAccessingResourcesWithCompletionHandler<span class="token punctuation">:</span> <span class="token operator">^</span><span class="token punctuation">(</span>BOOL resourcesAvailable<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>resourcesAvailable<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token comment">//ダウンロード済みなら利用する</span>
+            <span class="token comment">//UIImage *image = [UIImage imageNamed:@"downloaded.png"];</span>
+            <span class="token comment">//[wself useResource];</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+            <span class="token comment">//未ダウンロードなら優先順を設定してダウンロード開始する</span>
+            wself<span class="token punctuation">.</span>resourceRequest<span class="token punctuation">.</span>loadingPriority <span class="token operator">=</span> NSBundleResourceRequestLoadingPriorityUrgent<span class="token punctuation">;</span>
+            <span class="token punctuation">[</span>wself<span class="token punctuation">.</span>resourceRequest beginAccessingResourcesWithCompletionHandler<span class="token punctuation">:</span><span class="token operator">^</span><span class="token punctuation">(</span>NSError <span class="token operator">*</span> error<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                    <span class="token comment">//エラー処理</span>
+                    <span class="token keyword">return</span><span class="token punctuation">;</span>
+                <span class="token punctuation">&#125;</span>
+                <span class="token comment">//ダウンロード完了なら利用する</span>
+                <span class="token comment">//UIImage *image = [UIImage imageNamed:@"downloaded.png"];</span>
+                <span class="token comment">//[wself useResource];</span>
+            <span class="token punctuation">&#125;</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span></code></pre>
 <p><a target="_blank" rel="noopener" href="https://developer.apple.com/library/prerelease/ios/documentation/FileManagement/Conceptual/On_Demand_Resources_Guide/index.html">参考：On-Demand Resources Essentials</a><br><a target="_blank" rel="noopener" href="https://developer.apple.com/library/prerelease/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AppThinning/AppThinning.html">参考：App Thinning (iOS, watchOS)</a></p>
 </section>
     <!-- Tags START -->

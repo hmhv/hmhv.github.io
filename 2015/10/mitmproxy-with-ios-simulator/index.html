@@ -149,7 +149,7 @@
 <h3 id="インストール"><a href="#インストール" class="headerlink" title="インストール"></a>インストール</h3><ul>
 <li>mitmproxyのインストール</li>
 </ul>
-<pre class="language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">curl</span> -O https://mitmproxy.org/download/osx-mitmproxy-0.13.tgz
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">curl</span> <span class="token parameter variable">-O</span> https://mitmproxy.org/download/osx-mitmproxy-0.13.tgz
 $ <span class="token function">tar</span> zxvf osx-mitmproxy-0.13.tgz 
 $ <span class="token function">mv</span> ./mitmdump /usr/local/bin/
 $ <span class="token function">mv</span> ./mitmproxy /usr/local/bin/
@@ -158,21 +158,21 @@ $ mitmproxy</code></pre>
 <ul>
 <li>httpsのために証明書をインストール</li>
 </ul>
-<pre class="language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">curl</span> -O https://raw.githubusercontent.com/ADVTOOLS/ADVTrustStore/master/iosCertTrustManager.py
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">curl</span> <span class="token parameter variable">-O</span> https://raw.githubusercontent.com/ADVTOOLS/ADVTrustStore/master/iosCertTrustManager.py
 $ <span class="token function">chmod</span> <span class="token number">744</span> ./iosCertTrustManager.py
-$ ./iosCertTrustManager.py -a ~/.mitmproxy/mitmproxy-ca-cert.pem
+$ ./iosCertTrustManager.py <span class="token parameter variable">-a</span> ~/.mitmproxy/mitmproxy-ca-cert.pem
 $ <span class="token function">rm</span> ./iosCertTrustManager.py </code></pre>
 <h3 id="利用"><a href="#利用" class="headerlink" title="利用"></a>利用</h3><ul>
 <li>スクリプト実行でWi-Fiネットワークのプロキシ設定をオンにしてmitmproxyを起動し、終了時にオフにする</li>
 </ul>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/bin/sh</span>
-<span class="token function">sudo</span> networksetup -setwebproxy Wi-Fi localhost <span class="token number">8080</span>
-<span class="token function">sudo</span> networksetup -setsecurewebproxy Wi-Fi localhost <span class="token number">8080</span>
-<span class="token function">sudo</span> networksetup -setwebproxystate Wi-Fi on
-<span class="token function">sudo</span> networksetup -setsecurewebproxystate Wi-Fi on
+<span class="token function">sudo</span> networksetup <span class="token parameter variable">-setwebproxy</span> Wi-Fi localhost <span class="token number">8080</span>
+<span class="token function">sudo</span> networksetup <span class="token parameter variable">-setsecurewebproxy</span> Wi-Fi localhost <span class="token number">8080</span>
+<span class="token function">sudo</span> networksetup <span class="token parameter variable">-setwebproxystate</span> Wi-Fi on
+<span class="token function">sudo</span> networksetup <span class="token parameter variable">-setsecurewebproxystate</span> Wi-Fi on
 mitmproxy
-<span class="token function">sudo</span> networksetup -setwebproxystate Wi-Fi off
-<span class="token function">sudo</span> networksetup -setsecurewebproxystate Wi-Fi off</code></pre>
+<span class="token function">sudo</span> networksetup <span class="token parameter variable">-setwebproxystate</span> Wi-Fi off
+<span class="token function">sudo</span> networksetup <span class="token parameter variable">-setsecurewebproxystate</span> Wi-Fi off</code></pre>
 </section>
     <!-- Tags START -->
     

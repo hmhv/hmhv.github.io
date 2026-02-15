@@ -141,49 +141,49 @@
   <!-- Article START -->
   <article class="post-article">
     <section class="markdown-content"><p>Crashlyticsは入れておくだけでクラッシュ時のコールスタックが表示されるので調査に便利<br>また追加情報も送信できる仕組みもある。</p>
-<h3 id="1-ユーザ情報を送る"><a href="#1-ユーザ情報を送る" class="headerlink" title="1. ユーザ情報を送る"></a>1. ユーザ情報を送る</h3><pre class="language-objc" data-language="objc"><code class="language-objc">#import &lt;Crashlytics&#x2F;Crashlytics.h&gt;
+<h3 id="1-ユーザ情報を送る"><a href="#1-ユーザ情報を送る" class="headerlink" title="1. ユーザ情報を送る"></a>1. ユーザ情報を送る</h3><pre class="language-objectivec" data-language="objectivec"><code class="language-objectivec"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">import</span> <span class="token expression"><span class="token operator">&lt;</span>Crashlytics<span class="token operator">/</span>Crashlytics<span class="token punctuation">.</span>h<span class="token operator">></span></span></span>
 
-- (void)testMethod2
-&#123;
-    [[Crashlytics sharedInstance] setUserEmail:@&quot;user@email.com&quot;];
-    [[Crashlytics sharedInstance] setUserIdentifier:@&quot;12344556789&quot;];
-    [[Crashlytics sharedInstance] setUserName:@&quot;test user&quot;];
+<span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>testMethod2
+<span class="token punctuation">&#123;</span>
+    <span class="token punctuation">[</span><span class="token punctuation">[</span>Crashlytics sharedInstance<span class="token punctuation">]</span> setUserEmail<span class="token punctuation">:</span><span class="token string">@"user@email.com"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span><span class="token punctuation">[</span>Crashlytics sharedInstance<span class="token punctuation">]</span> setUserIdentifier<span class="token punctuation">:</span><span class="token string">@"12344556789"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span><span class="token punctuation">[</span>Crashlytics sharedInstance<span class="token punctuation">]</span> setUserName<span class="token punctuation">:</span><span class="token string">@"test user"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
     
-    [[Crashlytics sharedInstance] crash];
-&#125;</code></pre>
+    <span class="token punctuation">[</span><span class="token punctuation">[</span>Crashlytics sharedInstance<span class="token punctuation">]</span> crash<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span></code></pre>
 <ul>
 <li>結果</li>
 </ul>
 <p><a class="fancybox" rel="gallery0"><img src="https://qiita-image-store.s3.amazonaws.com/0/25832/09ddd1bd-c0ab-aa93-2a8a-058bf6b42b44.png" style="max-width: 100%"></a></p>
-<h3 id="2-Key-Valueで送る"><a href="#2-Key-Valueで送る" class="headerlink" title="2. Key,Valueで送る"></a>2. Key,Valueで送る</h3><pre class="language-objc" data-language="objc"><code class="language-objc">- (void)testMethod2
-&#123;
-    [[Crashlytics sharedInstance] setBoolValue:YES forKey:@&quot;boolLog&quot;];
-    [[Crashlytics sharedInstance] setFloatValue:0.12345 forKey:@&quot;floatLog&quot;];
-    [[Crashlytics sharedInstance] setIntValue:3 forKey:@&quot;intLog&quot;];
-    [[Crashlytics sharedInstance] setObjectValue:@&quot;objectValue..test&quot; forKey:@&quot;objectLog&quot;];
+<h3 id="2-Key-Valueで送る"><a href="#2-Key-Valueで送る" class="headerlink" title="2. Key,Valueで送る"></a>2. Key,Valueで送る</h3><pre class="language-objectivec" data-language="objectivec"><code class="language-objectivec"><span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>testMethod2
+<span class="token punctuation">&#123;</span>
+    <span class="token punctuation">[</span><span class="token punctuation">[</span>Crashlytics sharedInstance<span class="token punctuation">]</span> setBoolValue<span class="token punctuation">:</span>YES forKey<span class="token punctuation">:</span><span class="token string">@"boolLog"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span><span class="token punctuation">[</span>Crashlytics sharedInstance<span class="token punctuation">]</span> setFloatValue<span class="token punctuation">:</span><span class="token number">0.12345</span> forKey<span class="token punctuation">:</span><span class="token string">@"floatLog"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span><span class="token punctuation">[</span>Crashlytics sharedInstance<span class="token punctuation">]</span> setIntValue<span class="token punctuation">:</span><span class="token number">3</span> forKey<span class="token punctuation">:</span><span class="token string">@"intLog"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span><span class="token punctuation">[</span>Crashlytics sharedInstance<span class="token punctuation">]</span> setObjectValue<span class="token punctuation">:</span><span class="token string">@"objectValue..test"</span> forKey<span class="token punctuation">:</span><span class="token string">@"objectLog"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
     
-    [[Crashlytics sharedInstance] crash];
-&#125;</code></pre>
+    <span class="token punctuation">[</span><span class="token punctuation">[</span>Crashlytics sharedInstance<span class="token punctuation">]</span> crash<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span></code></pre>
 <ul>
 <li>結果</li>
 </ul>
 <p><a class="fancybox" rel="gallery0"><img src="https://qiita-image-store.s3.amazonaws.com/0/25832/b71b2b63-7f7d-e11c-3e9e-b93398368ecd.png" style="max-width: 100%"></a></p>
-<h3 id="3-ログ情報を送る"><a href="#3-ログ情報を送る" class="headerlink" title="3. ログ情報を送る"></a>3. ログ情報を送る</h3><pre class="language-objc" data-language="objc"><code class="language-objc">- (void)testMethod2
-&#123;
-    CLS_LOG(@&quot;CLS_LOG for Dict %@&quot;, @&#123;@&quot;key1&quot;:@&quot;value1&quot;, @&quot;key2&quot;:@&quot;value2&quot;, @&quot;key3&quot;:@&quot;value3&quot;&#125;);
+<h3 id="3-ログ情報を送る"><a href="#3-ログ情報を送る" class="headerlink" title="3. ログ情報を送る"></a>3. ログ情報を送る</h3><pre class="language-objectivec" data-language="objectivec"><code class="language-objectivec"><span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>testMethod2
+<span class="token punctuation">&#123;</span>
+    <span class="token function">CLS_LOG</span><span class="token punctuation">(</span><span class="token string">@"CLS_LOG for Dict %@"</span><span class="token punctuation">,</span> <span class="token operator">@</span><span class="token punctuation">&#123;</span><span class="token string">@"key1"</span><span class="token punctuation">:</span><span class="token string">@"value1"</span><span class="token punctuation">,</span> <span class="token string">@"key2"</span><span class="token punctuation">:</span><span class="token string">@"value2"</span><span class="token punctuation">,</span> <span class="token string">@"key3"</span><span class="token punctuation">:</span><span class="token string">@"value3"</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     
-    [[Crashlytics sharedInstance] crash];
-&#125;</code></pre>
+    <span class="token punctuation">[</span><span class="token punctuation">[</span>Crashlytics sharedInstance<span class="token punctuation">]</span> crash<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span></code></pre>
 <ul>
 <li>結果</li>
 </ul>
 <p><a class="fancybox" rel="gallery0"><img src="https://qiita-image-store.s3.amazonaws.com/0/25832/1f18738b-f988-0f26-1f01-6810a39da456.png" style="max-width: 100%"></a></p>
-<h3 id="4-NSException以外のカスタム例外を送る"><a href="#4-NSException以外のカスタム例外を送る" class="headerlink" title="4. NSException以外のカスタム例外を送る"></a>4. NSException以外のカスタム例外を送る</h3><pre class="language-objc" data-language="objc"><code class="language-objc">- (void)testMethod2
-&#123;
-    [[Crashlytics sharedInstance] recordCustomExceptionName:@&quot;customEx...&quot; reason:@&quot;custom_reason..&quot; frameArray:@[[CLSStackFrame stackFrameWithAddress:1234567]]];
+<h3 id="4-NSException以外のカスタム例外を送る"><a href="#4-NSException以外のカスタム例外を送る" class="headerlink" title="4. NSException以外のカスタム例外を送る"></a>4. NSException以外のカスタム例外を送る</h3><pre class="language-objectivec" data-language="objectivec"><code class="language-objectivec"><span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>testMethod2
+<span class="token punctuation">&#123;</span>
+    <span class="token punctuation">[</span><span class="token punctuation">[</span>Crashlytics sharedInstance<span class="token punctuation">]</span> recordCustomExceptionName<span class="token punctuation">:</span><span class="token string">@"customEx..."</span> reason<span class="token punctuation">:</span><span class="token string">@"custom_reason.."</span> frameArray<span class="token punctuation">:</span><span class="token operator">@</span><span class="token punctuation">[</span><span class="token punctuation">[</span>CLSStackFrame stackFrameWithAddress<span class="token punctuation">:</span><span class="token number">1234567</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
     
-    [[Crashlytics sharedInstance] crash];
-&#125;</code></pre>
+    <span class="token punctuation">[</span><span class="token punctuation">[</span>Crashlytics sharedInstance<span class="token punctuation">]</span> crash<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span></code></pre>
 <ul>
 <li>結果</li>
 </ul>

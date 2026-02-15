@@ -149,7 +149,7 @@
 または
 $ ruby-install ruby <span class="token number">2.7</span></code></pre>
 <p>ちなみにアンインストールはフォルダーの削除で行う。</p>
-<pre class="language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">rm</span> -rf ~/.rubies/ruby-2.7.6</code></pre>
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">rm</span> <span class="token parameter variable">-rf</span> ~/.rubies/ruby-2.7.6</code></pre>
 <h1 id="chrubyの設定"><a href="#chrubyの設定" class="headerlink" title="chrubyの設定"></a>chrubyの設定</h1><p>chrubyはインストール後利用する前に設定が必要なので<code>brew info chruby</code>の結果を確認して自分のシェル設定ファイルに<code>chruby.sh</code>と<code>auto.sh</code>追加しておく</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">$ brew info chruby
 chruby: stable <span class="token number">0.3</span>.9 <span class="token punctuation">(</span>bottled<span class="token punctuation">)</span>, HEAD
@@ -160,7 +160,7 @@ https://github.com/postmodern/chruby<span class="token comment">#readme</span>
 From: https://github.com/Homebrew/homebrew-core/blob/HEAD/Formula/chruby.rb
 License: MIT
 <span class="token operator">==</span><span class="token operator">></span> Options
---HEAD
+<span class="token parameter variable">--HEAD</span>
 	Install HEAD version
 <span class="token operator">==</span><span class="token operator">></span> Caveats
 Add the following to the ~/.bash_profile or ~/.zshrc file:
@@ -173,12 +173,12 @@ To <span class="token builtin class-name">enable</span> auto-switching of Rubies
 install: <span class="token number">4,390</span> <span class="token punctuation">(</span><span class="token number">30</span> days<span class="token punctuation">)</span>, <span class="token number">11,324</span> <span class="token punctuation">(</span><span class="token number">90</span> days<span class="token punctuation">)</span>, <span class="token number">33,170</span> <span class="token punctuation">(</span><span class="token number">365</span> days<span class="token punctuation">)</span>
 install-on-request: <span class="token number">4,377</span> <span class="token punctuation">(</span><span class="token number">30</span> days<span class="token punctuation">)</span>, <span class="token number">11,291</span> <span class="token punctuation">(</span><span class="token number">90</span> days<span class="token punctuation">)</span>, <span class="token number">33,047</span> <span class="token punctuation">(</span><span class="token number">365</span> days<span class="token punctuation">)</span>
 build-error: <span class="token number">0</span> <span class="token punctuation">(</span><span class="token number">30</span> days<span class="token punctuation">)</span></code></pre>
-<p>一応シェル設定ファイル編集後は再起動<br><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">exec</span> <span class="token environment constant">$SHELL</span> -l</code></pre></p>
+<p>一応シェル設定ファイル編集後は再起動<br><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">exec</span> <span class="token environment constant">$SHELL</span> <span class="token parameter variable">-l</span></code></pre></p>
 <h1 id="chrubyの利用"><a href="#chrubyの利用" class="headerlink" title="chrubyの利用"></a>chrubyの利用</h1><h3 id="インストール済みのRubyバージョンの確認"><a href="#インストール済みのRubyバージョンの確認" class="headerlink" title="インストール済みのRubyバージョンの確認"></a>インストール済みのRubyバージョンの確認</h3><pre class="language-bash" data-language="bash"><code class="language-bash">$ chruby
    ruby-2.7.6
  * ruby-3.1.2
 
-$ ruby -v
+$ ruby <span class="token parameter variable">-v</span>
 ruby <span class="token number">3.1</span>.2p20 <span class="token punctuation">(</span><span class="token number">2022</span>-04-12 revision 4491bb740a<span class="token punctuation">)</span> <span class="token punctuation">[</span>x86_64-darwin21<span class="token punctuation">]</span></code></pre>
 <h3 id="Rubyバージョンの指定"><a href="#Rubyバージョンの指定" class="headerlink" title="Rubyバージョンの指定"></a>Rubyバージョンの指定</h3><pre class="language-bash" data-language="bash"><code class="language-bash">$ chruby <span class="token number">2.7</span>
 
@@ -186,7 +186,7 @@ $ chruby
  * ruby-2.7.6
    ruby-3.1.2
 
-$ ruby -v
+$ ruby <span class="token parameter variable">-v</span>
 ruby <span class="token number">2.7</span>.6p219 <span class="token punctuation">(</span><span class="token number">2022</span>-04-12 revision c9c2245c0a<span class="token punctuation">)</span> <span class="token punctuation">[</span>x86_64-darwin21<span class="token punctuation">]</span></code></pre>
 <p>もちろんフォルダーに<code>.ruby-version</code>でRubyバージョンの記入があれば<code>auto.sh</code>が自動で設定してくれる<br><pre class="language-bash" data-language="bash"><code class="language-bash">To <span class="token builtin class-name">enable</span> auto-switching of Rubies specified by .ruby-version files,
 <span class="token function">add</span> the following to ~/.bash_profile or ~/.zshrc:

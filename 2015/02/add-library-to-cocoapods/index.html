@@ -170,7 +170,7 @@ Pod<span class="token double-colon punctuation">::</span><span class="token clas
 <span class="token keyword">end</span></code></pre>
 <h4 id="3-podspecファイルのチェック"><a href="#3-podspecファイルのチェック" class="headerlink" title="3. podspecファイルのチェック"></a>3. <code>podspec</code>ファイルのチェック</h4><pre class="language-bash" data-language="bash"><code class="language-bash">$ pod spec lint</code></pre>
 <h4 id="4-ユーザ登録-端末登録？"><a href="#4-ユーザ登録-端末登録？" class="headerlink" title="4. ユーザ登録(端末登録？)"></a>4. ユーザ登録(端末登録？)</h4><p>詳細は<a target="_blank" rel="noopener" href="http://guides.cocoapods.org/making/getting-setup-with-trunk.html">ここを参考</a></p>
-<pre class="language-bash" data-language="bash"><code class="language-bash">$ pod trunk register your@email.com <span class="token string">'your name'</span> --description<span class="token operator">=</span><span class="token string">'my macbook'</span></code></pre>
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ pod trunk register your@email.com <span class="token string">'your name'</span> <span class="token parameter variable">--description</span><span class="token operator">=</span><span class="token string">'my macbook'</span></code></pre>
 <h4 id="5-登録の確認"><a href="#5-登録の確認" class="headerlink" title="5. 登録の確認"></a>5. 登録の確認</h4><p>登録時のメアドへ確認のメールが来るのでそのメールで確認を行う。<br>その後以下のコマンドでターミナルでも確認できる。</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">$ pod trunk me</code></pre>
 <h4 id="6-podspecファイルのプッシュ"><a href="#6-podspecファイルのプッシュ" class="headerlink" title="6. podspecファイルのプッシュ"></a>6. <code>podspec</code>ファイルのプッシュ</h4><pre class="language-bash" data-language="bash"><code class="language-bash">$ pod trunk push</code></pre>

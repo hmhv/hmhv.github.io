@@ -144,14 +144,14 @@
 <h2 id="asdfをインストール"><a href="#asdfをインストール" class="headerlink" title="asdfをインストール"></a><code>asdf</code>をインストール</h2><p>いつもの<code>brew</code>で行う。</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">brew <span class="token function">install</span> asdf</code></pre>
 <p><code>asdf</code>のインストール後の初期設定</p>
-<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">echo</span> -e <span class="token string">"<span class="token entity" title="\n">\n</span>. <span class="token variable"><span class="token variable">$(</span>brew --prefix asdf<span class="token variable">)</span></span>/libexec/asdf.sh"</span> <span class="token operator">>></span> <span class="token variable">$&#123;ZDOTDIR<span class="token operator">:-</span>~&#125;</span>/.zshrc</code></pre>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token entity" title="\n">\n</span>. <span class="token variable"><span class="token variable">$(</span>brew <span class="token parameter variable">--prefix</span> asdf<span class="token variable">)</span></span>/libexec/asdf.sh"</span> <span class="token operator">>></span> <span class="token variable">$&#123;ZDOTDIR<span class="token operator">:-</span>~&#125;</span>/.zshrc</code></pre>
 <p><code>asdf</code>は基本<code>.tool-versions</code>というファイルでバージョンを指定するけど、設定によっては<code>.ruby-version</code>や<code>.node-version</code>などのファイルからも可能なようなのでその設定もやっておく</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">echo</span> <span class="token string">"legacy_version_file = yes"</span> <span class="token operator">>></span> <span class="token environment constant">$HOME</span>/.asdfrc</code></pre>
 <h2 id="rubyをインストール"><a href="#rubyをインストール" class="headerlink" title="rubyをインストール"></a><code>ruby</code>をインストール</h2><p><code>asdf</code>はインストールしたい言語がある場合、その言語のプラグインをインストールする必要があるので<code>ruby</code>用プラグイン<a target="_blank" rel="noopener" href="https://github.com/asdf-vm/asdf-ruby">asdf-ruby</a>をまずインストールする</p>
 <blockquote>
 <p> 各言語のプラグインのインストールには依存関係があって先にそれらのインストールが必要な場合があるのでREADMEの確認が必要で<code>asdf-ruby</code>の場合は以下が必要</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token operator">></span>brew <span class="token function">install</span> openssl@1.1 readline
-<span class="token operator">></span>export <span class="token assign-left variable">RUBY_CONFIGURE_OPTS</span><span class="token operator">=</span><span class="token string">"--with-openssl-dir=<span class="token variable"><span class="token variable">$(</span>brew --prefix openssl@1.1<span class="token variable">)</span></span>"</span></code></pre>
+<span class="token operator">></span>export <span class="token assign-left variable">RUBY_CONFIGURE_OPTS</span><span class="token operator">=</span><span class="token string">"--with-openssl-dir=<span class="token variable"><span class="token variable">$(</span>brew <span class="token parameter variable">--prefix</span> openssl@1.1<span class="token variable">)</span></span>"</span></code></pre>
 </blockquote>
 <pre class="language-bash" data-language="bash"><code class="language-bash">asdf plugin <span class="token function">add</span> ruby</code></pre>
 <p>その後<code>ruby</code>のバージョン<code>3.1.2</code>と<code>2.7.6</code>をインストール</p>
@@ -179,13 +179,13 @@ ruby <span class="token number">3.1</span>.2
 python <span class="token number">3.10</span>.4
 nodejs <span class="token number">16.4</span>.2</code></pre>
 <p>また各言語のバージョンを直接確認</p>
-<pre class="language-bash" data-language="bash"><code class="language-bash">ruby -v
+<pre class="language-bash" data-language="bash"><code class="language-bash">ruby <span class="token parameter variable">-v</span>
 ruby <span class="token number">3.1</span>.2p20 <span class="token punctuation">(</span><span class="token number">2022</span>-04-12 revision 4491bb740a<span class="token punctuation">)</span> <span class="token punctuation">[</span>x86_64-darwin21<span class="token punctuation">]</span>
 
-<span class="token function">node</span> -v
+<span class="token function">node</span> <span class="token parameter variable">-v</span>
 v16.4.2
 
-python -V
+python <span class="token parameter variable">-V</span>
 Python <span class="token number">3.10</span>.4</code></pre>
 <h2 id="asdfの他の使用例"><a href="#asdfの他の使用例" class="headerlink" title="asdfの他の使用例"></a><code>asdf</code>の他の使用例</h2><p>利用可能なプラグインのリストを確認</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">asdf plugin list all</code></pre>
@@ -194,7 +194,7 @@ Python <span class="token number">3.10</span>.4</code></pre>
 ruby                         *https://github.com/asdf-vm/asdf-ruby.git</code></pre></p>
 </blockquote>
 <p>インストール済みプラグインの更新</p>
-<pre class="language-bash" data-language="bash"><code class="language-bash">asdf plugin update --all</code></pre>
+<pre class="language-bash" data-language="bash"><code class="language-bash">asdf plugin update <span class="token parameter variable">--all</span></code></pre>
 <p>インストール済み言語のバージョンの確認</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">asdf list
 nodejs

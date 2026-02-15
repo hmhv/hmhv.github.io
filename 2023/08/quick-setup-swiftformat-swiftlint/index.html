@@ -145,39 +145,39 @@
 <li><a target="_blank" rel="noopener" href="https://github.com/realm/SwiftLint">SwiftLint</a></li>
 </ul>
 <p><code>Build Phases</code>で<code>New Run Script Phase</code>を追加して以下のコードをコピーしてビルドするだけ</p>
-<pre class="language-sh" data-language="sh"><code class="language-sh">if [ ! -e .swiftformat ]; then
-    touch .swiftformat
-fi
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token operator">!</span> <span class="token parameter variable">-e</span> .swiftformat <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+    <span class="token function">touch</span> .swiftformat
+<span class="token keyword">fi</span>
 
-if [ &quot;$&#123;CONFIGURATION&#125;&quot; &#x3D; &quot;Debug&quot; ] &amp;&amp; [ &quot;$&#123;ENABLE_PREVIEWS&#125;&quot; &#x3D; &quot;NO&quot; ]; then
-    if [ ! -e swiftformat.0.53.1 ]; then
-        curl -OL https:&#x2F;&#x2F;github.com&#x2F;nicklockwood&#x2F;SwiftFormat&#x2F;releases&#x2F;download&#x2F;0.53.1&#x2F;swiftformat.zip
-        unzip swiftformat.zip
-        mv swiftformat swiftformat.0.53.1
-        rm swiftformat.zip
-    fi
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$&#123;CONFIGURATION&#125;</span>"</span> <span class="token operator">=</span> <span class="token string">"Debug"</span> <span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$&#123;ENABLE_PREVIEWS&#125;</span>"</span> <span class="token operator">=</span> <span class="token string">"NO"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+    <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token operator">!</span> <span class="token parameter variable">-e</span> swiftformat.0.53.1 <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+        <span class="token function">curl</span> <span class="token parameter variable">-OL</span> https://github.com/nicklockwood/SwiftFormat/releases/download/0.53.1/swiftformat.zip
+        <span class="token function">unzip</span> swiftformat.zip
+        <span class="token function">mv</span> swiftformat swiftformat.0.53.1
+        <span class="token function">rm</span> swiftformat.zip
+    <span class="token keyword">fi</span>
 
-    .&#x2F;swiftformat.0.53.1 --cache ignore --swiftversion 5.9 .
-else 
-    echo &quot;swiftformat in skipped&quot;
-fi
+    ./swiftformat.0.53.1 <span class="token parameter variable">--cache</span> ignore <span class="token parameter variable">--swiftversion</span> <span class="token number">5.9</span> <span class="token builtin class-name">.</span>
+<span class="token keyword">else</span> 
+    <span class="token builtin class-name">echo</span> <span class="token string">"swiftformat in skipped"</span>
+<span class="token keyword">fi</span>
 
-if [ ! -e .swiftlint.yml ]; then
-    touch .swiftlint.yml
-fi
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token operator">!</span> <span class="token parameter variable">-e</span> .swiftlint.yml <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+    <span class="token function">touch</span> .swiftlint.yml
+<span class="token keyword">fi</span>
 
-if [ &quot;$&#123;CONFIGURATION&#125;&quot; &#x3D; &quot;Debug&quot; ] &amp;&amp; [ &quot;$&#123;ENABLE_PREVIEWS&#125;&quot; &#x3D; &quot;NO&quot; ]; then
-    if [ ! -e swiftlint.0.54.0 ]; then
-        curl -OL https:&#x2F;&#x2F;github.com&#x2F;realm&#x2F;SwiftLint&#x2F;releases&#x2F;download&#x2F;0.54.0&#x2F;portable_swiftlint.zip
-        unzip portable_swiftlint.zip swiftlint
-        mv swiftlint swiftlint.0.54.0
-        rm portable_swiftlint.zip
-    fi
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$&#123;CONFIGURATION&#125;</span>"</span> <span class="token operator">=</span> <span class="token string">"Debug"</span> <span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$&#123;ENABLE_PREVIEWS&#125;</span>"</span> <span class="token operator">=</span> <span class="token string">"NO"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+    <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token operator">!</span> <span class="token parameter variable">-e</span> swiftlint.0.54.0 <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+        <span class="token function">curl</span> <span class="token parameter variable">-OL</span> https://github.com/realm/SwiftLint/releases/download/0.54.0/portable_swiftlint.zip
+        <span class="token function">unzip</span> portable_swiftlint.zip swiftlint
+        <span class="token function">mv</span> swiftlint swiftlint.0.54.0
+        <span class="token function">rm</span> portable_swiftlint.zip
+    <span class="token keyword">fi</span>
 
-    .&#x2F;swiftlint.0.54.0 --no-cache
-else 
-    echo &quot;swiftlint in skipped&quot;
-fi</code></pre>
+    ./swiftlint.0.54.0 --no-cache
+<span class="token keyword">else</span> 
+    <span class="token builtin class-name">echo</span> <span class="token string">"swiftlint in skipped"</span>
+<span class="token keyword">fi</span></code></pre>
 <p>もし権限エラー発生時は<code>Build Settings</code>で<code>ENABLE_USER_SCRIPT_SANDBOXING</code>を<code>NO</code>に設定</p>
 <blockquote>
 <p><code>touch: .swiftformat: Operation not permitted</code></p>

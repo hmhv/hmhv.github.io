@@ -141,47 +141,47 @@
   <!-- Article START -->
   <article class="post-article">
     <section class="markdown-content"><p>UITextViewでのタップがattributedTextでNSLinkAttributeNameを指定したリンク文のタップか確認</p>
-<pre class="language-objc" data-language="objc"><code class="language-objc">- (void)touchesBegan:(NSSet&lt;UITouch *&gt; *)touches withEvent:(UIEvent *)event
-&#123;
-    if (touches.count &gt; 1) &#123;
-        return;
-    &#125;
-    UITouch *touch &#x3D; touches.anyObject;
-    CGPoint point &#x3D; [touch locationInView:self];
+<pre class="language-objectivec" data-language="objectivec"><code class="language-objectivec"><span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>touchesBegan<span class="token punctuation">:</span><span class="token punctuation">(</span>NSSet<span class="token operator">&lt;</span>UITouch <span class="token operator">*</span><span class="token operator">></span> <span class="token operator">*</span><span class="token punctuation">)</span>touches withEvent<span class="token punctuation">:</span><span class="token punctuation">(</span>UIEvent <span class="token operator">*</span><span class="token punctuation">)</span>event
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>touches<span class="token punctuation">.</span>count <span class="token operator">></span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    UITouch <span class="token operator">*</span>touch <span class="token operator">=</span> touches<span class="token punctuation">.</span>anyObject<span class="token punctuation">;</span>
+    CGPoint point <span class="token operator">=</span> <span class="token punctuation">[</span>touch locationInView<span class="token punctuation">:</span><span class="token keyword">self</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-    BOOL linkTouched &#x3D; [self checkTouchedPoint:point];
-&#125;
+    BOOL linkTouched <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token keyword">self</span> checkTouchedPoint<span class="token punctuation">:</span>point<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
-- (BOOL)checkTouchedPoint:(CGPoint)point
-&#123;
-    NSUInteger touchedLocation;
-    NSURL *touchedUrl;
+<span class="token operator">-</span> <span class="token punctuation">(</span>BOOL<span class="token punctuation">)</span>checkTouchedPoint<span class="token punctuation">:</span><span class="token punctuation">(</span>CGPoint<span class="token punctuation">)</span>point
+<span class="token punctuation">&#123;</span>
+    NSUInteger touchedLocation<span class="token punctuation">;</span>
+    NSURL <span class="token operator">*</span>touchedUrl<span class="token punctuation">;</span>
 
-    UITextPosition *postion &#x3D; [self closestPositionToPoint:point];
-    UITextRange *range &#x3D; [self.tokenizer rangeEnclosingPosition:postion withGranularity:UITextGranularityCharacter inDirection:UITextLayoutDirectionLeft];
-    NSInteger offset &#x3D; [self offsetFromPosition:self.beginningOfDocument toPosition:range.start];
-    id value &#x3D; [self.attributedText attribute:NSLinkAttributeName atIndex:offset effectiveRange:nil];
-    NSURL *url &#x3D; [NSURL URLWithString:value];
+    UITextPosition <span class="token operator">*</span>postion <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token keyword">self</span> closestPositionToPoint<span class="token punctuation">:</span>point<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    UITextRange <span class="token operator">*</span>range <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>tokenizer rangeEnclosingPosition<span class="token punctuation">:</span>postion withGranularity<span class="token punctuation">:</span>UITextGranularityCharacter inDirection<span class="token punctuation">:</span>UITextLayoutDirectionLeft<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    NSInteger offset <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token keyword">self</span> offsetFromPosition<span class="token punctuation">:</span><span class="token keyword">self</span><span class="token punctuation">.</span>beginningOfDocument toPosition<span class="token punctuation">:</span>range<span class="token punctuation">.</span>start<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    id value <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>attributedText attribute<span class="token punctuation">:</span>NSLinkAttributeName atIndex<span class="token punctuation">:</span>offset effectiveRange<span class="token punctuation">:</span>nil<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    NSURL <span class="token operator">*</span>url <span class="token operator">=</span> <span class="token punctuation">[</span>NSURL URLWithString<span class="token punctuation">:</span>value<span class="token punctuation">]</span><span class="token punctuation">;</span>
     
-    if (url) &#123;
-        __block BOOL isLink &#x3D; NO;
-        NSUInteger glyphIndex &#x3D; [self.layoutManager glyphIndexForCharacterAtIndex:offset];
-        [self.layoutManager enumerateLineFragmentsForGlyphRange:NSMakeRange(glyphIndex, 1) usingBlock:^(CGRect rect, CGRect usedRect, NSTextContainer * _Nonnull textContainer, NSRange glyphRange, BOOL * _Nonnull stop) &#123;
-            if (CGRectContainsPoint(usedRect, point)) &#123;
-                isLink &#x3D; YES;
-                *stop &#x3D; YES;
-            &#125;
-        &#125;];
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>url<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        __block BOOL isLink <span class="token operator">=</span> NO<span class="token punctuation">;</span>
+        NSUInteger glyphIndex <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>layoutManager glyphIndexForCharacterAtIndex<span class="token punctuation">:</span>offset<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">[</span><span class="token keyword">self</span><span class="token punctuation">.</span>layoutManager enumerateLineFragmentsForGlyphRange<span class="token punctuation">:</span><span class="token function">NSMakeRange</span><span class="token punctuation">(</span>glyphIndex<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span> usingBlock<span class="token punctuation">:</span><span class="token operator">^</span><span class="token punctuation">(</span>CGRect rect<span class="token punctuation">,</span> CGRect usedRect<span class="token punctuation">,</span> NSTextContainer <span class="token operator">*</span> _Nonnull textContainer<span class="token punctuation">,</span> NSRange glyphRange<span class="token punctuation">,</span> BOOL <span class="token operator">*</span> _Nonnull stop<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">CGRectContainsPoint</span><span class="token punctuation">(</span>usedRect<span class="token punctuation">,</span> point<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                isLink <span class="token operator">=</span> YES<span class="token punctuation">;</span>
+                <span class="token operator">*</span>stop <span class="token operator">=</span> YES<span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
         
-        if (isLink) &#123;
-            touchedUrl &#x3D; url;
-            touchedLocation &#x3D; offset;
-            return YES;
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>isLink<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            touchedUrl <span class="token operator">=</span> url<span class="token punctuation">;</span>
+            touchedLocation <span class="token operator">=</span> offset<span class="token punctuation">;</span>
+            <span class="token keyword">return</span> YES<span class="token punctuation">;</span>
             
-        &#125;
-    &#125;
-    return NO;
-&#125;</code></pre></section>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> NO<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span></code></pre></section>
     <!-- Tags START -->
     
       <div class="tags">

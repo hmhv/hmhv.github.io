@@ -153,40 +153,40 @@
 <li><a target="_blank" rel="noopener" href="https://github.com/hmhv/HobjectiveRecord">Github -&gt; HobjectiveRecord</a>からダウンロードして<code>HobjectiveRecord</code>フォルダを利用するプロジェクトにコピー、<br>又は<a target="_blank" rel="noopener" href="http://cocoapods.org">CocoaPods</a>を利用 <code>pod &#39;HobjectiveRecord&#39;</code></li>
 <li>必要なファイルに<code>#import &quot;HobjectiveRecord.h&quot;</code>を追加</li>
 </ol>
-<h4 id="初期化"><a href="#初期化" class="headerlink" title="初期化"></a>初期化</h4><pre class="language-objc" data-language="objc"><code class="language-objc">- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-&#123;
-    &#x2F;&#x2F; まずCoreDataの利用前にストアを初期化
-    [NSPersistentStoreCoordinator setupDefaultStore];
+<h4 id="初期化"><a href="#初期化" class="headerlink" title="初期化"></a>初期化</h4><pre class="language-objectivec" data-language="objectivec"><code class="language-objectivec"><span class="token operator">-</span> <span class="token punctuation">(</span>BOOL<span class="token punctuation">)</span>application<span class="token punctuation">:</span><span class="token punctuation">(</span>UIApplication <span class="token operator">*</span><span class="token punctuation">)</span>application didFinishLaunchingWithOptions<span class="token punctuation">:</span><span class="token punctuation">(</span>NSDictionary <span class="token operator">*</span><span class="token punctuation">)</span>launchOptions
+<span class="token punctuation">&#123;</span>
+    <span class="token comment">// まずCoreDataの利用前にストアを初期化</span>
+    <span class="token punctuation">[</span>NSPersistentStoreCoordinator setupDefaultStore<span class="token punctuation">]</span><span class="token punctuation">;</span>
     
-    &#x2F;&#x2F; your code here
+    <span class="token comment">// your code here</span>
     
-    return YES;
-&#125;
-&#x2F;*
+    <span class="token keyword">return</span> YES<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token comment">/*
 + (void)setupDefaultStore;
 + (void)setupDefaultStoreWithModelURL:(NSURL *)modelURL storeURL:(NSURL *)storeURL useInMemoryStore:(BOOL)useInMemoryStore;
-*&#x2F;</code></pre>
+*/</span></code></pre>
 <h3 id="Basic"><a href="#Basic" class="headerlink" title="Basic"></a>Basic</h3><p>基本、全ての処理は<code>performBlock:</code>内で行う。</p>
-<pre class="language-objc" data-language="objc"><code class="language-objc">[[NSManagedObjectContext defaultContext] performBlock:^&#123;
-  &#x2F;&#x2F; your code here
-&#125;];
-NSManagedObjectContext *childContext &#x3D; [[NSManagedObjectContext defaultContext] createChildContext];
-[childContext performBlock:^&#123;
-  &#x2F;&#x2F; your code here
-&#125;];</code></pre>
-<h4 id="Create-Save-Delete"><a href="#Create-Save-Delete" class="headerlink" title="Create / Save / Delete"></a>Create / Save / Delete</h4><pre class="language-objc" data-language="objc"><code class="language-objc">[[NSManagedObjectContext defaultContext] performBlock:^&#123;
-    Tweet *tweet &#x3D; [Tweet create];
-    tweet.text &#x3D; @&quot;I am here&quot;;
-    [tweet save];
-    [tweet delete];
+<pre class="language-objectivec" data-language="objectivec"><code class="language-objectivec"><span class="token punctuation">[</span><span class="token punctuation">[</span>NSManagedObjectContext defaultContext<span class="token punctuation">]</span> performBlock<span class="token punctuation">:</span><span class="token operator">^</span><span class="token punctuation">&#123;</span>
+  <span class="token comment">// your code here</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+NSManagedObjectContext <span class="token operator">*</span>childContext <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>NSManagedObjectContext defaultContext<span class="token punctuation">]</span> createChildContext<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">[</span>childContext performBlock<span class="token punctuation">:</span><span class="token operator">^</span><span class="token punctuation">&#123;</span>
+  <span class="token comment">// your code here</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">]</span><span class="token punctuation">;</span></code></pre>
+<h4 id="Create-Save-Delete"><a href="#Create-Save-Delete" class="headerlink" title="Create / Save / Delete"></a>Create / Save / Delete</h4><pre class="language-objectivec" data-language="objectivec"><code class="language-objectivec"><span class="token punctuation">[</span><span class="token punctuation">[</span>NSManagedObjectContext defaultContext<span class="token punctuation">]</span> performBlock<span class="token punctuation">:</span><span class="token operator">^</span><span class="token punctuation">&#123;</span>
+    Tweet <span class="token operator">*</span>tweet <span class="token operator">=</span> <span class="token punctuation">[</span>Tweet create<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    tweet<span class="token punctuation">.</span>text <span class="token operator">=</span> <span class="token string">@"I am here"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span>tweet save<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span>tweet delete<span class="token punctuation">]</span><span class="token punctuation">;</span>
     
-    tweet &#x3D; [Tweet create:@&#123;@&quot;text&quot; : @&quot;hello!!&quot;,
-                            @&quot;lang&quot; : @&quot;en&quot;&#125; ];
-    [tweet saveToStore];
+    tweet <span class="token operator">=</span> <span class="token punctuation">[</span>Tweet create<span class="token punctuation">:</span><span class="token operator">@</span><span class="token punctuation">&#123;</span><span class="token string">@"text"</span> <span class="token punctuation">:</span> <span class="token string">@"hello!!"</span><span class="token punctuation">,</span>
+                            <span class="token string">@"lang"</span> <span class="token punctuation">:</span> <span class="token string">@"en"</span><span class="token punctuation">&#125;</span> <span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span>tweet saveToStore<span class="token punctuation">]</span><span class="token punctuation">;</span>
     
-    [Tweet deleteAll];
-&#125;];
-&#x2F;*
+    <span class="token punctuation">[</span>Tweet deleteAll<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment">/*
 + (instancetype)create;
 + (instancetype)create:(NSDictionary *)attributes;
 + (void)deleteAll;
@@ -194,121 +194,121 @@ NSManagedObjectContext *childContext &#x3D; [[NSManagedObjectContext defaultCont
 - (void)save;
 - (void)saveToStore;
 - (void)delete;
-*&#x2F;</code></pre>
-<h4 id="Finders"><a href="#Finders" class="headerlink" title="Finders"></a>Finders</h4><pre class="language-objc" data-language="objc"><code class="language-objc">[[NSManagedObjectContext defaultContext] performBlock:^&#123;
-    NSArray *tweets &#x3D; [Tweet all];
+*/</span></code></pre>
+<h4 id="Finders"><a href="#Finders" class="headerlink" title="Finders"></a>Finders</h4><pre class="language-objectivec" data-language="objectivec"><code class="language-objectivec"><span class="token punctuation">[</span><span class="token punctuation">[</span>NSManagedObjectContext defaultContext<span class="token punctuation">]</span> performBlock<span class="token punctuation">:</span><span class="token operator">^</span><span class="token punctuation">&#123;</span>
+    NSArray <span class="token operator">*</span>tweets <span class="token operator">=</span> <span class="token punctuation">[</span>Tweet all<span class="token punctuation">]</span><span class="token punctuation">;</span>
     
-    NSArray *tweetsInEnglish &#x3D; [Tweet find:@&quot;lang &#x3D;&#x3D; &#39;en&#39;&quot;];
+    NSArray <span class="token operator">*</span>tweetsInEnglish <span class="token operator">=</span> <span class="token punctuation">[</span>Tweet find<span class="token punctuation">:</span><span class="token string">@"lang == 'en'"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
     
-    User *hmhv &#x3D; [User first:@&quot;screenName &#x3D;&#x3D; &#39;hmhv&#39;&quot;];
+    User <span class="token operator">*</span>hmhv <span class="token operator">=</span> <span class="token punctuation">[</span>User first<span class="token punctuation">:</span><span class="token string">@"screenName == 'hmhv'"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
     
-    NSArray *englishMen &#x3D; [User find:@&#123;@&quot;lang&quot; : @&quot;en&quot;,
-                                       @&quot;timeZone&quot; : @&quot;London&quot;
-                                       &#125;];
+    NSArray <span class="token operator">*</span>englishMen <span class="token operator">=</span> <span class="token punctuation">[</span>User find<span class="token punctuation">:</span><span class="token operator">@</span><span class="token punctuation">&#123;</span><span class="token string">@"lang"</span> <span class="token punctuation">:</span> <span class="token string">@"en"</span><span class="token punctuation">,</span>
+                                       <span class="token string">@"timeZone"</span> <span class="token punctuation">:</span> <span class="token string">@"London"</span>
+                                       <span class="token punctuation">&#125;</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
     
-    NSPredicate *predicate &#x3D; [NSPredicate predicateWithFormat:@&quot;friendsCount &gt; 100&quot;];
-    NSArray *manyFriendsUsers &#x3D; [User find:predicate];
-&#125;];
-&#x2F;*
+    NSPredicate <span class="token operator">*</span>predicate <span class="token operator">=</span> <span class="token punctuation">[</span>NSPredicate predicateWithFormat<span class="token punctuation">:</span><span class="token string">@"friendsCount > 100"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    NSArray <span class="token operator">*</span>manyFriendsUsers <span class="token operator">=</span> <span class="token punctuation">[</span>User find<span class="token punctuation">:</span>predicate<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment">/*
 + (NSArray *)all;
 + (NSArray *)find:(id)condition;
 + (instancetype)first:(id)condition;
 + (instancetype)firstOrCreate:(NSDictionary *)condition;
-*&#x2F;</code></pre>
-<h4 id="Order-and-Limit"><a href="#Order-and-Limit" class="headerlink" title="Order and Limit"></a>Order and Limit</h4><pre class="language-objc" data-language="objc"><code class="language-objc">[[NSManagedObjectContext defaultContext] performBlock:^&#123;
-    NSArray *sortedUsers &#x3D; [User allWithOrder:@&quot;name&quot;];
+*/</span></code></pre>
+<h4 id="Order-and-Limit"><a href="#Order-and-Limit" class="headerlink" title="Order and Limit"></a>Order and Limit</h4><pre class="language-objectivec" data-language="objectivec"><code class="language-objectivec"><span class="token punctuation">[</span><span class="token punctuation">[</span>NSManagedObjectContext defaultContext<span class="token punctuation">]</span> performBlock<span class="token punctuation">:</span><span class="token operator">^</span><span class="token punctuation">&#123;</span>
+    NSArray <span class="token operator">*</span>sortedUsers <span class="token operator">=</span> <span class="token punctuation">[</span>User allWithOrder<span class="token punctuation">:</span><span class="token string">@"name"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
     
-    NSArray *allUsers &#x3D; [User allWithOrder:@&quot;screenName ASC, name DESC&quot;];
-    &#x2F;&#x2F; or
-    NSArray *allUsers2 &#x3D; [User allWithOrder:@&quot;screenName A, name D&quot;];
-    &#x2F;&#x2F; or
-    NSArray *allUsers3 &#x3D; [User allWithOrder:@&quot;screenName, name d&quot;];
+    NSArray <span class="token operator">*</span>allUsers <span class="token operator">=</span> <span class="token punctuation">[</span>User allWithOrder<span class="token punctuation">:</span><span class="token string">@"screenName ASC, name DESC"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token comment">// or</span>
+    NSArray <span class="token operator">*</span>allUsers2 <span class="token operator">=</span> <span class="token punctuation">[</span>User allWithOrder<span class="token punctuation">:</span><span class="token string">@"screenName A, name D"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token comment">// or</span>
+    NSArray <span class="token operator">*</span>allUsers3 <span class="token operator">=</span> <span class="token punctuation">[</span>User allWithOrder<span class="token punctuation">:</span><span class="token string">@"screenName, name d"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-    NSArray *manyFriendsUsers &#x3D; [User find:@&quot;friendsCount &gt; 100&quot; order:@&quot;screenName DESC&quot;];
+    NSArray <span class="token operator">*</span>manyFriendsUsers <span class="token operator">=</span> <span class="token punctuation">[</span>User find<span class="token punctuation">:</span><span class="token string">@"friendsCount > 100"</span> order<span class="token punctuation">:</span><span class="token string">@"screenName DESC"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
     
-    NSArray *fiveEnglishUsers &#x3D; [User find:@&quot;lang &#x3D;&#x3D; &#39;en&#39;&quot; order:@&quot;screenName ASC&quot; limit:@(5)];
-&#125;];
-&#x2F;*
+    NSArray <span class="token operator">*</span>fiveEnglishUsers <span class="token operator">=</span> <span class="token punctuation">[</span>User find<span class="token punctuation">:</span><span class="token string">@"lang == 'en'"</span> order<span class="token punctuation">:</span><span class="token string">@"screenName ASC"</span> limit<span class="token punctuation">:</span><span class="token operator">@</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment">/*
 + (NSArray *)allWithOrder:(NSString *)order;
 + (NSArray *)find:(id)condition order:(NSString *)order;
 + (NSArray *)find:(id)condition limit:(NSNumber *)limit;
 + (NSArray *)find:(id)condition order:(NSString *)order limit:(NSNumber *)limit;
-*&#x2F;</code></pre>
-<h4 id="Aggregation"><a href="#Aggregation" class="headerlink" title="Aggregation"></a>Aggregation</h4><pre class="language-objc" data-language="objc"><code class="language-objc">[[NSManagedObjectContext defaultContext] performBlock:^&#123;
-    NSUInteger allUserCount &#x3D; [User count];
+*/</span></code></pre>
+<h4 id="Aggregation"><a href="#Aggregation" class="headerlink" title="Aggregation"></a>Aggregation</h4><pre class="language-objectivec" data-language="objectivec"><code class="language-objectivec"><span class="token punctuation">[</span><span class="token punctuation">[</span>NSManagedObjectContext defaultContext<span class="token punctuation">]</span> performBlock<span class="token punctuation">:</span><span class="token operator">^</span><span class="token punctuation">&#123;</span>
+    NSUInteger allUserCount <span class="token operator">=</span> <span class="token punctuation">[</span>User count<span class="token punctuation">]</span><span class="token punctuation">;</span>
     
-    NSUInteger englishUserCount &#x3D; [User countWithCondition:@&quot;lang &#x3D;&#x3D; &#39;en&#39;&quot;];
-&#125;];
-&#x2F;*
+    NSUInteger englishUserCount <span class="token operator">=</span> <span class="token punctuation">[</span>User countWithCondition<span class="token punctuation">:</span><span class="token string">@"lang == 'en'"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment">/*
 + (NSUInteger)count;
 + (NSUInteger)countWithCondition:(id)condition;
-*&#x2F;</code></pre>
-<h4 id="BatchUpdate"><a href="#BatchUpdate" class="headerlink" title="BatchUpdate"></a>BatchUpdate</h4><pre class="language-objc" data-language="objc"><code class="language-objc">[[NSManagedObjectContext defaultContext] performBlock:^&#123;
+*/</span></code></pre>
+<h4 id="BatchUpdate"><a href="#BatchUpdate" class="headerlink" title="BatchUpdate"></a>BatchUpdate</h4><pre class="language-objectivec" data-language="objectivec"><code class="language-objectivec"><span class="token punctuation">[</span><span class="token punctuation">[</span>NSManagedObjectContext defaultContext<span class="token punctuation">]</span> performBlock<span class="token punctuation">:</span><span class="token operator">^</span><span class="token punctuation">&#123;</span>
     
-    [User batchUpdateWithCondition:@&quot;friendsCount &gt; 10&quot; propertiesToUpdate:@&#123;@&quot;friendsCount&quot;: @0&#125;];
+    <span class="token punctuation">[</span>User batchUpdateWithCondition<span class="token punctuation">:</span><span class="token string">@"friendsCount > 10"</span> propertiesToUpdate<span class="token punctuation">:</span><span class="token operator">@</span><span class="token punctuation">&#123;</span><span class="token string">@"friendsCount"</span><span class="token punctuation">:</span> <span class="token operator">@</span><span class="token number">0</span><span class="token punctuation">&#125;</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
     
-    &#x2F;&#x2F; update all entities
-    [User batchUpdateWithCondition:nil propertiesToUpdate:@&#123;@&quot;friendsCount&quot;: @100&#125;];
-&#125;];
-&#x2F;*
+    <span class="token comment">// update all entities</span>
+    <span class="token punctuation">[</span>User batchUpdateWithCondition<span class="token punctuation">:</span>nil propertiesToUpdate<span class="token punctuation">:</span><span class="token operator">@</span><span class="token punctuation">&#123;</span><span class="token string">@"friendsCount"</span><span class="token punctuation">:</span> <span class="token operator">@</span><span class="token number">100</span><span class="token punctuation">&#125;</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment">/*
 + (NSUInteger)batchUpdateWithCondition:(id)condition propertiesToUpdate:(NSDictionary *)propertiesToUpdate;
 + (NSUInteger)batchUpdateWithCondition:(id)condition propertiesToUpdate:(NSDictionary *)propertiesToUpdate inContext:(NSManagedObjectContext *)context;
-*&#x2F;</code></pre>
-<h4 id="NSFetchedResultsController"><a href="#NSFetchedResultsController" class="headerlink" title="NSFetchedResultsController"></a>NSFetchedResultsController</h4><pre class="language-objc" data-language="objc"><code class="language-objc">    [[NSManagedObjectContext defaultContext] performBlock:^&#123;
-        NSFetchedResultsController *frc &#x3D; [User createFetchedResultsControllerWithCondition:nil order:@&quot;name&quot; sectionNameKeyPath:nil];
-        frc.delegate &#x3D; self;
+*/</span></code></pre>
+<h4 id="NSFetchedResultsController"><a href="#NSFetchedResultsController" class="headerlink" title="NSFetchedResultsController"></a>NSFetchedResultsController</h4><pre class="language-objectivec" data-language="objectivec"><code class="language-objectivec">    <span class="token punctuation">[</span><span class="token punctuation">[</span>NSManagedObjectContext defaultContext<span class="token punctuation">]</span> performBlock<span class="token punctuation">:</span><span class="token operator">^</span><span class="token punctuation">&#123;</span>
+        NSFetchedResultsController <span class="token operator">*</span>frc <span class="token operator">=</span> <span class="token punctuation">[</span>User createFetchedResultsControllerWithCondition<span class="token punctuation">:</span>nil order<span class="token punctuation">:</span><span class="token string">@"name"</span> sectionNameKeyPath<span class="token punctuation">:</span>nil<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        frc<span class="token punctuation">.</span>delegate <span class="token operator">=</span> <span class="token keyword">self</span><span class="token punctuation">;</span>
         
-        NSError *error &#x3D; nil;
-        if ([frc performFetch:&amp;error]) &#123;
-            [self reloadData];
-        &#125;
-    &#125;
-&#125;];
-&#x2F;*
+        NSError <span class="token operator">*</span>error <span class="token operator">=</span> nil<span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>frc performFetch<span class="token punctuation">:</span><span class="token operator">&amp;</span>error<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token punctuation">[</span><span class="token keyword">self</span> reloadData<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment">/*
 + (NSFetchedResultsController *)createFetchedResultsControllerWithCondition:(id)condition order:(NSString *)order sectionNameKeyPath:(NSString *)sectionNameKeyPath;
-*&#x2F;</code></pre>
-<h4 id="Custom-ManagedObjectContext"><a href="#Custom-ManagedObjectContext" class="headerlink" title="Custom ManagedObjectContext"></a>Custom ManagedObjectContext</h4><pre class="language-objc" data-language="objc"><code class="language-objc">NSManagedObjectContext *childContext &#x3D; [[NSManagedObjectContext defaultContext] createChildContext];
+*/</span></code></pre>
+<h4 id="Custom-ManagedObjectContext"><a href="#Custom-ManagedObjectContext" class="headerlink" title="Custom ManagedObjectContext"></a>Custom ManagedObjectContext</h4><pre class="language-objectivec" data-language="objectivec"><code class="language-objectivec">NSManagedObjectContext <span class="token operator">*</span>childContext <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>NSManagedObjectContext defaultContext<span class="token punctuation">]</span> createChildContext<span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-[childContext performBlock:^&#123;
-    User *john &#x3D; [User createInContext:childContext];
-    john.name &#x3D; @&quot;John&quot;;
-    [john save];
+<span class="token punctuation">[</span>childContext performBlock<span class="token punctuation">:</span><span class="token operator">^</span><span class="token punctuation">&#123;</span>
+    User <span class="token operator">*</span>john <span class="token operator">=</span> <span class="token punctuation">[</span>User createInContext<span class="token punctuation">:</span>childContext<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    john<span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">@"John"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span>john save<span class="token punctuation">]</span><span class="token punctuation">;</span>
     
-    john &#x3D; [User first:@&quot;name &#x3D;&#x3D; &#39;John&#39;&quot; inContext:childContext];
+    john <span class="token operator">=</span> <span class="token punctuation">[</span>User first<span class="token punctuation">:</span><span class="token string">@"name == 'John'"</span> inContext<span class="token punctuation">:</span>childContext<span class="token punctuation">]</span><span class="token punctuation">;</span>
     
-    NSArray *manyFriendsUsers &#x3D; [User find:@&quot;friendsCount &gt; 100&quot; order:@&quot;screenName DESC&quot; inContext:childContext];
+    NSArray <span class="token operator">*</span>manyFriendsUsers <span class="token operator">=</span> <span class="token punctuation">[</span>User find<span class="token punctuation">:</span><span class="token string">@"friendsCount > 100"</span> order<span class="token punctuation">:</span><span class="token string">@"screenName DESC"</span> inContext<span class="token punctuation">:</span>childContext<span class="token punctuation">]</span><span class="token punctuation">;</span>
     
-    NSArray *allUsers &#x3D; [User allInContext:childContext];
-&#125;];</code></pre>
-<h4 id="カスタムモデル、カスタムsqliteファイルの利用"><a href="#カスタムモデル、カスタムsqliteファイルの利用" class="headerlink" title="カスタムモデル、カスタムsqliteファイルの利用"></a>カスタムモデル、カスタムsqliteファイルの利用</h4><pre class="language-objc" data-language="objc"><code class="language-objc">NSURL *modelURL &#x3D; [NSURL defaultModelURL:@&quot;model_name&quot;];
-[NSPersistentStoreCoordinator setupDefaultStoreWithModelURL:modelURL storeURL:nil useInMemoryStore:NO];
+    NSArray <span class="token operator">*</span>allUsers <span class="token operator">=</span> <span class="token punctuation">[</span>User allInContext<span class="token punctuation">:</span>childContext<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">]</span><span class="token punctuation">;</span></code></pre>
+<h4 id="カスタムモデル、カスタムsqliteファイルの利用"><a href="#カスタムモデル、カスタムsqliteファイルの利用" class="headerlink" title="カスタムモデル、カスタムsqliteファイルの利用"></a>カスタムモデル、カスタムsqliteファイルの利用</h4><pre class="language-objectivec" data-language="objectivec"><code class="language-objectivec">NSURL <span class="token operator">*</span>modelURL <span class="token operator">=</span> <span class="token punctuation">[</span>NSURL defaultModelURL<span class="token punctuation">:</span><span class="token string">@"model_name"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">[</span>NSPersistentStoreCoordinator setupDefaultStoreWithModelURL<span class="token punctuation">:</span>modelURL storeURL<span class="token punctuation">:</span>nil useInMemoryStore<span class="token punctuation">:</span>NO<span class="token punctuation">]</span><span class="token punctuation">;</span>
     
-&#x2F;&#x2F; or
-NSURL *storeURL &#x3D; [NSURL defaultStoreURL:@&quot;file_name.sqlite&quot;];
-[NSPersistentStoreCoordinator setupDefaultStoreWithModelURL:nil storeURL:storeURL useInMemoryStore:NO];</code></pre>
+<span class="token comment">// or</span>
+NSURL <span class="token operator">*</span>storeURL <span class="token operator">=</span> <span class="token punctuation">[</span>NSURL defaultStoreURL<span class="token punctuation">:</span><span class="token string">@"file_name.sqlite"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">[</span>NSPersistentStoreCoordinator setupDefaultStoreWithModelURL<span class="token punctuation">:</span>nil storeURL<span class="token punctuation">:</span>storeURL useInMemoryStore<span class="token punctuation">:</span>NO<span class="token punctuation">]</span><span class="token punctuation">;</span></code></pre>
 <h4 id="マッピング"><a href="#マッピング" class="headerlink" title="マッピング"></a>マッピング</h4><p>ウェブサービスからのJSONは<code>first_name</code>, <code>last_name</code>のようなスネークケースの場合が多いですが、<br>Objective-Cでは<code>firstName</code>, <code>lastName</code>のようにキャメルケースが主流です。<br>なのでスネークケースからキャメルケースへのマッピングは自動で行われます。<br>それ以外の特別な名前マッピングが必要な場合は各モデルスラスでmappingsをオーバライドして設定可能です。</p>
 <p><strong>!! Date, Transformableタイプはマッピング対象外です。 !!</strong></p>
-<pre class="language-objc" data-language="objc"><code class="language-objc">&#x2F;&#x2F; just override +mappings in your NSManagedObject subclass
-#import &quot;User+Mappings.h&quot;
+<pre class="language-objectivec" data-language="objectivec"><code class="language-objectivec"><span class="token comment">// just override +mappings in your NSManagedObject subclass</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">import</span> <span class="token string">"User+Mappings.h"</span></span>
 
-@implementation User (Mappings)
+<span class="token keyword">@implementation</span> <span class="token function">User</span> <span class="token punctuation">(</span>Mappings<span class="token punctuation">)</span>
 
-+ (NSDictionary *)mappings
-&#123;
-    return @&#123;@&quot;description&quot; : @&quot;userDescription&quot;,
-             @&quot;name&quot; : @&quot;fullName&quot;&#125;;
-&#125;
-  &#x2F;&#x2F; first_name &#x3D;&gt; firstNameは自動でマッピングされる。
+<span class="token operator">+</span> <span class="token punctuation">(</span>NSDictionary <span class="token operator">*</span><span class="token punctuation">)</span>mappings
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token operator">@</span><span class="token punctuation">&#123;</span><span class="token string">@"description"</span> <span class="token punctuation">:</span> <span class="token string">@"userDescription"</span><span class="token punctuation">,</span>
+             <span class="token string">@"name"</span> <span class="token punctuation">:</span> <span class="token string">@"fullName"</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+  <span class="token comment">// first_name => firstNameは自動でマッピングされる。</span>
 
-@end
-&#x2F;*
+<span class="token keyword">@end</span>
+<span class="token comment">/*
 + (NSDictionary *)mappings
 + (BOOL)useFindOrCreate
 + (BOOL)returnsObjectsAsFaults
 + (NSArray *)relationshipKeyPathsForPrefetching
-*&#x2F;</code></pre>
+*/</span></code></pre>
 <h4 id="テスト"><a href="#テスト" class="headerlink" title="テスト"></a>テスト</h4><p>HobjectiveRecordはメモリ内ストアを設定可能です。テストなどで利用すると便利です。</p>
-<pre class="language-objc" data-language="objc"><code class="language-objc">[NSPersistentStoreCoordinator setupDefaultStoreWithModelURL:nil storeURL:nil useInMemoryStore:YES];</code></pre>
+<pre class="language-objectivec" data-language="objectivec"><code class="language-objectivec"><span class="token punctuation">[</span>NSPersistentStoreCoordinator setupDefaultStoreWithModelURL<span class="token punctuation">:</span>nil storeURL<span class="token punctuation">:</span>nil useInMemoryStore<span class="token punctuation">:</span>YES<span class="token punctuation">]</span><span class="token punctuation">;</span></code></pre>
 </section>
     <!-- Tags START -->
     
