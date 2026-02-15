@@ -26,9 +26,9 @@ donate: false
 qrcode: false
 
 # comment
-# you can set gitment, uyan or disqus
+# you can set gitment or uyan
 
-comment: disqus
+comment:
 
 # gitment config
 gitment_owner: 
@@ -39,9 +39,6 @@ gitment_oauth_secret:
 # uyan config
 # if you want to use uyan as your blog comment, plz remove/comment out gitment config
 baidu_id: 
-
-# disqus config
-disqus_shortname: hmhv
 
 about: 
   banner: ../images/mt_fuji.jpg
