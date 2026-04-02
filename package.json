@@ -19,7 +19,7 @@
     "hexo-server": "^3.0.0"
   },
   "scripts": {
-    "postinstall": "sed -i '' 's/indentedSyntax: (ext === .sass.)/indentedSyntax: (ext === '\\''sass'\\''), quietDeps: true, logger: { warn: function() {} }/' node_modules/hexo-renderer-sass/lib/renderer.js",
+    "postinstall": "node -e \"const f='node_modules/hexo-renderer-sass/lib/renderer.js';let s=require('fs').readFileSync(f,'utf8');s=s.replace(/indentedSyntax: \\(ext === .sass.\\)/,'indentedSyntax: (ext === \\x27sass\\x27), quietDeps: true, logger: { warn: function() {} }');require('fs').writeFileSync(f,s)\"",
     "hb": "hexo clean && hexo g",
     "hs": "hexo server",
     "hn": "hexo new "
