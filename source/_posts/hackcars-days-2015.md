@@ -23,4 +23,4 @@ http://hacklog.jp/works/3763
 
 https://youtu.be/QLrBxwCmA7Y
 
-{% youtube QLrBxwCmA7Y %}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/QLrBxwCmA7Y" frameborder="0" allowfullscreen></iframe>

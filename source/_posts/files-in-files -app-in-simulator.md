@@ -9,8 +9,6 @@ tags:
 date: 2023-09-22 12:00:00
 ---
 
-## iOSシミュレーターのファイルアプリのファイルの確認する方法
-
 
 ```
 $ xcrun simctl listapps booted | grep group.com.apple.FileProvider.LocalStorage

@@ -8,7 +8,7 @@ subtitle:
 description: "hmhv's blog & app galary"
 author: hmhv
 email: admin@hmhv.info
-language:
+language: en
 cover: /images/siteimage.png
 fbid: 1581052895470218
 keywords: "hmhv,blog,app,galary,ios,iphone"
@@ -72,8 +72,15 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://github.com/hexojs/hexo/wiki/Plugins
 ## Themes: https://github.com/hexojs/hexo/wiki/Themes
-theme: vexo
+theme: even
 exclude_generator:
+
+# Excerpt
+excerpt:
+  depth: 2
+  excerpt_excludes: []
+  more_excludes: []
+  hideWholePostExcerpts: true
 
 # Deployment
 ## Docs: http://hexo.io/docs/deployment.html
