@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Website mata -->
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<!-- Disable transformation -->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<!-- Website description -->
+
+<meta name="description" content="flutterでiosのtoday-extensionを作って見る" />
+
+
+<!-- Website keywords -->
+
+<meta name="keywords" content="hmhv,blog,app,galary,ios,iphone" />
+
+
+
+
+<!-- Website rss -->
+
+<link rel="alternate" href="/atom.xml" title="hmhv" type="application/atom+xml">
+
+
+<!-- Website favicon -->
+
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=3.0.0" />
+
+
+<!-- Canonical, good for google search engine -->
+<link rel="canonical" href="https://hmhv.info/2020/02/flutter-today-extension-ios/" />
+
+<!-- Fancybox styling -->
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+
+
+<!-- MathJax (LaTeX) support -->
+
+
+<!-- Theme styling -->
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=3.0.0" />
+
+<!-- Analytics and push -->
+
+
+
+  
+
+
+
+<!-- LeanCloud Counter -->
+
+
+<script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null,"server_url":null,"cdn":null},"toc":true,"fancybox":true,"latex":false};
+</script>
+  
+  <title>flutterでiosのtoday-extensionを作って見る - hmhv</title>
+
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+<body>
+  <div class="scrollPercentage"></div>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">hmhv</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+    <a href="/">
+      <li class="mobile-menu-item">
+        
+        
+        Home              </li>
+    </a>
+    
+    <a href="/archives/">
+      <li class="mobile-menu-item">
+        
+        
+        Archives              </li>
+    </a>
+    
+    <a href="/tags/">
+      <li class="mobile-menu-item">
+        
+        
+        Tags              </li>
+    </a>
+    
+    <a href="/apps/">
+      <li class="mobile-menu-item">
+        
+        
+        Apps              </li>
+    </a>
+    
+    <a href="/about/">
+      <li class="mobile-menu-item">
+        
+        
+        About              </li>
+    </a>
+    
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+      <div class="logo-wrapper">  
+  <a href="/." class="logo">hmhv</a>  
+</div>  
+  
+<nav class="site-navbar">  
+    
+    <ul id="menu" class="menu">  
+        
+        <li class="menu-item">  
+          <a class="menu-item-link" href="/">  
+              
+              
+              Home  
+              
+          </a>  
+        </li>  
+        
+        <li class="menu-item">  
+          <a class="menu-item-link" href="/archives/">  
+              
+              
+              Archives  
+              
+          </a>  
+        </li>  
+        
+        <li class="menu-item">  
+          <a class="menu-item-link" href="/tags/">  
+              
+              
+              Tags  
+              
+          </a>  
+        </li>  
+        
+        <li class="menu-item">  
+          <a class="menu-item-link" href="/apps/">  
+              
+              
+              Apps  
+              
+          </a>  
+        </li>  
+        
+        <li class="menu-item">  
+          <a class="menu-item-link" href="/about/">  
+              
+              
+              About  
+              
+          </a>  
+        </li>  
+        
+    </ul>  
+    
+</nav>  
+
+    </header>
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+  <header class="post-header">
+    <h1 class="post-title">
+      
+      flutterでiosのtoday-extensionを作って見る
+      
+    </h1>
+
+    <div class="post-meta">
+      <span class="post-time">
+        2020-02-09
+      </span>
+      
+      
+      <span class="post-category">
+        
+        <a href="/categories/Tech/">Tech</a>
+        
+      </span>
+      
+      
+    </div>
+  </header>
+
+  
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A5%E4%B8%8B%E3%81%AE%E6%96%B9%E6%B3%95%E3%81%AFFlutter-1-17%E4%BB%A5%E4%B8%8A%E3%81%A7%E3%81%AF%E5%8B%95%E3%81%8B%E3%81%AA%E3%81%8F%E3%81%AA%E3%82%8A%E3%81%BE%E3%81%97%E3%81%9F%E3%80%82"><span class="toc-number">1.</span> <span class="toc-text">以下の方法はFlutter 1.17以上では動かなくなりました。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Flutter%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%82%92%E6%96%B0%E8%A6%8F%E4%BD%9C%E6%88%90"><span class="toc-number">2.</span> <span class="toc-text">1. Flutterプロジェクトを新規作成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E3%83%93%E3%83%AB%E3%83%89%E3%81%97%E3%81%A6%E7%A2%BA%E8%AA%8D"><span class="toc-number">3.</span> <span class="toc-text">2. ビルドして確認</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AndroidStudio%E3%81%A7%E3%83%93%E3%83%AB%E3%83%89%E3%81%97%E3%81%A6%E7%A2%BA%E8%AA%8D"><span class="toc-number">3.1.</span> <span class="toc-text">AndroidStudioでビルドして確認</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Xcode%E3%81%A7%E3%83%93%E3%83%AB%E3%83%89%E3%81%97%E3%81%A6%E7%A2%BA%E8%AA%8D"><span class="toc-number">3.2.</span> <span class="toc-text">Xcodeでビルドして確認</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Today-Extenstion%E3%82%92%E4%BD%9C%E6%88%90"><span class="toc-number">4.</span> <span class="toc-text">3. Today Extenstionを作成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Today-Extenstion%E3%81%AE%E4%BF%AE%E6%AD%A3"><span class="toc-number">5.</span> <span class="toc-text">4. Today Extenstionの修正</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E3%83%8A%E3%83%93%E3%82%B2%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%90%E3%83%BC%E3%82%92%E5%89%8A%E9%99%A4"><span class="toc-number">6.</span> <span class="toc-text">5. ナビゲーションバーを削除</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-Today-Extenstion%E3%81%AE%E9%AB%98%E3%81%95%E5%A4%89%E6%9B%B4%E5%8F%AF%E8%83%BD%E3%81%AB"><span class="toc-number">7.</span> <span class="toc-text">6. Today Extenstionの高さ変更可能に</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-Today-Extenstion%E3%81%AE%E3%82%BF%E3%82%A4%E3%83%88%E3%83%AB%E4%BF%AE%E6%AD%A3"><span class="toc-number">8.</span> <span class="toc-text">7. Today Extenstionのタイトル修正</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E5%8F%82%E8%80%83"><span class="toc-number">9.</span> <span class="toc-text">8. 参考</span></a></li></ol>
+    </div>
+  </div>
+  
+
+  <div class="post-content">
+    
+    <h2 id="以下の方法はFlutter-1-17以上では動かなくなりました。"><a href="#以下の方法はFlutter-1-17以上では動かなくなりました。" class="headerlink" title="以下の方法はFlutter 1.17以上では動かなくなりました。"></a>以下の方法は<code>Flutter 1.17</code>以上では動かなくなりました。</h2><p><a class="fancybox" rel="gallery0"><img src="https://github.com/hmhv/flutter_today_extension_example/raw/master/storage/demo.gif" style="max-width: 100%"></a></p>
+<h2 id="1-Flutterプロジェクトを新規作成"><a href="#1-Flutterプロジェクトを新規作成" class="headerlink" title="1. Flutterプロジェクトを新規作成"></a>1. Flutterプロジェクトを新規作成</h2><p><a class="fancybox" rel="gallery0"><img src="https://github.com/hmhv/flutter_today_extension_example/raw/master/storage/1.png" style="max-width: 100%"></a></p>
+<h2 id="2-ビルドして確認"><a href="#2-ビルドして確認" class="headerlink" title="2. ビルドして確認"></a>2. ビルドして確認</h2><h3 id="AndroidStudioでビルドして確認"><a href="#AndroidStudioでビルドして確認" class="headerlink" title="AndroidStudioでビルドして確認"></a>AndroidStudioでビルドして確認</h3><p><a class="fancybox" rel="gallery0"><img src="https://github.com/hmhv/flutter_today_extension_example/raw/master/storage/2.png" style="max-width: 100%"></a></p>
+<h3 id="Xcodeでビルドして確認"><a href="#Xcodeでビルドして確認" class="headerlink" title="Xcodeでビルドして確認"></a>Xcodeでビルドして確認</h3><p><code>ios/Runner.xcworkspace</code>を開いて</p>
+<p><a class="fancybox" rel="gallery0"><img src="https://github.com/hmhv/flutter_today_extension_example/raw/master/storage/2-1.png" style="max-width: 100%"></a></p>
+<h2 id="3-Today-Extenstionを作成"><a href="#3-Today-Extenstionを作成" class="headerlink" title="3. Today Extenstionを作成"></a>3. Today Extenstionを作成</h2><ul>
+<li>テンプレートからToday Extenstion選択して作成</li>
+</ul>
+<p><a class="fancybox" rel="gallery0"><img src="https://github.com/hmhv/flutter_today_extension_example/raw/master/storage/3.png" style="max-width: 100%"></a></p>
+<ul>
+<li>today Targetに <code>App.framework</code> , <code>Flutter.framework</code> を追加</li>
+</ul>
+<p><a class="fancybox" rel="gallery0"><img src="https://github.com/hmhv/flutter_today_extension_example/raw/master/storage/4.png" style="max-width: 100%"></a></p>
+<p><a class="fancybox" rel="gallery0"><img src="https://github.com/hmhv/flutter_today_extension_example/raw/master/storage/5.png" style="max-width: 100%"></a></p>
+<p><a class="fancybox" rel="gallery0"><img src="https://github.com/hmhv/flutter_today_extension_example/raw/master/storage/6.png" style="max-width: 100%"></a></p>
+<h2 id="4-Today-Extenstionの修正"><a href="#4-Today-Extenstionの修正" class="headerlink" title="4. Today Extenstionの修正"></a>4. Today Extenstionの修正</h2><ul>
+<li>MainInterface.storyboardから不要なラベルを削除</li>
+<li>Flutter frameworkをimport</li>
+<li>FlutterEngineをつくる</li>
+<li>FlutterViewControllerをTodayViewControllerに追加</li>
+</ul>
+<figure class="highlight swift"><figcaption><span>TodayViewController.swift</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Flutter</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">TodayViewController</span>: <span class="title class_ inherited__">UIViewController</span>, <span class="title class_ inherited__">NCWidgetProviding</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">lazy</span> <span class="keyword">var</span> flutterEngine <span class="operator">=</span> <span class="type">FlutterEngine</span>(name: <span class="string">&quot;TodayViewController&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="keyword">func</span> <span class="title function_">viewDidLoad</span>() &#123;</span><br><span class="line">        <span class="keyword">super</span>.viewDidLoad()</span><br><span class="line">        flutterEngine.run()</span><br><span class="line">        addFlutterVC()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">addFlutterVC</span>() &#123;</span><br><span class="line">        <span class="keyword">let</span> flutterViewController <span class="operator">=</span> <span class="type">FlutterViewController</span>(engine: flutterEngine, nibName: <span class="literal">nil</span>, bundle: <span class="literal">nil</span>)</span><br><span class="line">        flutterViewController.view.translatesAutoresizingMaskIntoConstraints <span class="operator">=</span> <span class="literal">false</span></span><br><span class="line">        addChild(flutterViewController)</span><br><span class="line">        view.addSubview(flutterViewController.view)</span><br><span class="line"></span><br><span class="line">        flutterViewController.view.topAnchor.constraint(equalTo: view.topAnchor).isActive <span class="operator">=</span> <span class="literal">true</span></span><br><span class="line">        flutterViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive <span class="operator">=</span> <span class="literal">true</span></span><br><span class="line">        flutterViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive <span class="operator">=</span> <span class="literal">true</span></span><br><span class="line">        flutterViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive <span class="operator">=</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">        flutterViewController.didMove(toParent: <span class="keyword">self</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a class="fancybox" rel="gallery0"><img src="https://github.com/hmhv/flutter_today_extension_example/raw/master/storage/7.png" style="max-width: 100%"></a></p>
+<h2 id="5-ナビゲーションバーを削除"><a href="#5-ナビゲーションバーを削除" class="headerlink" title="5. ナビゲーションバーを削除"></a>5. ナビゲーションバーを削除</h2><ul>
+<li>DartクラスでToday Extenstion用のTodayAppを作成<br>　（基本MYAppのままでappBarのみ削除）</li>
+</ul>
+<figure class="highlight dart"><figcaption><span>today_app.dart</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&#x27;package:flutter/material.dart&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TodayApp</span> <span class="keyword">extends</span> <span class="title">StatelessWidget</span> </span>&#123;</span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> MaterialApp(</span><br><span class="line">      title: <span class="string">&#x27;Flutter Demo&#x27;</span>,</span><br><span class="line">      theme: ThemeData(</span><br><span class="line">        primarySwatch: Colors.blue,</span><br><span class="line">      ),</span><br><span class="line">      home: MyTodayPage(title: <span class="string">&#x27;Flutter Demo Home Page&#x27;</span>),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyTodayPage</span> <span class="keyword">extends</span> <span class="title">StatefulWidget</span> </span>&#123;</span><br><span class="line">  MyTodayPage(&#123;Key key, <span class="keyword">this</span>.title&#125;) : <span class="keyword">super</span>(key: key);</span><br><span class="line">  <span class="keyword">final</span> <span class="built_in">String</span> title;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  _MyTodayPageState createState() =&gt; _MyTodayPageState();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">_MyTodayPageState</span> <span class="keyword">extends</span> <span class="title">State</span>&lt;<span class="title">MyTodayPage</span>&gt; </span>&#123;</span><br><span class="line">  <span class="built_in">int</span> _counter = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">void</span> _incrementCounter() &#123;</span><br><span class="line">    setState(() &#123;</span><br><span class="line">      _counter++;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> Scaffold(</span><br><span class="line">      body: Center(</span><br><span class="line">        child: Column(</span><br><span class="line">          mainAxisAlignment: MainAxisAlignment.center,</span><br><span class="line">          children: &lt;Widget&gt;[</span><br><span class="line">            Text(</span><br><span class="line">              <span class="string">&#x27;You have pushed the button this many times:&#x27;</span>,</span><br><span class="line">            ),</span><br><span class="line">            Text(</span><br><span class="line">              <span class="string">&#x27;<span class="subst">$_counter</span>&#x27;</span>,</span><br><span class="line">              style: Theme.of(context).textTheme.display1,</span><br><span class="line">            ),</span><br><span class="line">          ],</span><br><span class="line">        ),</span><br><span class="line">      ),</span><br><span class="line">      floatingActionButton: FloatingActionButton(</span><br><span class="line">        onPressed: _incrementCounter,</span><br><span class="line">        tooltip: <span class="string">&#x27;Increment&#x27;</span>,</span><br><span class="line">        child: Icon(Icons.add),</span><br><span class="line">      ), <span class="comment">// This trailing comma makes auto-formatting nicer for build methods.</span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Today Extenstion用のエントリーポイントを作成</li>
+</ul>
+<figure class="highlight dart"><figcaption><span>main.dart</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@pragma</span>(<span class="string">&#x27;vm:entry-point&#x27;</span>)</span><br><span class="line"><span class="keyword">void</span> mainForTodayExtension() =&gt; runApp(TodayApp());</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Today Extenstion用のエントリーポイントを利用</li>
+</ul>
+<figure class="highlight swift"><figcaption><span>TodayViewController.swift</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="keyword">func</span> <span class="title function_">viewDidLoad</span>() &#123;</span><br><span class="line">    <span class="keyword">super</span>.viewDidLoad()</span><br><span class="line">    flutterEngine.run(withEntrypoint: <span class="string">&quot;mainForTodayExtension&quot;</span>, libraryURI: <span class="literal">nil</span>)</span><br><span class="line">    addFlutterVC()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a class="fancybox" rel="gallery0"><img src="https://github.com/hmhv/flutter_today_extension_example/raw/master/storage/8.png" style="max-width: 100%"></a></p>
+<h2 id="6-Today-Extenstionの高さ変更可能に"><a href="#6-Today-Extenstionの高さ変更可能に" class="headerlink" title="6. Today Extenstionの高さ変更可能に"></a>6. Today Extenstionの高さ変更可能に</h2><figure class="highlight swift"><figcaption><span>TodayViewController.swift</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="keyword">func</span> <span class="title function_">viewDidLoad</span>() &#123;</span><br><span class="line">    <span class="keyword">super</span>.viewDidLoad()</span><br><span class="line"></span><br><span class="line">    extensionContext<span class="operator">?</span>.widgetLargestAvailableDisplayMode <span class="operator">=</span> <span class="type">NCWidgetDisplayMode</span>.expanded</span><br><span class="line"></span><br><span class="line">    flutterEngine.run(withEntrypoint: <span class="string">&quot;mainForTodayExtension&quot;</span>, libraryURI: <span class="literal">nil</span>)</span><br><span class="line">    addFlutterVC()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">func</span> <span class="title function_">widgetActiveDisplayModeDidChange</span>(<span class="keyword">_</span> <span class="params">activeDisplayMode</span>: <span class="type">NCWidgetDisplayMode</span>, <span class="params">withMaximumSize</span> <span class="params">maxSize</span>: <span class="type">CGSize</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (activeDisplayMode <span class="operator">==</span> <span class="type">NCWidgetDisplayMode</span>.compact) &#123;</span><br><span class="line">        <span class="keyword">self</span>.preferredContentSize <span class="operator">=</span> maxSize;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">self</span>.preferredContentSize <span class="operator">=</span> <span class="type">CGSize</span>(width: <span class="number">0</span>, height: <span class="number">200</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a class="fancybox" rel="gallery0"><img src="https://github.com/hmhv/flutter_today_extension_example/raw/master/storage/9.png" style="max-width: 100%"></a></p>
+<h2 id="7-Today-Extenstionのタイトル修正"><a href="#7-Today-Extenstionのタイトル修正" class="headerlink" title="7. Today Extenstionのタイトル修正"></a>7. Today Extenstionのタイトル修正</h2><p><a class="fancybox" rel="gallery0"><img src="https://github.com/hmhv/flutter_today_extension_example/raw/master/storage/10.png" style="max-width: 100%"></a></p>
+<p>全ソースコードはこちらに<br><a target="_blank" rel="noopener" href="https://github.com/hmhv/flutter_today_extension_example">https://github.com/hmhv/flutter_today_extension_example</a></p>
+<h2 id="8-参考"><a href="#8-参考" class="headerlink" title="8. 参考"></a>8. 参考</h2><ul>
+<li><p><a target="_blank" rel="noopener" href="https://flutter.dev/docs/development/add-to-app">https://flutter.dev/docs/development/add-to-app</a></p>
+</li>
+<li><p>Today Extenstionはアプリアイコンの長押しでも表示される</p>
+</li>
+</ul>
+<p><a class="fancybox" rel="gallery0"><img src="https://github.com/hmhv/flutter_today_extension_example/raw/master/storage/11.png" style="max-width: 100%"></a></p>
+
+    
+  </div>
+
+  
+  <!-- Post Copyright -->
+
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span>Author: </span>
+    <a href="https://hmhv.info">hmhv</a>
+  </p>
+  <p class="copyright-item">
+    <span>Link: </span>
+    <a href="https://hmhv.info/2020/02/flutter-today-extension-ios/">https://hmhv.info/2020/02/flutter-today-extension-ios/</a>
+  </p>
+  <p class="copyright-item">
+    <span>License: </span>
+    
+    <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+  </p>
+</div>
+
+    
+
+  
+
+  
+  <footer class="post-footer">
+    
+    <div class="post-tags">
+      
+      <a href="/tags/iOS/">iOS</a>
+      
+      <a href="/tags/Flutter/">Flutter</a>
+      
+      <a href="/tags/Today-Extension/">Today-Extension</a>
+      
+    </div>
+    
+      
+  <nav class="post-nav">  
+      
+      <a class="prev" href="/2020/04/associatedobject-with-associatedobjectowner/">  
+        <i class="iconfont icon-left"></i>  
+        <span class="prev-text nav-default">AssociatedObjectOwnerでobjc_g(s)etAssociatedObjectを利用</span>  
+        <span class="prev-text nav-mobile">Prev</span>  
+      </a>  
+      
+      
+      <a class="next" href="/2020/02/soft-ui-view-with-swift/">  
+        <span class="next-text nav-default">Soft-UI(Neumorphism)をSwiftで作って見る</span>  
+        <span class="prev-text nav-mobile">Next</span>  
+        <i class="iconfont icon-right"></i>  
+      </a>  
+      
+  </nav>  
+  
+
+  </footer>
+  
+
+</article>
+        </div>
+          
+  <div class="comments" id="comments">  
+      
+  </div>  
+  
+
+      </div>
+    </main>
+    <footer id="footer" class="footer">
+      <!-- Social Links -->
+
+<div class="social-links">
+  
+  
+  
+  
+  <a target="_blank" rel="noopener" href="https://github.com/hmhv" class="iconfont icon-github" title="github"></a>
+  
+  
+  
+
+  
+</div>
+
+
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme -
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+  <span class="division">|</span>
+  <span class="hosting-info">
+    footer.hosting
+  </span>
+
+  <span class="copyright-year">
+    <span>
+      
+      &copy;
+      
+      2015 - 2026      
+    </span>
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+
+    <span class="author">hmhv</span>
+  </span>
+
+</div>
+    </footer>
+    <div class="back-to-top" id="back-to-top"> <i class="iconfont icon-up"></i> </div>
+  </div>
+    
+    
+    
+    
+    
+    
+    
+  
+
+  
+
+
+
+
+
+
+
+<script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+
+
+
+<script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+
+
+
+<script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/even.js?v=3.0.0"></script>
+</body>
+
+</html>

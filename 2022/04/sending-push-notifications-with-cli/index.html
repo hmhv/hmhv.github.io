@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Website mata -->
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<!-- Disable transformation -->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<!-- Website description -->
+
+<meta name="description" content="コマンドラインでiPhoneにプッシュ通知を送る方法" />
+
+
+<!-- Website keywords -->
+
+<meta name="keywords" content="hmhv,blog,app,galary,ios,iphone" />
+
+
+
+
+<!-- Website rss -->
+
+<link rel="alternate" href="/atom.xml" title="hmhv" type="application/atom+xml">
+
+
+<!-- Website favicon -->
+
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=3.0.0" />
+
+
+<!-- Canonical, good for google search engine -->
+<link rel="canonical" href="https://hmhv.info/2022/04/sending-push-notifications-with-cli/" />
+
+<!-- Fancybox styling -->
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+
+
+<!-- MathJax (LaTeX) support -->
+
+
+<!-- Theme styling -->
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=3.0.0" />
+
+<!-- Analytics and push -->
+
+
+
+  
+
+
+
+<!-- LeanCloud Counter -->
+
+
+<script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null,"server_url":null,"cdn":null},"toc":true,"fancybox":true,"latex":false};
+</script>
+  
+  <title>コマンドラインでiPhoneにプッシュ通知を送る方法 - hmhv</title>
+
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+<body>
+  <div class="scrollPercentage"></div>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">hmhv</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+    <a href="/">
+      <li class="mobile-menu-item">
+        
+        
+        Home              </li>
+    </a>
+    
+    <a href="/archives/">
+      <li class="mobile-menu-item">
+        
+        
+        Archives              </li>
+    </a>
+    
+    <a href="/tags/">
+      <li class="mobile-menu-item">
+        
+        
+        Tags              </li>
+    </a>
+    
+    <a href="/apps/">
+      <li class="mobile-menu-item">
+        
+        
+        Apps              </li>
+    </a>
+    
+    <a href="/about/">
+      <li class="mobile-menu-item">
+        
+        
+        About              </li>
+    </a>
+    
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+      <div class="logo-wrapper">  
+  <a href="/." class="logo">hmhv</a>  
+</div>  
+  
+<nav class="site-navbar">  
+    
+    <ul id="menu" class="menu">  
+        
+        <li class="menu-item">  
+          <a class="menu-item-link" href="/">  
+              
+              
+              Home  
+              
+          </a>  
+        </li>  
+        
+        <li class="menu-item">  
+          <a class="menu-item-link" href="/archives/">  
+              
+              
+              Archives  
+              
+          </a>  
+        </li>  
+        
+        <li class="menu-item">  
+          <a class="menu-item-link" href="/tags/">  
+              
+              
+              Tags  
+              
+          </a>  
+        </li>  
+        
+        <li class="menu-item">  
+          <a class="menu-item-link" href="/apps/">  
+              
+              
+              Apps  
+              
+          </a>  
+        </li>  
+        
+        <li class="menu-item">  
+          <a class="menu-item-link" href="/about/">  
+              
+              
+              About  
+              
+          </a>  
+        </li>  
+        
+    </ul>  
+    
+</nav>  
+
+    </header>
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+  <header class="post-header">
+    <h1 class="post-title">
+      
+      コマンドラインでiPhoneにプッシュ通知を送る方法
+      
+    </h1>
+
+    <div class="post-meta">
+      <span class="post-time">
+        2022-04-26
+      </span>
+      
+      
+      <span class="post-category">
+        
+        <a href="/categories/Tech/">Tech</a>
+        
+      </span>
+      
+      
+    </div>
+  </header>
+
+  
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89"><span class="toc-number">1.</span> <span class="toc-text">1. ファイルをダウンロード</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%BB%A5%E4%B8%8B%E3%81%AE%E3%83%9A%E3%83%BC%E3%82%B8%E3%82%92%E5%8F%82%E8%80%83%E3%81%ABparams-sh%E3%81%AE%E5%90%84%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF%E3%82%92%E7%B7%A8%E9%9B%86"><span class="toc-number">2.</span> <span class="toc-text">2. 以下のページを参考にparams.shの各パラメータを編集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-sender-sh%E3%82%92%E5%AE%9F%E8%A1%8C"><span class="toc-number">3.</span> <span class="toc-text">3. sender.shを実行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-sender-sh%E3%81%AE%E5%86%85%E5%AE%B9"><span class="toc-number">4.</span> <span class="toc-text">4. sender.shの内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-params-sh%E3%81%AE%E5%86%85%E5%AE%B9"><span class="toc-number">5.</span> <span class="toc-text">5. params.shの内容</span></a></li></ol>
+    </div>
+  </div>
+  
+
+  <div class="post-content">
+    
+    <h3 id="1-ファイルをダウンロード"><a href="#1-ファイルをダウンロード" class="headerlink" title="1. ファイルをダウンロード"></a>1. ファイルをダウンロード</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">curl -o sender.sh https://gist.githubusercontent.com/hmhv/7ab39297bdb5efe8b63cd024d893f6bd/raw/29328be9e54a3c1fe36f97369bb1f5d13db286d4/sender.sh</span><br><span class="line"><span class="built_in">chmod</span> 755 ./sender.sh</span><br><span class="line">curl -o params.sh https://gist.githubusercontent.com/hmhv/dd37cd462a63fa34b588d0eea1eb698d/raw/3db9e1616daa29a13e8afd13e0a14079cba2e781/params.sh</span><br><span class="line"><span class="built_in">chmod</span> 755 ./params.sh</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-以下のページを参考にparams-shの各パラメータを編集"><a href="#2-以下のページを参考にparams-shの各パラメータを編集" class="headerlink" title="2. 以下のページを参考にparams.shの各パラメータを編集"></a>2. 以下のページを参考に<code>params.sh</code>の各パラメータを編集</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/generating_a_remote_notification/">Generating a Remote Notification</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns/">Sending Notification Requests to APNs</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.apple.com/documentation/usernotifications/sending_push_notifications_using_command-line_tools/">Sending Push Notifications Using Command-Line Tools</a></li>
+</ul>
+<h3 id="3-sender-shを実行"><a href="#3-sender-shを実行" class="headerlink" title="3. sender.shを実行"></a>3. <code>sender.sh</code>を実行</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./sender.sh ./params.sh</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-sender-shの内容"><a href="#4-sender-shの内容" class="headerlink" title="4. sender.shの内容"></a>4. <code>sender.sh</code>の内容</h3><script src="https://gist.github.com/hmhv/7ab39297bdb5efe8b63cd024d893f6bd.js"></script>
+
+<h3 id="5-params-shの内容"><a href="#5-params-shの内容" class="headerlink" title="5. params.shの内容"></a>5. <code>params.sh</code>の内容</h3><script src="https://gist.github.com/hmhv/dd37cd462a63fa34b588d0eea1eb698d.js"></script>
+
+
+
+    
+  </div>
+
+  
+  <!-- Post Copyright -->
+
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span>Author: </span>
+    <a href="https://hmhv.info">hmhv</a>
+  </p>
+  <p class="copyright-item">
+    <span>Link: </span>
+    <a href="https://hmhv.info/2022/04/sending-push-notifications-with-cli/">https://hmhv.info/2022/04/sending-push-notifications-with-cli/</a>
+  </p>
+  <p class="copyright-item">
+    <span>License: </span>
+    
+    <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+  </p>
+</div>
+
+    
+
+  
+
+  
+  <footer class="post-footer">
+    
+    <div class="post-tags">
+      
+      <a href="/tags/iOS/">iOS</a>
+      
+      <a href="/tags/Push/">Push</a>
+      
+      <a href="/tags/Notification/">Notification</a>
+      
+      <a href="/tags/CLI/">CLI</a>
+      
+    </div>
+    
+      
+  <nav class="post-nav">  
+      
+      <a class="prev" href="/2022/05/editor-shortcut-for-xcode-and-vscode/">  
+        <i class="iconfont icon-left"></i>  
+        <span class="prev-text nav-default">XcodeとVSCodeで入力中に使いたいけどいつもわすれるショートカットキー</span>  
+        <span class="prev-text nav-mobile">Prev</span>  
+      </a>  
+      
+      
+      <a class="next" href="/2022/04/check-ios-simulator-keychain/">  
+        <span class="next-text nav-default">iOSシミュレーターのキーチェーン情報削除</span>  
+        <span class="prev-text nav-mobile">Next</span>  
+        <i class="iconfont icon-right"></i>  
+      </a>  
+      
+  </nav>  
+  
+
+  </footer>
+  
+
+</article>
+        </div>
+          
+  <div class="comments" id="comments">  
+      
+  </div>  
+  
+
+      </div>
+    </main>
+    <footer id="footer" class="footer">
+      <!-- Social Links -->
+
+<div class="social-links">
+  
+  
+  
+  
+  <a target="_blank" rel="noopener" href="https://github.com/hmhv" class="iconfont icon-github" title="github"></a>
+  
+  
+  
+
+  
+</div>
+
+
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme -
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+  <span class="division">|</span>
+  <span class="hosting-info">
+    footer.hosting
+  </span>
+
+  <span class="copyright-year">
+    <span>
+      
+      &copy;
+      
+      2015 - 2026      
+    </span>
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+
+    <span class="author">hmhv</span>
+  </span>
+
+</div>
+    </footer>
+    <div class="back-to-top" id="back-to-top"> <i class="iconfont icon-up"></i> </div>
+  </div>
+    
+    
+    
+    
+    
+    
+    
+  
+
+  
+
+
+
+
+
+
+
+<script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+
+
+
+<script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+
+
+
+<script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/even.js?v=3.0.0"></script>
+</body>
+
+</html>

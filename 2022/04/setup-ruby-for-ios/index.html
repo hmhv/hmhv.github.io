@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Website mata -->
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<!-- Disable transformation -->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<!-- Website description -->
+
+<meta name="description" content="iOS開発環境作成のためのRuby設定" />
+
+
+<!-- Website keywords -->
+
+<meta name="keywords" content="hmhv,blog,app,galary,ios,iphone" />
+
+
+
+
+<!-- Website rss -->
+
+<link rel="alternate" href="/atom.xml" title="hmhv" type="application/atom+xml">
+
+
+<!-- Website favicon -->
+
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=3.0.0" />
+
+
+<!-- Canonical, good for google search engine -->
+<link rel="canonical" href="https://hmhv.info/2022/04/setup-ruby-for-ios/" />
+
+<!-- Fancybox styling -->
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+
+
+<!-- MathJax (LaTeX) support -->
+
+
+<!-- Theme styling -->
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=3.0.0" />
+
+<!-- Analytics and push -->
+
+
+
+  
+
+
+
+<!-- LeanCloud Counter -->
+
+
+<script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null,"server_url":null,"cdn":null},"toc":true,"fancybox":true,"latex":false};
+</script>
+  
+  <title>iOS開発環境作成のためのRuby設定 - hmhv</title>
+
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+<body>
+  <div class="scrollPercentage"></div>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">hmhv</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+    <a href="/">
+      <li class="mobile-menu-item">
+        
+        
+        Home              </li>
+    </a>
+    
+    <a href="/archives/">
+      <li class="mobile-menu-item">
+        
+        
+        Archives              </li>
+    </a>
+    
+    <a href="/tags/">
+      <li class="mobile-menu-item">
+        
+        
+        Tags              </li>
+    </a>
+    
+    <a href="/apps/">
+      <li class="mobile-menu-item">
+        
+        
+        Apps              </li>
+    </a>
+    
+    <a href="/about/">
+      <li class="mobile-menu-item">
+        
+        
+        About              </li>
+    </a>
+    
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+      <div class="logo-wrapper">  
+  <a href="/." class="logo">hmhv</a>  
+</div>  
+  
+<nav class="site-navbar">  
+    
+    <ul id="menu" class="menu">  
+        
+        <li class="menu-item">  
+          <a class="menu-item-link" href="/">  
+              
+              
+              Home  
+              
+          </a>  
+        </li>  
+        
+        <li class="menu-item">  
+          <a class="menu-item-link" href="/archives/">  
+              
+              
+              Archives  
+              
+          </a>  
+        </li>  
+        
+        <li class="menu-item">  
+          <a class="menu-item-link" href="/tags/">  
+              
+              
+              Tags  
+              
+          </a>  
+        </li>  
+        
+        <li class="menu-item">  
+          <a class="menu-item-link" href="/apps/">  
+              
+              
+              Apps  
+              
+          </a>  
+        </li>  
+        
+        <li class="menu-item">  
+          <a class="menu-item-link" href="/about/">  
+              
+              
+              About  
+              
+          </a>  
+        </li>  
+        
+    </ul>  
+    
+</nav>  
+
+    </header>
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+  <header class="post-header">
+    <h1 class="post-title">
+      
+      iOS開発環境作成のためのRuby設定
+      
+    </h1>
+
+    <div class="post-meta">
+      <span class="post-time">
+        2022-04-15
+      </span>
+      
+      
+      <span class="post-category">
+        
+        <a href="/categories/Tech/">Tech</a>
+        
+      </span>
+      
+      
+    </div>
+  </header>
+
+  
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A6%82%E8%A6%81"><span class="toc-number">1.</span> <span class="toc-text">概要</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#chruby%E3%81%A8ruby-install%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB"><span class="toc-number">2.</span> <span class="toc-text">chrubyとruby-installのインストール</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Ruby%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB"><span class="toc-number">3.</span> <span class="toc-text">Rubyのインストール</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#chruby%E3%81%AE%E8%A8%AD%E5%AE%9A"><span class="toc-number">4.</span> <span class="toc-text">chrubyの設定</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#chruby%E3%81%AE%E5%88%A9%E7%94%A8"><span class="toc-number">5.</span> <span class="toc-text">chrubyの利用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E6%B8%88%E3%81%BF%E3%81%AERuby%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%81%AE%E7%A2%BA%E8%AA%8D"><span class="toc-number">5.1.</span> <span class="toc-text">インストール済みのRubyバージョンの確認</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ruby%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%81%AE%E6%8C%87%E5%AE%9A"><span class="toc-number">5.2.</span> <span class="toc-text">Rubyバージョンの指定</span></a></li></ol></li></ol>
+    </div>
+  </div>
+  
+
+  <div class="post-content">
+    
+    <h1 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h1><p>新しいMacにiOS開発環境を作成するのにRubyの準備をするの好きではないが、iOS開発で多くのプロジェクトが<a target="_blank" rel="noopener" href="https://cocoapods.org/">CocoaPods</a>や<a target="_blank" rel="noopener" href="https://docs.fastlane.tools/">fastlane</a>などの利用のためRubyを必要とする。それも同じバージョンで、</p>
+<p>もし複数のプロジェクトが違うRubyバージョンを使って開発を行っている場合は複数のRubyバージョンのインストールと各プロジェクトで適切なRubyバージョンを利用できるようにする必要がある。</p>
+<p>今までは<a target="_blank" rel="noopener" href="https://github.com/rbenv/rbenv">rbenv</a>で適当にやって来たけど、新しい環境では<a target="_blank" rel="noopener" href="https://github.com/postmodern/chruby/">chruby</a>と<a target="_blank" rel="noopener" href="https://github.com/postmodern/ruby-install/">ruby-install</a>を使うのでちょっと使い方をメモしておく。</p>
+<h1 id="chrubyとruby-installのインストール"><a href="#chrubyとruby-installのインストール" class="headerlink" title="chrubyとruby-installのインストール"></a><a target="_blank" rel="noopener" href="https://github.com/postmodern/chruby/">chruby</a>と<a target="_blank" rel="noopener" href="https://github.com/postmodern/ruby-install/">ruby-install</a>のインストール</h1><p>Homebrewを利用して行う。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew install chruby ruby-install</span><br></pre></td></tr></table></figure>
+
+<h1 id="Rubyのインストール"><a href="#Rubyのインストール" class="headerlink" title="Rubyのインストール"></a>Rubyのインストール</h1><p>ruby-installを利用してフルバージョンまたはマイナーバージョンまでを指定して行う。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ ruby-install ruby 2.7.6</span><br><span class="line">または</span><br><span class="line">$ ruby-install ruby 2.7</span><br></pre></td></tr></table></figure>
+
+<p>ちなみにアンインストールはフォルダーの削除で行う。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">rm</span> -rf ~/.rubies/ruby-2.7.6</span><br></pre></td></tr></table></figure>
+
+<h1 id="chrubyの設定"><a href="#chrubyの設定" class="headerlink" title="chrubyの設定"></a>chrubyの設定</h1><p>chrubyはインストール後利用する前に設定が必要なので<code>brew info chruby</code>の結果を確認して自分のシェル設定ファイルに<code>chruby.sh</code>と<code>auto.sh</code>追加しておく</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">$ brew info chruby</span><br><span class="line">chruby: stable 0.3.9 (bottled), HEAD</span><br><span class="line">Ruby environment tool</span><br><span class="line">https://github.com/postmodern/chruby#readme</span><br><span class="line">/usr/local/Cellar/chruby/0.3.9 (12 files, 51.2KB) *</span><br><span class="line">  Poured from bottle on 2022-04-14 at 22:05:29</span><br><span class="line">From: https://github.com/Homebrew/homebrew-core/blob/HEAD/Formula/chruby.rb</span><br><span class="line">License: MIT</span><br><span class="line">==&gt; Options</span><br><span class="line">--HEAD</span><br><span class="line">	Install HEAD version</span><br><span class="line">==&gt; Caveats</span><br><span class="line">Add the following to the ~/.bash_profile or ~/.zshrc file:</span><br><span class="line">  <span class="built_in">source</span> /usr/local/opt/chruby/share/chruby/chruby.sh</span><br><span class="line"></span><br><span class="line">To <span class="built_in">enable</span> auto-switching of Rubies specified by .ruby-version files,</span><br><span class="line">add the following to ~/.bash_profile or ~/.zshrc:</span><br><span class="line">  <span class="built_in">source</span> /usr/local/opt/chruby/share/chruby/auto.sh</span><br><span class="line">==&gt; Analytics</span><br><span class="line">install: 4,390 (30 days), 11,324 (90 days), 33,170 (365 days)</span><br><span class="line">install-on-request: 4,377 (30 days), 11,291 (90 days), 33,047 (365 days)</span><br><span class="line">build-error: 0 (30 days)</span><br></pre></td></tr></table></figure>
+
+<p>一応シェル設定ファイル編集後は再起動</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">exec</span> <span class="variable">$SHELL</span> -l</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="chrubyの利用"><a href="#chrubyの利用" class="headerlink" title="chrubyの利用"></a>chrubyの利用</h1><h3 id="インストール済みのRubyバージョンの確認"><a href="#インストール済みのRubyバージョンの確認" class="headerlink" title="インストール済みのRubyバージョンの確認"></a>インストール済みのRubyバージョンの確認</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ chruby</span><br><span class="line">   ruby-2.7.6</span><br><span class="line"> * ruby-3.1.2</span><br><span class="line"></span><br><span class="line">$ ruby -v</span><br><span class="line">ruby 3.1.2p20 (2022-04-12 revision 4491bb740a) [x86_64-darwin21]</span><br></pre></td></tr></table></figure>
+
+<h3 id="Rubyバージョンの指定"><a href="#Rubyバージョンの指定" class="headerlink" title="Rubyバージョンの指定"></a>Rubyバージョンの指定</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ chruby 2.7</span><br><span class="line"></span><br><span class="line">$ chruby</span><br><span class="line"> * ruby-2.7.6</span><br><span class="line">   ruby-3.1.2</span><br><span class="line"></span><br><span class="line">$ ruby -v</span><br><span class="line">ruby 2.7.6p219 (2022-04-12 revision c9c2245c0a) [x86_64-darwin21]</span><br></pre></td></tr></table></figure>
+
+<p>もちろんフォルダーに<code>.ruby-version</code>でRubyバージョンの記入があれば<code>auto.sh</code>が自動で設定してくれる</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">To <span class="built_in">enable</span> auto-switching of Rubies specified by .ruby-version files,</span><br><span class="line">add the following to ~/.bash_profile or ~/.zshrc:</span><br><span class="line">  <span class="built_in">source</span> /usr/local/opt/chruby/share/chruby/auto.sh</span><br></pre></td></tr></table></figure>
+    
+  </div>
+
+  
+  <!-- Post Copyright -->
+
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span>Author: </span>
+    <a href="https://hmhv.info">hmhv</a>
+  </p>
+  <p class="copyright-item">
+    <span>Link: </span>
+    <a href="https://hmhv.info/2022/04/setup-ruby-for-ios/">https://hmhv.info/2022/04/setup-ruby-for-ios/</a>
+  </p>
+  <p class="copyright-item">
+    <span>License: </span>
+    
+    <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+  </p>
+</div>
+
+    
+
+  
+
+  
+  <footer class="post-footer">
+    
+    <div class="post-tags">
+      
+      <a href="/tags/iOS/">iOS</a>
+      
+      <a href="/tags/CocoaPods/">CocoaPods</a>
+      
+      <a href="/tags/fastlane/">fastlane</a>
+      
+      <a href="/tags/chruby/">chruby</a>
+      
+      <a href="/tags/ruby-install/">ruby-install</a>
+      
+    </div>
+    
+      
+  <nav class="post-nav">  
+      
+      <a class="prev" href="/2022/04/use-asdf/">  
+        <i class="iconfont icon-left"></i>  
+        <span class="prev-text nav-default">asdfを使ってみる</span>  
+        <span class="prev-text nav-mobile">Prev</span>  
+      </a>  
+      
+      
+      <a class="next" href="/2020/05/about-mobs/">  
+        <span class="next-text nav-default">MobSの紹介</span>  
+        <span class="prev-text nav-mobile">Next</span>  
+        <i class="iconfont icon-right"></i>  
+      </a>  
+      
+  </nav>  
+  
+
+  </footer>
+  
+
+</article>
+        </div>
+          
+  <div class="comments" id="comments">  
+      
+  </div>  
+  
+
+      </div>
+    </main>
+    <footer id="footer" class="footer">
+      <!-- Social Links -->
+
+<div class="social-links">
+  
+  
+  
+  
+  <a target="_blank" rel="noopener" href="https://github.com/hmhv" class="iconfont icon-github" title="github"></a>
+  
+  
+  
+
+  
+</div>
+
+
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme -
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+  <span class="division">|</span>
+  <span class="hosting-info">
+    footer.hosting
+  </span>
+
+  <span class="copyright-year">
+    <span>
+      
+      &copy;
+      
+      2015 - 2026      
+    </span>
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+
+    <span class="author">hmhv</span>
+  </span>
+
+</div>
+    </footer>
+    <div class="back-to-top" id="back-to-top"> <i class="iconfont icon-up"></i> </div>
+  </div>
+    
+    
+    
+    
+    
+    
+    
+  
+
+  
+
+
+
+
+
+
+
+<script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+
+
+
+<script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+
+
+
+<script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/even.js?v=3.0.0"></script>
+</body>
+
+</html>

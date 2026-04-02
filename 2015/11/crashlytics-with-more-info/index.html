@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Website mata -->
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<!-- Disable transformation -->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<!-- Website description -->
+
+<meta name="description" content="Crashlyticsへの追加情報" />
+
+
+<!-- Website keywords -->
+
+<meta name="keywords" content="hmhv,blog,app,galary,ios,iphone" />
+
+
+
+
+<!-- Website rss -->
+
+<link rel="alternate" href="/atom.xml" title="hmhv" type="application/atom+xml">
+
+
+<!-- Website favicon -->
+
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=3.0.0" />
+
+
+<!-- Canonical, good for google search engine -->
+<link rel="canonical" href="https://hmhv.info/2015/11/crashlytics-with-more-info/" />
+
+<!-- Fancybox styling -->
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+
+
+<!-- MathJax (LaTeX) support -->
+
+
+<!-- Theme styling -->
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=3.0.0" />
+
+<!-- Analytics and push -->
+
+
+
+  
+
+
+
+<!-- LeanCloud Counter -->
+
+
+<script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null,"server_url":null,"cdn":null},"toc":true,"fancybox":true,"latex":false};
+</script>
+  
+  <title>Crashlyticsへの追加情報 - hmhv</title>
+
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+<body>
+  <div class="scrollPercentage"></div>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">hmhv</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+    <a href="/">
+      <li class="mobile-menu-item">
+        
+        
+        Home              </li>
+    </a>
+    
+    <a href="/archives/">
+      <li class="mobile-menu-item">
+        
+        
+        Archives              </li>
+    </a>
+    
+    <a href="/tags/">
+      <li class="mobile-menu-item">
+        
+        
+        Tags              </li>
+    </a>
+    
+    <a href="/apps/">
+      <li class="mobile-menu-item">
+        
+        
+        Apps              </li>
+    </a>
+    
+    <a href="/about/">
+      <li class="mobile-menu-item">
+        
+        
+        About              </li>
+    </a>
+    
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+      <div class="logo-wrapper">  
+  <a href="/." class="logo">hmhv</a>  
+</div>  
+  
+<nav class="site-navbar">  
+    
+    <ul id="menu" class="menu">  
+        
+        <li class="menu-item">  
+          <a class="menu-item-link" href="/">  
+              
+              
+              Home  
+              
+          </a>  
+        </li>  
+        
+        <li class="menu-item">  
+          <a class="menu-item-link" href="/archives/">  
+              
+              
+              Archives  
+              
+          </a>  
+        </li>  
+        
+        <li class="menu-item">  
+          <a class="menu-item-link" href="/tags/">  
+              
+              
+              Tags  
+              
+          </a>  
+        </li>  
+        
+        <li class="menu-item">  
+          <a class="menu-item-link" href="/apps/">  
+              
+              
+              Apps  
+              
+          </a>  
+        </li>  
+        
+        <li class="menu-item">  
+          <a class="menu-item-link" href="/about/">  
+              
+              
+              About  
+              
+          </a>  
+        </li>  
+        
+    </ul>  
+    
+</nav>  
+
+    </header>
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+  <header class="post-header">
+    <h1 class="post-title">
+      
+      Crashlyticsへの追加情報
+      
+    </h1>
+
+    <div class="post-meta">
+      <span class="post-time">
+        2015-11-23
+      </span>
+      
+      
+      <span class="post-category">
+        
+        <a href="/categories/Tech/">Tech</a>
+        
+      </span>
+      
+      
+    </div>
+  </header>
+
+  
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E3%83%A6%E3%83%BC%E3%82%B6%E6%83%85%E5%A0%B1%E3%82%92%E9%80%81%E3%82%8B"><span class="toc-number">1.</span> <span class="toc-text">1. ユーザ情報を送る</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Key-Value%E3%81%A7%E9%80%81%E3%82%8B"><span class="toc-number">2.</span> <span class="toc-text">2. Key,Valueで送る</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E3%83%AD%E3%82%B0%E6%83%85%E5%A0%B1%E3%82%92%E9%80%81%E3%82%8B"><span class="toc-number">3.</span> <span class="toc-text">3. ログ情報を送る</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-NSException%E4%BB%A5%E5%A4%96%E3%81%AE%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E4%BE%8B%E5%A4%96%E3%82%92%E9%80%81%E3%82%8B"><span class="toc-number">4.</span> <span class="toc-text">4. NSException以外のカスタム例外を送る</span></a></li></ol>
+    </div>
+  </div>
+  
+
+  <div class="post-content">
+    
+    <p>Crashlyticsは入れておくだけでクラッシュ時のコールスタックが表示されるので調査に便利<br>また追加情報も送信できる仕組みもある。</p>
+<h3 id="1-ユーザ情報を送る"><a href="#1-ユーザ情報を送る" class="headerlink" title="1. ユーザ情報を送る"></a>1. ユーザ情報を送る</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="string">&lt;Crashlytics/Crashlytics.h&gt;</span></span></span><br><span class="line"></span><br><span class="line">- (<span class="type">void</span>)testMethod2</span><br><span class="line">&#123;</span><br><span class="line">    [[Crashlytics sharedInstance] setUserEmail:<span class="string">@&quot;user@email.com&quot;</span>];</span><br><span class="line">    [[Crashlytics sharedInstance] setUserIdentifier:<span class="string">@&quot;12344556789&quot;</span>];</span><br><span class="line">    [[Crashlytics sharedInstance] setUserName:<span class="string">@&quot;test user&quot;</span>];</span><br><span class="line">    </span><br><span class="line">    [[Crashlytics sharedInstance] crash];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>結果</li>
+</ul>
+<p><a class="fancybox" rel="gallery0"><img src="https://qiita-image-store.s3.amazonaws.com/0/25832/09ddd1bd-c0ab-aa93-2a8a-058bf6b42b44.png" style="max-width: 100%"></a></p>
+<h3 id="2-Key-Valueで送る"><a href="#2-Key-Valueで送る" class="headerlink" title="2. Key,Valueで送る"></a>2. Key,Valueで送る</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="type">void</span>)testMethod2</span><br><span class="line">&#123;</span><br><span class="line">    [[Crashlytics sharedInstance] setBoolValue:<span class="literal">YES</span> forKey:<span class="string">@&quot;boolLog&quot;</span>];</span><br><span class="line">    [[Crashlytics sharedInstance] setFloatValue:<span class="number">0.12345</span> forKey:<span class="string">@&quot;floatLog&quot;</span>];</span><br><span class="line">    [[Crashlytics sharedInstance] setIntValue:<span class="number">3</span> forKey:<span class="string">@&quot;intLog&quot;</span>];</span><br><span class="line">    [[Crashlytics sharedInstance] setObjectValue:<span class="string">@&quot;objectValue..test&quot;</span> forKey:<span class="string">@&quot;objectLog&quot;</span>];</span><br><span class="line">    </span><br><span class="line">    [[Crashlytics sharedInstance] crash];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>結果</li>
+</ul>
+<p><a class="fancybox" rel="gallery0"><img src="https://qiita-image-store.s3.amazonaws.com/0/25832/b71b2b63-7f7d-e11c-3e9e-b93398368ecd.png" style="max-width: 100%"></a></p>
+<h3 id="3-ログ情報を送る"><a href="#3-ログ情報を送る" class="headerlink" title="3. ログ情報を送る"></a>3. ログ情報を送る</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="type">void</span>)testMethod2</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">CLS_LOG</span>(<span class="string">@&quot;CLS_LOG for Dict %@&quot;</span>, @&#123;<span class="string">@&quot;key1&quot;</span>:<span class="string">@&quot;value1&quot;</span>, <span class="string">@&quot;key2&quot;</span>:<span class="string">@&quot;value2&quot;</span>, <span class="string">@&quot;key3&quot;</span>:<span class="string">@&quot;value3&quot;</span>&#125;);</span><br><span class="line">    </span><br><span class="line">    [[Crashlytics sharedInstance] crash];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>結果</li>
+</ul>
+<p><a class="fancybox" rel="gallery0"><img src="https://qiita-image-store.s3.amazonaws.com/0/25832/1f18738b-f988-0f26-1f01-6810a39da456.png" style="max-width: 100%"></a></p>
+<h3 id="4-NSException以外のカスタム例外を送る"><a href="#4-NSException以外のカスタム例外を送る" class="headerlink" title="4. NSException以外のカスタム例外を送る"></a>4. NSException以外のカスタム例外を送る</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="type">void</span>)testMethod2</span><br><span class="line">&#123;</span><br><span class="line">    [[Crashlytics sharedInstance] recordCustomExceptionName:<span class="string">@&quot;customEx...&quot;</span> reason:<span class="string">@&quot;custom_reason..&quot;</span> frameArray:@[[<span class="built_in">CLSStackFrame</span> stackFrameWithAddress:<span class="number">1234567</span>]]];</span><br><span class="line">    </span><br><span class="line">    [[Crashlytics sharedInstance] crash];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>結果</li>
+</ul>
+<p><a class="fancybox" rel="gallery0"><img src="https://qiita-image-store.s3.amazonaws.com/0/25832/3ffa7e4b-1878-d778-7d48-8b785015603c.png" style="max-width: 100%"></a></p>
+<p>参考：<br><a target="_blank" rel="noopener" href="http://support.crashlytics.com/knowledgebase/articles/92519-how-do-i-use-logging-">http://support.crashlytics.com/knowledgebase/articles/92519-how-do-i-use-logging-</a><br><a target="_blank" rel="noopener" href="http://support.crashlytics.com/knowledgebase/articles/92520-how-do-i-use-custom-keys-">http://support.crashlytics.com/knowledgebase/articles/92520-how-do-i-use-custom-keys-</a><br><a target="_blank" rel="noopener" href="http://support.crashlytics.com/knowledgebase/articles/92521-how-do-i-set-user-information-">http://support.crashlytics.com/knowledgebase/articles/92521-how-do-i-set-user-information-</a></p>
+
+    
+  </div>
+
+  
+  <!-- Post Copyright -->
+
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span>Author: </span>
+    <a href="https://hmhv.info">hmhv</a>
+  </p>
+  <p class="copyright-item">
+    <span>Link: </span>
+    <a href="https://hmhv.info/2015/11/crashlytics-with-more-info/">https://hmhv.info/2015/11/crashlytics-with-more-info/</a>
+  </p>
+  <p class="copyright-item">
+    <span>License: </span>
+    
+    <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+  </p>
+</div>
+
+    
+
+  
+
+  
+  <footer class="post-footer">
+    
+    <div class="post-tags">
+      
+      <a href="/tags/iOS/">iOS</a>
+      
+      <a href="/tags/Crashlytics/">Crashlytics</a>
+      
+    </div>
+    
+      
+  <nav class="post-nav">  
+      
+      <a class="prev" href="/2018/01/disable-uitextvew-drag/">  
+        <i class="iconfont icon-left"></i>  
+        <span class="prev-text nav-default">UITextViewのDragを無効にする</span>  
+        <span class="prev-text nav-mobile">Prev</span>  
+      </a>  
+      
+      
+      <a class="next" href="/2015/11/fabric-and-crashlytics/">  
+        <span class="next-text nav-default">Fabric、Crashlyticsでエラー</span>  
+        <span class="prev-text nav-mobile">Next</span>  
+        <i class="iconfont icon-right"></i>  
+      </a>  
+      
+  </nav>  
+  
+
+  </footer>
+  
+
+</article>
+        </div>
+          
+  <div class="comments" id="comments">  
+      
+  </div>  
+  
+
+      </div>
+    </main>
+    <footer id="footer" class="footer">
+      <!-- Social Links -->
+
+<div class="social-links">
+  
+  
+  
+  
+  <a target="_blank" rel="noopener" href="https://github.com/hmhv" class="iconfont icon-github" title="github"></a>
+  
+  
+  
+
+  
+</div>
+
+
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme -
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+  <span class="division">|</span>
+  <span class="hosting-info">
+    footer.hosting
+  </span>
+
+  <span class="copyright-year">
+    <span>
+      
+      &copy;
+      
+      2015 - 2026      
+    </span>
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+
+    <span class="author">hmhv</span>
+  </span>
+
+</div>
+    </footer>
+    <div class="back-to-top" id="back-to-top"> <i class="iconfont icon-up"></i> </div>
+  </div>
+    
+    
+    
+    
+    
+    
+    
+  
+
+  
+
+
+
+
+
+
+
+<script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+
+
+
+<script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+
+
+
+<script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/even.js?v=3.0.0"></script>
+</body>
+
+</html>

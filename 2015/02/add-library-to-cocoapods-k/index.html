@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Website mata -->
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<!-- Disable transformation -->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<!-- Website description -->
+
+<meta name="description" content="자작 라이브러리를 CocoaPods에 등록" />
+
+
+<!-- Website keywords -->
+
+<meta name="keywords" content="hmhv,blog,app,galary,ios,iphone" />
+
+
+
+
+<!-- Website rss -->
+
+<link rel="alternate" href="/atom.xml" title="hmhv" type="application/atom+xml">
+
+
+<!-- Website favicon -->
+
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=3.0.0" />
+
+
+<!-- Canonical, good for google search engine -->
+<link rel="canonical" href="https://hmhv.info/2015/02/add-library-to-cocoapods-k/" />
+
+<!-- Fancybox styling -->
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+
+
+<!-- MathJax (LaTeX) support -->
+
+
+<!-- Theme styling -->
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=3.0.0" />
+
+<!-- Analytics and push -->
+
+
+
+  
+
+
+
+<!-- LeanCloud Counter -->
+
+
+<script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null,"server_url":null,"cdn":null},"toc":true,"fancybox":true,"latex":false};
+</script>
+  
+  <title>자작 라이브러리를 CocoaPods에 등록 - hmhv</title>
+
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+<body>
+  <div class="scrollPercentage"></div>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">hmhv</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+    <a href="/">
+      <li class="mobile-menu-item">
+        
+        
+        Home              </li>
+    </a>
+    
+    <a href="/archives/">
+      <li class="mobile-menu-item">
+        
+        
+        Archives              </li>
+    </a>
+    
+    <a href="/tags/">
+      <li class="mobile-menu-item">
+        
+        
+        Tags              </li>
+    </a>
+    
+    <a href="/apps/">
+      <li class="mobile-menu-item">
+        
+        
+        Apps              </li>
+    </a>
+    
+    <a href="/about/">
+      <li class="mobile-menu-item">
+        
+        
+        About              </li>
+    </a>
+    
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+      <div class="logo-wrapper">  
+  <a href="/." class="logo">hmhv</a>  
+</div>  
+  
+<nav class="site-navbar">  
+    
+    <ul id="menu" class="menu">  
+        
+        <li class="menu-item">  
+          <a class="menu-item-link" href="/">  
+              
+              
+              Home  
+              
+          </a>  
+        </li>  
+        
+        <li class="menu-item">  
+          <a class="menu-item-link" href="/archives/">  
+              
+              
+              Archives  
+              
+          </a>  
+        </li>  
+        
+        <li class="menu-item">  
+          <a class="menu-item-link" href="/tags/">  
+              
+              
+              Tags  
+              
+          </a>  
+        </li>  
+        
+        <li class="menu-item">  
+          <a class="menu-item-link" href="/apps/">  
+              
+              
+              Apps  
+              
+          </a>  
+        </li>  
+        
+        <li class="menu-item">  
+          <a class="menu-item-link" href="/about/">  
+              
+              
+              About  
+              
+          </a>  
+        </li>  
+        
+    </ul>  
+    
+</nav>  
+
+    </header>
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+  <header class="post-header">
+    <h1 class="post-title">
+      
+      자작 라이브러리를 CocoaPods에 등록
+      
+    </h1>
+
+    <div class="post-meta">
+      <span class="post-time">
+        2015-02-28
+      </span>
+      
+      
+      <span class="post-category">
+        
+        <a href="/categories/Tech/">Tech</a>
+        
+      </span>
+      
+      
+    </div>
+  </header>
+
+  
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#GitHub%EC%83%81%EC%9D%98-%ED%8C%8C%EC%9D%BC%EA%B5%AC%EC%A1%B0"><span class="toc-number">1.</span> <span class="toc-text">GitHub상의 파일구조</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CocoaPods%EC%97%90-%EB%93%B1%EB%A1%9D-%EB%B0%A9%EB%B2%95"><span class="toc-number">2.</span> <span class="toc-text">CocoaPods에 등록 방법</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-podspec%ED%8C%8C%EC%9D%BC-%EC%9E%91%EC%84%B1"><span class="toc-number">2.1.</span> <span class="toc-text">1. podspec파일 작성</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-podspec%ED%8C%8C%EC%9D%BC-%ED%8E%B8%EC%A7%91"><span class="toc-number">2.2.</span> <span class="toc-text">2. podspec파일 편집</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-podspec%ED%8C%8C%EC%9D%BC-%EC%B2%B4%ED%81%AC"><span class="toc-number">2.3.</span> <span class="toc-text">3. podspec파일 체크</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%EC%9C%A0%EC%A0%80-%EB%93%B1%EB%A1%9D-%EC%BB%B4%ED%93%A8%ED%84%B0-%EB%93%B1%EB%A1%9D"><span class="toc-number">2.4.</span> <span class="toc-text">4. 유저 등록(컴퓨터 등록?)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%EB%93%B1%EB%A1%9D-%ED%99%95%EC%9D%B8"><span class="toc-number">2.5.</span> <span class="toc-text">5. 등록 확인</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-podspec%ED%8C%8C%EC%9D%BC-%ED%91%B8%EC%8B%9C"><span class="toc-number">2.6.</span> <span class="toc-text">6. podspec파일 푸시</span></a></li></ol></li></ol>
+    </div>
+  </div>
+  
+
+  <div class="post-content">
+    
+    <p><a target="_blank" rel="noopener" href="https://github.com/hmhv/HobjectiveRecord">HobjectiveRecord</a>라는 CoreData용 라이브러리를GitHub에 공개하고<br>CocoaPods에도 등록한 메모</p>
+<h2 id="GitHub상의-파일구조"><a href="#GitHub상의-파일구조" class="headerlink" title="GitHub상의 파일구조"></a>GitHub상의 파일구조</h2><p><a title="folder" class="fancybox" rel="gallery0"><img src="https://qiita-image-store.s3.amazonaws.com/0/25832/47126434-e7bd-de68-7db3-16f564ae9be8.png" style="max-width: 100%"  alt="folder"></a></p>
+<ul>
+<li><code>HobjectiveRecord</code>는 라이브러리의 코드용 폴더</li>
+<li><code>HobjectiveRecordDemo</code>는 라이브러리의 데모앱용 폴더</li>
+<li><code>.gitignore</code>, <code>LICENSE</code>, <code>README.md</code>는 유명한 파일들</li>
+<li><code>HobjectiveRecord.podspec</code> 이것이 CocoaPods에 등록하기 위해 필요한 파일</li>
+</ul>
+<h2 id="CocoaPods에-등록-방법"><a href="#CocoaPods에-등록-방법" class="headerlink" title="CocoaPods에 등록 방법"></a>CocoaPods에 등록 방법</h2><blockquote>
+<p><strong><em>예전에는 <a target="_blank" rel="noopener" href="https://github.com/CocoaPods/Specs">CocoaPodsのSpecs</a>에 풀리퀘스트로 했던것 같은데</em></strong><br><strong><em>요즘은 <code>pod trunk</code> 커멘드로 함</em></strong></p>
+</blockquote>
+<h4 id="1-podspec파일-작성"><a href="#1-podspec파일-작성" class="headerlink" title="1. podspec파일 작성"></a>1. <code>podspec</code>파일 작성</h4><p><code>HobjectiveRecord.podspec</code>을 작성</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pod spec create HobjectiveRecord</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-podspec파일-편집"><a href="#2-podspec파일-편집" class="headerlink" title="2. podspec파일 편집"></a>2. <code>podspec</code>파일 편집</h4><p>이것은 Fork해 온 <a target="_blank" rel="noopener" href="https://github.com/supermarin/ObjectiveRecord">ObjectiveRecord</a>에서 수정<br>상세한 내용은 <a target="_blank" rel="noopener" href="http://guides.cocoapods.org/making/specs-and-specs-repo.html">여기를 참조</a></p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">@version</span> = <span class="string">&quot;0.1.4&quot;</span></span><br><span class="line"><span class="title class_">Pod::Spec</span>.new <span class="keyword">do</span> |<span class="params">s</span>|</span><br><span class="line">  s.name         = <span class="string">&quot;HobjectiveRecord&quot;</span></span><br><span class="line">  s.version      = <span class="variable">@version</span></span><br><span class="line">  s.summary      = <span class="string">&quot;Lightweight and sexy CoreData Library. using NSPrivateQueueConcurrencyType MOC and [performBlock:]&quot;</span></span><br><span class="line">  s.homepage     = <span class="string">&quot;https://github.com/hmhv/HobjectiveRecord&quot;</span></span><br><span class="line">  s.license      = &#123; <span class="symbol">:type</span> =&gt; <span class="string">&#x27;MIT&#x27;</span>, <span class="symbol">:file</span> =&gt; <span class="string">&#x27;LICENSE&#x27;</span> &#125;</span><br><span class="line">  s.author       = &#123; <span class="string">&quot;hmhv&quot;</span> =&gt; <span class="string">&quot;admin@hmhv.info&quot;</span> &#125;</span><br><span class="line">  s.source       = &#123; <span class="symbol">:git</span> =&gt; <span class="string">&quot;https://github.com/hmhv/HobjectiveRecord.git&quot;</span>, <span class="symbol">:tag</span> =&gt; <span class="variable">@version</span> &#125;</span><br><span class="line">  s.source_files = <span class="string">&#x27;HobjectiveRecord/**/*.&#123;h,m&#125;&#x27;</span></span><br><span class="line">  s.framework  = <span class="string">&#x27;CoreData&#x27;</span></span><br><span class="line">  s.requires_arc = <span class="literal">true</span></span><br><span class="line">  s.ios.deployment_target = <span class="string">&#x27;6.0&#x27;</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="3-podspec파일-체크"><a href="#3-podspec파일-체크" class="headerlink" title="3. podspec파일 체크"></a>3. <code>podspec</code>파일 체크</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pod spec lint</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-유저-등록-컴퓨터-등록"><a href="#4-유저-등록-컴퓨터-등록" class="headerlink" title="4. 유저 등록(컴퓨터 등록?)"></a>4. 유저 등록(컴퓨터 등록?)</h4><p>상세한 내용은 <a target="_blank" rel="noopener" href="http://guides.cocoapods.org/making/getting-setup-with-trunk.html">여기를 참조</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pod trunk register your@email.com <span class="string">&#x27;your name&#x27;</span> --description=<span class="string">&#x27;my macbook&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="5-등록-확인"><a href="#5-등록-확인" class="headerlink" title="5. 등록 확인"></a>5. 등록 확인</h4><p>등록한 멜주소로 확인 메일을 확인하여 등록을 완료<br>이후 아래의 커멘드로 터미널에서도 확인 가능</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pod trunk me</span><br></pre></td></tr></table></figure>
+
+<h4 id="6-podspec파일-푸시"><a href="#6-podspec파일-푸시" class="headerlink" title="6. podspec파일 푸시"></a>6. <code>podspec</code>파일 푸시</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pod trunk push</span><br></pre></td></tr></table></figure>
+
+<p>이것으로 작성한 <code>podspec</code>파일이 <code>podspec.json</code>파일로 변화되어<br><a target="_blank" rel="noopener" href="https://github.com/CocoaPods/Specs">CocoaPods의Specs</a>에 등록됨.</p>
+<p>이제 라이브러리를 사용하고자 하는 프로젝트의 <code>Podfile</code>에 <code>pod &#39;HobjectiveRecord&#39;</code>를 추가하면 이용가능하게 됨</p>
+<blockquote>
+<p><strong><em>버젼업도 위의 등록 방법과 동일</em></strong></p>
+</blockquote>
+
+    
+  </div>
+
+  
+  <!-- Post Copyright -->
+
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span>Author: </span>
+    <a href="https://hmhv.info">hmhv</a>
+  </p>
+  <p class="copyright-item">
+    <span>Link: </span>
+    <a href="https://hmhv.info/2015/02/add-library-to-cocoapods-k/">https://hmhv.info/2015/02/add-library-to-cocoapods-k/</a>
+  </p>
+  <p class="copyright-item">
+    <span>License: </span>
+    
+    <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+  </p>
+</div>
+
+    
+
+  
+
+  
+  <footer class="post-footer">
+    
+    <div class="post-tags">
+      
+      <a href="/tags/HobjectiveRecord/">HobjectiveRecord</a>
+      
+      <a href="/tags/CocoaPods/">CocoaPods</a>
+      
+    </div>
+    
+      
+  <nav class="post-nav">  
+      
+      <a class="prev" href="/2015/02/add-library-to-cocoapods/">  
+        <i class="iconfont icon-left"></i>  
+        <span class="prev-text nav-default">自作ライブラリをCocoaPodsへ登録</span>  
+        <span class="prev-text nav-mobile">Prev</span>  
+      </a>  
+      
+      
+      <a class="next" href="/2015/02/autolayout-waring-of-uitableviewcell/">  
+        <span class="next-text nav-default">UITableViewCellのAutoLayoutの警告と回避策</span>  
+        <span class="prev-text nav-mobile">Next</span>  
+        <i class="iconfont icon-right"></i>  
+      </a>  
+      
+  </nav>  
+  
+
+  </footer>
+  
+
+</article>
+        </div>
+          
+  <div class="comments" id="comments">  
+      
+  </div>  
+  
+
+      </div>
+    </main>
+    <footer id="footer" class="footer">
+      <!-- Social Links -->
+
+<div class="social-links">
+  
+  
+  
+  
+  <a target="_blank" rel="noopener" href="https://github.com/hmhv" class="iconfont icon-github" title="github"></a>
+  
+  
+  
+
+  
+</div>
+
+
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme -
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+  <span class="division">|</span>
+  <span class="hosting-info">
+    footer.hosting
+  </span>
+
+  <span class="copyright-year">
+    <span>
+      
+      &copy;
+      
+      2015 - 2026      
+    </span>
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+
+    <span class="author">hmhv</span>
+  </span>
+
+</div>
+    </footer>
+    <div class="back-to-top" id="back-to-top"> <i class="iconfont icon-up"></i> </div>
+  </div>
+    
+    
+    
+    
+    
+    
+    
+  
+
+  
+
+
+
+
+
+
+
+<script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+
+
+
+<script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+
+
+
+<script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/even.js?v=3.0.0"></script>
+</body>
+
+</html>

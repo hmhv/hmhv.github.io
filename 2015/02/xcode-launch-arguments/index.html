@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Website mata -->
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<!-- Disable transformation -->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<!-- Website description -->
+
+<meta name="description" content="Xcodeの有用な起動時引数" />
+
+
+<!-- Website keywords -->
+
+<meta name="keywords" content="hmhv,blog,app,galary,ios,iphone" />
+
+
+
+
+<!-- Website rss -->
+
+<link rel="alternate" href="/atom.xml" title="hmhv" type="application/atom+xml">
+
+
+<!-- Website favicon -->
+
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=3.0.0" />
+
+
+<!-- Canonical, good for google search engine -->
+<link rel="canonical" href="https://hmhv.info/2015/02/xcode-launch-arguments/" />
+
+<!-- Fancybox styling -->
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+
+
+<!-- MathJax (LaTeX) support -->
+
+
+<!-- Theme styling -->
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=3.0.0" />
+
+<!-- Analytics and push -->
+
+
+
+  
+
+
+
+<!-- LeanCloud Counter -->
+
+
+<script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null,"server_url":null,"cdn":null},"toc":true,"fancybox":true,"latex":false};
+</script>
+  
+  <title>Xcodeの有用な起動時引数 - hmhv</title>
+
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+<body>
+  <div class="scrollPercentage"></div>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">hmhv</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+    <a href="/">
+      <li class="mobile-menu-item">
+        
+        
+        Home              </li>
+    </a>
+    
+    <a href="/archives/">
+      <li class="mobile-menu-item">
+        
+        
+        Archives              </li>
+    </a>
+    
+    <a href="/tags/">
+      <li class="mobile-menu-item">
+        
+        
+        Tags              </li>
+    </a>
+    
+    <a href="/apps/">
+      <li class="mobile-menu-item">
+        
+        
+        Apps              </li>
+    </a>
+    
+    <a href="/about/">
+      <li class="mobile-menu-item">
+        
+        
+        About              </li>
+    </a>
+    
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+      <div class="logo-wrapper">  
+  <a href="/." class="logo">hmhv</a>  
+</div>  
+  
+<nav class="site-navbar">  
+    
+    <ul id="menu" class="menu">  
+        
+        <li class="menu-item">  
+          <a class="menu-item-link" href="/">  
+              
+              
+              Home  
+              
+          </a>  
+        </li>  
+        
+        <li class="menu-item">  
+          <a class="menu-item-link" href="/archives/">  
+              
+              
+              Archives  
+              
+          </a>  
+        </li>  
+        
+        <li class="menu-item">  
+          <a class="menu-item-link" href="/tags/">  
+              
+              
+              Tags  
+              
+          </a>  
+        </li>  
+        
+        <li class="menu-item">  
+          <a class="menu-item-link" href="/apps/">  
+              
+              
+              Apps  
+              
+          </a>  
+        </li>  
+        
+        <li class="menu-item">  
+          <a class="menu-item-link" href="/about/">  
+              
+              
+              About  
+              
+          </a>  
+        </li>  
+        
+    </ul>  
+    
+</nav>  
+
+    </header>
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+  <header class="post-header">
+    <h1 class="post-title">
+      
+      Xcodeの有用な起動時引数
+      
+    </h1>
+
+    <div class="post-meta">
+      <span class="post-time">
+        2015-02-10
+      </span>
+      
+      
+      <span class="post-category">
+        
+        <a href="/categories/Tech/">Tech</a>
+        
+      </span>
+      
+      
+    </div>
+  </header>
+
+  
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#CoreData%E9%96%A2%E9%80%A3"><span class="toc-number">1.</span> <span class="toc-text">CoreData関連</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#com-apple-CoreData-SQLDebug-1-2-3"><span class="toc-number">1.1.</span> <span class="toc-text">-com.apple.CoreData.SQLDebug [1,2,3]</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#com-apple-CoreData-ConcurrencyDebug-1"><span class="toc-number">1.2.</span> <span class="toc-text">-com.apple.CoreData.ConcurrencyDebug 1</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#com-apple-coredata-ubiquity-logLevel-3"><span class="toc-number">1.3.</span> <span class="toc-text">-com.apple.coredata.ubiquity.logLevel 3</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AutoLayout%E9%96%A2%E9%80%A3"><span class="toc-number">2.</span> <span class="toc-text">AutoLayout関連</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#UIViewShowAlignmentRects-YES"><span class="toc-number">2.1.</span> <span class="toc-text">-UIViewShowAlignmentRects YES</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%A9%E3%82%A4%E3%82%BA%E9%96%A2%E9%80%A3"><span class="toc-number">3.</span> <span class="toc-text">ローカライズ関連</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#AppleLanguages-en"><span class="toc-number">3.1.</span> <span class="toc-text">-AppleLanguages (en)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#AppleLocale-en-US"><span class="toc-number">3.2.</span> <span class="toc-text">-AppleLocale en_US</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#NSDoubleLocalizedStrings-YES"><span class="toc-number">3.3.</span> <span class="toc-text">-NSDoubleLocalizedStrings YES</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%BD%E3%82%B3%E3%83%BC%E3%83%89%EF%BC%86%E3%83%AD%E3%82%B1%E3%83%BC%E3%83%AB"><span class="toc-number">3.4.</span> <span class="toc-text">国コード＆ロケール</span></a></li></ol></li></ol>
+    </div>
+  </div>
+  
+
+  <div class="post-content">
+    
+    <h3 id="CoreData関連"><a href="#CoreData関連" class="headerlink" title="CoreData関連"></a>CoreData関連</h3><ul>
+<li><h4 id="com-apple-CoreData-SQLDebug-1-2-3"><a href="#com-apple-CoreData-SQLDebug-1-2-3" class="headerlink" title="-com.apple.CoreData.SQLDebug [1,2,3]"></a><code>-com.apple.CoreData.SQLDebug [1,2,3]</code></h4></li>
+</ul>
+<blockquote>
+<p>実行するSQL文をログで出力<br>1,2,3は大きくなるほど詳細情報を出力</p>
+</blockquote>
+<ul>
+<li><h4 id="com-apple-CoreData-ConcurrencyDebug-1"><a href="#com-apple-CoreData-ConcurrencyDebug-1" class="headerlink" title="-com.apple.CoreData.ConcurrencyDebug 1"></a><code>-com.apple.CoreData.ConcurrencyDebug 1</code></h4></li>
+</ul>
+<blockquote>
+<p>iOS 8 から動作<br>CoreDataのマルチスレッド時のデバッグ<br><a target="_blank" rel="noopener" href="http://qiita.com/hongmhoon/items/606a352b1e96dfb0bec5">Qiita投稿：CoreDataによる並列処理</a></p>
+</blockquote>
+<h4 id="com-apple-coredata-ubiquity-logLevel-3"><a href="#com-apple-coredata-ubiquity-logLevel-3" class="headerlink" title="-com.apple.coredata.ubiquity.logLevel 3"></a><code>-com.apple.coredata.ubiquity.logLevel 3</code></h4><blockquote>
+<p>CoreDataのiCloud関連ログ出力</p>
+</blockquote>
+<h3 id="AutoLayout関連"><a href="#AutoLayout関連" class="headerlink" title="AutoLayout関連"></a>AutoLayout関連</h3><h4 id="UIViewShowAlignmentRects-YES"><a href="#UIViewShowAlignmentRects-YES" class="headerlink" title="-UIViewShowAlignmentRects YES"></a><code>-UIViewShowAlignmentRects YES</code></h4><blockquote>
+<p>Viewのレイアウト確認</p>
+</blockquote>
+<h3 id="ローカライズ関連"><a href="#ローカライズ関連" class="headerlink" title="ローカライズ関連"></a>ローカライズ関連</h3><ul>
+<li><h4 id="AppleLanguages-en"><a href="#AppleLanguages-en" class="headerlink" title="-AppleLanguages (en)"></a><code>-AppleLanguages (en)</code></h4></li>
+</ul>
+<blockquote>
+<p>端末の基本言語設定を上書き</p>
+</blockquote>
+<ul>
+<li><h4 id="AppleLocale-en-US"><a href="#AppleLocale-en-US" class="headerlink" title="-AppleLocale en_US"></a><code>-AppleLocale en_US</code></h4></li>
+</ul>
+<blockquote>
+<p>端末のロケール基本を上書き</p>
+</blockquote>
+<ul>
+<li><h4 id="NSDoubleLocalizedStrings-YES"><a href="#NSDoubleLocalizedStrings-YES" class="headerlink" title="-NSDoubleLocalizedStrings YES"></a><code>-NSDoubleLocalizedStrings YES</code></h4></li>
+</ul>
+<blockquote>
+<p>GUI上の文字列を２倍に表示して長い文字列の表示確認</p>
+</blockquote>
+<ul>
+<li><h4 id="国コード＆ロケール"><a href="#国コード＆ロケール" class="headerlink" title="国コード＆ロケール"></a><code>国コード＆ロケール</code></h4></li>
+</ul>
+<blockquote>
+<table>
+<thead>
+<tr>
+<th>言語</th>
+<th>国コード</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>日本語</td>
+<td>ja</td>
+</tr>
+<tr>
+<td>英語（アメリカ）</td>
+<td>en</td>
+</tr>
+<tr>
+<td>フランス語</td>
+<td>fr</td>
+</tr>
+<tr>
+<td>ドイツ語</td>
+<td>de</td>
+</tr>
+<tr>
+<td>オランダ語</td>
+<td>nl</td>
+</tr>
+<tr>
+<td>イタリア語</td>
+<td>it</td>
+</tr>
+<tr>
+<td>スペイン語</td>
+<td>es</td>
+</tr>
+<tr>
+<td>ポルトガル語</td>
+<td>pt</td>
+</tr>
+<tr>
+<td>ポルトガル語（ポルトガル）</td>
+<td>pt-PT</td>
+</tr>
+<tr>
+<td>デンマーク語</td>
+<td>da</td>
+</tr>
+<tr>
+<td>フィンランド語</td>
+<td>fi</td>
+</tr>
+<tr>
+<td>ノルウェー語</td>
+<td>nb</td>
+</tr>
+<tr>
+<td>スウェーデン語</td>
+<td>sv</td>
+</tr>
+<tr>
+<td>韓国語</td>
+<td>ko</td>
+</tr>
+<tr>
+<td>中国語（簡体字）</td>
+<td>zh-Hans</td>
+</tr>
+<tr>
+<td>中国語（繁体字）</td>
+<td>zh-Hant</td>
+</tr>
+<tr>
+<td>ロシア語</td>
+<td>ru</td>
+</tr>
+<tr>
+<td>ポーランド語</td>
+<td>pl</td>
+</tr>
+<tr>
+<td>トルコ語</td>
+<td>tr</td>
+</tr>
+<tr>
+<td>ウクライナ語</td>
+<td>uk</td>
+</tr>
+<tr>
+<td>アラビア語</td>
+<td>ar</td>
+</tr>
+<tr>
+<td>クロアチア語</td>
+<td>hr</td>
+</tr>
+<tr>
+<td>チェコ語</td>
+<td>cs</td>
+</tr>
+<tr>
+<td>ギリシャ語</td>
+<td>el</td>
+</tr>
+<tr>
+<td>ヘブライ語</td>
+<td>he</td>
+</tr>
+<tr>
+<td>ルーマニア語</td>
+<td>ro</td>
+</tr>
+<tr>
+<td>スロバキア語</td>
+<td>sk</td>
+</tr>
+<tr>
+<td>タイ語</td>
+<td>th</td>
+</tr>
+<tr>
+<td>インドネシア語</td>
+<td>id</td>
+</tr>
+<tr>
+<td>マレー語</td>
+<td>ms</td>
+</tr>
+<tr>
+<td>英語（イギリス）</td>
+<td>en-GB</td>
+</tr>
+<tr>
+<td>カタロニア語</td>
+<td>ca</td>
+</tr>
+<tr>
+<td>ハンガリー語</td>
+<td>hu</td>
+</tr>
+<tr>
+<td>ベトナム語</td>
+<td>vi</td>
+</tr>
+</tbody></table>
+</blockquote>
+<hr>
+<blockquote>
+<table>
+<thead>
+<tr>
+<th>言語(国)</th>
+<th>ロケール</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>日本語（日本）</td>
+<td>ja_JP</td>
+</tr>
+<tr>
+<td>英語（アメリカ）</td>
+<td>en_US</td>
+</tr>
+<tr>
+<td>英語（イギリス）</td>
+<td>en_GB</td>
+</tr>
+<tr>
+<td>英語（カナダ）</td>
+<td>en_CA</td>
+</tr>
+<tr>
+<td>中国語（シンガポール）</td>
+<td>zh_SG</td>
+</tr>
+<tr>
+<td>中国語（台湾）</td>
+<td>zh_TW</td>
+</tr>
+<tr>
+<td>中国語（マカオ特別行政区）</td>
+<td>zh_MO</td>
+</tr>
+<tr>
+<td>中国語（香港特別行政区）</td>
+<td>zh_HK</td>
+</tr>
+<tr>
+<td>中国語（中国）</td>
+<td>zh_CN</td>
+</tr>
+<tr>
+<td>韓国語（韓国）</td>
+<td>ko_KR</td>
+</tr>
+<tr>
+<td>イタリア語（イタリア）</td>
+<td>it_IT</td>
+</tr>
+<tr>
+<td>オランダ語（オランダ）</td>
+<td>nl_NL</td>
+</tr>
+<tr>
+<td>スペイン語（スペイン）</td>
+<td>es_ES</td>
+</tr>
+<tr>
+<td>タイ語（タイ）</td>
+<td>th_TH</td>
+</tr>
+<tr>
+<td>ドイツ語（ドイツ）</td>
+<td>de_DE</td>
+</tr>
+<tr>
+<td>フランス語（フランス）</td>
+<td>fr_FR</td>
+</tr>
+<tr>
+<td>ロシア語（ロシア）</td>
+<td>ru_RU</td>
+</tr>
+</tbody></table>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="http://tools4hack.santalab.me/howto-change-app-language-and-locate-for-jailbreak-ifile.html">＊コード参考：tools4hack</a></p>
+
+    
+  </div>
+
+  
+  <!-- Post Copyright -->
+
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span>Author: </span>
+    <a href="https://hmhv.info">hmhv</a>
+  </p>
+  <p class="copyright-item">
+    <span>Link: </span>
+    <a href="https://hmhv.info/2015/02/xcode-launch-arguments/">https://hmhv.info/2015/02/xcode-launch-arguments/</a>
+  </p>
+  <p class="copyright-item">
+    <span>License: </span>
+    
+    <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+  </p>
+</div>
+
+    
+
+  
+
+  
+  <footer class="post-footer">
+    
+    <div class="post-tags">
+      
+      <a href="/tags/iOS/">iOS</a>
+      
+      <a href="/tags/Xcode/">Xcode</a>
+      
+    </div>
+    
+      
+  <nav class="post-nav">  
+      
+      <a class="prev" href="/2015/02/objectivec-class-initialize/">  
+        <i class="iconfont icon-left"></i>  
+        <span class="prev-text nav-default">Objective-Cのクラス初期化</span>  
+        <span class="prev-text nav-mobile">Prev</span>  
+      </a>  
+      
+      
+      <a class="next" href="/2015/02/xcode-launch-arguments-k/">  
+        <span class="next-text nav-default">Xcode의 유용한 기동시 인수들</span>  
+        <span class="prev-text nav-mobile">Next</span>  
+        <i class="iconfont icon-right"></i>  
+      </a>  
+      
+  </nav>  
+  
+
+  </footer>
+  
+
+</article>
+        </div>
+          
+  <div class="comments" id="comments">  
+      
+  </div>  
+  
+
+      </div>
+    </main>
+    <footer id="footer" class="footer">
+      <!-- Social Links -->
+
+<div class="social-links">
+  
+  
+  
+  
+  <a target="_blank" rel="noopener" href="https://github.com/hmhv" class="iconfont icon-github" title="github"></a>
+  
+  
+  
+
+  
+</div>
+
+
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme -
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+  <span class="division">|</span>
+  <span class="hosting-info">
+    footer.hosting
+  </span>
+
+  <span class="copyright-year">
+    <span>
+      
+      &copy;
+      
+      2015 - 2026      
+    </span>
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+
+    <span class="author">hmhv</span>
+  </span>
+
+</div>
+    </footer>
+    <div class="back-to-top" id="back-to-top"> <i class="iconfont icon-up"></i> </div>
+  </div>
+    
+    
+    
+    
+    
+    
+    
+  
+
+  
+
+
+
+
+
+
+
+<script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+
+
+
+<script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+
+
+
+<script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/even.js?v=3.0.0"></script>
+</body>
+
+</html>

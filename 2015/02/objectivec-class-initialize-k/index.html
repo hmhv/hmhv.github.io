@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Website mata -->
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<!-- Disable transformation -->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<!-- Website description -->
+
+<meta name="description" content="Objective-C의 클래스 초기화" />
+
+
+<!-- Website keywords -->
+
+<meta name="keywords" content="hmhv,blog,app,galary,ios,iphone" />
+
+
+
+
+<!-- Website rss -->
+
+<link rel="alternate" href="/atom.xml" title="hmhv" type="application/atom+xml">
+
+
+<!-- Website favicon -->
+
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=3.0.0" />
+
+
+<!-- Canonical, good for google search engine -->
+<link rel="canonical" href="https://hmhv.info/2015/02/objectivec-class-initialize-k/" />
+
+<!-- Fancybox styling -->
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+
+
+<!-- MathJax (LaTeX) support -->
+
+
+<!-- Theme styling -->
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=3.0.0" />
+
+<!-- Analytics and push -->
+
+
+
+  
+
+
+
+<!-- LeanCloud Counter -->
+
+
+<script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null,"server_url":null,"cdn":null},"toc":true,"fancybox":true,"latex":false};
+</script>
+  
+  <title>Objective-C의 클래스 초기화 - hmhv</title>
+
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+<body>
+  <div class="scrollPercentage"></div>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">hmhv</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+    <a href="/">
+      <li class="mobile-menu-item">
+        
+        
+        Home              </li>
+    </a>
+    
+    <a href="/archives/">
+      <li class="mobile-menu-item">
+        
+        
+        Archives              </li>
+    </a>
+    
+    <a href="/tags/">
+      <li class="mobile-menu-item">
+        
+        
+        Tags              </li>
+    </a>
+    
+    <a href="/apps/">
+      <li class="mobile-menu-item">
+        
+        
+        Apps              </li>
+    </a>
+    
+    <a href="/about/">
+      <li class="mobile-menu-item">
+        
+        
+        About              </li>
+    </a>
+    
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+      <div class="logo-wrapper">  
+  <a href="/." class="logo">hmhv</a>  
+</div>  
+  
+<nav class="site-navbar">  
+    
+    <ul id="menu" class="menu">  
+        
+        <li class="menu-item">  
+          <a class="menu-item-link" href="/">  
+              
+              
+              Home  
+              
+          </a>  
+        </li>  
+        
+        <li class="menu-item">  
+          <a class="menu-item-link" href="/archives/">  
+              
+              
+              Archives  
+              
+          </a>  
+        </li>  
+        
+        <li class="menu-item">  
+          <a class="menu-item-link" href="/tags/">  
+              
+              
+              Tags  
+              
+          </a>  
+        </li>  
+        
+        <li class="menu-item">  
+          <a class="menu-item-link" href="/apps/">  
+              
+              
+              Apps  
+              
+          </a>  
+        </li>  
+        
+        <li class="menu-item">  
+          <a class="menu-item-link" href="/about/">  
+              
+              
+              About  
+              
+          </a>  
+        </li>  
+        
+    </ul>  
+    
+</nav>  
+
+    </header>
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+  <header class="post-header">
+    <h1 class="post-title">
+      
+      Objective-C의 클래스 초기화
+      
+    </h1>
+
+    <div class="post-meta">
+      <span class="post-time">
+        2015-02-21
+      </span>
+      
+      
+      <span class="post-category">
+        
+        <a href="/categories/Tech/">Tech</a>
+        
+      </span>
+      
+      
+    </div>
+  </header>
+
+  
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-void-initialize%EB%A5%BC-%EC%9D%B4%EC%9A%A9"><span class="toc-number">1.</span> <span class="toc-text">1.+ (void)initialize를 이용</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%ED%98%B8%EC%B6%9C-%EC%8B%9C%EC%A0%90"><span class="toc-number">1.1.</span> <span class="toc-text">호출 시점</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%EC%A3%BC%EC%9D%98%EC%A0%90"><span class="toc-number">1.2.</span> <span class="toc-text">주의점</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-void-load%EB%A5%BC-%EC%9D%B4%EC%9A%A9"><span class="toc-number">2.</span> <span class="toc-text">2. + (void)load를 이용</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%ED%98%B8%EC%B6%9C-%EC%8B%9C%EC%A0%90-1"><span class="toc-number">2.1.</span> <span class="toc-text">호출 시점</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%EC%A3%BC%EC%9D%98%EC%A0%90-1"><span class="toc-number">2.2.</span> <span class="toc-text">주의점</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-attribute-constructor-%EB%A5%BC-%EC%9D%B4%EC%9A%A9"><span class="toc-number">3.</span> <span class="toc-text">3. __attribute__((constructor))를 이용</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%ED%98%B8%EC%B6%9C-%EC%8B%9C%EC%A0%90-2"><span class="toc-number">3.1.</span> <span class="toc-text">호출 시점</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%EC%A3%BC%EC%9D%98%EC%A0%90-2"><span class="toc-number">3.2.</span> <span class="toc-text">주의점</span></a></li></ol></li></ol>
+    </div>
+  </div>
+  
+
+  <div class="post-content">
+    
+    <ol>
+<li><code>+ (void)initialize</code>를 이용</li>
+<li><code>+ (void)load</code>를 이용</li>
+<li><code>__attribute__((constructor))</code>를 이용</li>
+</ol>
+<p><em>＊이 설명은 동적로드등에 의한 거동은 고려하지 않음</em></p>
+<h3 id="1-void-initialize를-이용"><a href="#1-void-initialize를-이용" class="headerlink" title="1.+ (void)initialize를 이용"></a>1.<code>+ (void)initialize</code>를 이용</h3><h4 id="호출-시점"><a href="#호출-시점" class="headerlink" title="호출 시점"></a>호출 시점</h4><ul>
+<li>클래스가 최초로 이용되기 직전</li>
+</ul>
+<h4 id="주의점"><a href="#주의점" class="headerlink" title="주의점"></a>주의점</h4><ul>
+<li>서브클래스에서<code>+ (void)initialize</code>를 구현하지 않으면 슈퍼클래스트의 <code>+ (void)initialize</code>가 호출되므로 복수회 호출된다는 전제로 구현</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">Parent</span> : <span class="title">NSObject</span></span></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">Parent</span></span></span><br><span class="line"><span class="comment">// 이 initialize는 Parent클래스와 Child클래스가 최초로 이용될때</span></span><br><span class="line"><span class="comment">// 회출되므로 2번 호출이 됨</span></span><br><span class="line"><span class="comment">// 그러므로 클래스체크나 dispatch_once등을 이용하여 초기화할 필요가 있슴</span></span><br><span class="line">+ (<span class="type">void</span>)initialize</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">self</span> == [Parent <span class="keyword">self</span>]) &#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@&quot;initialize %@&quot;</span>, [<span class="keyword">self</span> <span class="keyword">class</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line"><span class="comment">//    dispatch_once를 이용</span></span><br><span class="line"><span class="comment">//    static dispatch_once_t onceToken;</span></span><br><span class="line"><span class="comment">//    dispatch_once(&amp;onceToken, ^&#123;</span></span><br><span class="line"><span class="comment">//        NSLog(@&quot;initialize %@&quot;, [self class]);</span></span><br><span class="line"><span class="comment">//    &#125;);</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">Child</span> : <span class="title">Parent</span></span></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">Child</span></span></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>+ (void)initialize</code>는 각 클래서에서 1번만 호출되므로 클래스 본체에서만 구현하고 카테고리에서는 구현하지 않음</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">Parent</span></span></span><br><span class="line">+ (<span class="type">void</span>)initialize</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@&quot;initialize %@&quot;</span>, [<span class="keyword">self</span> <span class="keyword">class</span>]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line">  </span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">Parent</span> (<span class="title">category</span>)</span></span><br><span class="line"><span class="comment">// NG !!</span></span><br><span class="line">+ (<span class="type">void</span>)initialize</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@&quot;initialize %@&quot;</span>, [<span class="keyword">self</span> <span class="keyword">class</span>]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>클래스가 프로그램내에서 이용되지 않으면 호출되지 않음</li>
+</ul>
+<h3 id="2-void-load를-이용"><a href="#2-void-load를-이용" class="headerlink" title="2. + (void)load를 이용"></a>2. <code>+ (void)load</code>를 이용</h3><h4 id="호출-시점-1"><a href="#호출-시점-1" class="headerlink" title="호출 시점"></a>호출 시점</h4><ul>
+<li>클래스가 메모리에 로드된 직후, main함수가 호출되기 전</li>
+</ul>
+<h4 id="주의점-1"><a href="#주의점-1" class="headerlink" title="주의점"></a>주의점</h4><ul>
+<li>다른 클래스는 아직 로드되지 않았을 가능성이 있으므로 다른 클래스는 이용하지 않음</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">Parent</span></span></span><br><span class="line">+ (<span class="type">void</span>)load</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// NG !!</span></span><br><span class="line">    OtherClass *otherClass = [OtherClass new];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>클래스 본체와 카테고리에서 복수 구현하면 모두 호출됨</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">Parent</span></span></span><br><span class="line">+ (<span class="type">void</span>)load</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@&quot;load&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">Parent</span> (<span class="title">category</span>)</span></span><br><span class="line">+ (<span class="type">void</span>)load</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@&quot;load by category&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">Parent</span> (<span class="title">category2</span>)</span></span><br><span class="line">+ (<span class="type">void</span>)load</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@&quot;load by category2&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="3-attribute-constructor-를-이용"><a href="#3-attribute-constructor-를-이용" class="headerlink" title="3. __attribute__((constructor))를 이용"></a>3. <code>__attribute__((constructor))</code>를 이용</h3><h4 id="호출-시점-2"><a href="#호출-시점-2" class="headerlink" title="호출 시점"></a>호출 시점</h4><ul>
+<li>main함수가 호출되기 직전, 모든 클래스가 로드된 후</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">Parent</span> : <span class="title">NSObject</span></span></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"> </span><br><span class="line">__attribute__((constructor))</span><br><span class="line"><span class="keyword">static</span> <span class="type">void</span> initialize_class()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@&quot;initialize_class&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">Parent</span></span></span><br><span class="line">+ (<span class="type">void</span>)initialize</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">self</span> == [Parent <span class="keyword">self</span>]) &#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@&quot;initialize %@&quot;</span>, [<span class="keyword">self</span> <span class="keyword">class</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">+ (<span class="type">void</span>)load</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@&quot;load&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"> </span><br><span class="line"><span class="type">int</span> main(<span class="type">int</span> argc, <span class="type">char</span> * argv[]) &#123;</span><br><span class="line">    <span class="keyword">@autoreleasepool</span> &#123;</span><br><span class="line">        </span><br><span class="line">        Parent *p = [Parent new];</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@&quot;%@&quot;</span>, p);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 로그는 아래와 같이 표시됨</span></span><br><span class="line"><span class="comment">// load</span></span><br><span class="line"><span class="comment">// initialize_class</span></span><br><span class="line"><span class="comment">// initialize Parent</span></span><br><span class="line"><span class="comment">// &lt;Parent: 0xXXXXXXXXXXX&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="주의점-2"><a href="#주의점-2" class="headerlink" title="주의점"></a>주의점</h4><ul>
+<li><p>이것은 정확히 말하면Objective-C의 기능이 아니고 GCC가 제공하는 함수속성 기능임</p>
+<p><a target="_blank" rel="noopener" href="https://gcc.gnu.org/onlinedocs/gcc/Function-Attributes.html">GCC - Declaring Attributes of Functions</a></p>
+</li>
+<li><p>복수의 <code>__attribute__((constructor))</code>는 우선도를 지정하여 호출순서를 지정가능</p>
+</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">__attribute__((constructor(<span class="number">2</span>)))</span><br><span class="line"><span class="keyword">static</span> <span class="type">void</span> initialize_class2()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@&quot;initialize_class 2&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">__attribute__((constructor(<span class="number">3</span>)))</span><br><span class="line"><span class="keyword">static</span> <span class="type">void</span> initialize_class3()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@&quot;initialize_class 3&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">__attribute__((constructor(<span class="number">1</span>)))</span><br><span class="line"><span class="keyword">static</span> <span class="type">void</span> initialize_class1()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@&quot;initialize_class 1&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 로그는 아래와 같이 표시됨</span></span><br><span class="line"><span class="comment">// initialize_class 1</span></span><br><span class="line"><span class="comment">// initialize_class 2</span></span><br><span class="line"><span class="comment">// initialize_class 3</span></span><br></pre></td></tr></table></figure>
+
+    
+  </div>
+
+  
+  <!-- Post Copyright -->
+
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span>Author: </span>
+    <a href="https://hmhv.info">hmhv</a>
+  </p>
+  <p class="copyright-item">
+    <span>Link: </span>
+    <a href="https://hmhv.info/2015/02/objectivec-class-initialize-k/">https://hmhv.info/2015/02/objectivec-class-initialize-k/</a>
+  </p>
+  <p class="copyright-item">
+    <span>License: </span>
+    
+    <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+  </p>
+</div>
+
+    
+
+  
+
+  
+  <footer class="post-footer">
+    
+    <div class="post-tags">
+      
+      <a href="/tags/iOS/">iOS</a>
+      
+      <a href="/tags/Objectivc-C/">Objectivc-C</a>
+      
+    </div>
+    
+      
+  <nav class="post-nav">  
+      
+      <a class="prev" href="/2015/02/autolayout-waring-of-uilabel/">  
+        <i class="iconfont icon-left"></i>  
+        <span class="prev-text nav-default">UILableのAutoLayoutの警告と回避策</span>  
+        <span class="prev-text nav-mobile">Prev</span>  
+      </a>  
+      
+      
+      <a class="next" href="/2015/02/objectivec-class-initialize/">  
+        <span class="next-text nav-default">Objective-Cのクラス初期化</span>  
+        <span class="prev-text nav-mobile">Next</span>  
+        <i class="iconfont icon-right"></i>  
+      </a>  
+      
+  </nav>  
+  
+
+  </footer>
+  
+
+</article>
+        </div>
+          
+  <div class="comments" id="comments">  
+      
+  </div>  
+  
+
+      </div>
+    </main>
+    <footer id="footer" class="footer">
+      <!-- Social Links -->
+
+<div class="social-links">
+  
+  
+  
+  
+  <a target="_blank" rel="noopener" href="https://github.com/hmhv" class="iconfont icon-github" title="github"></a>
+  
+  
+  
+
+  
+</div>
+
+
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme -
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+  <span class="division">|</span>
+  <span class="hosting-info">
+    footer.hosting
+  </span>
+
+  <span class="copyright-year">
+    <span>
+      
+      &copy;
+      
+      2015 - 2026      
+    </span>
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+
+    <span class="author">hmhv</span>
+  </span>
+
+</div>
+    </footer>
+    <div class="back-to-top" id="back-to-top"> <i class="iconfont icon-up"></i> </div>
+  </div>
+    
+    
+    
+    
+    
+    
+    
+  
+
+  
+
+
+
+
+
+
+
+<script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+
+
+
+<script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+
+
+
+<script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/even.js?v=3.0.0"></script>
+</body>
+
+</html>

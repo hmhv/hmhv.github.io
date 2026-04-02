@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Website mata -->
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<!-- Disable transformation -->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<!-- Website description -->
+
+<meta name="description" content="iOSデバッグ時に有用なメソッド" />
+
+
+<!-- Website keywords -->
+
+<meta name="keywords" content="hmhv,blog,app,galary,ios,iphone" />
+
+
+
+
+<!-- Website rss -->
+
+<link rel="alternate" href="/atom.xml" title="hmhv" type="application/atom+xml">
+
+
+<!-- Website favicon -->
+
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=3.0.0" />
+
+
+<!-- Canonical, good for google search engine -->
+<link rel="canonical" href="https://hmhv.info/2015/05/ios-debugging-method/" />
+
+<!-- Fancybox styling -->
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+
+
+<!-- MathJax (LaTeX) support -->
+
+
+<!-- Theme styling -->
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=3.0.0" />
+
+<!-- Analytics and push -->
+
+
+
+  
+
+
+
+<!-- LeanCloud Counter -->
+
+
+<script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null,"server_url":null,"cdn":null},"toc":true,"fancybox":true,"latex":false};
+</script>
+  
+  <title>iOSデバッグ時に有用なメソッド - hmhv</title>
+
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+<body>
+  <div class="scrollPercentage"></div>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">hmhv</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+    <a href="/">
+      <li class="mobile-menu-item">
+        
+        
+        Home              </li>
+    </a>
+    
+    <a href="/archives/">
+      <li class="mobile-menu-item">
+        
+        
+        Archives              </li>
+    </a>
+    
+    <a href="/tags/">
+      <li class="mobile-menu-item">
+        
+        
+        Tags              </li>
+    </a>
+    
+    <a href="/apps/">
+      <li class="mobile-menu-item">
+        
+        
+        Apps              </li>
+    </a>
+    
+    <a href="/about/">
+      <li class="mobile-menu-item">
+        
+        
+        About              </li>
+    </a>
+    
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+      <div class="logo-wrapper">  
+  <a href="/." class="logo">hmhv</a>  
+</div>  
+  
+<nav class="site-navbar">  
+    
+    <ul id="menu" class="menu">  
+        
+        <li class="menu-item">  
+          <a class="menu-item-link" href="/">  
+              
+              
+              Home  
+              
+          </a>  
+        </li>  
+        
+        <li class="menu-item">  
+          <a class="menu-item-link" href="/archives/">  
+              
+              
+              Archives  
+              
+          </a>  
+        </li>  
+        
+        <li class="menu-item">  
+          <a class="menu-item-link" href="/tags/">  
+              
+              
+              Tags  
+              
+          </a>  
+        </li>  
+        
+        <li class="menu-item">  
+          <a class="menu-item-link" href="/apps/">  
+              
+              
+              Apps  
+              
+          </a>  
+        </li>  
+        
+        <li class="menu-item">  
+          <a class="menu-item-link" href="/about/">  
+              
+              
+              About  
+              
+          </a>  
+        </li>  
+        
+    </ul>  
+    
+</nav>  
+
+    </header>
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+  <header class="post-header">
+    <h1 class="post-title">
+      
+      iOSデバッグ時に有用なメソッド
+      
+    </h1>
+
+    <div class="post-meta">
+      <span class="post-time">
+        2015-05-16
+      </span>
+      
+      
+      <span class="post-category">
+        
+        <a href="/categories/Tech/">Tech</a>
+        
+      </span>
+      
+      
+    </div>
+  </header>
+
+  
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E4%BE%8B"><span class="toc-number">1.</span> <span class="toc-text">使用例</span></a></li></ol>
+    </div>
+  </div>
+  
+
+  <div class="post-content">
+    
+    <table>
+<thead>
+<tr>
+<th>メソッド</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-[NSObject _ivarDescription]</td>
+<td>インスタンス変数をすべて表示</td>
+</tr>
+<tr>
+<td>-[NSObject _shortMethodDescription]</td>
+<td>オブジェクトのメソッドをすべて表示</td>
+</tr>
+<tr>
+<td>-[NSObject _methodDescription]</td>
+<td>オブジェクトのメソッドをすべて表示(スーパークラス含む)</td>
+</tr>
+<tr>
+<td>-[UIView recursiveDescription]</td>
+<td>Viewの構造表示</td>
+</tr>
+<tr>
+<td>-[UIView _autolayoutTrace]</td>
+<td>ViewのAutoLayout関連情報表示</td>
+</tr>
+<tr>
+<td>-[UIViewController _printHierarchy]</td>
+<td>ViewControllerの構造表示</td>
+</tr>
+<tr>
+<td>-[UIView constraintsAffectingLayoutForAxis:UILayoutConstraintAxisHorizontal]</td>
+<td>Viewのx(又はy)軸のconstraints表示</td>
+</tr>
+<tr>
+<td>-[UIView hasAmbiguousLayout]</td>
+<td>ViewのLayoutが複数に可能か</td>
+</tr>
+<tr>
+<td>-[UIView exerciseAmbiguityInLayout]</td>
+<td>Viewの別のLayout表示を行う</td>
+</tr>
+</tbody></table>
+<h2 id="使用例"><a href="#使用例" class="headerlink" title="使用例"></a>使用例</h2><ul>
+<li>-[NSObject _ivarDescription]</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">(lldb) po [self _ivarDescription]</span><br><span class="line">&lt;DetailViewController: 0x7fc94b637db0&gt;:</span><br><span class="line"><span class="keyword">in</span> DetailViewController:</span><br><span class="line"><span class="keyword">in</span> UIViewController:</span><br><span class="line">	_view (UIView*): &lt;UIView: 0x7fc94b63c360&gt;</span><br><span class="line">	_tabBarItem (UITabBarItem*): nil</span><br><span class="line">	_navigationItem (UINavigationItem*): &lt;UINavigationItem: 0x7fc94b63ae20&gt;</span><br><span class="line">	_toolbarItems (NSArray*): nil</span><br><span class="line">	_title (NSString*): nil</span><br><span class="line">	_nibName (NSString*): @<span class="string">&quot;jAO-Jw-mTY-view-IBP-J8-Ec0&quot;</span>&lt;__NSCFString: 0x7fc94b6380e0&gt;</span><br><span class="line">	_nibBundle (NSBundle*): &lt;NSBundle: 0x7fc94b61bc40&gt;</span><br><span class="line">	_parentViewController (UIViewController*): &lt;UINavigationController: 0x7fc94b71dbc0&gt;</span><br><span class="line">	_childModalViewController (UIViewController*): nil</span><br><span class="line">	_parentModalViewController (UIViewController*): nil</span><br><span class="line">	_previousRootViewController (UIViewController*): nil</span><br><span class="line">	_modalTransitionView (UIView*): nil</span><br><span class="line">	_modalPreservedFirstResponder (UIResponder*): nil</span><br><span class="line">	_dimmingView (<span class="built_in">id</span>): nil</span><br><span class="line">	_dropShadowView (<span class="built_in">id</span>): nil</span><br><span class="line">	_currentAction (<span class="built_in">id</span>): nil</span><br><span class="line">	_storyboard (UIStoryboard*): &lt;UIStoryboard: 0x7fc94b716f50&gt;</span><br><span class="line">	_storyboardSegueTemplates (NSArray*): nil</span><br><span class="line">	_externalObjectsTableForViewLoading (NSDictionary*): &lt;__NSCFDictionary: 0x7fc94b6380a0&gt;</span><br><span class="line">	_topLevelObjectsToKeepAliveFromStoryboard (NSArray*): nil</span><br><span class="line">	_savedHeaderSuperview (UIView*): nil</span><br><span class="line">	_savedFooterSuperview (UIView*): nil</span><br><span class="line">	_editButtonItem (UIBarButtonItem*): nil</span><br><span class="line">	_searchDisplayController (UISearchDisplayController*): nil</span><br><span class="line">	_modalTransitionStyle (long): &lt;00000000 00000000&gt;</span><br><span class="line">	_modalPresentationStyle (long): &lt;00000000 00000000&gt;</span><br><span class="line">	_lastKnownInterfaceOrientation (long): &lt;00000000 00000000&gt;</span><br><span class="line">	_popoverController (UIPopoverController*): nil</span><br><span class="line">	_containerViewInSheet (UIView*): nil</span><br><span class="line">	_contentSizeForViewInPopover (CGSize): &#123;0, 0&#125;</span><br><span class="line">	_formSheetSize (CGSize): &#123;540, 620&#125;</span><br><span class="line">	_recordedContentScrollView (UIScrollView*): nil</span><br><span class="line">	_afterAppearance (unknown <span class="built_in">type</span>)</span><br><span class="line">	_explicitAppearanceTransitionLevel (long): &lt;00000000 00000000&gt;</span><br><span class="line">	_keyCommands (NSArray*): nil</span><br><span class="line">	_overrideTraitCollections (NSMapTable*): nil</span><br><span class="line">	_viewControllerFlags (unknown <span class="built_in">type</span>)</span><br><span class="line">	_retainCount (long): &lt;00000000 00000000&gt;</span><br><span class="line">	_ignoreAppSupportedOrientations (BOOL): &lt;00&gt;</span><br><span class="line">	_viewHostsLayoutEngine (BOOL): &lt;00&gt;</span><br><span class="line">	_storyboardIdentifier (NSString*): @<span class="string">&quot;UIViewController-jAO-Jw-mTY&quot;</span>&lt;__NSCFString: 0x7fc94b71d800&gt;</span><br><span class="line">	_transitioningDelegate (&lt;UIViewControllerTransitioningDelegate&gt;*): nil</span><br><span class="line">	_modalPresentationCapturesStatusBarAppearance (BOOL): &lt;00&gt;</span><br><span class="line">	_childViewControllers (NSMutableArray*): nil</span><br><span class="line">	_customNavigationInteractiveTransitionDuration (double): 0</span><br><span class="line">	_customNavigationInteractiveTransitionPercentComplete (double): 0</span><br><span class="line">	_customTransitioningView (UITransitionView*): nil</span><br><span class="line">	_lastNotifiedTraitCollection (UITraitCollection*): &lt;UITraitCollection: 0x7fc94b48a440&gt;</span><br><span class="line">	_presentationController (UIPresentationController*): nil</span><br><span class="line">	_navigationControllerContentOffsetAdjustment (double): 0</span><br><span class="line">	_contentMargin (double): 16</span><br><span class="line">	_topLayoutGuide (_UILayoutGuide*): &lt;_UILayoutGuide: 0x7fc94b63d3e0&gt;</span><br><span class="line">	_bottomLayoutGuide (_UILayoutGuide*): &lt;_UILayoutGuide: 0x7fc94b63d6c0&gt;</span><br><span class="line">	_topBarInsetGuideConstraint (NSLayoutConstraint*): &lt;_UILayoutSupportConstraint: 0x7fc94b63cc20&gt;</span><br><span class="line">	_bottomBarInsetGuideConstraint (NSLayoutConstraint*): &lt;_UILayoutSupportConstraint: 0x7fc94b63a950&gt;</span><br><span class="line">以下省略</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>-[NSObject _shortMethodDescription]</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(lldb) po [self _shortMethodDescription]</span><br><span class="line">&lt;DetailViewController: 0x7fc94b637db0&gt;:</span><br><span class="line"><span class="keyword">in</span> DetailViewController:</span><br><span class="line">	Instance Methods:</span><br><span class="line">		- (void) PrintDebugLog:(<span class="built_in">id</span>)arg1; (0x10e2c9df0)</span><br><span class="line">		- (void) didReceiveMemoryWarning; (0x10e2c9db0)</span><br><span class="line">		- (void) viewDidLoad; (0x10e2c9d70)</span><br><span class="line">(UIViewController ...)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>-[NSObject _methodDescription]</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br></pre></td><td class="code"><pre><span class="line">(lldb) po [self _methodDescription]</span><br><span class="line">&lt;DetailViewController: 0x7fc94b637db0&gt;:</span><br><span class="line"><span class="keyword">in</span> DetailViewController:</span><br><span class="line">	Instance Methods:</span><br><span class="line">		- (void) PrintDebugLog:(<span class="built_in">id</span>)arg1; (0x10e2c9df0)</span><br><span class="line">		- (void) didReceiveMemoryWarning; (0x10e2c9db0)</span><br><span class="line">		- (void) viewDidLoad; (0x10e2c9d70)</span><br><span class="line"><span class="keyword">in</span> UIViewController:</span><br><span class="line">	Class Methods:</span><br><span class="line">		+ (void) initialize; (0x10f0859c2)</span><br><span class="line">		+ (<span class="built_in">id</span>) _currentStatusBarStyleViewController; (0x10f0a2630)</span><br><span class="line">		+ (<span class="built_in">id</span>) _currentStatusBarHiddenViewController; (0x10f0a2671)</span><br><span class="line">		+ (void) _performWithoutDeferringTransitions:(^block)arg1; (0x10f096163)</span><br><span class="line">		+ (void) _traverseViewControllerHierarchyWithDelayedRelease:(^block)arg1; (0x10f0919d0)</span><br><span class="line">		+ (<span class="built_in">id</span>) viewControllerForView:(<span class="built_in">id</span>)arg1; (0x10f091287)</span><br><span class="line">		+ (<span class="built_in">id</span>) _viewControllerForFullScreenPresentationFromView:(<span class="built_in">id</span>)arg1; (0x10f09d2ad)</span><br><span class="line">		+ (BOOL) _allViewControllersInArray:(<span class="built_in">id</span>)arg1 allowAutorotationToInterfaceOrientation:(long)arg2 predicate:(^block)arg3; (0x10f09f5ec)</span><br><span class="line">		+ (double) _slimHorizontalContentMargin; (0x10f08563f)</span><br><span class="line">		+ (BOOL) _preventsAppearanceProxyCustomization; (0x10f0899e3)</span><br><span class="line">		+ (double) durationForTransition:(int)arg1; (0x10f09d79c)</span><br><span class="line">		+ (double) _standardHorizontalContentMargin; (0x10f0855cc)</span><br><span class="line">		+ (void) _scheduleTransition:(^block)arg1; (0x10f0961f9)</span><br><span class="line">		+ (<span class="built_in">id</span>) _traitCollectionWithParentTraitCollection:(<span class="built_in">id</span>)arg1 overrideTraitCollection:(<span class="built_in">id</span>)arg2; (0x10f08a14b)</span><br><span class="line">		+ (BOOL) _directlySetsContentOverlayInsetsForChildren; (0x10f0849c0)</span><br><span class="line">		+ (BOOL) doesOverrideViewControllerMethod:(SEL)arg1 inBaseClass:(Class)arg2; (0x10f085c23)</span><br><span class="line">		+ (CGSize) defaultFormSheetSize; (0x10f08612a)</span><br><span class="line">		+ (BOOL) doesOverrideSupportedInterfaceOrientations; (0x10f085cec)</span><br><span class="line">		+ (BOOL) _isNestedViewControllerSupportDisabled; (0x10f085bbb)</span><br><span class="line">		+ (BOOL) _synthesizeSupportedInterfaceOrientationsFromShouldAutorotateToInterfaceOrientation; (0x10f086c62)</span><br><span class="line">		+ (BOOL) _frameIsNotResizedForDoubleHeightStatusBarChanges:(<span class="built_in">id</span>)arg1; (0x10f087463)</span><br><span class="line">		+ (void) setViewController:(<span class="built_in">id</span>)arg1 forView:(<span class="built_in">id</span>)arg2; (0x10f0912d9)</span><br><span class="line">		+ (<span class="built_in">id</span>) existingNibNameMatchingClassName:(<span class="built_in">id</span>)arg1 bundle:(<span class="built_in">id</span>)arg2; (0x10f08a80f)</span><br><span class="line">		+ (BOOL) _doesOverrideLegacyFullScreenLayout; (0x10f0929dd)</span><br><span class="line">		+ (BOOL) _isViewSizeFullScreen:(<span class="built_in">id</span>)arg1 inWindow:(<span class="built_in">id</span>)arg2 ignoreInWindowCheck:(BOOL)arg3; (0x10f0929e5)</span><br><span class="line">		+ (BOOL) doesOverrideViewControllerMethod:(SEL)arg1; (0x10f085c5a)</span><br><span class="line">		+ (BOOL) _shouldUseRootViewControllerAutopromotion; (0x10f085a1c)</span><br><span class="line">		+ (void) _traverseViewControllerHierarchyWithDelayedReleaseArray:(const void**)arg1 block:(^block)arg2; (0x10f09161c)</span><br><span class="line">		+ (void) _traverseViewControllerHierarchy:(^block)arg1; (0x10f091acf)</span><br><span class="line">		+ (<span class="built_in">id</span>) _printHierarchy; (0x10f0920a7)</span><br><span class="line">		+ (BOOL) _shouldUseLegacyModalViewControllers; (0x10f085bef)</span><br><span class="line">		+ (BOOL) _isViewSizeFullScreen:(<span class="built_in">id</span>)arg1 inWindow:(<span class="built_in">id</span>)arg2; (0x10f093280)</span><br><span class="line">		+ (int) _keyboardDirectionForTransition:(int)arg1; (0x10f08d1e3)</span><br><span class="line">		+ (BOOL) _shouldDeferTransitions; (0x10f096157)</span><br><span class="line">		+ (void) _setShouldDeferTransitions:(BOOL)arg1; (0x10f09614b)</span><br><span class="line">		+ (BOOL) _shouldSendLegacyMethodsFromViewWillTransitionToSize; (0x10f09d998)</span><br><span class="line">		+ (BOOL) _shouldForwardViewWillTransitionToSize; (0x10f09e301)</span><br><span class="line">		+ (BOOL) doesOverridePreferredInterfaceOrientationForPresentation; (0x10f085ca1)</span><br><span class="line">		+ (BOOL) _doesOverrideLegacyShouldAutorotateMethod; (0x10f09ebcf)</span><br><span class="line">		+ (void) _forceLegacyModalViewControllers:(BOOL)arg1; (0x10f085ba3)</span><br><span class="line">		+ (void) _disableNestedViewControllerSupport:(BOOL)arg1; (0x10f085baf)</span><br><span class="line">		+ (void) removeViewControllerForView:(<span class="built_in">id</span>)arg1; (0x10f09129c)</span><br><span class="line">		+ (<span class="built_in">id</span>) _allDescriptions; (0x10f091d43)</span><br><span class="line">		+ (BOOL) _optsOutOfPopoverControllerHierarchyCheck; (0x10f0939e9)</span><br><span class="line">		+ (void) _setShouldUseLegacyPresentations:(BOOL)arg1; (0x10f096145)</span><br><span class="line">		+ (void) setCustomTransitionDuration:(double)arg1; (0x10f09d750)</span><br><span class="line">		+ (double) customTransitionDuration; (0x10f09d75e)</span><br><span class="line">		+ (void) attemptRotationToDeviceOrientation; (0x10f09ebe8)</span><br><span class="line">		+ (<span class="built_in">id</span>) _exportedInterface; (0x10f563e91)</span><br><span class="line">		+ (<span class="built_in">id</span>) _remoteViewControllerInterface; (0x10f563e89)</span><br><span class="line">		+ (<span class="built_in">id</span>) XPCInterface; (0x10f564033)</span><br><span class="line">		+ (BOOL) _isSecureForRemoteViewService; (0x10f563e03)</span><br><span class="line">		+ (BOOL) _initializedByViewServices; (0x10f5b860b)</span><br><span class="line">	Properties:</span><br><span class="line">		@property (retain, nonatomic) UITabBarItem* tabBarItem;</span><br><span class="line">		@property (<span class="built_in">readonly</span>, retain, nonatomic) UITabBarController* tabBarController;</span><br><span class="line">		@property (<span class="built_in">readonly</span>, retain, nonatomic) UISplitViewController* splitViewController;</span><br><span class="line">		@property (<span class="built_in">readonly</span>, retain, nonatomic) UINavigationItem* navigationItem;</span><br><span class="line">		@property (nonatomic) BOOL hidesBottomBarWhenPushed;</span><br><span class="line">		@property (<span class="built_in">readonly</span>, retain, nonatomic) UINavigationController* navigationController;</span><br><span class="line">		@property (<span class="built_in">readonly</span>, nonatomic) NSArray* childViewControllers;</span><br><span class="line">		@property (<span class="built_in">readonly</span>, nonatomic) UIView* _embeddedView;  (@dynamic _embeddedView;)</span><br><span class="line">		@property (<span class="built_in">readonly</span>, nonatomic) &lt;_UIViewControllerContentViewEmbedding&gt;* _embeddedDelegate;  (@dynamic _embeddedDelegate;)</span><br><span class="line">		@property (nonatomic) CGSize preferedContentSizeInModalItem;  (@dynamic preferedContentSizeInModalItem;)</span><br><span class="line">		@property (<span class="built_in">readonly</span>) unsigned long <span class="built_in">hash</span>;</span><br><span class="line">		@property (<span class="built_in">readonly</span>) Class superclass;</span><br><span class="line">		@property (<span class="built_in">readonly</span>, copy) NSString* description;</span><br><span class="line">		@property (<span class="built_in">readonly</span>, copy) NSString* debugDescription;</span><br><span class="line">		@property (<span class="built_in">readonly</span>, retain, nonatomic) NSExtensionContext* extensionContext;  (@dynamic extensionContext;)</span><br><span class="line">		@property (<span class="built_in">readonly</span>) unsigned long <span class="built_in">hash</span>;</span><br><span class="line">		@property (<span class="built_in">readonly</span>) Class superclass;</span><br><span class="line">		@property (<span class="built_in">readonly</span>, copy) NSString* description;</span><br><span class="line">		@property (<span class="built_in">readonly</span>, copy) NSString* debugDescription;</span><br><span class="line">		@property (retain, nonatomic) UIView* view;</span><br><span class="line">		@property (copy, nonatomic) NSString* nibName;  (@synthesize nibName = _nibName;)</span><br><span class="line">		@property (retain, nonatomic) NSBundle* nibBundle;  (@synthesize nibBundle = _nibBundle;)</span><br><span class="line">		@property (retain, nonatomic) UIStoryboard* storyboard;  (@synthesize storyboard = _storyboard;)</span><br><span class="line">		@property (copy, nonatomic) NSString* title;  (@synthesize title = _title;)</span><br><span class="line">		@property (nonatomic) UIViewController* parentViewController;</span><br><span class="line">		@property (<span class="built_in">readonly</span>, nonatomic) UIViewController* modalViewController;</span><br><span class="line">		@property (<span class="built_in">readonly</span>, nonatomic) UIViewController* presentedViewController;</span><br><span class="line">		@property (<span class="built_in">readonly</span>, nonatomic) UIViewController* presentingViewController;</span><br><span class="line">		@property (nonatomic) BOOL definesPresentationContext;</span><br><span class="line">		@property (nonatomic) BOOL providesPresentationContextTransitionStyle;</span><br><span class="line">		@property (nonatomic) long modalTransitionStyle;  (@synthesize modalTransitionStyle = _modalTransitionStyle;)</span><br><span class="line">		@property (nonatomic) long modalPresentationStyle;  (@synthesize modalPresentationStyle = _modalPresentationStyle;)</span><br><span class="line">		@property (nonatomic) BOOL modalPresentationCapturesStatusBarAppearance;  (@synthesize modalPresentationCapturesStatusBarAppearance = _modalPresentationCapturesStatusBarAppearance;)</span><br><span class="line">		@property (nonatomic) BOOL wantsFullScreenLayout;</span><br><span class="line">		@property (nonatomic) unsigned long edgesForExtendedLayout;  (@synthesize edgesForExtendedLayout = _edgesForExtendedLayout;)</span><br><span class="line">		@property (nonatomic) BOOL extendedLayoutIncludesOpaqueBars;</span><br><span class="line">		@property (nonatomic) BOOL automaticallyAdjustsScrollViewInsets;</span><br><span class="line">		@property (nonatomic) CGSize preferredContentSize;  (@synthesize preferredContentSize = _preferredContentSize;)</span><br><span class="line">		@property (<span class="built_in">readonly</span>, nonatomic) NSArray* storyboardSegueTemplates;  (@synthesize storyboardSegueTemplates = _storyboardSegueTemplates;)</span><br><span class="line">		@property (nonatomic, setter=_setSourceViewControllerIfPresentedViaPopoverSegue:) UIViewController* _sourceViewControllerIfPresentedViaPopoverSegue;  (@synthesize _sourceViewControllerIfPresentedViaPopoverSegue = _sourceViewControllerIfPresentedViaPopoverSegue;)</span><br><span class="line">		@property (nonatomic, setter=_setModalSourceViewController:) UIViewController* _modalSourceViewController;  (@synthesize _modalSourceViewController = _modalSourceViewController;)</span><br><span class="line">		@property (retain, nonatomic) UITransitionView* modalTransitionView;</span><br><span class="line">		@property (<span class="built_in">readonly</span>, nonatomic) UIViewController* _parentViewController;</span><br><span class="line">		@property (<span class="built_in">readonly</span>, nonatomic) UIViewController* _parentModalViewController;</span><br><span class="line">		@property (nonatomic) NSMutableArray* mutableChildViewControllers;  (@synthesize mutableChildViewControllers = _childViewControllers;)</span><br><span class="line">		@property (<span class="built_in">readonly</span>, nonatomic) unsigned long childViewControllersCount;</span><br><span class="line">		@property (retain, nonatomic, setter=_setEmbeddedView:) UIView* _embeddedView;  (@synthesize _embeddedView = __embeddedView;)</span><br><span class="line">		@property (retain, nonatomic, setter=_setEmbeddingView:) UIView* _embeddingView;  (@synthesize _embeddingView = __embeddingView;)</span><br><span class="line">		@property (nonatomic, setter=_setEmbeddedViewFrame:) CGRect _embeddedViewFrame;  (@synthesize _embeddedViewFrame = __embeddedViewFrame;)</span><br><span class="line">		@property (nonatomic, setter=_setEmbeddedDelegate:) &lt;_UIViewControllerContentViewEmbedding&gt;* _embeddedDelegate;  (@synthesize _embeddedDelegate = __embeddedDelegate;)</span><br><span class="line">		@property (retain, nonatomic, setter=_setLastNotifiedTraitCollection:) UITraitCollection* _lastNotifiedTraitCollection;  (@synthesize _lastNotifiedTraitCollection = _lastNotifiedTraitCollection;)</span><br><span class="line">		@property (<span class="built_in">readonly</span>, nonatomic) long _horizontalSizeClass;</span><br><span class="line">		@property (<span class="built_in">readonly</span>, nonatomic) long _verticalSizeClass;</span><br><span class="line">		@property (<span class="built_in">readonly</span>, nonatomic) ? __sizeClassPair;</span><br><span class="line">		@property (<span class="built_in">readonly</span>, nonatomic) UIView* savedHeaderSuperview;  (@synthesize savedHeaderSuperview = _savedHeaderSuperview;)</span><br><span class="line">		@property (retain, nonatomic) UIViewController* childModalViewController;</span><br><span class="line">		@property (nonatomic) UIViewController* parentModalViewController;  (@synthesize parentModalViewController = _parentModalViewController;)</span><br><span class="line">		@property (retain, nonatomic) UISearchDisplayController* searchDisplayController;  (@dynamic searchDisplayController;)</span><br><span class="line">		@property (nonatomic) BOOL searchBarHidNavBar;</span><br><span class="line">		@property (retain, nonatomic) UIDropShadowView* dropShadowView;  (@synthesize dropShadowView = _dropShadowView;)</span><br><span class="line">		@property (<span class="built_in">readonly</span>, nonatomic) BOOL _isModalSheet;</span><br><span class="line">		@property (<span class="built_in">readonly</span>, nonatomic) BOOL _isPresentedFormSheet;</span><br><span class="line">		@property (<span class="built_in">readonly</span>, nonatomic) BOOL _isInSheetPresentation;</span><br><span class="line">		@property (retain, nonatomic, setter=_setPresentationController:) UIPresentationController* _presentationController;  (@synthesize _presentationController = _presentationController;)</span><br><span class="line">		@property (nonatomic, getter=_presentationSizeClassPair, setter=_setPresentationSizeClassPair:) ? presentationSizeClassPair;  (@synthesize presentationSizeClassPair = _presentationSizeClassPair;)</span><br><span class="line">		@property (retain, nonatomic, getter=_originalPresentationController, setter=_setOriginalPresentationController:) UIPresentationController* originalPresentationController;  (@synthesize originalPresentationController = _originalPresentationController;)</span><br><span class="line">		@property (retain, nonatomic, getter=_temporaryPresentationController, setter=_setTemporaryPresentationController:) UIPresentationController* temporaryPresentationController;  (@synthesize temporaryPresentationController = _temporaryPresentationController;)</span><br><span class="line">		@property (<span class="built_in">readonly</span>, nonatomic) BOOL _useSheetRotation;</span><br><span class="line">		@property (<span class="built_in">readonly</span>, nonatomic) BOOL _isDimmingBackground;</span><br><span class="line">		@property (<span class="built_in">readonly</span>, nonatomic) BOOL isSettingAppearState;</span><br><span class="line">		@property (copy, nonatomic) ^block afterAppearanceBlock;  (@synthesize afterAppearanceBlock = _afterAppearance;)</span><br><span class="line">		@property (nonatomic) CGSize contentSizeForViewInPopover;  (@synthesize contentSizeForViewInPopover = _contentSizeForViewInPopover;)</span><br><span class="line">		@property (nonatomic) BOOL modalInPopover;</span><br><span class="line">		@property (nonatomic, getter=isInWillRotateCallback) BOOL inWillRotateCallback;</span><br><span class="line">		@property (nonatomic, getter=isInAnimatedVCTransition) BOOL inAnimatedVCTransition;</span><br><span class="line">		@property (<span class="built_in">readonly</span>, nonatomic) BOOL inExplicitAppearanceTransition;</span><br><span class="line">		@property (nonatomic) BOOL appearanceTransitionsAreDisabled;</span><br><span class="line">		@property (nonatomic) BOOL disableRootPromotion;</span><br><span class="line">		@property (nonatomic) BOOL needsDidMoveCleanup;</span><br><span class="line">		@property (nonatomic, getter=isFinishingModalTransition) BOOL finishingModalTransition;</span><br><span class="line">		@property (nonatomic) double customNavigationInteractiveTransitionDuration;  (@synthesize customNavigationInteractiveTransitionDuration = _customNavigationInteractiveTransitionDuration;)</span><br><span class="line">		@property (nonatomic) double customNavigationInteractiveTransitionPercentComplete;  (@synthesize customNavigationInteractiveTransitionPercentComplete = _customNavigationInteractiveTransitionPercentComplete;)</span><br><span class="line">		@property (retain, nonatomic) UITransitionView* customTransitioningView;  (@synthesize customTransitioningView = _customTransitioningView;)</span><br><span class="line">		@property (<span class="built_in">readonly</span>, nonatomic, getter=_window) UIWindow* window;</span><br><span class="line">		@property (<span class="built_in">readonly</span>, nonatomic) BOOL _monitorsSystemLayoutFittingSize;</span><br><span class="line">		@property (retain, nonatomic, setter=_setPreviousFittingSizeInfo:) NSDictionary* _previousFittingSizeInfo;</span><br><span class="line">		@property (nonatomic, setter=_setNavigationControllerContentInsetAdjustment:) UIEdgeInsets _navigationControllerContentInsetAdjustment;  (@synthesize _navigationControllerContentInsetAdjustment = _navigationControllerContentInsetAdjustment;)</span><br><span class="line">		@property (nonatomic, setter=_setNavigationControllerContentOffsetAdjustment:) double _navigationControllerContentOffsetAdjustment;  (@synthesize _navigationControllerContentOffsetAdjustment = _navigationControllerContentOffsetAdjustment;)</span><br><span class="line">		@property (nonatomic, setter=_setContentOverlayInsets:) UIEdgeInsets _contentOverlayInsets;  (@synthesize _contentOverlayInsets = _contentOverlayInsets;)</span><br><span class="line">		@property (nonatomic, setter=_setContentMargin:) double _contentMargin;  (@synthesize _contentMargin = _contentMargin;)</span><br><span class="line">		@property (retain, nonatomic, setter=_setPresentedStatusBarViewController:) UIViewController* _presentedStatusBarViewController;  (@synthesize _presentedStatusBarViewController = _presentedStatusBarViewController;)</span><br><span class="line">		@property (<span class="built_in">readonly</span>, retain, nonatomic) _UILayoutGuide* topLayoutGuide;  (@synthesize topLayoutGuide = _topLayoutGuide;)</span><br><span class="line">		@property (<span class="built_in">readonly</span>, retain, nonatomic) _UILayoutGuide* bottomLayoutGuide;  (@synthesize bottomLayoutGuide = _bottomLayoutGuide;)</span><br><span class="line">		@property (<span class="built_in">readonly</span>, retain, nonatomic) _UILayoutGuide* _leftLayoutGuide;  (@synthesize _leftLayoutGuide = _leftLayoutGuide;)</span><br><span class="line">		@property (<span class="built_in">readonly</span>, retain, nonatomic) _UILayoutGuide* _rightLayoutGuide;  (@synthesize _rightLayoutGuide = _rightLayoutGuide;)</span><br><span class="line">		@property (<span class="built_in">readonly</span>, retain, nonatomic) NSLayoutConstraint* _topBarInsetGuideConstraint;  (@synthesize _topBarInsetGuideConstraint = _topBarInsetGuideConstraint;)</span><br><span class="line">		@property (<span class="built_in">readonly</span>, retain, nonatomic) NSLayoutConstraint* _bottomBarInsetGuideConstraint;  (@synthesize _bottomBarInsetGuideConstraint = _bottomBarInsetGuideConstraint;)</span><br><span class="line">		@property (<span class="built_in">readonly</span>, retain, nonatomic) NSLayoutConstraint* _leftMarginGuideConstraint;  (@synthesize _leftMarginGuideConstraint = _leftMarginGuideConstraint;)</span><br><span class="line">		@property (<span class="built_in">readonly</span>, retain, nonatomic) NSLayoutConstraint* _rightMarginGuideConstraint;  (@synthesize _rightMarginGuideConstraint = _rightMarginGuideConstraint;)</span><br><span class="line">		@property (retain, nonatomic, setter=_setExtensionContext:) NSExtensionContext* extensionContext;  (@dynamic extensionContext;)</span><br><span class="line">		@property (retain, nonatomic, setter=_setChildControllerToIgnoreWhileLookingForTransitionCoordinator:) UIViewController* _childControllerToIgnoreWhileLookingForTransitionCoordinator;  (@synthesize _childControllerToIgnoreWhileLookingForTransitionCoordinator = __childControllerToIgnoreWhileLookingForTransitionCoordinator;)</span><br><span class="line">		@property (<span class="built_in">readonly</span>) unsigned long <span class="built_in">hash</span>;</span><br><span class="line">		@property (<span class="built_in">readonly</span>) Class superclass;</span><br><span class="line">		@property (<span class="built_in">readonly</span>, copy) NSString* description;</span><br><span class="line">		@property (<span class="built_in">readonly</span>, copy) NSString* debugDescription;</span><br><span class="line">		@property (<span class="built_in">readonly</span>, nonatomic) UITraitCollection* traitCollection;</span><br><span class="line">		@property (<span class="built_in">readonly</span>, nonatomic) &lt;UIFocusContainer&gt;* preferredFocusedItem;</span><br><span class="line">		@property (<span class="built_in">readonly</span>, nonatomic) UIView* focusedView;</span><br><span class="line">	Instance Methods:</span><br><span class="line">		- (^block) _completionBlock; (0x10f09382b)</span><br><span class="line">		- (<span class="built_in">id</span>) retain; (0x10f085d37)</span><br><span class="line">		- (oneway void) release; (0x10f085d5a)</span><br><span class="line">		- (unsigned long) retainCount; (0x10f085dd7)</span><br><span class="line">		- (void) dealloc; (0x10f088c75)</span><br><span class="line">		- (BOOL) _tryRetain; (0x10f085def)</span><br><span class="line">		- (BOOL) _isDeallocating; (0x10f085e2a)</span><br><span class="line">		- (<span class="built_in">id</span>) invalidate; (0x10f563f3f)</span><br><span class="line">		- (<span class="built_in">id</span>) _screen; (0x10f0a27c1)</span><br><span class="line">		- (void) _setInCustomTransition:(BOOL)arg1; (0x10f086d57)</span><br><span class="line">		- (BOOL) isViewLoaded; (0x10f08ba00)</span><br><span class="line">		- (<span class="built_in">id</span>) searchDisplayController; (0x10f0a2800)</span><br><span class="line">		- (<span class="built_in">id</span>) navigationItem; (0x10f0a38f2)</span><br><span class="line">		- (void) applicationWillSuspend; (0x10f09273c)</span><br><span class="line">		- (BOOL) _tryBecomeRootViewControllerInWindow:(<span class="built_in">id</span>)arg1; (0x10f08fc15)</span><br><span class="line">		- (<span class="built_in">id</span>) _preferredStatusBarStyleAnimationParameters; (0x10f0a2598)</span><br><span class="line">		- (<span class="built_in">id</span>) _preferredStatusBarHideAnimationParameters; (0x10f0a25a0)</span><br><span class="line">		- (long) preferredStatusBarStyle; (0x10f0a252f)</span><br><span class="line">以下省略</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>-[UIView recursiveDescription]</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(lldb) po [self.view recursiveDescription]</span><br><span class="line">&lt;UIView: 0x7fc94b63c360; frame = (0 0; 375 667); autoresize = W+H; layer = &lt;CALayer: 0x7fc94b63c340&gt;&gt;</span><br><span class="line">   | &lt;UIView: 0x7fc94b63c470; frame = (0 0; 375 667); autoresize = RM+BM; layer = &lt;CALayer: 0x7fc94b63c580&gt;&gt;</span><br><span class="line">   |    | &lt;UILabel: 0x7fc94b63c5a0; frame = (166.5 110; 42 20.5); text = <span class="string">&#x27;Label&#x27;</span>; opaque = NO; autoresize = RM+BM; userInteractionEnabled = NO; layer = &lt;_UILabelLayer: 0x7fc94b63c9d0&gt;&gt;</span><br><span class="line">   |    | &lt;UIButton: 0x7fc94b63b7c0; frame = (164.5 318.5; 46 30); opaque = NO; autoresize = RM+BM; layer = &lt;CALayer: 0x7fc94b63a930&gt;&gt;</span><br><span class="line">   |    |    | &lt;UIButtonLabel: 0x7fc94b647df0; frame = (0 6; 46 18); text = <span class="string">&#x27;Button&#x27;</span>; alpha = 0.2; opaque = NO; userInteractionEnabled = NO; layer = &lt;_UILabelLayer: 0x7fc94b646690&gt;&gt;</span><br><span class="line">   | &lt;_UILayoutGuide: 0x7fc94b63d3e0; frame = (0 0; 0 64); hidden = YES; layer = &lt;CALayer: 0x7fc94b63ae00&gt;&gt;</span><br><span class="line">   | &lt;_UILayoutGuide: 0x7fc94b63d6c0; frame = (0 667; 0 0); hidden = YES; layer = &lt;CALayer: 0x7fc94b63ac30&gt;&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>-[UIView _autolayoutTrace]</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">(lldb) po [self.view _autolayoutTrace]</span><br><span class="line"></span><br><span class="line">UIWindow:0x7fc94b735440</span><br><span class="line">|   UILayoutContainerView:0x7fc94b469c40</span><br><span class="line">|   |   UINavigationTransitionView:0x7fc94b477530</span><br><span class="line">|   |   |   UIViewControllerWrapperView:0x7fc94b48e3c0</span><br><span class="line">|   |   |   |   •UIView:0x7fc94b63c360</span><br><span class="line">|   |   |   |   |   *UIView:0x7fc94b63c470</span><br><span class="line">|   |   |   |   |   |   *UILabel:0x7fc94b63c5a0<span class="string">&#x27;Label&#x27;</span></span><br><span class="line">|   |   |   |   |   |   *UIButton:0x7fc94b63b7c0<span class="string">&#x27;Button&#x27;</span></span><br><span class="line">|   |   |   |   |   |   |   UIButtonLabel:0x7fc94b647df0<span class="string">&#x27;Button&#x27;</span></span><br><span class="line">|   |   |   |   |   *_UILayoutGuide:0x7fc94b63d3e0</span><br><span class="line">|   |   |   |   |   *_UILayoutGuide:0x7fc94b63d6c0</span><br><span class="line">|   |   UINavigationBar:0x7fc94b72bbe0</span><br><span class="line">|   |   |   _UINavigationBarBackground:0x7fc94b7357e0</span><br><span class="line">|   |   |   |   _UIBackdropView:0x7fc94b4817d0</span><br><span class="line">|   |   |   |   |   _UIBackdropEffectView:0x7fc94b486150</span><br><span class="line">|   |   |   |   |   UIView:0x7fc94b487700</span><br><span class="line">|   |   |   |   UIImageView:0x7fc94b735ee0</span><br><span class="line">|   |   |   UINavigationItemButtonView:0x7fc94b629c30<span class="string">&#x27;Back&#x27;</span></span><br><span class="line">|   |   |   |   UILabel:0x7fc94b63bbe0<span class="string">&#x27;Back&#x27;</span></span><br><span class="line">|   |   |   _UINavigationBarBackIndicatorView:0x7fc94b4768c0</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>-[UIViewController _printHierarchy]</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(lldb) po [self.navigationController _printHierarchy]</span><br><span class="line">&lt;UINavigationController 0x7fc94b71dbc0&gt;, state: appeared, view: &lt;UILayoutContainerView 0x7fc94b469c40&gt;</span><br><span class="line">   | &lt;ViewController 0x7fc94b71e090&gt;, state: disappeared, view: &lt;UIView 0x7fc94b48cf00&gt; not <span class="keyword">in</span> the window</span><br><span class="line">   | &lt;DetailViewController 0x7fc94b637db0&gt;, state: appeared, view: &lt;UIView 0x7fc94b63c360&gt;</span><br></pre></td></tr></table></figure>
+
+
+<p>参考<br><a target="_blank" rel="noopener" href="http://lithium3141.com/resources/2014/12/debugging-cheat-sheet.pdf">http://lithium3141.com/resources/2014/12/debugging-cheat-sheet.pdf</a><br><a target="_blank" rel="noopener" href="http://bou.io/ExtendedTypeInfoInObjC.html">http://bou.io/ExtendedTypeInfoInObjC.html</a></p>
+<p>この内容はqiitaにも投稿しました。<br><a target="_blank" rel="noopener" href="http://qiita.com/hongmhoon/items/6c60d8e165d4204f1a74">http://qiita.com/hongmhoon/items/6c60d8e165d4204f1a74</a></p>
+
+    
+  </div>
+
+  
+  <!-- Post Copyright -->
+
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span>Author: </span>
+    <a href="https://hmhv.info">hmhv</a>
+  </p>
+  <p class="copyright-item">
+    <span>Link: </span>
+    <a href="https://hmhv.info/2015/05/ios-debugging-method/">https://hmhv.info/2015/05/ios-debugging-method/</a>
+  </p>
+  <p class="copyright-item">
+    <span>License: </span>
+    
+    <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+  </p>
+</div>
+
+    
+
+  
+
+  
+  <footer class="post-footer">
+    
+    <div class="post-tags">
+      
+      <a href="/tags/iOS/">iOS</a>
+      
+      <a href="/tags/debug/">debug</a>
+      
+    </div>
+    
+      
+  <nav class="post-nav">  
+      
+      <a class="prev" href="/2015/05/ios-wikis/">  
+        <i class="iconfont icon-left"></i>  
+        <span class="prev-text nav-default">iOS関連wikiまとめ</span>  
+        <span class="prev-text nav-mobile">Prev</span>  
+      </a>  
+      
+      
+      <a class="next" href="/2015/03/apppreview-for-appstore/">  
+        <span class="next-text nav-default">App Preview For AppStore</span>  
+        <span class="prev-text nav-mobile">Next</span>  
+        <i class="iconfont icon-right"></i>  
+      </a>  
+      
+  </nav>  
+  
+
+  </footer>
+  
+
+</article>
+        </div>
+          
+  <div class="comments" id="comments">  
+      
+  </div>  
+  
+
+      </div>
+    </main>
+    <footer id="footer" class="footer">
+      <!-- Social Links -->
+
+<div class="social-links">
+  
+  
+  
+  
+  <a target="_blank" rel="noopener" href="https://github.com/hmhv" class="iconfont icon-github" title="github"></a>
+  
+  
+  
+
+  
+</div>
+
+
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme -
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+  <span class="division">|</span>
+  <span class="hosting-info">
+    footer.hosting
+  </span>
+
+  <span class="copyright-year">
+    <span>
+      
+      &copy;
+      
+      2015 - 2026      
+    </span>
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+
+    <span class="author">hmhv</span>
+  </span>
+
+</div>
+    </footer>
+    <div class="back-to-top" id="back-to-top"> <i class="iconfont icon-up"></i> </div>
+  </div>
+    
+    
+    
+    
+    
+    
+    
+  
+
+  
+
+
+
+
+
+
+
+<script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+
+
+
+<script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+
+
+
+<script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/even.js?v=3.0.0"></script>
+</body>
+
+</html>

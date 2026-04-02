@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Website mata -->
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<!-- Disable transformation -->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<!-- Website description -->
+
+<meta name="description" content="asdfを使ってみる" />
+
+
+<!-- Website keywords -->
+
+<meta name="keywords" content="hmhv,blog,app,galary,ios,iphone" />
+
+
+
+
+<!-- Website rss -->
+
+<link rel="alternate" href="/atom.xml" title="hmhv" type="application/atom+xml">
+
+
+<!-- Website favicon -->
+
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=3.0.0" />
+
+
+<!-- Canonical, good for google search engine -->
+<link rel="canonical" href="https://hmhv.info/2022/04/use-asdf/" />
+
+<!-- Fancybox styling -->
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+
+
+<!-- MathJax (LaTeX) support -->
+
+
+<!-- Theme styling -->
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=3.0.0" />
+
+<!-- Analytics and push -->
+
+
+
+  
+
+
+
+<!-- LeanCloud Counter -->
+
+
+<script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null,"server_url":null,"cdn":null},"toc":true,"fancybox":true,"latex":false};
+</script>
+  
+  <title>asdfを使ってみる - hmhv</title>
+
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+<body>
+  <div class="scrollPercentage"></div>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">hmhv</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+    <a href="/">
+      <li class="mobile-menu-item">
+        
+        
+        Home              </li>
+    </a>
+    
+    <a href="/archives/">
+      <li class="mobile-menu-item">
+        
+        
+        Archives              </li>
+    </a>
+    
+    <a href="/tags/">
+      <li class="mobile-menu-item">
+        
+        
+        Tags              </li>
+    </a>
+    
+    <a href="/apps/">
+      <li class="mobile-menu-item">
+        
+        
+        Apps              </li>
+    </a>
+    
+    <a href="/about/">
+      <li class="mobile-menu-item">
+        
+        
+        About              </li>
+    </a>
+    
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+      <div class="logo-wrapper">  
+  <a href="/." class="logo">hmhv</a>  
+</div>  
+  
+<nav class="site-navbar">  
+    
+    <ul id="menu" class="menu">  
+        
+        <li class="menu-item">  
+          <a class="menu-item-link" href="/">  
+              
+              
+              Home  
+              
+          </a>  
+        </li>  
+        
+        <li class="menu-item">  
+          <a class="menu-item-link" href="/archives/">  
+              
+              
+              Archives  
+              
+          </a>  
+        </li>  
+        
+        <li class="menu-item">  
+          <a class="menu-item-link" href="/tags/">  
+              
+              
+              Tags  
+              
+          </a>  
+        </li>  
+        
+        <li class="menu-item">  
+          <a class="menu-item-link" href="/apps/">  
+              
+              
+              Apps  
+              
+          </a>  
+        </li>  
+        
+        <li class="menu-item">  
+          <a class="menu-item-link" href="/about/">  
+              
+              
+              About  
+              
+          </a>  
+        </li>  
+        
+    </ul>  
+    
+</nav>  
+
+    </header>
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+  <header class="post-header">
+    <h1 class="post-title">
+      
+      asdfを使ってみる
+      
+    </h1>
+
+    <div class="post-meta">
+      <span class="post-time">
+        2022-04-16
+      </span>
+      
+      
+      <span class="post-category">
+        
+        <a href="/categories/Tech/">Tech</a>
+        
+      </span>
+      
+      
+    </div>
+  </header>
+
+  
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#asdf%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB"><span class="toc-number">1.</span> <span class="toc-text">asdfをインストール</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ruby%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB"><span class="toc-number">2.</span> <span class="toc-text">rubyをインストール</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nodejs%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB"><span class="toc-number">3.</span> <span class="toc-text">nodejsをインストール</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#python%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB"><span class="toc-number">4.</span> <span class="toc-text">pythonをインストール</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%82%B0%E3%83%AD%E3%83%BC%E3%83%90%E3%83%AB%E8%A8%AD%E5%AE%9A%E3%82%92%E7%A2%BA%E8%AA%8D"><span class="toc-number">5.</span> <span class="toc-text">グローバル設定を確認</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#asdf%E3%81%AE%E4%BB%96%E3%81%AE%E4%BD%BF%E7%94%A8%E4%BE%8B"><span class="toc-number">6.</span> <span class="toc-text">asdfの他の使用例</span></a></li></ol>
+    </div>
+  </div>
+  
+
+  <div class="post-content">
+    
+    <p>昨日新しいMacに<code>ruby</code>のインストールのため<code>chruby</code>を利用したことを<a href="https://hmhv.info/2022/04/setup-ruby-for-ios/">iOS開発環境作成のためのRuby設定</a>で書いたけど<code>nodejs</code>や<code>python</code>もまた個別のバージョン管理ツールを導入しようとすると面倒くさくなり、以前聞いたことのある一つのツールで色々な言語のバージョン管理ができる<a target="_blank" rel="noopener" href="https://github.com/anyenv/anyenv">anyenv</a>調べてみると今は<a target="_blank" rel="noopener" href="https://github.com/asdf-vm/asdf">asdf</a>の方がもっと使われてるっぽいので<code>asdf</code>を使って<code>ruby</code>, <code>nodejs</code>, <code>python</code>を入れてみたのでメモ。</p>
+<h2 id="asdfをインストール"><a href="#asdfをインストール" class="headerlink" title="asdfをインストール"></a><code>asdf</code>をインストール</h2><p>いつもの<code>brew</code>で行う。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install asdf</span><br></pre></td></tr></table></figure>
+
+<p><code>asdf</code>のインストール後の初期設定</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> -e <span class="string">&quot;\n. <span class="subst">$(brew --prefix asdf)</span>/libexec/asdf.sh&quot;</span> &gt;&gt; <span class="variable">$&#123;ZDOTDIR:-~&#125;</span>/.zshrc</span><br></pre></td></tr></table></figure>
+
+<p><code>asdf</code>は基本<code>.tool-versions</code>というファイルでバージョンを指定するけど、設定によっては<code>.ruby-version</code>や<code>.node-version</code>などのファイルからも可能なようなのでその設定もやっておく</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;legacy_version_file = yes&quot;</span> &gt;&gt; <span class="variable">$HOME</span>/.asdfrc</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="rubyをインストール"><a href="#rubyをインストール" class="headerlink" title="rubyをインストール"></a><code>ruby</code>をインストール</h2><p><code>asdf</code>はインストールしたい言語がある場合、その言語のプラグインをインストールする必要があるので<code>ruby</code>用プラグイン<a target="_blank" rel="noopener" href="https://github.com/asdf-vm/asdf-ruby">asdf-ruby</a>をまずインストールする</p>
+<blockquote>
+<p> 各言語のプラグインのインストールには依存関係があって先にそれらのインストールが必要な場合があるのでREADMEの確認が必要で<code>asdf-ruby</code>の場合は以下が必要</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;brew install openssl@1.1 readline</span><br><span class="line">&gt;<span class="built_in">export</span> RUBY_CONFIGURE_OPTS=<span class="string">&quot;--with-openssl-dir=<span class="subst">$(brew --prefix openssl@1.1)</span>&quot;</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">asdf plugin add ruby</span><br></pre></td></tr></table></figure>
+
+<p>その後<code>ruby</code>のバージョン<code>3.1.2</code>と<code>2.7.6</code>をインストール</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">asdf install ruby 3.1.2</span><br><span class="line">asdf install ruby 2.7.6</span><br></pre></td></tr></table></figure>
+
+<p>グローバルで利用する<code>ruby</code>のバージョンを<code>3.1.2</code>で指定</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">asdf global ruby 3.1.2</span><br></pre></td></tr></table></figure>
+
+<p>各フォルダで利用する<code>ruby</code>のバージョンは<code>local</code>を利用して指定</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">asdf <span class="built_in">local</span> ruby 2.7.6</span><br></pre></td></tr></table></figure>
+<h2 id="nodejsをインストール"><a href="#nodejsをインストール" class="headerlink" title="nodejsをインストール"></a><code>nodejs</code>をインストール</h2><p><code>nodejs</code>もまず<code>nodejs</code>用プラグイン<a target="_blank" rel="noopener" href="https://github.com/asdf-vm/asdf-nodejs">asdf-nodejs</a>をインストールする</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">asdf plugin add nodejs</span><br></pre></td></tr></table></figure>
+
+<p>その後<code>nodejs</code>のバージョン<code>16.4.2</code>をインストール</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">asdf install nodejs 16.4.2</span><br></pre></td></tr></table></figure>
+
+<p>グローバルで利用する<code>nodejs</code>のバージョンを<code>16.4.2</code>で指定</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">asdf global nodejs 16.4.2</span><br></pre></td></tr></table></figure>
+
+<h2 id="pythonをインストール"><a href="#pythonをインストール" class="headerlink" title="pythonをインストール"></a><code>python</code>をインストール</h2><p><code>python</code>もまず<code>python</code>用プラグイン<a target="_blank" rel="noopener" href="https://github.com/danhper/asdf-python">asdf-python</a>をインストールする</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">asdf plugin add python</span><br></pre></td></tr></table></figure>
+
+<p>その後<code>python</code>のバージョン<code>3.10.4</code>をインストール</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">asdf install python 3.10.4</span><br></pre></td></tr></table></figure>
+
+<p>グローバルで利用する<code>python</code>のバージョンを<code>3.10.4</code>で指定</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">asdf global nodejs 3.10.4</span><br></pre></td></tr></table></figure>
+
+<h2 id="グローバル設定を確認"><a href="#グローバル設定を確認" class="headerlink" title="グローバル設定を確認"></a>グローバル設定を確認</h2><p>ホームフォルダの<code>.tool-versions</code>を確認すると各言語のバージョンが確認できる</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> ~/.tool-versions</span><br><span class="line">ruby 3.1.2</span><br><span class="line">python 3.10.4</span><br><span class="line">nodejs 16.4.2</span><br></pre></td></tr></table></figure>
+
+<p>また各言語のバージョンを直接確認</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ruby -v</span><br><span class="line">ruby 3.1.2p20 (2022-04-12 revision 4491bb740a) [x86_64-darwin21]</span><br><span class="line"></span><br><span class="line">node -v</span><br><span class="line">v16.4.2</span><br><span class="line"></span><br><span class="line">python -V</span><br><span class="line">Python 3.10.4</span><br></pre></td></tr></table></figure>
+
+<h2 id="asdfの他の使用例"><a href="#asdfの他の使用例" class="headerlink" title="asdfの他の使用例"></a><code>asdf</code>の他の使用例</h2><p>利用可能なプラグインのリストを確認</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">asdf plugin list all</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>数が多いので確認したい言語がある場合は<code>grep</code>で絞る</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">asdf plugin list all | grep ruby</span><br><span class="line">ruby                         *https://github.com/asdf-vm/asdf-ruby.git</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>インストール済みプラグインの更新</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">asdf plugin update --all</span><br></pre></td></tr></table></figure>
+
+<p>インストール済み言語のバージョンの確認</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">asdf list</span><br><span class="line">nodejs</span><br><span class="line">  16.4.2</span><br><span class="line">python</span><br><span class="line">  3.10.4</span><br><span class="line">ruby</span><br><span class="line">  2.7.6</span><br><span class="line">  3.1.2</span><br></pre></td></tr></table></figure>
+
+<p>インストール済み言語の特定バージョンの削除</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">asdf uninstall ruby 3.1.2</span><br></pre></td></tr></table></figure>
+
+<p>最後に<code>asdf</code>は言語のみではなく<a target="_blank" rel="noopener" href="https://github.com/MetricMike/asdf-awscli">awscli</a>などのツールのバージョン管理もできるらしい、</p>
+
+    
+  </div>
+
+  
+  <!-- Post Copyright -->
+
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span>Author: </span>
+    <a href="https://hmhv.info">hmhv</a>
+  </p>
+  <p class="copyright-item">
+    <span>Link: </span>
+    <a href="https://hmhv.info/2022/04/use-asdf/">https://hmhv.info/2022/04/use-asdf/</a>
+  </p>
+  <p class="copyright-item">
+    <span>License: </span>
+    
+    <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+  </p>
+</div>
+
+    
+
+  
+
+  
+  <footer class="post-footer">
+    
+    <div class="post-tags">
+      
+      <a href="/tags/asdf/">asdf</a>
+      
+    </div>
+    
+      
+  <nav class="post-nav">  
+      
+      <a class="prev" href="/2022/04/check-ios-simulator-keychain/">  
+        <i class="iconfont icon-left"></i>  
+        <span class="prev-text nav-default">iOSシミュレーターのキーチェーン情報削除</span>  
+        <span class="prev-text nav-mobile">Prev</span>  
+      </a>  
+      
+      
+      <a class="next" href="/2022/04/setup-ruby-for-ios/">  
+        <span class="next-text nav-default">iOS開発環境作成のためのRuby設定</span>  
+        <span class="prev-text nav-mobile">Next</span>  
+        <i class="iconfont icon-right"></i>  
+      </a>  
+      
+  </nav>  
+  
+
+  </footer>
+  
+
+</article>
+        </div>
+          
+  <div class="comments" id="comments">  
+      
+  </div>  
+  
+
+      </div>
+    </main>
+    <footer id="footer" class="footer">
+      <!-- Social Links -->
+
+<div class="social-links">
+  
+  
+  
+  
+  <a target="_blank" rel="noopener" href="https://github.com/hmhv" class="iconfont icon-github" title="github"></a>
+  
+  
+  
+
+  
+</div>
+
+
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme -
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+  <span class="division">|</span>
+  <span class="hosting-info">
+    footer.hosting
+  </span>
+
+  <span class="copyright-year">
+    <span>
+      
+      &copy;
+      
+      2015 - 2026      
+    </span>
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+
+    <span class="author">hmhv</span>
+  </span>
+
+</div>
+    </footer>
+    <div class="back-to-top" id="back-to-top"> <i class="iconfont icon-up"></i> </div>
+  </div>
+    
+    
+    
+    
+    
+    
+    
+  
+
+  
+
+
+
+
+
+
+
+<script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+
+
+
+<script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+
+
+
+<script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/even.js?v=3.0.0"></script>
+</body>
+
+</html>
