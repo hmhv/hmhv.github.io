@@ -375,6 +375,8 @@ a { color: var(--pastel-sky-d); text-underline-offset: 3px; text-decoration-thic
   .post-hd h1 { font-size: 28px; }
   .prose p, .prose ul, .prose ol { font-size: 16px; }
   .prose blockquote { font-size: 18px; }
+  .prose pre,
+  .prose figure.highlight { font-size: 13px; }
   .archive-title { font-size: 30px; }
   .arc-row { grid-template-columns: 90px 1fr; gap: 12px; }
   .arc-row .chip { grid-column: 2; justify-self: start; }
