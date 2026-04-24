@@ -1,1146 +1,595 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
-  <!-- Website mata -->
-<meta charset="UTF-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-
-<!-- Disable transformation -->
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-<meta name="theme-color" content="#f8f5ec" />
-<meta name="msapplication-navbutton-color" content="#f8f5ec">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
-
-<!-- Website description -->
-
-<meta name="description" content="hmhv&#39;s blog &amp; app galary" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="hmhv&#39;s blog &amp; app galary">
+<meta name="author" content="hmhv">
 
 
-<!-- Website keywords -->
+<meta property="og:type" content="website">
 
-<meta name="keywords" content="hmhv,blog,app,galary,ios,iphone" />
+<meta property="og:title" content="hmhv">
+<meta property="og:description" content="hmhv&#39;s blog &amp; app galary">
+<meta property="og:site_name" content="hmhv">
+
+<title>
+hmhv
+</title>
+
+
+<link rel="icon" href="/images/favicon.svg">
 
 
 
-
-<!-- Website rss -->
-
-<link rel="alternate" href="/atom.xml" title="hmhv" type="application/atom+xml">
-
-
-<!-- Website favicon -->
-
-<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=3.0.0" />
-
-
-<!-- Canonical, good for google search engine -->
-<link rel="canonical" href="https://hmhv.info/page/4/" />
-
-<!-- Fancybox styling -->
-
-<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
-
-
-<!-- MathJax (LaTeX) support -->
-
-
-<!-- Theme styling -->
-<link rel="stylesheet" type="text/css" href="/css/style.css?v=3.0.0" />
-
-<!-- Analytics and push -->
-
-
-
-  
-
-
-
-<!-- LeanCloud Counter -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Shippori+Mincho:wght@400;500;700&family=Outfit:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@1,500;1,600;1,700&display=swap">
 
 
 <script>
-  window.config = {"leancloud":{"app_id":null,"app_key":null,"server_url":null,"cdn":null},"toc":true,"fancybox":true,"latex":false};
+(function(){try{var s=localStorage.getItem('hmhv-theme');var m=s||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',m);}catch(e){}})();
 </script>
-  
-  <title>hmhv</title>
+
+<link rel="stylesheet" href="/css/style.css">
+
 
 <meta name="generator" content="Hexo 8.1.1"></head>
-
-<body>
-  <div class="scrollPercentage"></div>
-  <div id="mobile-navbar" class="mobile-navbar">
-  <div class="mobile-header-logo">
-    <a href="/." class="logo">hmhv</a>
-  </div>
-  <div class="mobile-navbar-icon">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
-
-<nav id="mobile-menu" class="mobile-menu slideout-menu">
-  <ul class="mobile-menu-list">
-    
-    <a href="/">
-      <li class="mobile-menu-item">
-        
-        
-        Home              </li>
+<body data-layout="">
+  <header class="hdr">
+  <div class="site hdr-inner">
+    <a class="hdr-logo" href="/">
+      
+      <span class="wm">hmhv</span>
     </a>
-    
-    <a href="/archives/">
-      <li class="mobile-menu-item">
+    <nav class="hdr-nav">
+      
         
+        <a class="on" href="/">Home</a>
+      
         
-        Archives              </li>
-    </a>
-    
-    <a href="/tags/">
-      <li class="mobile-menu-item">
+        <a class="" href="/archives/">Archives</a>
+      
         
+        <a class="" href="/tags/">Tags</a>
+      
         
-        Tags              </li>
-    </a>
-    
-    <a href="/apps/">
-      <li class="mobile-menu-item">
+        <a class="" href="/apps/">Apps</a>
+      
         
-        
-        Apps              </li>
-    </a>
-    
-    <a href="/about/">
-      <li class="mobile-menu-item">
-        
-        
-        About              </li>
-    </a>
-    
-  </ul>
-</nav>
-  <div class="container" id="mobile-panel">
-    <header id="header" class="header">
-      <div class="logo-wrapper">  
-  <a href="/." class="logo">hmhv</a>  
-</div>  
-  
-<nav class="site-navbar">  
-    
-    <ul id="menu" class="menu">  
-        
-        <li class="menu-item">  
-          <a class="menu-item-link" href="/">  
-              
-              
-              Home  
-              
-          </a>  
-        </li>  
-        
-        <li class="menu-item">  
-          <a class="menu-item-link" href="/archives/">  
-              
-              
-              Archives  
-              
-          </a>  
-        </li>  
-        
-        <li class="menu-item">  
-          <a class="menu-item-link" href="/tags/">  
-              
-              
-              Tags  
-              
-          </a>  
-        </li>  
-        
-        <li class="menu-item">  
-          <a class="menu-item-link" href="/apps/">  
-              
-              
-              Apps  
-              
-          </a>  
-        </li>  
-        
-        <li class="menu-item">  
-          <a class="menu-item-link" href="/about/">  
-              
-              
-              About  
-              
-          </a>  
-        </li>  
-        
-    </ul>  
-    
-</nav>  
+        <a class="" href="/about/">About</a>
+      
+      <button type="button" id="theme-toggle" class="theme-toggle theme-toggle-nav" aria-label="Toggle theme">
+        <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>
 
-    </header>
-    <main id="main" class="main">
-      <div class="content-wrapper">
-        <div id="content" class="content">
-          <section id="posts" class="posts">
-  
-  
-  
-  <article class="post">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/2015/05/ios-wikis/">iOS関連wikiまとめ</a>
-      
-    </h1>
-
-    <div class="post-meta">
-      <span class="post-time">
-        2015-05-18
-      </span>
-      
-      
-      <span class="post-category">
-        
-        <a href="/categories/Tech/">Tech</a>
-        
-      </span>
-      
-      
-    </div>
-  </header>
+  <main class="site">
 
   
 
-  <div class="post-content">
+  <div class="section-head">
+    <h2>最近の<span class="marker">記録</span></h2>
+    <div class="side">recent · 49 posts</div>
+  </div>
+
+  <div class="col-list">
     
-    
-    
-    
-    
+      <a class="card" href="/2015/05/ios-wikis/">
+  <div class="card-meta">
+    <span>2015.05.18</span>
+    <span>·</span>
+    <span>1 min</span>
+    <span class="chip">#iOS</span><span class="chip">#wiki</span>
+  </div>
+  <h3 class="card-title">iOS関連wikiまとめ</h3>
+  <p class="card-excerpt">iOS    
+
+(英語) : http://en.wikipedia.org/wiki/IOS
+(日本語) : http://ja.wikipedia.org/wiki/IOS_(%E3%82%A2%E3%83%83%E3%83%97%E3%83%AB)
+
+
+iPhone    
+
+(英語) : http://en.wikipedia.org/wiki/IPhone
+(日本語) : http://ja.wikipedia.org/wiki/IPhone
+
+
+List of iOS devices : http://en.wikipedia.org/wiki/List_of_iOS_devices
+
+the iPhone Wiki : https://www.theiphonewiki.com/
+
+iPhoneDevWiki : http://iphonedevwiki.net/
+
+iOS Support Matrix : http://iossupportmatrix.com/
+
+iPhone Development 101 : http://www.idev101.com/
+
+etc
+
+
+http://damnvulnerableiosapp.com/http://www.ipswdownloader.com/http://www.libimobiledevice.org/http://www.cycript.org/http://www.idbtool.com/https://www.veracode.com/iret-ios-reverse-engineering-toolkit</p>
+</a>
 
     
-    <ul>
-<li><p>iOS    </p>
-<ul>
-<li>(英語) : <a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/IOS">http://en.wikipedia.org/wiki/IOS</a></li>
-<li>(日本語) : <a target="_blank" rel="noopener" href="http://ja.wikipedia.org/wiki/IOS_(%E3%82%A2%E3%83%83%E3%83%97%E3%83%AB)">http://ja.wikipedia.org/wiki/IOS_(%E3%82%A2%E3%83%83%E3%83%97%E3%83%AB)</a></li>
-</ul>
-</li>
-<li><p>iPhone    </p>
-<ul>
-<li>(英語) : <a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/IPhone">http://en.wikipedia.org/wiki/IPhone</a></li>
-<li>(日本語) : <a target="_blank" rel="noopener" href="http://ja.wikipedia.org/wiki/IPhone">http://ja.wikipedia.org/wiki/IPhone</a></li>
-</ul>
-</li>
-<li><p>List of iOS devices : <a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/List_of_iOS_devices">http://en.wikipedia.org/wiki/List_of_iOS_devices</a></p>
-</li>
-<li><p>the iPhone Wiki : <a target="_blank" rel="noopener" href="https://www.theiphonewiki.com/">https://www.theiphonewiki.com/</a></p>
-</li>
-<li><p>iPhoneDevWiki : <a target="_blank" rel="noopener" href="http://iphonedevwiki.net/">http://iphonedevwiki.net/</a></p>
-</li>
-<li><p>iOS Support Matrix : <a target="_blank" rel="noopener" href="http://iossupportmatrix.com/">http://iossupportmatrix.com/</a></p>
-</li>
-<li><p>iPhone Development 101 : <a target="_blank" rel="noopener" href="http://www.idev101.com/">http://www.idev101.com/</a></p>
-</li>
-<li><p>etc</p>
-</li>
-</ul>
-<p><a target="_blank" rel="noopener" href="http://damnvulnerableiosapp.com/">http://damnvulnerableiosapp.com/</a><br><a target="_blank" rel="noopener" href="http://www.ipswdownloader.com/">http://www.ipswdownloader.com/</a><br><a target="_blank" rel="noopener" href="http://www.libimobiledevice.org/">http://www.libimobiledevice.org/</a><br><a target="_blank" rel="noopener" href="http://www.cycript.org/">http://www.cycript.org/</a><br><a target="_blank" rel="noopener" href="http://www.idbtool.com/">http://www.idbtool.com/</a><br><a target="_blank" rel="noopener" href="https://www.veracode.com/iret-ios-reverse-engineering-toolkit">https://www.veracode.com/iret-ios-reverse-engineering-toolkit</a></p>
-    <div class="read-more">
-      <a href="/2015/05/ios-wikis/" class="read-more-link">Read more..</a>
-    </div>
+      <a class="card" href="/2015/05/ios-debugging-method/">
+  <div class="card-meta">
+    <span>2015.05.16</span>
+    <span>·</span>
+    <span>46 min</span>
+    <span class="chip">#iOS</span><span class="chip">#debug</span>
+  </div>
+  <h3 class="card-title">iOSデバッグ時に有用なメソッド</h3>
+  <p class="card-excerpt">メソッド
+説明
+
+
+
+-[NSObject _ivarDescription]
+インスタンス変数をすべて表示
+
+
+-[NSObject _shortMethodDescription]
+オブジェクトのメソッドをすべて表示
+
+
+-[NSObject _methodDescription]
+オブジェクトのメソッドをすべて表示(スーパークラス含む)
+
+
+-[UIView recursiveDescription]
+Viewの構造表示
+
+
+-[UIView _autolayoutTrace]
+ViewのAutoLayout関連情報表示
+
+
+-[UIViewController _printHierarchy]
+ViewControllerの構造表示
+
+
+-[UIView constraintsAffectingLayoutForAxis:UILayoutConstraintAxisHorizontal]
+Viewのx(又はy)軸のconstraints表示
+
+
+-[UIView hasAmbiguousLayout]
+ViewのLayoutが複数に可能か
+
+
+-[UIView exerciseAmbiguityInLayout]
+Viewの別のLayout表示を行う
+
+
+使用例</p>
+</a>
+
     
+      <a class="card" href="/2015/03/apppreview-for-appstore/">
+  <div class="card-meta">
+    <span>2015.03.29</span>
+    <span>·</span>
+    <span>2 min</span>
+    <span class="chip">#iOS</span><span class="chip">#Preview</span>
+  </div>
+  <h3 class="card-title">App Preview For AppStore</h3>
+  <p class="card-excerpt">iPhone6のみでiPhone5&amp;#x2F;6&amp;#x2F;6+のすべてのAppStore用動画プレビューを作成したときのメモ使ったもの</p>
+</a>
+
+    
+      <a class="card" href="/2015/03/free-design-services-for-ios/">
+  <div class="card-meta">
+    <span>2015.03.26</span>
+    <span>·</span>
+    <span>3 min</span>
+    <span class="chip">#iOS</span><span class="chip">#design</span><span class="chip">#free</span>
+  </div>
+  <h3 class="card-title">Free design services for iOS developers</h3>
+  <p class="card-excerpt">App Store Screenshotshttps://launchkit.io/screenshotshttps://itunes.apple.com/app/screenshot-app-beautiful-app/id907369748</p>
+</a>
+
+    
+      <a class="card" href="/2015/03/ios-devices/">
+  <div class="card-meta">
+    <span>2015.03.25</span>
+    <span>·</span>
+    <span>3 min</span>
+    <span class="chip">#iOS</span>
+  </div>
+  <h3 class="card-title">iOSデバイスの基本情報</h3>
+  <p class="card-excerpt">iOSデバイス
+画面サイズ
+物理解像度 (px)
+論理解像度 (pt)
+対応iOS
+64bit
+Bluetooth 4
+
+
+
+
+
+
+
+
+
+
+
+
+iPhone
+3.5”
+320×480
+320 × 480
+1.0 - 3.1.3
+
+
+
+
+iPhone 3G
+3.5”
+320×480
+320 × 480
+2.0 - 4.2.1
+
+
+
+
+iPhone 3GS
+3.5”
+320×480
+320 × 480
+3.0 - 6.1.6
+
+
+
+
+iPhone 4
+3.5”
+640 x 960
+320 × 480
+4.0 - 7.1.2
+
+
+
+
+iPhone 4S
+3.5”
+640 x 960
+320 × 480
+5.0 -
+
+○
+
+
+iPhone 5
+4.0”
+640 x 1136
+320 x 568
+6.0 -
+
+○
+
+
+iPhone 5C
+4.0”
+640 x 1136
+320 x 568
+7.0 -
+
+○
+
+
+iPhone 5S
+4.0”
+640 x 1136
+320 x 568
+7.0 -
+○
+○
+
+
+iPhone 6
+4.7”
+750 x 1334
+375 x 667
+8.0 -
+○
+○
+
+
+iPhone 6+
+5.5”
+1080 x 1920(1242 x 2208)
+414 x 736
+8.0 -
+○
+○
+
+
+
+
+
+
+
+
+
+
+
+iPad
+9.7”
+768 × 1024
+768 × 1024
+3.2 - 5.1.1
+
+
+
+
+iPad 2
+9.7”
+768 × 1024
+768 × 1024
+4.2.1 -
+
+
+
+
+iPad 3
+9.7”
+1536 × 2048
+768 × 1024
+5.1 -
+
+○
+
+
+iPad 4
+9.7”
+1536 × 2048
+768 × 1024
+6.0 -
+
+○
+
+
+iPad Air
+9.7”
+1536 × 2048
+768 × 1024
+7.0 -
+○
+○
+
+
+iPad Air 2
+9.7”
+1536 × 2048
+768 × 1024
+8.1 -
+○
+○
+
+
+
+
+
+
+
+
+
+
+
+iPad Mini
+7.9”
+768 × 1024
+768 × 1024
+6.0 -
+
+○
+
+
+iPad Mini 2
+7.9”
+1536 × 2048
+768 × 1024
+7.0 -
+○
+○
+
+
+iPad Mini 3
+7.9”
+1536 × 2048
+768 × 1024
+8.1 -
+○
+○
+
+
+
+
+
+
+
+
+
+
+
+iPod Touch 1st
+3.5”
+320×480
+320 × 480
+1.1 - 3.1.3
+
+
+
+
+iPod Touch 2nd
+3.5”
+320×480
+320 × 480
+2.1 - 4.2.1
+
+
+
+
+iPod Touch 3rd
+3.5”
+320×480
+320 × 480
+3.1.1 - 5.1.1
+
+
+
+
+iPod Touch 4th
+3.5”
+640 x 960
+320 × 480
+4.1 - 6.1.6
+
+
+
+
+iPod Touch 5th
+4.0”
+640 x 1136
+320 x 568
+6.0 -
+
+○
+
+
+
+
+
+
+
+
+
+
+
+Apple Watch
+38mm
+272 x 340
+136 x 170
+8.2 -
+
+
+
+
+
+42mm
+312 x 390
+156 x 195
+8.2 -
+
+
+
+
+
+
+
+
+
+
+
+
+
+参考 : wikipedia参考 : theiphonewiki</p>
+</a>
+
+    
+      <a class="card" href="/2015/03/about-sobjectiverecord/">
+  <div class="card-meta">
+    <span>2015.03.09</span>
+    <span>·</span>
+    <span>11 min</span>
+    <span class="chip">#iOS</span><span class="chip">#CoreData</span><span class="chip">#SobjectiveRecord</span>
+  </div>
+  <h3 class="card-title">SobjectiveRecordの紹介</h3>
+  <p class="card-excerpt">SobjectiveRecordとはSobjectiveRecordはSwift製のCoreData用ライブラリーです。オープンソースでGithubから自由に利用できます。</p>
+</a>
+
+    
+      <a class="card" href="/2015/03/about-hobjectiverecord/">
+  <div class="card-meta">
+    <span>2015.03.09</span>
+    <span>·</span>
+    <span>14 min</span>
+    <span class="chip">#iOS</span><span class="chip">#CoreData</span><span class="chip">#HobjectiveRecord</span>
+  </div>
+  <h3 class="card-title">HobjectiveRecordの紹介</h3>
+  <p class="card-excerpt">HobjectiveRecordとはHobjectiveRecordはObjective-C製のCoreData用ライブラリーです。オープンソースでGithubから自由に利用できます。</p>
+</a>
+
+    
+      <a class="card" href="/2015/03/about-sobjectiverecord-k/">
+  <div class="card-meta">
+    <span>2015.03.09</span>
+    <span>·</span>
+    <span>11 min</span>
+    <span class="chip">#iOS</span><span class="chip">#CoreData</span><span class="chip">#SobjectiveRecord</span>
+  </div>
+  <h3 class="card-title">SobjectiveRecord의 소개</h3>
+  <p class="card-excerpt">SobjectiveRecordとはSobjectiveRecord는 Swift로 작성된 CoreData용 라이브러리.오픈소스로 Github에서 자유롭게 이용 가능 합니다.</p>
+</a>
+
+    
+      <a class="card" href="/2015/03/about-hobjectiverecord-k/">
+  <div class="card-meta">
+    <span>2015.03.09</span>
+    <span>·</span>
+    <span>14 min</span>
+    <span class="chip">#iOS</span><span class="chip">#CoreData</span><span class="chip">#HobjectiveRecord</span>
+  </div>
+  <h3 class="card-title">HobjectiveRecord의 소개</h3>
+  <p class="card-excerpt">HobjectiveRecord란HobjectiveRecord는 Objective-C로 작성된 CoreData용 라이브러리.오픈소스로 Github에서 자유롭게 이용 가능 합니다.</p>
+</a>
+
+    
+      <a class="card" href="/2015/02/add-library-to-cocoapods/">
+  <div class="card-meta">
+    <span>2015.02.28</span>
+    <span>·</span>
+    <span>4 min</span>
+    <span class="chip">#HobjectiveRecord</span><span class="chip">#CocoaPods</span>
+  </div>
+  <h3 class="card-title">自作ライブラリをCocoaPodsへ登録</h3>
+  <p class="card-excerpt">HobjectiveRecordと言うCoreData用のライブラリをGitHubに公開してCocoaPodsにも登録を行ったのでそのメモ
+GitHub上のファイル構造</p>
+</a>
+
     
   </div>
 
   
+    <nav class="paginator">
+      
+        <a class="btn btn-outline" href="/page/3/">← newer</a>
+      
+      <div class="pg-idx">4 / 5</div>
+      
+        <a class="btn btn-outline" href="/page/5/">older →</a>
+      
+    </nav>
+  
 
   
 
-</article>
-  
-  <article class="post">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/2015/05/ios-debugging-method/">iOSデバッグ時に有用なメソッド</a>
-      
-    </h1>
+</main>
 
-    <div class="post-meta">
-      <span class="post-time">
-        2015-05-16
-      </span>
-      
-      
-      <span class="post-category">
-        
-        <a href="/categories/Tech/">Tech</a>
-        
-      </span>
-      
-      
+  <footer class="ftr site">
+  <div class="ftr-row">
+    <div class="ftr-cr">
+      <div>Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a></div>
+      <div>&copy; 2015 - 2026&nbsp;&nbsp;hmhv</div>
     </div>
-  </header>
-
-  
-
-  <div class="post-content">
-    
-    
-    
-    
-    
-
-    
-    <table>
-<thead>
-<tr>
-<th>メソッド</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>-[NSObject _ivarDescription]</td>
-<td>インスタンス変数をすべて表示</td>
-</tr>
-<tr>
-<td>-[NSObject _shortMethodDescription]</td>
-<td>オブジェクトのメソッドをすべて表示</td>
-</tr>
-<tr>
-<td>-[NSObject _methodDescription]</td>
-<td>オブジェクトのメソッドをすべて表示(スーパークラス含む)</td>
-</tr>
-<tr>
-<td>-[UIView recursiveDescription]</td>
-<td>Viewの構造表示</td>
-</tr>
-<tr>
-<td>-[UIView _autolayoutTrace]</td>
-<td>ViewのAutoLayout関連情報表示</td>
-</tr>
-<tr>
-<td>-[UIViewController _printHierarchy]</td>
-<td>ViewControllerの構造表示</td>
-</tr>
-<tr>
-<td>-[UIView constraintsAffectingLayoutForAxis:UILayoutConstraintAxisHorizontal]</td>
-<td>Viewのx(又はy)軸のconstraints表示</td>
-</tr>
-<tr>
-<td>-[UIView hasAmbiguousLayout]</td>
-<td>ViewのLayoutが複数に可能か</td>
-</tr>
-<tr>
-<td>-[UIView exerciseAmbiguityInLayout]</td>
-<td>Viewの別のLayout表示を行う</td>
-</tr>
-</tbody></table>
-<h2 id="使用例"><a href="#使用例" class="headerlink" title="使用例"></a>使用例</h2>
-    <div class="read-more">
-      <a href="/2015/05/ios-debugging-method/" class="read-more-link">Read more..</a>
-    </div>
-    
-    
   </div>
+</footer>
 
-  
-
-  
-
-</article>
-  
-  <article class="post">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/2015/03/apppreview-for-appstore/">App Preview For AppStore</a>
-      
-    </h1>
-
-    <div class="post-meta">
-      <span class="post-time">
-        2015-03-29
-      </span>
-      
-      
-      <span class="post-category">
-        
-        <a href="/categories/Tech/">Tech</a>
-        
-      </span>
-      
-      
-    </div>
-  </header>
-
-  
-
-  <div class="post-content">
-    
-    
-    
-    
-    
-
-    
-    <h4 id="iPhone6のみでiPhone5-6-6-のすべてのAppStore用動画プレビューを作成したときのメモ"><a href="#iPhone6のみでiPhone5-6-6-のすべてのAppStore用動画プレビューを作成したときのメモ" class="headerlink" title="iPhone6のみでiPhone5&#x2F;6&#x2F;6+のすべてのAppStore用動画プレビューを作成したときのメモ"></a>iPhone6のみでiPhone5&#x2F;6&#x2F;6+のすべてのAppStore用動画プレビューを作成したときのメモ</h4><p><strong>使ったもの</strong></p>
-    <div class="read-more">
-      <a href="/2015/03/apppreview-for-appstore/" class="read-more-link">Read more..</a>
-    </div>
-    
-    
-  </div>
-
-  
-
-  
-
-</article>
-  
-  <article class="post">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/2015/03/free-design-services-for-ios/">Free design services for iOS developers</a>
-      
-    </h1>
-
-    <div class="post-meta">
-      <span class="post-time">
-        2015-03-26
-      </span>
-      
-      
-      <span class="post-category">
-        
-        <a href="/categories/Tech/">Tech</a>
-        
-      </span>
-      
-      
-    </div>
-  </header>
-
-  
-
-  <div class="post-content">
-    
-    
-    
-    
-    
-
-    
-    <h3 id="App-Store-Screenshots"><a href="#App-Store-Screenshots" class="headerlink" title="App Store Screenshots"></a>App Store Screenshots</h3><p><a target="_blank" rel="noopener" href="https://launchkit.io/screenshots">https://launchkit.io/screenshots</a><br><a target="_blank" rel="noopener" href="https://itunes.apple.com/app/screenshot-app-beautiful-app/id907369748">https://itunes.apple.com/app/screenshot-app-beautiful-app/id907369748</a></p>
-    <div class="read-more">
-      <a href="/2015/03/free-design-services-for-ios/" class="read-more-link">Read more..</a>
-    </div>
-    
-    
-  </div>
-
-  
-
-  
-
-</article>
-  
-  <article class="post">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/2015/03/ios-devices/">iOSデバイスの基本情報</a>
-      
-    </h1>
-
-    <div class="post-meta">
-      <span class="post-time">
-        2015-03-25
-      </span>
-      
-      
-      <span class="post-category">
-        
-        <a href="/categories/Tech/">Tech</a>
-        
-      </span>
-      
-      
-    </div>
-  </header>
-
-  
-
-  <div class="post-content">
-    
-    
-    
-    
-    
-
-    
-    <table>
-<thead>
-<tr>
-<th>iOSデバイス</th>
-<th align="center">画面サイズ</th>
-<th align="center">物理解像度 (px)</th>
-<th align="center">論理解像度 (pt)</th>
-<th align="center">対応iOS</th>
-<th align="center">64bit</th>
-<th align="center">Bluetooth 4</th>
-</tr>
-</thead>
-<tbody><tr>
-<td></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td>iPhone</td>
-<td align="center">3.5”</td>
-<td align="center">320×480</td>
-<td align="center">320 × 480</td>
-<td align="center">1.0 - 3.1.3</td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td>iPhone 3G</td>
-<td align="center">3.5”</td>
-<td align="center">320×480</td>
-<td align="center">320 × 480</td>
-<td align="center">2.0 - 4.2.1</td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td>iPhone 3GS</td>
-<td align="center">3.5”</td>
-<td align="center">320×480</td>
-<td align="center">320 × 480</td>
-<td align="center">3.0 - 6.1.6</td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td>iPhone 4</td>
-<td align="center">3.5”</td>
-<td align="center">640 x 960</td>
-<td align="center">320 × 480</td>
-<td align="center">4.0 - 7.1.2</td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td>iPhone 4S</td>
-<td align="center">3.5”</td>
-<td align="center">640 x 960</td>
-<td align="center">320 × 480</td>
-<td align="center">5.0 -</td>
-<td align="center"></td>
-<td align="center">○</td>
-</tr>
-<tr>
-<td>iPhone 5</td>
-<td align="center">4.0”</td>
-<td align="center">640 x 1136</td>
-<td align="center">320 x 568</td>
-<td align="center">6.0 -</td>
-<td align="center"></td>
-<td align="center">○</td>
-</tr>
-<tr>
-<td>iPhone 5C</td>
-<td align="center">4.0”</td>
-<td align="center">640 x 1136</td>
-<td align="center">320 x 568</td>
-<td align="center">7.0 -</td>
-<td align="center"></td>
-<td align="center">○</td>
-</tr>
-<tr>
-<td>iPhone 5S</td>
-<td align="center">4.0”</td>
-<td align="center">640 x 1136</td>
-<td align="center">320 x 568</td>
-<td align="center">7.0 -</td>
-<td align="center">○</td>
-<td align="center">○</td>
-</tr>
-<tr>
-<td>iPhone 6</td>
-<td align="center">4.7”</td>
-<td align="center">750 x 1334</td>
-<td align="center">375 x 667</td>
-<td align="center">8.0 -</td>
-<td align="center">○</td>
-<td align="center">○</td>
-</tr>
-<tr>
-<td>iPhone 6+</td>
-<td align="center">5.5”</td>
-<td align="center">1080 x 1920<br>(1242 x 2208)</td>
-<td align="center">414 x 736</td>
-<td align="center">8.0 -</td>
-<td align="center">○</td>
-<td align="center">○</td>
-</tr>
-<tr>
-<td></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td>iPad</td>
-<td align="center">9.7”</td>
-<td align="center">768 × 1024</td>
-<td align="center">768 × 1024</td>
-<td align="center">3.2 - 5.1.1</td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td>iPad 2</td>
-<td align="center">9.7”</td>
-<td align="center">768 × 1024</td>
-<td align="center">768 × 1024</td>
-<td align="center">4.2.1 -</td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td>iPad 3</td>
-<td align="center">9.7”</td>
-<td align="center">1536 × 2048</td>
-<td align="center">768 × 1024</td>
-<td align="center">5.1 -</td>
-<td align="center"></td>
-<td align="center">○</td>
-</tr>
-<tr>
-<td>iPad 4</td>
-<td align="center">9.7”</td>
-<td align="center">1536 × 2048</td>
-<td align="center">768 × 1024</td>
-<td align="center">6.0 -</td>
-<td align="center"></td>
-<td align="center">○</td>
-</tr>
-<tr>
-<td>iPad Air</td>
-<td align="center">9.7”</td>
-<td align="center">1536 × 2048</td>
-<td align="center">768 × 1024</td>
-<td align="center">7.0 -</td>
-<td align="center">○</td>
-<td align="center">○</td>
-</tr>
-<tr>
-<td>iPad Air 2</td>
-<td align="center">9.7”</td>
-<td align="center">1536 × 2048</td>
-<td align="center">768 × 1024</td>
-<td align="center">8.1 -</td>
-<td align="center">○</td>
-<td align="center">○</td>
-</tr>
-<tr>
-<td></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td>iPad Mini</td>
-<td align="center">7.9”</td>
-<td align="center">768 × 1024</td>
-<td align="center">768 × 1024</td>
-<td align="center">6.0 -</td>
-<td align="center"></td>
-<td align="center">○</td>
-</tr>
-<tr>
-<td>iPad Mini 2</td>
-<td align="center">7.9”</td>
-<td align="center">1536 × 2048</td>
-<td align="center">768 × 1024</td>
-<td align="center">7.0 -</td>
-<td align="center">○</td>
-<td align="center">○</td>
-</tr>
-<tr>
-<td>iPad Mini 3</td>
-<td align="center">7.9”</td>
-<td align="center">1536 × 2048</td>
-<td align="center">768 × 1024</td>
-<td align="center">8.1 -</td>
-<td align="center">○</td>
-<td align="center">○</td>
-</tr>
-<tr>
-<td></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td>iPod Touch 1st</td>
-<td align="center">3.5”</td>
-<td align="center">320×480</td>
-<td align="center">320 × 480</td>
-<td align="center">1.1 - 3.1.3</td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td>iPod Touch 2nd</td>
-<td align="center">3.5”</td>
-<td align="center">320×480</td>
-<td align="center">320 × 480</td>
-<td align="center">2.1 - 4.2.1</td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td>iPod Touch 3rd</td>
-<td align="center">3.5”</td>
-<td align="center">320×480</td>
-<td align="center">320 × 480</td>
-<td align="center">3.1.1 - 5.1.1</td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td>iPod Touch 4th</td>
-<td align="center">3.5”</td>
-<td align="center">640 x 960</td>
-<td align="center">320 × 480</td>
-<td align="center">4.1 - 6.1.6</td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td>iPod Touch 5th</td>
-<td align="center">4.0”</td>
-<td align="center">640 x 1136</td>
-<td align="center">320 x 568</td>
-<td align="center">6.0 -</td>
-<td align="center"></td>
-<td align="center">○</td>
-</tr>
-<tr>
-<td></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td>Apple Watch</td>
-<td align="center">38mm</td>
-<td align="center">272 x 340</td>
-<td align="center">136 x 170</td>
-<td align="center">8.2 -</td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td></td>
-<td align="center">42mm</td>
-<td align="center">312 x 390</td>
-<td align="center">156 x 195</td>
-<td align="center">8.2 -</td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-</tbody></table>
-<p><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/List_of_iOS_devices">参考 : wikipedia</a><br><a target="_blank" rel="noopener" href="https://theiphonewiki.com/wiki/Models">参考 : theiphonewiki</a></p>
-    <div class="read-more">
-      <a href="/2015/03/ios-devices/" class="read-more-link">Read more..</a>
-    </div>
-    
-    
-  </div>
-
-  
-
-  
-
-</article>
-  
-  <article class="post">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/2015/03/about-sobjectiverecord/">SobjectiveRecordの紹介</a>
-      
-    </h1>
-
-    <div class="post-meta">
-      <span class="post-time">
-        2015-03-09
-      </span>
-      
-      
-      <span class="post-category">
-        
-        <a href="/categories/Tech/">Tech</a>
-        
-      </span>
-      
-      
-    </div>
-  </header>
-
-  
-
-  <div class="post-content">
-    
-    
-    
-    
-    
-
-    
-    <h3 id="SobjectiveRecordとは"><a href="#SobjectiveRecordとは" class="headerlink" title="SobjectiveRecordとは"></a>SobjectiveRecordとは</h3><p><a target="_blank" rel="noopener" href="https://github.com/hmhv/SobjectiveRecord">SobjectiveRecord</a>はSwift製のCoreData用ライブラリーです。<br>オープンソースで<a target="_blank" rel="noopener" href="https://github.com/hmhv/SobjectiveRecord">Github</a>から自由に利用できます。</p>
-    <div class="read-more">
-      <a href="/2015/03/about-sobjectiverecord/" class="read-more-link">Read more..</a>
-    </div>
-    
-    
-  </div>
-
-  
-
-  
-
-</article>
-  
-  <article class="post">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/2015/03/about-hobjectiverecord/">HobjectiveRecordの紹介</a>
-      
-    </h1>
-
-    <div class="post-meta">
-      <span class="post-time">
-        2015-03-09
-      </span>
-      
-      
-      <span class="post-category">
-        
-        <a href="/categories/Tech/">Tech</a>
-        
-      </span>
-      
-      
-    </div>
-  </header>
-
-  
-
-  <div class="post-content">
-    
-    
-    
-    
-    
-
-    
-    <h3 id="HobjectiveRecordとは"><a href="#HobjectiveRecordとは" class="headerlink" title="HobjectiveRecordとは"></a>HobjectiveRecordとは</h3><p><a target="_blank" rel="noopener" href="https://github.com/hmhv/HobjectiveRecord">HobjectiveRecord</a>はObjective-C製のCoreData用ライブラリーです。<br>オープンソースで<a target="_blank" rel="noopener" href="https://github.com/hmhv/HobjectiveRecord">Github</a>から自由に利用できます。</p>
-    <div class="read-more">
-      <a href="/2015/03/about-hobjectiverecord/" class="read-more-link">Read more..</a>
-    </div>
-    
-    
-  </div>
-
-  
-
-  
-
-</article>
-  
-  <article class="post">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/2015/03/about-sobjectiverecord-k/">SobjectiveRecord의 소개</a>
-      
-    </h1>
-
-    <div class="post-meta">
-      <span class="post-time">
-        2015-03-09
-      </span>
-      
-      
-      <span class="post-category">
-        
-        <a href="/categories/Tech/">Tech</a>
-        
-      </span>
-      
-      
-    </div>
-  </header>
-
-  
-
-  <div class="post-content">
-    
-    
-    
-    
-    
-
-    
-    <h3 id="SobjectiveRecordとは"><a href="#SobjectiveRecordとは" class="headerlink" title="SobjectiveRecordとは"></a>SobjectiveRecordとは</h3><p><a target="_blank" rel="noopener" href="https://github.com/hmhv/SobjectiveRecord">SobjectiveRecord</a>는 Swift로 작성된 CoreData용 라이브러리.<br>오픈소스로 <a target="_blank" rel="noopener" href="https://github.com/hmhv/SobjectiveRecord">Github</a>에서 자유롭게 이용 가능 합니다.</p>
-    <div class="read-more">
-      <a href="/2015/03/about-sobjectiverecord-k/" class="read-more-link">Read more..</a>
-    </div>
-    
-    
-  </div>
-
-  
-
-  
-
-</article>
-  
-  <article class="post">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/2015/03/about-hobjectiverecord-k/">HobjectiveRecord의 소개</a>
-      
-    </h1>
-
-    <div class="post-meta">
-      <span class="post-time">
-        2015-03-09
-      </span>
-      
-      
-      <span class="post-category">
-        
-        <a href="/categories/Tech/">Tech</a>
-        
-      </span>
-      
-      
-    </div>
-  </header>
-
-  
-
-  <div class="post-content">
-    
-    
-    
-    
-    
-
-    
-    <h3 id="HobjectiveRecord란"><a href="#HobjectiveRecord란" class="headerlink" title="HobjectiveRecord란"></a>HobjectiveRecord란</h3><p><a target="_blank" rel="noopener" href="https://github.com/hmhv/HobjectiveRecord">HobjectiveRecord</a>는 Objective-C로 작성된 CoreData용 라이브러리.<br>오픈소스로 <a target="_blank" rel="noopener" href="https://github.com/hmhv/HobjectiveRecord">Github</a>에서 자유롭게 이용 가능 합니다.</p>
-    <div class="read-more">
-      <a href="/2015/03/about-hobjectiverecord-k/" class="read-more-link">Read more..</a>
-    </div>
-    
-    
-  </div>
-
-  
-
-  
-
-</article>
-  
-  <article class="post">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/2015/02/add-library-to-cocoapods/">自作ライブラリをCocoaPodsへ登録</a>
-      
-    </h1>
-
-    <div class="post-meta">
-      <span class="post-time">
-        2015-02-28
-      </span>
-      
-      
-      <span class="post-category">
-        
-        <a href="/categories/Tech/">Tech</a>
-        
-      </span>
-      
-      
-    </div>
-  </header>
-
-  
-
-  <div class="post-content">
-    
-    
-    
-    
-    
-
-    
-    <p><a target="_blank" rel="noopener" href="https://github.com/hmhv/HobjectiveRecord">HobjectiveRecord</a>と言うCoreData用のライブラリをGitHubに公開して<br>CocoaPodsにも登録を行ったのでそのメモ</p>
-<h2 id="GitHub上のファイル構造"><a href="#GitHub上のファイル構造" class="headerlink" title="GitHub上のファイル構造"></a>GitHub上のファイル構造</h2>
-    <div class="read-more">
-      <a href="/2015/02/add-library-to-cocoapods/" class="read-more-link">Read more..</a>
-    </div>
-    
-    
-  </div>
-
-  
-
-  
-
-</article>
-  
-    
-  <nav class="pagination">  
-      
-      <a class="prev" href="/page/3/">  
-        <i class="iconfont icon-left"></i>  
-        <span class="prev-text">Prev</span>  
-      </a>  
-      
-      
-      <a class="next" href="/page/5/">  
-        <span class="next-text">Next</span>  
-        <i class="iconfont icon-right"></i>  
-      </a>  
-      
-  </nav>  
-  
-
-  
-</section>
-        </div>
-          
-
-      </div>
-    </main>
-    <footer id="footer" class="footer">
-      <!-- Social Links -->
-
-<div class="social-links">
-  
-  
-  
-  
-  <a target="_blank" rel="noopener" href="https://github.com/hmhv" class="iconfont icon-github" title="github"></a>
-  
-  
-  
-
-  
-</div>
-
-
-
-<div class="copyright">
-  <span class="power-by">
-    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
-  </span>
-  <span class="division">|</span>
-  <span class="theme-info">
-    Theme -
-    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
-  </span>
-  <span class="division">|</span>
-  <span class="hosting-info">
-    footer.hosting
-  </span>
-
-  <span class="copyright-year">
-    <span>
-      
-      &copy;
-      
-      2015 - 2026      
-    </span>
-
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-
-    <span class="author">hmhv</span>
-  </span>
-
-</div>
-    </footer>
-    <div class="back-to-top" id="back-to-top"> <i class="iconfont icon-up"></i> </div>
-  </div>
-    
-
-  
-
-
-
-
-
-
-
-<script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
-
-
-
-<script type="text/javascript" src="/lib/slideout/slideout.js"></script>
-
-
-
-<script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
-
-
-
-  <script type="text/javascript" src="/js/src/even.js?v=3.0.0"></script>
+  <script src="/js/theme.js" defer></script>
 </body>
-
 </html>

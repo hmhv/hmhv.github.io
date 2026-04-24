@@ -1,819 +1,408 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
-  <!-- Website mata -->
-<meta charset="UTF-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-
-<!-- Disable transformation -->
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-<meta name="theme-color" content="#f8f5ec" />
-<meta name="msapplication-navbutton-color" content="#f8f5ec">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
-
-<!-- Website description -->
-
-<meta name="description" content="hmhv&#39;s blog &amp; app galary" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="hmhv&#39;s blog &amp; app galary">
+<meta name="author" content="hmhv">
 
 
-<!-- Website keywords -->
+<meta property="og:type" content="website">
 
-<meta name="keywords" content="hmhv,blog,app,galary,ios,iphone" />
+<meta property="og:title" content="hmhv">
+<meta property="og:description" content="hmhv&#39;s blog &amp; app galary">
+<meta property="og:site_name" content="hmhv">
+
+<title>
+hmhv
+</title>
+
+
+<link rel="icon" href="/images/favicon.svg">
 
 
 
-
-<!-- Website rss -->
-
-<link rel="alternate" href="/atom.xml" title="hmhv" type="application/atom+xml">
-
-
-<!-- Website favicon -->
-
-<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=3.0.0" />
-
-
-<!-- Canonical, good for google search engine -->
-<link rel="canonical" href="https://hmhv.info/" />
-
-<!-- Fancybox styling -->
-
-<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
-
-
-<!-- MathJax (LaTeX) support -->
-
-
-<!-- Theme styling -->
-<link rel="stylesheet" type="text/css" href="/css/style.css?v=3.0.0" />
-
-<!-- Analytics and push -->
-
-
-
-  
-
-
-
-<!-- LeanCloud Counter -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Shippori+Mincho:wght@400;500;700&family=Outfit:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@1,500;1,600;1,700&display=swap">
 
 
 <script>
-  window.config = {"leancloud":{"app_id":null,"app_key":null,"server_url":null,"cdn":null},"toc":true,"fancybox":true,"latex":false};
+(function(){try{var s=localStorage.getItem('hmhv-theme');var m=s||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',m);}catch(e){}})();
 </script>
-  
-  <title>hmhv</title>
+
+<link rel="stylesheet" href="/css/style.css">
+
 
 <meta name="generator" content="Hexo 8.1.1"></head>
-
-<body>
-  <div class="scrollPercentage"></div>
-  <div id="mobile-navbar" class="mobile-navbar">
-  <div class="mobile-header-logo">
-    <a href="/." class="logo">hmhv</a>
-  </div>
-  <div class="mobile-navbar-icon">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
-
-<nav id="mobile-menu" class="mobile-menu slideout-menu">
-  <ul class="mobile-menu-list">
-    
-    <a href="/">
-      <li class="mobile-menu-item">
-        
-        
-        Home              </li>
+<body data-layout="">
+  <header class="hdr">
+  <div class="site hdr-inner">
+    <a class="hdr-logo" href="/">
+      
+      <span class="wm">hmhv</span>
     </a>
-    
-    <a href="/archives/">
-      <li class="mobile-menu-item">
+    <nav class="hdr-nav">
+      
         
+        <a class="on" href="/">Home</a>
+      
         
-        Archives              </li>
-    </a>
-    
-    <a href="/tags/">
-      <li class="mobile-menu-item">
+        <a class="" href="/archives/">Archives</a>
+      
         
+        <a class="" href="/tags/">Tags</a>
+      
         
-        Tags              </li>
-    </a>
-    
-    <a href="/apps/">
-      <li class="mobile-menu-item">
+        <a class="" href="/apps/">Apps</a>
+      
         
-        
-        Apps              </li>
-    </a>
-    
-    <a href="/about/">
-      <li class="mobile-menu-item">
-        
-        
-        About              </li>
-    </a>
-    
-  </ul>
-</nav>
-  <div class="container" id="mobile-panel">
-    <header id="header" class="header">
-      <div class="logo-wrapper">  
-  <a href="/." class="logo">hmhv</a>  
-</div>  
-  
-<nav class="site-navbar">  
-    
-    <ul id="menu" class="menu">  
-        
-        <li class="menu-item">  
-          <a class="menu-item-link" href="/">  
-              
-              
-              Home  
-              
-          </a>  
-        </li>  
-        
-        <li class="menu-item">  
-          <a class="menu-item-link" href="/archives/">  
-              
-              
-              Archives  
-              
-          </a>  
-        </li>  
-        
-        <li class="menu-item">  
-          <a class="menu-item-link" href="/tags/">  
-              
-              
-              Tags  
-              
-          </a>  
-        </li>  
-        
-        <li class="menu-item">  
-          <a class="menu-item-link" href="/apps/">  
-              
-              
-              Apps  
-              
-          </a>  
-        </li>  
-        
-        <li class="menu-item">  
-          <a class="menu-item-link" href="/about/">  
-              
-              
-              About  
-              
-          </a>  
-        </li>  
-        
-    </ul>  
-    
-</nav>  
+        <a class="" href="/about/">About</a>
+      
+      <button type="button" id="theme-toggle" class="theme-toggle theme-toggle-nav" aria-label="Toggle theme">
+        <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>
 
-    </header>
-    <main id="main" class="main">
-      <div class="content-wrapper">
-        <div id="content" class="content">
-          <section id="posts" class="posts">
-  
-  
-  
-  <article class="post">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/2026/02/homofaber-to-homoquaerens/">AIの時代、エンジニアは「作る人」から「問う人」へ</a>
-      
-    </h1>
-
-    <div class="post-meta">
-      <span class="post-time">
-        2026-02-15
-      </span>
-      
-      
-      <span class="post-category">
-        
-        <a href="/categories/Tech/">Tech</a>
-        
-      </span>
-      
-      
-    </div>
-  </header>
+  <main class="site">
 
   
 
-  <div class="post-content">
+  <div class="section-head">
+    <h2>最近の<span class="marker">記録</span></h2>
+    <div class="side">recent · 49 posts</div>
+  </div>
+
+  <div class="col-list">
     
-    
-    
-    
-    
+      <a class="card" href="/2026/02/homofaber-to-homoquaerens/">
+  <div class="card-meta">
+    <span>2026.02.15</span>
+    <span>·</span>
+    <span>2 min</span>
+    <span class="chip">#AI</span><span class="chip">#engineer</span><span class="chip">#ホモ・ファーベル</span><span class="chip">#ホモ・クエレンス</span><span class="chip">#Homo Faber</span><span class="chip">#Homo Quaerens</span>
+  </div>
+  <h3 class="card-title">AIの時代、エンジニアは「作る人」から「問う人」へ</h3>
+  <p class="card-excerpt">ホモ・ファーベルの黄昏人間はながらく「ホモ・ファーベル（Homo Faber）」——「作る人」として自らを定義してきた。エンジニアの世界ではとりわけそうだ。複雑なアルゴリズムを実装し、堅牢なシステムを設計し、美しいコードを書く。技術的な実装力こそがエンジニアのアイデンティティだった。</p>
+</a>
 
     
-    <h3 id="ホモ・ファーベルの黄昏"><a href="#ホモ・ファーベルの黄昏" class="headerlink" title="ホモ・ファーベルの黄昏"></a>ホモ・ファーベルの黄昏</h3><p>人間はながらく「ホモ・ファーベル（Homo Faber）」——「作る人」として自らを定義してきた。エンジニアの世界ではとりわけそうだ。複雑なアルゴリズムを実装し、堅牢なシステムを設計し、美しいコードを書く。技術的な実装力こそがエンジニアのアイデンティティだった。</p>
-    <div class="read-more">
-      <a href="/2026/02/homofaber-to-homoquaerens/" class="read-more-link">Read more..</a>
-    </div>
+      <a class="card" href="/2023/09/files-in-files%20-app-in-simulator/">
+  <div class="card-meta">
+    <span>2023.09.22</span>
+    <span>·</span>
+    <span>1 min</span>
+    <span class="chip">#iOS</span><span class="chip">#Simulator</span><span class="chip">#Files</span><span class="chip">#Folder</span>
+  </div>
+  <h3 class="card-title">iOSシミュレーターのファイルアプリのファイルの確認する方法</h3>
+  <p class="card-excerpt">12$ xcrun simctl listapps booted | grep group.com.apple.FileProvider.LocalStorage&amp;quot;group.com.apple.FileProvider.LocalStorage&amp;quot; = &amp;quot;file:///Users/&amp;lt;user&amp;gt;/Library/Developer/CoreSimulator/Devices/&amp;lt;UUID&amp;gt;/data/Containers/Shared/AppGroup/&amp;lt;UUID&amp;gt;/&amp;quot;;
+
+上のフォルダーの中にあるFile Provider StorageフォルダーがファイルアプリのこのiPhone内フォルダーになる</p>
+</a>
+
     
+      <a class="card" href="/2023/08/quick-setup-swiftformat-swiftlint/">
+  <div class="card-meta">
+    <span>2023.08.29</span>
+    <span>·</span>
+    <span>3 min</span>
+    <span class="chip">#iOS</span><span class="chip">#Xcode</span><span class="chip">#SwiftFormat</span><span class="chip">#SwiftLint</span>
+  </div>
+  <h3 class="card-title">新規プロジェクトでSwiftFormatとSwiftLintを最短で設定する方法</h3>
+  <p class="card-excerpt">SwiftFormat
+SwiftLint
+
+Build PhasesでNew Run Script Phaseを追加して以下のコードをコピーしてビルドするだけ</p>
+</a>
+
+    
+      <a class="card" href="/2022/07/reset-swift-package-manager/">
+  <div class="card-meta">
+    <span>2022.07.13</span>
+    <span>·</span>
+    <span>1 min</span>
+    <span class="chip">#iOS</span><span class="chip">#SPM</span><span class="chip">#SwiftPM</span><span class="chip">#binaryTarget</span><span class="chip">#checksum</span><span class="chip">#Cache</span><span class="chip">#Reset</span>
+  </div>
+  <h3 class="card-title">Swift Package Manager(SPM)のキャッシュをリセット</h3>
+  <p class="card-excerpt">Swift Package Manager(SPM)のPackage.swiftに追加したbinaryTargetが同じバージョンのまま変更された場合、checksumが違うのでダウンロードできなくなる。
+123.binaryTarget(name: &amp;quot;XXXX&amp;quot;,              url: &amp;quot;https://github.com/xxx/xxx-ios/releases/download/x.x.x/xxxxx.zip&amp;quot;,              checksum: &amp;quot;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&amp;quot;),</p>
+</a>
+
+    
+      <a class="card" href="/2022/07/reset-ios-simulator/">
+  <div class="card-meta">
+    <span>2022.07.09</span>
+    <span>·</span>
+    <span>1 min</span>
+    <span class="chip">#iOS</span><span class="chip">#Simulator</span><span class="chip">#Copy</span><span class="chip">#Paste</span>
+  </div>
+  <h3 class="card-title">iOSシミュレーターとコピペができなくなった時対応方法</h3>
+  <p class="card-excerpt">いつからかMacとiOSシミュレーターの間でコピペができなくなった。色々調べても古いautomatically sync pasteboard関連の内容ばかりで解決策は見つからなかったが、
+TwitterでiOSシミュレーターの問題を解決する方法を発見したので試したらiOSシミュレーターとコピペができるようになった。</p>
+</a>
+
+    
+      <a class="card" href="/2022/06/run-task-on-swiftui/">
+  <div class="card-meta">
+    <span>2022.06.05</span>
+    <span>·</span>
+    <span>3 min</span>
+    <span class="chip">#iOS</span><span class="chip">#Swift</span><span class="chip">#SwiftUI</span><span class="chip">#Concurrency</span><span class="chip">#Task</span>
+  </div>
+  <h3 class="card-title">SwiftUIでビューが表示されたタイミングでasync functionを実行する</h3>
+  <p class="card-excerpt">SwiftUIのViewのメソッドの.task()の中の処理はViewが表示されると非同期で実行されて、もしViewが非表示になるまでTaskが実行中ならそのTaskは自動でcancelされる。もし自動でcancelされないようにしたい場合は.onAppear()の中でTaskを直接に生成する。
+サンプルコードのログをみるとTaskViewを表示してRequestが完了する前にビューを非表示にすると.task()からのTaskはcancelされるが.onAppear()からのTaskはcancelされないことがわかる。</p>
+</a>
+
+    
+      <a class="card" href="/2022/05/editor-shortcut-for-xcode-and-vscode/">
+  <div class="card-meta">
+    <span>2022.05.19</span>
+    <span>·</span>
+    <span>1 min</span>
+    <span class="chip">#iOS</span><span class="chip">#Xcode</span><span class="chip">#VSCode</span><span class="chip">#shortcut</span>
+  </div>
+  <h3 class="card-title">XcodeとVSCodeで入力中に使いたいけどいつもわすれるショートカットキー</h3>
+  <p class="card-excerpt">
+
+
+
+Xcode
+VSCode
+
+
+
+行を上へ移動
+⌘⌥[
+⌥↑
+
+
+行を下へ移動
+⌘⌥]
+⌥↓
+
+
+マルチカーソル
+⌃⇧↑
+⌘⌥↑
+
+
+マルチカーソル(クリ</p>
+</a>
+
+    
+      <a class="card" href="/2022/04/sending-push-notifications-with-cli/">
+  <div class="card-meta">
+    <span>2022.04.26</span>
+    <span>·</span>
+    <span>2 min</span>
+    <span class="chip">#iOS</span><span class="chip">#Push</span><span class="chip">#Notification</span><span class="chip">#CLI</span>
+  </div>
+  <h3 class="card-title">コマンドラインでiPhoneにプッシュ通知を送る方法</h3>
+  <p class="card-excerpt">1. ファイルをダウンロード1234curl -o sender.sh https://gist.githubusercontent.com/hmhv/7ab39297bdb5efe8b63cd024d893f6bd/raw/29328be9e54a3c1fe36f97369bb1f5d13db286d4/sender.shchmod 755 ./sender.shcurl -o params.sh https://gist.githubusercontent.com/hmhv/dd37cd462a63fa34b588d0eea1eb698d/raw/3db9e1616daa29a13e8afd13e0a14079cba2e781/params.shchmod 755 ./params.sh</p>
+</a>
+
+    
+      <a class="card" href="/2022/04/check-ios-simulator-keychain/">
+  <div class="card-meta">
+    <span>2022.04.18</span>
+    <span>·</span>
+    <span>3 min</span>
+    <span class="chip">#iOS</span><span class="chip">#Simulator</span><span class="chip">#Keychain</span><span class="chip">#TablePlus</span>
+  </div>
+  <h3 class="card-title">iOSシミュレーターのキーチェーン情報削除</h3>
+  <p class="card-excerpt">何かしらの理由でiOSシミュレーターのキーチェーン情報を削除したい時のためのメモ
+シミュレーターのUUIDを取得</p>
+</a>
+
+    
+      <a class="card" href="/2022/04/use-asdf/">
+  <div class="card-meta">
+    <span>2022.04.16</span>
+    <span>·</span>
+    <span>6 min</span>
+    <span class="chip">#asdf</span>
+  </div>
+  <h3 class="card-title">asdfを使ってみる</h3>
+  <p class="card-excerpt">昨日新しいMacにrubyのインストールのためchrubyを利用したことをiOS開発環境作成のためのRuby設定で書いたけどnodejsやpythonもまた個別のバージョン管理ツールを導入しようとすると面倒くさくなり、以前聞いたことのある一つのツールで色々な言語のバージョン管理ができるanyenv調べてみると今はasdfの方がもっと使われてるっぽいのでasdfを使ってruby, nodejs, pythonを入れてみたのでメモ。
+asdfをインストール</p>
+</a>
+
     
   </div>
 
   
-
+    <nav class="paginator">
+      <span></span>
+      <div class="pg-idx">1 / 5</div>
+      
+        <a class="btn btn-outline" href="/page/2/">older →</a>
+      
+    </nav>
   
 
-</article>
   
-  <article class="post">
-  <header class="post-header">
-    <h1 class="post-title">
+    <div class="section-head">
+      <h2>tags</h2>
+      <div class="side">browse by topic</div>
+    </div>
+    <div class="tagcloud">
       
-      <a class="post-link" href="/2023/09/files-in-files%20-app-in-simulator/">iOSシミュレーターのファイルアプリのファイルの確認する方法</a>
+        <a class="chip" href="/tags/iOS/">#iOS<span class="chip-count">43</span></a>
       
-    </h1>
-
-    <div class="post-meta">
-      <span class="post-time">
-        2023-09-22
-      </span>
+        <a class="chip" href="/tags/Objectivc-C/">#Objectivc-C<span class="chip-count">5</span></a>
       
+        <a class="chip" href="/tags/CoreData/">#CoreData<span class="chip-count">4</span></a>
       
-      <span class="post-category">
-        
-        <a href="/categories/Tech/">Tech</a>
-        
-      </span>
+        <a class="chip" href="/tags/HobjectiveRecord/">#HobjectiveRecord<span class="chip-count">4</span></a>
       
+        <a class="chip" href="/tags/Swift/">#Swift<span class="chip-count">4</span></a>
+      
+        <a class="chip" href="/tags/Simulator/">#Simulator<span class="chip-count">4</span></a>
+      
+        <a class="chip" href="/tags/Xcode/">#Xcode<span class="chip-count">4</span></a>
+      
+        <a class="chip" href="/tags/CocoaPods/">#CocoaPods<span class="chip-count">3</span></a>
+      
+        <a class="chip" href="/tags/MobS/">#MobS<span class="chip-count">2</span></a>
+      
+        <a class="chip" href="/tags/SobjectiveRecord/">#SobjectiveRecord<span class="chip-count">2</span></a>
+      
+        <a class="chip" href="/tags/AutoLayout/">#AutoLayout<span class="chip-count">2</span></a>
+      
+        <a class="chip" href="/tags/Crashlytics/">#Crashlytics<span class="chip-count">2</span></a>
+      
+        <a class="chip" href="/tags/Github-Pages/">#Github Pages<span class="chip-count">2</span></a>
+      
+        <a class="chip" href="/tags/Hexo/">#Hexo<span class="chip-count">2</span></a>
+      
+        <a class="chip" href="/tags/UITextView/">#UITextView<span class="chip-count">2</span></a>
+      
+        <a class="chip" href="/tags/debug/">#debug<span class="chip-count">2</span></a>
+      
+        <a class="chip" href="/tags/App-Thinning/">#App Thinning<span class="chip-count">1</span></a>
+      
+        <a class="chip" href="/tags/Search-APIs/">#Search APIs<span class="chip-count">1</span></a>
+      
+        <a class="chip" href="/tags/3D-Touch/">#3D Touch<span class="chip-count">1</span></a>
+      
+        <a class="chip" href="/tags/Preview/">#Preview<span class="chip-count">1</span></a>
+      
+        <a class="chip" href="/tags/AssociatedObjectOwner/">#AssociatedObjectOwner<span class="chip-count">1</span></a>
+      
+        <a class="chip" href="/tags/objc-getAssociatedObject/">#objc_getAssociatedObject<span class="chip-count">1</span></a>
+      
+        <a class="chip" href="/tags/objc-setAssociatedObject/">#objc_setAssociatedObject<span class="chip-count">1</span></a>
+      
+        <a class="chip" href="/tags/AVPlayer/">#AVPlayer<span class="chip-count">1</span></a>
+      
+        <a class="chip" href="/tags/Keychain/">#Keychain<span class="chip-count">1</span></a>
+      
+        <a class="chip" href="/tags/TablePlus/">#TablePlus<span class="chip-count">1</span></a>
+      
+        <a class="chip" href="/tags/VSCode/">#VSCode<span class="chip-count">1</span></a>
+      
+        <a class="chip" href="/tags/shortcut/">#shortcut<span class="chip-count">1</span></a>
+      
+        <a class="chip" href="/tags/Fabric/">#Fabric<span class="chip-count">1</span></a>
+      
+        <a class="chip" href="/tags/Files/">#Files<span class="chip-count">1</span></a>
+      
+        <a class="chip" href="/tags/Folder/">#Folder<span class="chip-count">1</span></a>
+      
+        <a class="chip" href="/tags/Flutter/">#Flutter<span class="chip-count">1</span></a>
+      
+        <a class="chip" href="/tags/Today-Extension/">#Today-Extension<span class="chip-count">1</span></a>
+      
+        <a class="chip" href="/tags/design/">#design<span class="chip-count">1</span></a>
+      
+        <a class="chip" href="/tags/free/">#free<span class="chip-count">1</span></a>
+      
+        <a class="chip" href="/tags/UITextDragDelegate/">#UITextDragDelegate<span class="chip-count">1</span></a>
+      
+        <a class="chip" href="/tags/AI/">#AI<span class="chip-count">1</span></a>
+      
+        <a class="chip" href="/tags/engineer/">#engineer<span class="chip-count">1</span></a>
+      
+        <a class="chip" href="/tags/%E3%83%9B%E3%83%A2%E3%83%BB%E3%83%95%E3%82%A1%E3%83%BC%E3%83%99%E3%83%AB/">#ホモ・ファーベル<span class="chip-count">1</span></a>
+      
+        <a class="chip" href="/tags/%E3%83%9B%E3%83%A2%E3%83%BB%E3%82%AF%E3%82%A8%E3%83%AC%E3%83%B3%E3%82%B9/">#ホモ・クエレンス<span class="chip-count">1</span></a>
+      
+        <a class="chip" href="/tags/Homo-Faber/">#Homo Faber<span class="chip-count">1</span></a>
+      
+        <a class="chip" href="/tags/Homo-Quaerens/">#Homo Quaerens<span class="chip-count">1</span></a>
+      
+        <a class="chip" href="/tags/Hackathon/">#Hackathon<span class="chip-count">1</span></a>
+      
+        <a class="chip" href="/tags/plist/">#plist<span class="chip-count">1</span></a>
+      
+        <a class="chip" href="/tags/wiki/">#wiki<span class="chip-count">1</span></a>
+      
+        <a class="chip" href="/tags/mitmproxy/">#mitmproxy<span class="chip-count">1</span></a>
+      
+        <a class="chip" href="/tags/SPM/">#SPM<span class="chip-count">1</span></a>
+      
+        <a class="chip" href="/tags/SwiftPM/">#SwiftPM<span class="chip-count">1</span></a>
+      
+        <a class="chip" href="/tags/binaryTarget/">#binaryTarget<span class="chip-count">1</span></a>
+      
+        <a class="chip" href="/tags/checksum/">#checksum<span class="chip-count">1</span></a>
+      
+        <a class="chip" href="/tags/Cache/">#Cache<span class="chip-count">1</span></a>
+      
+        <a class="chip" href="/tags/Reset/">#Reset<span class="chip-count">1</span></a>
+      
+        <a class="chip" href="/tags/Copy/">#Copy<span class="chip-count">1</span></a>
+      
+        <a class="chip" href="/tags/Paste/">#Paste<span class="chip-count">1</span></a>
+      
+        <a class="chip" href="/tags/SwiftUI/">#SwiftUI<span class="chip-count">1</span></a>
+      
+        <a class="chip" href="/tags/Concurrency/">#Concurrency<span class="chip-count">1</span></a>
+      
+        <a class="chip" href="/tags/Task/">#Task<span class="chip-count">1</span></a>
+      
+        <a class="chip" href="/tags/SwiftFormat/">#SwiftFormat<span class="chip-count">1</span></a>
+      
+        <a class="chip" href="/tags/SwiftLint/">#SwiftLint<span class="chip-count">1</span></a>
+      
+        <a class="chip" href="/tags/Push/">#Push<span class="chip-count">1</span></a>
+      
+        <a class="chip" href="/tags/Notification/">#Notification<span class="chip-count">1</span></a>
+      
+        <a class="chip" href="/tags/CLI/">#CLI<span class="chip-count">1</span></a>
+      
+        <a class="chip" href="/tags/fastlane/">#fastlane<span class="chip-count">1</span></a>
+      
+        <a class="chip" href="/tags/chruby/">#chruby<span class="chip-count">1</span></a>
+      
+        <a class="chip" href="/tags/ruby-install/">#ruby-install<span class="chip-count">1</span></a>
+      
+        <a class="chip" href="/tags/Sign-in-with-Apple/">#Sign in with Apple<span class="chip-count">1</span></a>
+      
+        <a class="chip" href="/tags/Soft-UI/">#Soft-UI<span class="chip-count">1</span></a>
+      
+        <a class="chip" href="/tags/Neumorphism/">#Neumorphism<span class="chip-count">1</span></a>
+      
+        <a class="chip" href="/tags/asdf/">#asdf<span class="chip-count">1</span></a>
       
     </div>
-  </header>
-
   
 
-  <div class="post-content">
-    
-    
-    
-    
-    
+</main>
 
-    
-    <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ xcrun simctl listapps booted | grep group.com.apple.FileProvider.LocalStorage</span><br><span class="line">&quot;group.com.apple.FileProvider.LocalStorage&quot; = &quot;file:///Users/&lt;user&gt;/Library/Developer/CoreSimulator/Devices/&lt;UUID&gt;/data/Containers/Shared/AppGroup/&lt;UUID&gt;/&quot;;</span><br></pre></td></tr></table></figure>
-
-<p>上のフォルダーの中にある<code>File Provider Storage</code>フォルダーがファイルアプリの<code>このiPhone内</code>フォルダーになる</p>
-    <div class="read-more">
-      <a href="/2023/09/files-in-files%20-app-in-simulator/" class="read-more-link">Read more..</a>
+  <footer class="ftr site">
+  <div class="ftr-row">
+    <div class="ftr-cr">
+      <div>Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a></div>
+      <div>&copy; 2015 - 2026&nbsp;&nbsp;hmhv</div>
     </div>
-    
-    
   </div>
+</footer>
 
-  
-
-  
-
-</article>
-  
-  <article class="post">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/2023/08/quick-setup-swiftformat-swiftlint/">新規プロジェクトでSwiftFormatとSwiftLintを最短で設定する方法</a>
-      
-    </h1>
-
-    <div class="post-meta">
-      <span class="post-time">
-        2023-08-29
-      </span>
-      
-      
-      <span class="post-category">
-        
-        <a href="/categories/Tech/">Tech</a>
-        
-      </span>
-      
-      
-    </div>
-  </header>
-
-  
-
-  <div class="post-content">
-    
-    
-    
-    
-    
-
-    
-    <ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/nicklockwood/SwiftFormat">SwiftFormat</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/realm/SwiftLint">SwiftLint</a></li>
-</ul>
-<p><code>Build Phases</code>で<code>New Run Script Phase</code>を追加して以下のコードをコピーしてビルドするだけ</p>
-    <div class="read-more">
-      <a href="/2023/08/quick-setup-swiftformat-swiftlint/" class="read-more-link">Read more..</a>
-    </div>
-    
-    
-  </div>
-
-  
-
-  
-
-</article>
-  
-  <article class="post">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/2022/07/reset-swift-package-manager/">Swift Package Manager(SPM)のキャッシュをリセット</a>
-      
-    </h1>
-
-    <div class="post-meta">
-      <span class="post-time">
-        2022-07-13
-      </span>
-      
-      
-      <span class="post-category">
-        
-        <a href="/categories/Tech/">Tech</a>
-        
-      </span>
-      
-      
-    </div>
-  </header>
-
-  
-
-  <div class="post-content">
-    
-    
-    
-    
-    
-
-    
-    <p>Swift Package Manager(SPM)の<code>Package.swift</code>に追加した<code>binaryTarget</code>が同じバージョンのまま変更された場合、<code>checksum</code>が違うのでダウンロードできなくなる。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.binaryTarget(name: &quot;XXXX&quot;,</span><br><span class="line">              url: &quot;https://github.com/xxx/xxx-ios/releases/download/x.x.x/xxxxx.zip&quot;,</span><br><span class="line">              checksum: &quot;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&quot;),</span><br></pre></td></tr></table></figure>
-    <div class="read-more">
-      <a href="/2022/07/reset-swift-package-manager/" class="read-more-link">Read more..</a>
-    </div>
-    
-    
-  </div>
-
-  
-
-  
-
-</article>
-  
-  <article class="post">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/2022/07/reset-ios-simulator/">iOSシミュレーターとコピペができなくなった時対応方法</a>
-      
-    </h1>
-
-    <div class="post-meta">
-      <span class="post-time">
-        2022-07-09
-      </span>
-      
-      
-      <span class="post-category">
-        
-        <a href="/categories/Tech/">Tech</a>
-        
-      </span>
-      
-      
-    </div>
-  </header>
-
-  
-
-  <div class="post-content">
-    
-    
-    
-    
-    
-
-    
-    <p>いつからかMacとiOSシミュレーターの間でコピペができなくなった。<br>色々調べても古い<code>automatically sync pasteboard</code>関連の内容ばかりで解決策は見つからなかったが、</p>
-<p><a target="_blank" rel="noopener" href="https://twitter.com/JoshHrach/status/1544937152521203712">TwitterでiOSシミュレーターの問題を解決する方法</a>を発見したので試したらiOSシミュレーターとコピペができるようになった。</p>
-    <div class="read-more">
-      <a href="/2022/07/reset-ios-simulator/" class="read-more-link">Read more..</a>
-    </div>
-    
-    
-  </div>
-
-  
-
-  
-
-</article>
-  
-  <article class="post">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/2022/06/run-task-on-swiftui/">SwiftUIでビューが表示されたタイミングでasync functionを実行する</a>
-      
-    </h1>
-
-    <div class="post-meta">
-      <span class="post-time">
-        2022-06-05
-      </span>
-      
-      
-      <span class="post-category">
-        
-        <a href="/categories/Tech/">Tech</a>
-        
-      </span>
-      
-      
-    </div>
-  </header>
-
-  
-
-  <div class="post-content">
-    
-    
-    
-    
-    
-
-    
-    <p>SwiftUIのViewのメソッドの<a target="_blank" rel="noopener" href="https://developer.apple.com/documentation/swiftui/view/task(priority:_:%29"><code>.task()</code></a>の中の処理はViewが表示されると非同期で実行されて、もしViewが非表示になるまでTaskが実行中ならそのTaskは自動でcancelされる。<br>もし自動でcancelされないようにしたい場合は<code>.onAppear()</code>の中で<code>Task</code>を直接に生成する。</p>
-<p>サンプルコードのログをみるとTaskViewを表示してRequestが完了する前にビューを非表示にすると<code>.task()</code>からの<code>Task</code>はcancelされるが<code>.onAppear()</code>からの<code>Task</code>はcancelされないことがわかる。</p>
-    <div class="read-more">
-      <a href="/2022/06/run-task-on-swiftui/" class="read-more-link">Read more..</a>
-    </div>
-    
-    
-  </div>
-
-  
-
-  
-
-</article>
-  
-  <article class="post">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/2022/05/editor-shortcut-for-xcode-and-vscode/">XcodeとVSCodeで入力中に使いたいけどいつもわすれるショートカットキー</a>
-      
-    </h1>
-
-    <div class="post-meta">
-      <span class="post-time">
-        2022-05-19
-      </span>
-      
-      
-      <span class="post-category">
-        
-        <a href="/categories/Tech/">Tech</a>
-        
-      </span>
-      
-      
-    </div>
-  </header>
-
-  
-
-  <div class="post-content">
-    
-    
-    
-
-    
-    <table>
-<thead>
-<tr>
-<th></th>
-<th align="center">Xcode</th>
-<th align="center">VSCode</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>行を上へ移動</td>
-<td align="center"><code>⌘⌥[</code></td>
-<td align="center"><code>⌥↑</code></td>
-</tr>
-<tr>
-<td>行を下へ移動</td>
-<td align="center"><code>⌘⌥]</code></td>
-<td align="center"><code>⌥↓</code></td>
-</tr>
-<tr>
-<td>マルチカーソル</td>
-<td align="center"><code>⌃⇧↑</code></td>
-<td align="center"><code>⌘⌥↑</code></td>
-</tr>
-<tr>
-<td>マルチカーソル(クリック)</td>
-<td align="center"><code>⌃⇧ + Click</code></td>
-<td align="center"><code>⌥ + Click</code></td>
-</tr>
-<tr>
-<td>マルチカーソル(ドラッグク)</td>
-<td align="center"><code>⌥ + ドラッグ</code></td>
-<td align="center"><code>⌥⇧ + ドラッグ</code></td>
-</tr>
-<tr>
-<td>次の出現箇所を選択</td>
-<td align="center"><code>⌘⌥E</code></td>
-<td align="center"><code>⌘D</code></td>
-</tr>
-<tr>
-<td>すべての出現箇所を選択</td>
-<td align="center">(<code>⌘⌃E</code>)</td>
-<td align="center"><code>⌘⇧L</code></td>
-</tr>
-</tbody></table>
-
-    
-    
-  </div>
-
-  
-
-  
-
-</article>
-  
-  <article class="post">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/2022/04/sending-push-notifications-with-cli/">コマンドラインでiPhoneにプッシュ通知を送る方法</a>
-      
-    </h1>
-
-    <div class="post-meta">
-      <span class="post-time">
-        2022-04-26
-      </span>
-      
-      
-      <span class="post-category">
-        
-        <a href="/categories/Tech/">Tech</a>
-        
-      </span>
-      
-      
-    </div>
-  </header>
-
-  
-
-  <div class="post-content">
-    
-    
-    
-    
-    
-
-    
-    <h3 id="1-ファイルをダウンロード"><a href="#1-ファイルをダウンロード" class="headerlink" title="1. ファイルをダウンロード"></a>1. ファイルをダウンロード</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">curl -o sender.sh https://gist.githubusercontent.com/hmhv/7ab39297bdb5efe8b63cd024d893f6bd/raw/29328be9e54a3c1fe36f97369bb1f5d13db286d4/sender.sh</span><br><span class="line"><span class="built_in">chmod</span> 755 ./sender.sh</span><br><span class="line">curl -o params.sh https://gist.githubusercontent.com/hmhv/dd37cd462a63fa34b588d0eea1eb698d/raw/3db9e1616daa29a13e8afd13e0a14079cba2e781/params.sh</span><br><span class="line"><span class="built_in">chmod</span> 755 ./params.sh</span><br></pre></td></tr></table></figure>
-    <div class="read-more">
-      <a href="/2022/04/sending-push-notifications-with-cli/" class="read-more-link">Read more..</a>
-    </div>
-    
-    
-  </div>
-
-  
-
-  
-
-</article>
-  
-  <article class="post">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/2022/04/check-ios-simulator-keychain/">iOSシミュレーターのキーチェーン情報削除</a>
-      
-    </h1>
-
-    <div class="post-meta">
-      <span class="post-time">
-        2022-04-18
-      </span>
-      
-      
-      <span class="post-category">
-        
-        <a href="/categories/Tech/">Tech</a>
-        
-      </span>
-      
-      
-    </div>
-  </header>
-
-  
-
-  <div class="post-content">
-    
-    
-    
-    
-    
-
-    
-    <p>何かしらの理由でiOSシミュレーターのキーチェーン情報を削除したい時のためのメモ</p>
-<h3 id="シミュレーターのUUIDを取得"><a href="#シミュレーターのUUIDを取得" class="headerlink" title="シミュレーターのUUIDを取得"></a>シミュレーターのUUIDを取得</h3>
-    <div class="read-more">
-      <a href="/2022/04/check-ios-simulator-keychain/" class="read-more-link">Read more..</a>
-    </div>
-    
-    
-  </div>
-
-  
-
-  
-
-</article>
-  
-  <article class="post">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/2022/04/use-asdf/">asdfを使ってみる</a>
-      
-    </h1>
-
-    <div class="post-meta">
-      <span class="post-time">
-        2022-04-16
-      </span>
-      
-      
-      <span class="post-category">
-        
-        <a href="/categories/Tech/">Tech</a>
-        
-      </span>
-      
-      
-    </div>
-  </header>
-
-  
-
-  <div class="post-content">
-    
-    
-    
-    
-    
-
-    
-    <p>昨日新しいMacに<code>ruby</code>のインストールのため<code>chruby</code>を利用したことを<a href="https://hmhv.info/2022/04/setup-ruby-for-ios/">iOS開発環境作成のためのRuby設定</a>で書いたけど<code>nodejs</code>や<code>python</code>もまた個別のバージョン管理ツールを導入しようとすると面倒くさくなり、以前聞いたことのある一つのツールで色々な言語のバージョン管理ができる<a target="_blank" rel="noopener" href="https://github.com/anyenv/anyenv">anyenv</a>調べてみると今は<a target="_blank" rel="noopener" href="https://github.com/asdf-vm/asdf">asdf</a>の方がもっと使われてるっぽいので<code>asdf</code>を使って<code>ruby</code>, <code>nodejs</code>, <code>python</code>を入れてみたのでメモ。</p>
-<h2 id="asdfをインストール"><a href="#asdfをインストール" class="headerlink" title="asdfをインストール"></a><code>asdf</code>をインストール</h2>
-    <div class="read-more">
-      <a href="/2022/04/use-asdf/" class="read-more-link">Read more..</a>
-    </div>
-    
-    
-  </div>
-
-  
-
-  
-
-</article>
-  
-    
-  <nav class="pagination">  
-      
-      
-      <a class="next" href="/page/2/">  
-        <span class="next-text">Next</span>  
-        <i class="iconfont icon-right"></i>  
-      </a>  
-      
-  </nav>  
-  
-
-  
-</section>
-        </div>
-          
-
-      </div>
-    </main>
-    <footer id="footer" class="footer">
-      <!-- Social Links -->
-
-<div class="social-links">
-  
-  
-  
-  
-  <a target="_blank" rel="noopener" href="https://github.com/hmhv" class="iconfont icon-github" title="github"></a>
-  
-  
-  
-
-  
-</div>
-
-
-
-<div class="copyright">
-  <span class="power-by">
-    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
-  </span>
-  <span class="division">|</span>
-  <span class="theme-info">
-    Theme -
-    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
-  </span>
-  <span class="division">|</span>
-  <span class="hosting-info">
-    footer.hosting
-  </span>
-
-  <span class="copyright-year">
-    <span>
-      
-      &copy;
-      
-      2015 - 2026      
-    </span>
-
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-
-    <span class="author">hmhv</span>
-  </span>
-
-</div>
-    </footer>
-    <div class="back-to-top" id="back-to-top"> <i class="iconfont icon-up"></i> </div>
-  </div>
-    
-
-  
-
-
-
-
-
-
-
-<script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
-
-
-
-<script type="text/javascript" src="/lib/slideout/slideout.js"></script>
-
-
-
-<script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
-
-
-
-  <script type="text/javascript" src="/js/src/even.js?v=3.0.0"></script>
+  <script src="/js/theme.js" defer></script>
 </body>
-
 </html>

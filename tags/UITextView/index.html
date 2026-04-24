@@ -1,330 +1,114 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
-  <!-- Website mata -->
-<meta charset="UTF-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-
-<!-- Disable transformation -->
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-<meta name="theme-color" content="#f8f5ec" />
-<meta name="msapplication-navbutton-color" content="#f8f5ec">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
-
-<!-- Website description -->
-
-<meta name="description" content="hmhv&#39;s blog &amp; app galary" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="hmhv&#39;s blog &amp; app galary">
+<meta name="author" content="hmhv">
 
 
-<!-- Website keywords -->
+<meta property="og:type" content="website">
 
-<meta name="keywords" content="hmhv,blog,app,galary,ios,iphone" />
+<meta property="og:title" content="hmhv">
+<meta property="og:description" content="hmhv&#39;s blog &amp; app galary">
+<meta property="og:site_name" content="hmhv">
+
+<title>
+hmhv
+</title>
+
+
+<link rel="icon" href="/images/favicon.svg">
 
 
 
-
-<!-- Website rss -->
-
-<link rel="alternate" href="/atom.xml" title="hmhv" type="application/atom+xml">
-
-
-<!-- Website favicon -->
-
-<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=3.0.0" />
-
-
-<!-- Canonical, good for google search engine -->
-<link rel="canonical" href="https://hmhv.info/tags/UITextView/" />
-
-<!-- Fancybox styling -->
-
-<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
-
-
-<!-- MathJax (LaTeX) support -->
-
-
-<!-- Theme styling -->
-<link rel="stylesheet" type="text/css" href="/css/style.css?v=3.0.0" />
-
-<!-- Analytics and push -->
-
-
-
-  
-
-
-
-<!-- LeanCloud Counter -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Shippori+Mincho:wght@400;500;700&family=Outfit:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@1,500;1,600;1,700&display=swap">
 
 
 <script>
-  window.config = {"leancloud":{"app_id":null,"app_key":null,"server_url":null,"cdn":null},"toc":true,"fancybox":true,"latex":false};
+(function(){try{var s=localStorage.getItem('hmhv-theme');var m=s||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',m);}catch(e){}})();
 </script>
-  
-  <title>UITextView · hmhv</title>
+
+<link rel="stylesheet" href="/css/style.css">
+
 
 <meta name="generator" content="Hexo 8.1.1"></head>
-
-<body>
-  <div class="scrollPercentage"></div>
-  <div id="mobile-navbar" class="mobile-navbar">
-  <div class="mobile-header-logo">
-    <a href="/." class="logo">hmhv</a>
-  </div>
-  <div class="mobile-navbar-icon">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
-
-<nav id="mobile-menu" class="mobile-menu slideout-menu">
-  <ul class="mobile-menu-list">
-    
-    <a href="/">
-      <li class="mobile-menu-item">
-        
-        
-        Home              </li>
-    </a>
-    
-    <a href="/archives/">
-      <li class="mobile-menu-item">
-        
-        
-        Archives              </li>
-    </a>
-    
-    <a href="/tags/">
-      <li class="mobile-menu-item">
-        
-        
-        Tags              </li>
-    </a>
-    
-    <a href="/apps/">
-      <li class="mobile-menu-item">
-        
-        
-        Apps              </li>
-    </a>
-    
-    <a href="/about/">
-      <li class="mobile-menu-item">
-        
-        
-        About              </li>
-    </a>
-    
-  </ul>
-</nav>
-  <div class="container" id="mobile-panel">
-    <header id="header" class="header">
-      <div class="logo-wrapper">  
-  <a href="/." class="logo">hmhv</a>  
-</div>  
-  
-<nav class="site-navbar">  
-    
-    <ul id="menu" class="menu">  
-        
-        <li class="menu-item">  
-          <a class="menu-item-link" href="/">  
-              
-              
-              Home  
-              
-          </a>  
-        </li>  
-        
-        <li class="menu-item">  
-          <a class="menu-item-link" href="/archives/">  
-              
-              
-              Archives  
-              
-          </a>  
-        </li>  
-        
-        <li class="menu-item">  
-          <a class="menu-item-link" href="/tags/">  
-              
-              
-              Tags  
-              
-          </a>  
-        </li>  
-        
-        <li class="menu-item">  
-          <a class="menu-item-link" href="/apps/">  
-              
-              
-              Apps  
-              
-          </a>  
-        </li>  
-        
-        <li class="menu-item">  
-          <a class="menu-item-link" href="/about/">  
-              
-              
-              About  
-              
-          </a>  
-        </li>  
-        
-    </ul>  
-    
-</nav>  
-
-    </header>
-    <main id="main" class="main">
-      <div class="content-wrapper">
-        <div id="content" class="content">
-          
-
-<section id="archive" class="archive">
-  
-  
-  <div class="archive-title tag">
-    <h2 class="archive-name">UITextView</h2>
-  </div>
-  
-  
-
-  
-  
-  
-
-  <div class="archive-post">
-    <span class="archive-post-time">
+<body data-layout="">
+  <header class="hdr">
+  <div class="site hdr-inner">
+    <a class="hdr-logo" href="/">
       
-      2018-01-10
+      <span class="wm">hmhv</span>
+    </a>
+    <nav class="hdr-nav">
       
-    </span>
-    <span class="archive-post-title">
-      <a href="/2018/01/uitextview-link-check/" class="archive-post-link">
-        UITextViewタップ時にlinkかの確認
+        
+        <a class="" href="/">Home</a>
+      
+        
+        <a class="" href="/archives/">Archives</a>
+      
+        
+        <a class="on" href="/tags/">Tags</a>
+      
+        
+        <a class="" href="/apps/">Apps</a>
+      
+        
+        <a class="" href="/about/">About</a>
+      
+      <button type="button" id="theme-toggle" class="theme-toggle theme-toggle-nav" aria-label="Toggle theme">
+        <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+  
+<main class="site">
+
+  <div class="archive-hd">
+    <div class="eyebrow-xs">TAG</div>
+    <h1 class="archive-title">#UITextView</h1>
+    <p class="archive-sub">1 posts · 2026 –</p>
+  </div>
+
+  
+    <div class="year-group">
+      <div class="year-label">2018</div>
+      
+      <a class="arc-row" href="/2018/01/uitextview-link-check/">
+        <div class="d">2018.01.10</div>
+        <div class="t">UITextViewタップ時にlinkかの確認</div>
+        <span class="chip">#iOS</span>
       </a>
-    </span>
-  </div>
-  
-  
-
-  <div class="archive-post">
-    <span class="archive-post-time">
       
-      2018-01-10
-      
-    </span>
-    <span class="archive-post-title">
-      <a href="/2018/01/disable-uitextvew-drag/" class="archive-post-link">
-        UITextViewのDragを無効にする
+      <a class="arc-row" href="/2018/01/disable-uitextvew-drag/">
+        <div class="d">2018.01.10</div>
+        <div class="t">UITextViewのDragを無効にする</div>
+        <span class="chip">#iOS</span>
       </a>
-    </span>
+      
+    </div>
+  
+
+  
+
+</main>
+
+
+  <footer class="ftr site">
+  <div class="ftr-row">
+    <div class="ftr-cr">
+      <div>Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a></div>
+      <div>&copy; 2015 - 2026&nbsp;&nbsp;hmhv</div>
+    </div>
   </div>
-  
-</section>
+</footer>
 
-  
-  <nav class="pagination">  
-      
-      
-  </nav>  
-  
-
-        </div>
-          
-
-      </div>
-    </main>
-    <footer id="footer" class="footer">
-      <!-- Social Links -->
-
-<div class="social-links">
-  
-  
-  
-  
-  <a target="_blank" rel="noopener" href="https://github.com/hmhv" class="iconfont icon-github" title="github"></a>
-  
-  
-  
-
-  
-</div>
-
-
-
-<div class="copyright">
-  <span class="power-by">
-    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
-  </span>
-  <span class="division">|</span>
-  <span class="theme-info">
-    Theme -
-    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
-  </span>
-  <span class="division">|</span>
-  <span class="hosting-info">
-    footer.hosting
-  </span>
-
-  <span class="copyright-year">
-    <span>
-      
-      &copy;
-      
-      2015 - 2026      
-    </span>
-
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-
-    <span class="author">hmhv</span>
-  </span>
-
-</div>
-    </footer>
-    <div class="back-to-top" id="back-to-top"> <i class="iconfont icon-up"></i> </div>
-  </div>
-    
-    
-    
-    
-    
-    
-    
-  
-
-  
-
-
-
-
-
-
-
-<script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
-
-
-
-<script type="text/javascript" src="/lib/slideout/slideout.js"></script>
-
-
-
-<script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
-
-
-
-  <script type="text/javascript" src="/js/src/even.js?v=3.0.0"></script>
+  <script src="/js/theme.js" defer></script>
 </body>
-
 </html>
