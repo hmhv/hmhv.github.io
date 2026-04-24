@@ -1,4 +1,52 @@
-<!-- post -->
-<% page.comment = true; %>
+<%#
+  post.ejs — single post page
+-%>
+<%
+  const postTags = (page.tags && page.tags.length) ? page.tags.data : [];
+  const readMin = Math.max(1, Math.round((page.length || (page._content || '').length || 400) / ((theme.post && theme.post.read_time_cpm) || 500)));
+  const dateStr = date(page.date, 'YYYY.MM.DD');
+%>
+<main class="site">
+  <div class="reader">
+    <a class="back" href="<%- url_for('/') %>"><%= __('post.back') %></a>
 
-<%- partial('_partial/article', {item: page, post: true}) %>
+    <div class="post-hd">
+      <div class="eyebrow"><%= __('post.eyebrow') %> · <%= dateStr %></div>
+      <h1><%= page.title %></h1>
+      <div class="post-meta">
+        <span><%= dateStr %></span>
+        <% if (theme.post && theme.post.show_read_time !== false) { %>
+          <span>·</span>
+          <span><%= readMin %> <%= __('post.min_read') %></span>
+        <% } %>
+        <% postTags.forEach(function(t) {
+             const v = (theme.tag_chip && theme.tag_chip[t.name]) || 'default';
+             const cls = v === 'default' ? 'chip' : 'chip ' + v;
+        %><a class="<%= cls %>" href="<%- url_for(t.path) %>">#<%= t.name %></a><% }) %>
+      </div>
+    </div>
+
+    <article class="prose">
+      <%- page.content %>
+    </article>
+
+    <% if (theme.post && theme.post.show_nav !== false && (page.prev || page.next)) { %>
+    <div class="post-nav">
+      <% if (page.prev) { %>
+        <a class="card" href="<%- url_for(page.prev.path) %>">
+          <div class="pn-lbl"><%= __('post.newer') %></div>
+          <div class="pn-ttl"><%= page.prev.title %></div>
+        </a>
+      <% } else { %><span></span><% } %>
+      <% if (page.next) { %>
+        <a class="card pn-right" href="<%- url_for(page.next.path) %>">
+          <div class="pn-lbl"><%= __('post.older') %></div>
+          <div class="pn-ttl"><%= page.next.title %></div>
+        </a>
+      <% } else { %><span></span><% } %>
+    </div>
+    <% } %>
+
+    <a class="back" href="<%- url_for('/') %>"><%= __('post.back_home') %></a>
+  </div>
+</main>

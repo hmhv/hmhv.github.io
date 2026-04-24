@@ -1,0 +1,21 @@
+<%#
+  hero.ejs — big pastel-sky hero block, shown on index
+-%>
+<section class="hero">
+  <div class="hero-sun"></div>
+  <% if (theme.site.hero_volume) { %>
+  <div class="hero-vol"><%= theme.site.hero_volume %></div>
+  <% } %>
+  <div class="hero-eyebrow"><%= theme.site.hero_eyebrow %></div>
+  <h1 class="hero-title"><%- theme.site.hero_title %></h1>
+  <p class="hero-sub"><%= theme.site.hero_sub %></p>
+  <div class="hero-actions">
+    <a class="btn btn-primary" href="<%- url_for(theme.menu.archive || '/archives/') %>">
+      <%= __('home.cta_primary') %>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+    </a>
+    <% if (theme.social && theme.social.rss) { %>
+    <a class="btn btn-soft" href="<%- url_for(theme.social.rss) %>"><%= __('home.cta_secondary') %></a>
+    <% } %>
+  </div>
+</section>

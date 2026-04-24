@@ -1,14 +1,39 @@
-categories: Categories
-search: Search
-tags: Tags
-tagcloud: "Tag Cloud"
-tweets: Tweets
-prev: Prev
-next: Next
-comment: Comments
-archive_a: Archives
-archive_b: "Archives: %s"
-page: "Page %d"
-recent_posts: "Recent Posts"
-description: Description
-read_more: "Read More"
+nav:
+  home: home
+  archive: archive
+  about: about
+  rss: rss
+
+home:
+  recent_heading: '最近の<span class="marker">記録</span>'
+  recent_side: 'recent · %d posts'
+  pinned: 'PINNED'
+  tags_heading: 'tags'
+  tags_side: 'browse by topic'
+  cta_primary: '読むものを探す'
+  cta_secondary: 'subscribe'
+
+post:
+  eyebrow: 'JOURNAL'
+  min_read: 'min read'
+  back: '← back'
+  back_home: '← back to home'
+  newer: '← newer'
+  older: 'older →'
+
+archive:
+  eyebrow: 'ARCHIVE'
+  title: '全ての<span class="marker">記録</span>'
+  subtitle: '%d posts'
+
+tag:
+  eyebrow: 'TAG'
+  subtitle: '%d posts tagged'
+
+category:
+  eyebrow: 'CATEGORY'
+  subtitle: '%d posts'
+
+pagination:
+  prev: '← newer'
+  next: 'older →'

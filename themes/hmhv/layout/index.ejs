@@ -1,3 +1,51 @@
-<!-- index -->
+<%#
+  index.ejs — home / paginated post list
+-%>
+<main class="site">
 
-<%- partial('_partial/index', {index: true}) %>
+  <% if (page.current === 1 && theme.home && theme.home.hero) { %>
+    <%- partial('_partial/hero') %>
+    <div class="pinned-wrap">
+      <%- partial('_partial/pinned') %>
+    </div>
+  <% } %>
+
+  <div class="section-head">
+    <h2><%- __('home.recent_heading') %></h2>
+    <div class="side"><%= __('home.recent_side', site.posts.length) %></div>
+  </div>
+
+  <div class="col-list">
+    <% page.posts.each(function(post) { %>
+      <%- partial('_partial/article', { post }) %>
+    <% }) %>
+  </div>
+
+  <% if (page.total > 1) { %>
+    <nav class="paginator">
+      <% if (page.prev) { %>
+        <a class="btn btn-outline" href="<%- url_for(page.prev_link) %>"><%= __('pagination.prev') %></a>
+      <% } else { %><span></span><% } %>
+      <div class="pg-idx"><%= page.current %> / <%= page.total %></div>
+      <% if (page.next) { %>
+        <a class="btn btn-outline" href="<%- url_for(page.next_link) %>"><%= __('pagination.next') %></a>
+      <% } else { %><span></span><% } %>
+    </nav>
+  <% } %>
+
+  <% if (page.current === 1 && theme.home && theme.home.show_tag_cloud !== false) { %>
+    <div class="section-head">
+      <h2><%= __('home.tags_heading') %></h2>
+      <div class="side"><%= __('home.tags_side') %></div>
+    </div>
+    <div class="tagcloud">
+      <% site.tags.sort('-length').each(function(t) {
+         const v = (theme.tag_chip && theme.tag_chip[t.name]) || 'default';
+         const cls = v === 'default' ? 'chip' : 'chip ' + v;
+      %>
+        <a class="<%= cls %>" href="<%- url_for(t.path) %>">#<%= t.name %><span class="chip-count"><%= t.length %></span></a>
+      <% }) %>
+    </div>
+  <% } %>
+
+</main>

@@ -1,9 +1,11 @@
-<!-- _partial/footer -->
-<p>
-  <span class="text-muted">Powered by:
-    <a class="text-muted" href="http://hexo.io/" target="_blank">Hexo</a>,
-    <a class="text-muted" href="http://github.com/yieme/hexo-theme-freewill/">Freewill</a>
-    &amp;
-    <a class="text-muted" href="http://bootswatch.com/" target="_blank">Bootswatch <small>v3.2</small></a>
-  </span>
-</p>
+<%#
+  footer.ejs
+-%>
+<footer class="ftr site">
+  <div class="ftr-row">
+    <div class="ftr-cr">
+      <div>Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a></div>
+      <div>&copy; 2015 - <%= new Date().getFullYear() %>&nbsp;&nbsp;<%= theme.site.brand %></div>
+    </div>
+  </div>
+</footer>

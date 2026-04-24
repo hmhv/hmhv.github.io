@@ -1,2 +1,53 @@
-<!-- archive -->
-<%- partial('_partial/archive', {pagination: config.archive}) %>
+<%#
+  archive.ejs — archives/, category/*, tag/* share this layout by default
+-%>
+<%
+  // Figure out context
+  let eyebrow = __('archive.eyebrow');
+  let title   = __('archive.title');
+  let count   = site.posts.length;
+  if (page.tag)      { eyebrow = __('tag.eyebrow');      title = '#' + page.tag;      count = page.total || page.posts.length; }
+  if (page.category) { eyebrow = __('category.eyebrow'); title = page.category;       count = page.total || page.posts.length; }
+
+  // group by year
+  const groups = {};
+  page.posts.each(function(p) {
+    const y = date(p.date, 'YYYY');
+    (groups[y] = groups[y] || []).push(p);
+  });
+  const years = Object.keys(groups).sort().reverse();
+%>
+<main class="site">
+
+  <div class="archive-hd">
+    <div class="eyebrow-xs"><%= eyebrow %></div>
+    <h1 class="archive-title"><%- title %></h1>
+    <p class="archive-sub"><%= count %> posts · 2026 –</p>
+  </div>
+
+  <% years.forEach(function(y) { %>
+    <div class="year-group">
+      <div class="year-label"><%= y %></div>
+      <% groups[y].forEach(function(p) {
+        const tn = p.tags && p.tags.length ? p.tags.data[0].name : '';
+        const v = (theme.tag_chip && theme.tag_chip[tn]) || 'default';
+        const cls = v === 'default' ? 'chip' : 'chip ' + v;
+      %>
+      <a class="arc-row" href="<%- url_for(p.path) %>">
+        <div class="d"><%= date(p.date, 'YYYY.MM.DD') %></div>
+        <div class="t"><%= p.title %></div>
+        <% if (tn) { %><span class="<%= cls %>">#<%= tn %></span><% } else { %><span></span><% } %>
+      </a>
+      <% }) %>
+    </div>
+  <% }) %>
+
+  <% if (page.total > 1) { %>
+    <nav class="paginator">
+      <% if (page.prev) { %><a class="btn btn-outline" href="<%- url_for(page.prev_link) %>"><%= __('pagination.prev') %></a><% } else { %><span></span><% } %>
+      <div class="pg-idx"><%= page.current %> / <%= page.total %></div>
+      <% if (page.next) { %><a class="btn btn-outline" href="<%- url_for(page.next_link) %>"><%= __('pagination.next') %></a><% } else { %><span></span><% } %>
+    </nav>
+  <% } %>
+
+</main>

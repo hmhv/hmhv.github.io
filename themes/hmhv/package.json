@@ -1,0 +1,23 @@
+{
+  "name": "hexo-theme-hmhv",
+  "version": "1.0.0",
+  "description": "hmhv — pastel-modern personal blog theme for Hexo. まぶしい、青春の記録。",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [
+    "hexo",
+    "theme",
+    "blog",
+    "japanese",
+    "pastel",
+    "minimal"
+  ],
+  "author": "hmhv",
+  "license": "MIT",
+  "hexo": {
+    "version": ">=5.0.0"
+  },
+  "engines": {
+    "node": ">=14"
+  }
+}

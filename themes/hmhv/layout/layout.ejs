@@ -1,12 +1,15 @@
+<%#
+  layout.ejs — top-level wrapper for every page
+-%>
+<!doctype html>
+<html lang="<%= config.language || 'ja' %>">
+<head>
 <%- partial('_partial/head') %>
- <body>
-  <%- partial('_partial/navigation') %>
-  <div class="container">
-  	<div class="content">
-    	 <%- body %>
-	  </div>
-    <footer> <%- partial('_partial/footer') %> </footer>
-  </div> <!-- container-narrow -->
-  <%- partial('_partial/after_footer') %>
+</head>
+<body data-layout="<%= page.layout || '' %>">
+  <%- partial('_partial/header') %>
+  <%- body %>
+  <%- partial('_partial/footer') %>
+  <script src="<%- url_for('/js/theme.js') %>" defer></script>
 </body>
 </html>

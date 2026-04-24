@@ -1,51 +1,23 @@
-<!-- _partial/article -->
-
-<%- partial('post/title', {item: item, index: false}) %>
-
-<div class="row <% if (post) { %>post<% } else { %>page<% } %>">
-
-    <% if (theme.widgets.length) { %>
-	<div class="col-md-9">
-	<% } else { %>
-	<div class="col-md-12">
-	<% } %>
-
-    <% if (post) { %>
-        <% if (item.date) { %>
-        <div class="meta-widget meta-align">
-        <i class="fa fa-clock-o"></i>
-        <%= item.date.format(config.date_format) %>
-        </div>
-        <% } %>
-	<% } %>
-
-	<% if (item.description) { %>
-		 <div class="alert alert-success description">
-			<i class="fa fa-info-circle"></i> <%- markdown(item.description) %>
-		</div> <!-- alert -->
-	<% } %>
-
-	<!-- content -->
-	<div class="mypage">
-	    <%- item.content %>
-	</div>
-
-    <a data-url="<%- page.permalink %>" data-id="<%= page._id %>" class="article-share-link">Share</a>
-    <br>
-        
-	<div>
-  	<center>
-	<%- partial('post/pagination', {page: item}) %>
-    </center>
-	</div>
-
-	<!-- comment -->
-	<%- partial('post/comment', {page: item}) %>
-
-	</div> <!-- col-md-9/col-md-12 -->
-
-    <% if (theme.widgets.length) { %>
-        <%- partial('sidebar') %>
-    <% } %>
-
-</div><!-- row -->
+<%#
+  article.ejs — post card used in list views.
+  Pass { post } as locals.
+-%>
+<%
+  const postTags = (post.tags && post.tags.length) ? post.tags.data : [];
+  const readMin = Math.max(1, Math.round((post.length || (post._content || '').length || 400) / ((theme.post && theme.post.read_time_cpm) || 500)));
+  const dateStr = date(post.date, 'YYYY.MM.DD');
+  const excerpt = post.excerpt ? strip_html(post.excerpt).trim() : (post.description || strip_html(post.content || '').slice(0, 80));
+-%>
+<a class="card" href="<%- url_for(post.path) %>">
+  <div class="card-meta">
+    <span><%= dateStr %></span>
+    <span>·</span>
+    <span><%= readMin %> min</span>
+    <% postTags.forEach(function(t) {
+         const v = (theme.tag_chip && theme.tag_chip[t.name]) || 'default';
+         const cls = v === 'default' ? 'chip' : 'chip ' + v;
+    %><span class="<%= cls %>">#<%= t.name %></span><% }) %>
+  </div>
+  <h3 class="card-title"><%= post.title %></h3>
+  <% if (excerpt) { %><p class="card-excerpt"><%= excerpt %></p><% } %>
+</a>

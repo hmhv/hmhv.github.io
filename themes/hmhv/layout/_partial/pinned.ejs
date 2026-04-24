@@ -1,0 +1,19 @@
+<%#
+  pinned.ejs — featured pastel gradient card.
+  Requires theme.home.pinned_post to be set to a post slug.
+-%>
+<%
+  let pin = null;
+  if (theme.home && theme.home.pinned_post) {
+    pin = site.posts.find({ slug: theme.home.pinned_post }).first();
+  }
+-%>
+<% if (pin) { %>
+<a class="stkcard" href="<%- url_for(pin.path) %>">
+  <span class="pin"><%= __('home.pinned') %></span>
+  <div class="card-meta"><span><%= date(pin.date, 'YYYY.MM · welcome') %></span></div>
+  <h3 class="card-title"><%= pin.title %></h3>
+  <% const pe = pin.excerpt ? strip_html(pin.excerpt).trim() : strip_html(pin.content || '').slice(0, 120); %>
+  <% if (pe) { %><p class="card-excerpt"><%= pe %></p><% } %>
+</a>
+<% } %>

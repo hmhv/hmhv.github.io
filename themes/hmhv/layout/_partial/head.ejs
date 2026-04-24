@@ -1,87 +1,40 @@
-<!DOCTYPE HTML><!-- _partial/head -->
-<html>
-<head>
-  <meta charset="utf-8">
-  <%
-  var title = [];
-  if (page.current > 1) title.push(__('page', page.current));
-  if (page.title) title.push(page.title);
-  if (page.category) title.push(page.category);
-  if (page.tag) title.push(page.tag);
-  if (page.archive){
-    if (page.year) title.push(__('archive_b', page.year + (page.month ? '/' + page.month : '')));
-    else title.push(__('archive_a'));
-  }
-  title.push(config.title);
-  %>
-  <title><%= title.join(' | ') %></title>
-  <% if (config.author){ %>
-    <meta name="author" content="<%= config.author %>">
-  <% } %>
-    
-  <% if (page.description){ %>
-  <meta name="description" content="<%= page.description %>">
-  <meta name="og:description" content="<%= page.description %>">
-  <% } else if (page.excerpt){ %>
-  <meta name="description" content="<%= strip_html(page.excerpt).replace(/^\s*/, '').replace(/\s*$/, '') %>">
-  <meta name="og:description" content="<%= strip_html(page.excerpt).replace(/^\s*/, '').replace(/\s*$/, '') %>">
-  <% } else if (page.content){ %>
-  <meta name="description" content="<%= strip_html(page.content).replace(/^\s*/, '').replace(/\s*$/, '').substring(0, 150) %>">
-  <meta name="og:description" content="<%= strip_html(page.content).replace(/^\s*/, '').replace(/\s*$/, '').substring(0, 150) %>">
-  <% } else if (config.description){ %>
-  <meta name="description" content="<%= config.description %>">
-  <meta name="og:description" content="<%= config.description %>">
-  <% } %>
-    
-  <% if (page.keywords){ %>
-    <meta name="keywords" content="<%= page.keywords %>">
-  <% } else if (config.keywords) { %>
-    <meta name="keywords" content="<%= config.keywords %>">
-  <% } %>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<%#
+  head.ejs — <head> contents
+-%>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="<%= page.description || config.description || theme.site.hero_sub %>">
+<meta name="author" content="<%= config.author || theme.site.brand %>">
 
-  <% if (page.title){ %>
-    <meta property="og:title" content="<%= page.title %>">
-  <% } else { %>
-    <meta property="og:title" content="<%= title.join(' | ') %>">
-  <% } %>
-  <% if (page.path == ''){ %>
-    <meta property="og:type" content="website">
-  <% } else { %>
-    <meta property="og:type" content="article">
-  <% } %>
-  <meta property="og:url" content="<%= url.replace(/index.html/, '') %>">
-  <meta property="og:site_name" content="<%= config.title %>">
+<% if (is_post()) { %>
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="<%= date_xml(page.date) %>">
+<% } else { %>
+<meta property="og:type" content="website">
+<% } %>
+<meta property="og:title" content="<%= page.title || config.title %>">
+<meta property="og:description" content="<%= page.description || config.description || theme.site.hero_sub %>">
+<meta property="og:site_name" content="<%= config.title %>">
 
-  <% if(page.cover) { %>
-    <meta property="og:image" content="<%= config.url + page.cover %>">
-  <% } else { %>
-    <meta property="og:image" content="<%= config.url + config.cover %>">
-  <% } %>
-  <% if (config.fbid){ %>
-    <meta property="fb:app_id" content="<%= config.fbid %>">
-  <% } %>
+<title>
+<% if (page.title && !is_home()) { %><%= page.title %> — <%= config.title %><% } else { %><%= config.title %><% if (config.subtitle) { %> — <%= config.subtitle %><% } %><% } %>
+</title>
 
-  <% if (theme.rss){ %>
-    <link rel="alternative" href="<%- config.root %><%- theme.rss %>" title="<%= config.title %>" type="application/atom+xml">
-  <% } %>
-  <% if (theme.favicon){ %>
-    <link rel="shortcut icon" href="<%- config.root %><%- theme.favicon %>">
-  <% } %>
+<% if (theme.favicon) { %>
+<link rel="icon" href="<%- url_for(theme.favicon) %>">
+<% } %>
 
-  <% if (theme.bootswatch){ %>
-  <link rel="stylesheet" href="<%- config.root %>css/bootstrap.<%- theme.bootswatch %>.min.css" media="screen" type="text/css">
-  <% } else { %>
-  <link rel="stylesheet" href="<%- config.root %>css/bootstrap.min.css" media="screen" type="text/css">
-  <% } %>
-  <link rel="stylesheet" href="<%- config.root %>css/font-awesome.min.css" media="screen" type="text/css">
-  <link rel="stylesheet" href="<%- config.root %>css/style.css" media="screen" type="text/css">
-  <link rel="stylesheet" href="<%- config.root %>css/highlight.css" media="screen" type="text/css">
-  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+<% if (theme.fonts && theme.fonts.enable) { %>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?<%- theme.fonts.families.map(f => 'family=' + f).join('&') %>&display=swap">
+<% } %>
 
-  <script src="<%- config.root %>js/jquery-2.0.3.min.js"></script>
+<script>
+(function(){try{var s=localStorage.getItem('hmhv-theme');var m=s||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',m);}catch(e){}})();
+</script>
 
-  <!-- analytics -->
-  <%- partial('post/google_analytics') %>
-
-</head>
+<link rel="stylesheet" href="<%- url_for('/css/style.css') %>">
+<% if (config.feed && config.feed.path) { %>
+<link rel="alternate" type="application/atom+xml" title="<%= config.title %>" href="<%- url_for(config.feed.path) %>">
+<% } %>

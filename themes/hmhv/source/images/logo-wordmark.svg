@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 120" fill="none">
+  
+  <g transform="translate(60,60)">
+    <circle r="34" fill="#ffbf2e" stroke="#0b1a2b" stroke-width="3"></circle>
+    <g stroke="#0b1a2b" stroke-width="3" stroke-linecap="round">
+      <line x1="0" y1="-46" x2="0" y2="-56"></line>
+      <line x1="0" y1="46" x2="0" y2="56"></line>
+      <line x1="-46" y1="0" x2="-56" y2="0"></line>
+      <line x1="46" y1="0" x2="56" y2="0"></line>
+      <line x1="-33" y1="-33" x2="-40" y2="-40"></line>
+      <line x1="33" y1="33" x2="40" y2="40"></line>
+      <line x1="-33" y1="33" x2="-40" y2="40"></line>
+      <line x1="33" y1="-33" x2="40" y2="-40"></line>
+    </g>
+    <circle r="10" fill="#1e8bff"></circle>
+  </g>
+  
+  <text x="130" y="78" font-family="&#39;Zen Kaku Gothic New&#39;,&#39;Hiragino Kaku Gothic ProN&#39;,sans-serif" font-size="64" font-weight="900" fill="#0b1a2b" letter-spacing="-2">hmhv</text>
+</svg>

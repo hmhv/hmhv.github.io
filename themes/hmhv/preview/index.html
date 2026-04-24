@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>hmhv — まぶしい、青春の記録。 (hexo theme preview)</title>
+  <link rel="icon" href="../source/images/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Shippori+Mincho:wght@400;500;700&family=Outfit:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="../source/css/style.css">
+  <style>
+    /* preview-only: tab bar to switch between "routes" */
+    .ptabs {
+      position: fixed; top: 12px; right: 12px; z-index: 100;
+      display: flex; gap: 6px; background: #fff;
+      border: 1px solid #e3e6ee; border-radius: 999px;
+      padding: 4px; box-shadow: 0 4px 16px -8px rgba(45,58,79,0.2);
+      font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    }
+    .ptabs button { border: none; background: transparent; padding: 6px 12px; border-radius: 999px; cursor: pointer; color: #5a6a82; font-family: inherit; font-size: inherit; }
+    .ptabs button.on { background: #a8d8ff; color: #2d3a4f; }
+    .ptabs .lbl { padding: 6px 10px 6px 12px; color: #8794a8; }
+    .pview { display: none; }
+    .pview.on { display: block; }
+  </style>
+</head>
+<body>
+
+<div class="ptabs">
+  <span class="lbl">hexo-theme-hmhv · preview</span>
+  <button data-view="home" class="on">home</button>
+  <button data-view="post">post</button>
+  <button data-view="archive">archive</button>
+  <button data-view="tag">tag</button>
+  <button data-view="404">404</button>
+</div>
+
+<!-- ============ HEADER (shared) ============ -->
+<header class="hdr">
+  <div class="site hdr-inner">
+    <a class="hdr-logo" href="#">
+      <img src="../source/images/logo-mark.svg" alt="hmhv">
+      <span class="wm">hmhv</span>
+    </a>
+    <nav class="hdr-nav">
+      <a class="on" href="#" data-goto="home">home</a>
+      <a href="#" data-goto="archive">archive</a>
+      <a href="#" data-goto="post">about</a>
+      <a href="#">rss</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ============ HOME ============ -->
+<div class="pview on" data-view="home">
+<main class="site">
+
+  <section class="hero">
+    <div class="hero-sun"></div>
+    <div class="hero-vol">2026 · vol.07</div>
+    <div class="hero-eyebrow">hmhv blog —</div>
+    <h1 class="hero-title"><span class="mk">まぶしい</span>、<br>青春の記録。</h1>
+    <p class="hero-sub">a record of dazzling youth — notes, photos, and sometimes nothing at all. 気まぐれに更新します。</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#" data-goto="archive">読むものを探す
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+      <a class="btn btn-soft" href="#">subscribe</a>
+    </div>
+  </section>
+
+  <div class="pinned-wrap">
+    <a class="stkcard" href="#" data-goto="post">
+      <span class="pin">PINNED</span>
+      <div class="card-meta"><span>2026.06 · welcome</span></div>
+      <h3 class="card-title">はじめに — まぶしい日々を残すために</h3>
+      <p class="card-excerpt">このブログについて、これから書きたいこと、書きたくないこと。</p>
+    </a>
+  </div>
+
+  <div class="section-head">
+    <h2>最近の<span class="marker">記録</span></h2>
+    <div class="side">recent · 6 posts</div>
+  </div>
+
+  <div class="col-list">
+    <a class="card" href="#" data-goto="post">
+      <div class="card-meta"><span>2026.07.14</span><span>·</span><span>4 min</span><span class="chip sun">#summer</span></div>
+      <h3 class="card-title">July, again — the year the cicadas came early</h3>
+      <p class="card-excerpt">午後3時の蝉の声、自販機のラムネ、図書館までの坂道。今年もまた、眩しい季節が来た。</p>
+    </a>
+    <a class="card" href="#" data-goto="post">
+      <div class="card-meta"><span>2026.07.08</span><span>·</span><span>3 min</span><span class="chip sky">#photos</span></div>
+      <h3 class="card-title">Blue hour, before the train came</h3>
+      <p class="card-excerpt">プラットホームで電車を待っていた10分間の空の色のはなし。</p>
+    </a>
+    <a class="card" href="#" data-goto="post">
+      <div class="card-meta"><span>2026.07.02</span><span>·</span><span>2 min</span><span class="chip blush">#diary</span></div>
+      <h3 class="card-title">今日は、なんでもない一日だった</h3>
+      <p class="card-excerpt">書くことがない日のことも、ちゃんと書き残しておきたいと思った。</p>
+    </a>
+    <a class="card" href="#" data-goto="post">
+      <div class="card-meta"><span>2026.06.24</span><span>·</span><span>6 min</span><span class="chip lilac">#tokyo</span></div>
+      <h3 class="card-title">Aimless walks around Nakameguro</h3>
+      <p class="card-excerpt">梅雨の合間、傘を持たずに歩いた3時間のメモ。</p>
+    </a>
+    <a class="card" href="#" data-goto="post">
+      <div class="card-meta"><span>2026.06.11</span><span>·</span><span>3 min</span><span class="chip mint">#notes</span></div>
+      <h3 class="card-title">The window seat at the library</h3>
+      <p class="card-excerpt">窓際の席がいつも空いている理由を、勝手に考えていた。</p>
+    </a>
+    <a class="card" href="#" data-goto="post">
+      <div class="card-meta"><span>2026.05.30</span><span>·</span><span>2 min</span><span class="chip mint">#notes</span></div>
+      <h3 class="card-title">今年のラムネ記録 (5月時点)</h3>
+      <p class="card-excerpt">今年飲んだラムネを全部記録しておくプロジェクトを始めました。</p>
+    </a>
+  </div>
+
+  <div class="section-head">
+    <h2>tags</h2>
+    <div class="side">browse by topic</div>
+  </div>
+  <div class="tagcloud">
+    <a class="chip sun"   href="#" data-goto="tag">#summer<span class="chip-count">8</span></a>
+    <a class="chip sky"   href="#" data-goto="tag">#photos<span class="chip-count">6</span></a>
+    <a class="chip blush" href="#" data-goto="tag">#diary<span class="chip-count">12</span></a>
+    <a class="chip lilac" href="#" data-goto="tag">#tokyo<span class="chip-count">5</span></a>
+    <a class="chip mint"  href="#" data-goto="tag">#notes<span class="chip-count">9</span></a>
+    <a class="chip" href="#" data-goto="tag">#music<span class="chip-count">3</span></a>
+    <a class="chip" href="#" data-goto="tag">#books<span class="chip-count">4</span></a>
+    <a class="chip" href="#" data-goto="tag">#film<span class="chip-count">2</span></a>
+  </div>
+
+</main>
+</div>
+
+<!-- ============ POST ============ -->
+<div class="pview" data-view="post">
+<main class="site">
+  <div class="reader">
+    <a class="back" href="#" data-goto="home">← back</a>
+    <div class="post-hd">
+      <div class="eyebrow">JOURNAL · 2026.07.14</div>
+      <h1>July, again — the year the cicadas came early</h1>
+      <div class="post-meta">
+        <span>2026.07.14</span><span>·</span><span>4 min read</span>
+        <span class="chip sun">#summer</span>
+      </div>
+    </div>
+    <article class="prose">
+      <p>午後3時。図書館の帰り道で、今年はじめての蝉の声を聞いた。去年より2週間、早い気がする。</p>
+      <p>自販機で買ったラムネは、指が痛くなるくらい冷たくて、それがうれしかった。坂道の途中で立ち止まって、半分くらい一気に飲んだ。</p>
+      <blockquote>眩しすぎて目を細める、あの夏のことを、まだ覚えている。</blockquote>
+      <p>今年の夏、なにを書き残せるだろう。きっとまた、なんでもない日のことを書くんだと思う。それでいい、と今は思う。</p>
+      <h2>この日のメモ</h2>
+      <ul>
+        <li>ラムネ、今月4本目</li>
+        <li>坂道の途中のねこ、また会いたい</li>
+        <li>図書館の窓際の席、今日は空いてた</li>
+        <li>帰り道、ひまわりが咲きはじめてた</li>
+      </ul>
+      <p>また書きます。</p>
+    </article>
+    <div class="post-nav">
+      <a class="card" href="#">
+        <div class="pn-lbl">← newer</div>
+        <div class="pn-ttl">Blue hour, before the train came</div>
+      </a>
+      <a class="card pn-right" href="#">
+        <div class="pn-lbl">older →</div>
+        <div class="pn-ttl">今日は、なんでもない一日だった</div>
+      </a>
+    </div>
+    <a class="back" href="#" data-goto="home">← back to home</a>
+  </div>
+</main>
+</div>
+
+<!-- ============ ARCHIVE ============ -->
+<div class="pview" data-view="archive">
+<main class="site">
+  <div class="archive-hd">
+    <div class="eyebrow-xs">ARCHIVE</div>
+    <h1 class="archive-title">全ての<span class="marker">記録</span></h1>
+    <p class="archive-sub">6 posts · 2026 –</p>
+  </div>
+  <div class="year-group">
+    <div class="year-label">2026</div>
+    <a class="arc-row" href="#" data-goto="post"><div class="d">2026.07.14</div><div class="t">July, again — the year the cicadas came early</div><span class="chip sun">#summer</span></a>
+    <a class="arc-row" href="#" data-goto="post"><div class="d">2026.07.08</div><div class="t">Blue hour, before the train came</div><span class="chip sky">#photos</span></a>
+    <a class="arc-row" href="#" data-goto="post"><div class="d">2026.07.02</div><div class="t">今日は、なんでもない一日だった</div><span class="chip blush">#diary</span></a>
+    <a class="arc-row" href="#" data-goto="post"><div class="d">2026.06.24</div><div class="t">Aimless walks around Nakameguro</div><span class="chip lilac">#tokyo</span></a>
+    <a class="arc-row" href="#" data-goto="post"><div class="d">2026.06.11</div><div class="t">The window seat at the library</div><span class="chip mint">#notes</span></a>
+    <a class="arc-row" href="#" data-goto="post"><div class="d">2026.05.30</div><div class="t">今年のラムネ記録 (5月時点)</div><span class="chip mint">#notes</span></a>
+  </div>
+</main>
+</div>
+
+<!-- ============ TAG ============ -->
+<div class="pview" data-view="tag">
+<main class="site">
+  <div class="archive-hd">
+    <div class="eyebrow-xs">TAG</div>
+    <h1 class="archive-title">#summer</h1>
+    <p class="archive-sub">8 posts tagged</p>
+  </div>
+  <div class="year-group">
+    <div class="year-label">2026</div>
+    <a class="arc-row" href="#" data-goto="post"><div class="d">2026.07.14</div><div class="t">July, again — the year the cicadas came early</div><span class="chip sun">#summer</span></a>
+    <a class="arc-row" href="#" data-goto="post"><div class="d">2026.08.03</div><div class="t">The 30th ramune of the summer</div><span class="chip sun">#summer</span></a>
+    <a class="arc-row" href="#" data-goto="post"><div class="d">2026.08.14</div><div class="t">花火の音が聞こえた夜のこと</div><span class="chip sun">#summer</span></a>
+  </div>
+</main>
+</div>
+
+<!-- ============ 404 ============ -->
+<div class="pview" data-view="404">
+<main class="site">
+  <div class="reader" style="padding: 120px 0 80px; text-align: center;">
+    <div class="eyebrow-xs" style="font-family:'Outfit',sans-serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#6fb8ee;">404</div>
+    <h1 style="font-family:'Zen Kaku Gothic New',sans-serif;font-weight:900;font-size:72px;letter-spacing:-0.03em;margin:14px 0 12px;"><span class="mk">まいご</span>になった？</h1>
+    <p style="font-family:'Zen Kaku Gothic New',sans-serif;font-size:17px;line-height:1.8;color:#5a6a82;max-width:420px;margin:0 auto 32px;">そのページは、どこかに行ってしまったみたいです。<br>You've found a page that doesn't exist (or moved somewhere).</p>
+    <a class="btn btn-primary" href="#" data-goto="home">← back home</a>
+  </div>
+</main>
+</div>
+
+<!-- ============ FOOTER (shared) ============ -->
+<footer class="ftr site">
+  <div class="ftr-row">
+    <div class="ftr-links">
+      <a href="#">twitter</a><a href="#">instagram</a><a href="#">rss</a><a href="#">email</a>
+    </div>
+    <div class="ftr-cr">© 2026 hmhv · まぶしい、青春の記録。</div>
+  </div>
+</footer>
+
+<script>
+  // Simple view router for preview
+  const tabs = document.querySelectorAll('.ptabs button');
+  const views = document.querySelectorAll('.pview');
+  const navLinks = document.querySelectorAll('.hdr-nav a');
+
+  function setView(v) {
+    tabs.forEach(t => t.classList.toggle('on', t.dataset.view === v));
+    views.forEach(el => el.classList.toggle('on', el.dataset.view === v));
+    // update header active state for home/archive
+    navLinks.forEach(a => {
+      const g = a.dataset.goto;
+      a.classList.toggle('on', (v === 'home' && g === 'home') || (v === 'archive' && g === 'archive'));
+    });
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }
+
+  tabs.forEach(t => t.addEventListener('click', () => setView(t.dataset.view)));
+  document.querySelectorAll('[data-goto]').forEach(el => {
+    el.addEventListener('click', e => { e.preventDefault(); setView(el.dataset.goto); });
+  });
+</script>
+
+</body>
+</html>

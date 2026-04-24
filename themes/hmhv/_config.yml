@@ -1,101 +1,87 @@
-bootswatch: lumen
+# =========================================================
+# hexo-theme-hmhv — まぶしい、青春の記録。
+# Pastel-modern personal blog theme
+# =========================================================
 
-slogan: "hmhv's blog"
+# ----- Site identity -----
+site:
+  # Shown in the header next to the logo mark
+  brand: hmhv
+  # Main tagline on the hero (accepts HTML; <span class="mk"> adds the apricot marker)
+  hero_title: '<span class="mk">まぶしい</span>、<br>青春の記録。'
+  # Latin / eyebrow line above the hero title
+  hero_eyebrow: 'hmhv blog —'
+  # Sub copy under the hero title
+  hero_sub: 'a record of dazzling youth — notes, photos, and sometimes nothing at all. 気まぐれに更新します。'
+  # Top-right volume stamp ('2026 · vol.07' style). Leave blank to hide.
+  hero_volume: '2026 · vol.07'
 
+# ----- Navigation -----
+# Key = label shown. Value = url (absolute or root-relative).
 menu:
-  - title: Archives
-    url: archives
-    intro: "Archives"
-    icon: "fa fa-archive"
-  - title: Apps
-    url: apps
-    intro: "app gallery"
-    icon: "fa fa-cubes"
-  - title: More
-    intro: "infomation"
-    icon: "fa fa-info-circle"
-    dropdown: true
-    submenu:
-    - title: "Privacy Policy"
-      url: privacy
-      intro: "Privacy Policy"
-      icon: "fa fa-lock"
-    - title: "About me"
-      url: aboutme
-      intro: "About me"
-      icon: "fa fa-user"
-    - title: "Qiita"
-      fullurl: true
-      url: "http://qiita.com/hongmhoon"
-      intro: "Qiita"
-      icon: "fa fa-circle-o"
-    - title: "github"
-      fullurl: true
-      url: "https://github.com/hmhv"
-      intro: "github"
-      icon: "fa fa-github"
-    - title: Linkedin
-      fullurl: true
-      url: "http://jp.linkedin.com/in/hongmhoon"
-      intro: Linkedin
-      icon: "fa fa-linkedin-square"
-    - title: Contact
-      fullurl: true
-      url: "mailto:admin@hmhv.info"
-      intro: "Contact"
-      icon: "fa fa-paper-plane"
+  Home:     /
+  Archives: /archives/
+  Tags:     /tags/
+  Apps:     /apps/
+  About:    /about/
 
-apps:
-  - title: "MP3 Folders"
-    url: /apps/mp3folders/
-    intro: "MP3 Folders"
-    image: "/images/mp3folders.png"
-  - title: "Ready Tweet 2"
-    url: /apps/readytweet2/
-    intro: "Ready Tweet 2"
-    image: "/images/readytweet.png"
-  - title: "Cocoa Stars"
-    url: /apps/ioscontrols/
-    intro: "Cocoa Stars"
-    image: "/images/ioscontrols.png"
-  - title: "ヤマスキ"
-    url: /apps/yamasuki/
-    intro: "ヤマスキ"
-    image: "/images/yamasuki.png"
-  - title: "毎日イベント"
-    url: /apps/eventviewer/
-    intro: "毎日イベント"
-    image: "/images/eventviewer.png"
-  - title: "Pass Photo"
-    url: /apps/passphoto/
-    intro: "Pass Photo"
-    image: "/images/passphoto.png"
-  - title: "0=零"
-    url: /apps/kanjinumerals/
-    intro: "0=零"
-    image: "/images/kanjinumerals.png"
+# ----- Social & footer links -----
+social:
+  twitter:   '#'
+  instagram: '#'
+  rss:       /atom.xml
+  email:     'mailto:hello@example.com'
 
-support:
-  - title: "KidsNote"
-    url: http://www.kidsnote.com/
-    intro: "KidsNote"
-    image: "/images/kidsnote.jpeg"
-  - title: "sweetie"
-    url: http://sweetieapp.com/
-    intro: "sweetie"
-    image: "/images/sweetie.png"
-  - title: "HiNative"
-    url: http://hinative.com/
-    intro: "HiNative"
-    image: "/images/hinative.png"
+footer:
+  copyright: '© 2026 hmhv · まぶしい、青春の記録。'
 
-widgets:
-- tagcloud
-- recent_posts
-- apps
-- support
+# ----- Home layout -----
+home:
+  # Show big hero block on index page
+  hero: false
+  # Slug of a post to feature as "PINNED" above the recent list. Leave blank to disable.
+  pinned_post: ''
+  # Posts per page on home (falls back to site index_generator.per_page)
+  per_page: 8
+  # Show tag cloud below the post list
+  show_tag_cloud: true
 
-rss: false
-fancybox: false
-favicon: favicon.ico
-google_analytics: UA-40299127-1
+# ----- Post page -----
+post:
+  # Show prev/next post nav at the bottom of a post
+  show_nav: true
+  # Show "read time" in meta row (minutes, rough estimate)
+  show_read_time: true
+  # ~chars-per-minute for JP/EN mixed prose
+  read_time_cpm: 500
+
+# ----- Archive page -----
+archive:
+  # Group list headings by year ("2026" big watermark)
+  group_by_year: true
+
+# ----- Color / tag chip variants -----
+# Map tag name → chip variant (sky / sun / blush / mint / lilac / default)
+# Leave unmapped tags styled as "default".
+tag_chip:
+  summer: sun
+  photos: sky
+  diary:  blush
+  tokyo:  lilac
+  notes:  mint
+
+# ----- Assets -----
+# Set to a relative path in source/images/ OR a full URL. Empty = hide icon, text-only.
+logo: ''
+favicon: /images/favicon.svg
+
+# ----- Fonts (Google Fonts) -----
+# Change these to swap the type system. Families must exist on Google Fonts.
+fonts:
+  enable: true
+  families:
+    - 'Zen+Kaku+Gothic+New:wght@400;500;700;900'
+    - 'Shippori+Mincho:wght@400;500;700'
+    - 'Outfit:wght@300;400;500;700'
+    - 'JetBrains+Mono:wght@400;500'
+    - 'Playfair+Display:ital,wght@1,500;1,600;1,700'

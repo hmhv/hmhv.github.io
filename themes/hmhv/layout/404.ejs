@@ -1,0 +1,12 @@
+<%#
+  404.ejs — simple not-found page.
+  Enable by creating source/404.md with `layout: 404`.
+-%>
+<main class="site">
+  <div class="reader" style="padding: 120px 0 80px; text-align: center;">
+    <div class="eyebrow-xs" style="font-family: var(--font-latin); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--pastel-sky-d);">404</div>
+    <h1 style="font-family: var(--font-jp); font-weight: 900; font-size: 72px; letter-spacing: -0.03em; margin: 14px 0 12px;"><span class="mk">まいご</span>になった？</h1>
+    <p style="font-family: var(--font-jp); font-size: 17px; line-height: 1.8; color: var(--ink-2); max-width: 420px; margin: 0 auto 32px;">そのページは、どこかに行ってしまったみたいです。<br>You've found a page that doesn't exist (or moved somewhere).</p>
+    <a class="btn btn-primary" href="<%- url_for('/') %>">← back home</a>
+  </div>
+</main>
