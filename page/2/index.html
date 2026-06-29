@@ -73,10 +73,23 @@ hmhv
 
   <div class="section-head">
     <h2>最近の<span class="marker">記録</span></h2>
-    <div class="side">recent · 49 posts</div>
+    <div class="side">recent · 50 posts</div>
   </div>
 
   <div class="col-list">
+    
+      <a class="card" href="/2022/04/use-asdf/">
+  <div class="card-meta">
+    <span>2022.04.16</span>
+    <span>·</span>
+    <span>6 min</span>
+    <span class="chip">#asdf</span>
+  </div>
+  <h3 class="card-title">asdfを使ってみる</h3>
+  <p class="card-excerpt">昨日新しいMacにrubyのインストールのためchrubyを利用したことをiOS開発環境作成のためのRuby設定で書いたけどnodejsやpythonもまた個別のバージョン管理ツールを導入しようとすると面倒くさくなり、以前聞いたことのある一つのツールで色々な言語のバージョン管理ができるanyenv調べてみると今はasdfの方がもっと使われてるっぽいのでasdfを使ってruby, nodejs, pythonを入れてみたのでメモ。
+asdfをインストール</p>
+</a>
+
     
       <a class="card" href="/2022/04/setup-ruby-for-ios/">
   <div class="card-meta">
@@ -186,19 +199,6 @@ Xcodeで選択</p>
   <h3 class="card-title">UITextViewタップ時にlinkかの確認</h3>
   <p class="card-excerpt">UITextViewでのタップがattributedTextでNSLinkAttributeNameを指定したリンク文のタップか確認
 1234567891011</p>
-</a>
-
-    
-      <a class="card" href="/2018/01/disable-uitextvew-drag/">
-  <div class="card-meta">
-    <span>2018.01.10</span>
-    <span>·</span>
-    <span>1 min</span>
-    <span class="chip">#iOS</span><span class="chip">#UITextView</span><span class="chip">#UITextDragDelegate</span>
-  </div>
-  <h3 class="card-title">UITextViewのDragを無効にする</h3>
-  <p class="card-excerpt">UITextViewのUITextDragDelegateのメッソド[textDraggableView: textDraggableView: itemsForDrag:dragRequest]で空配列を返すiOS10以下も対応中なら@available(iOS 11.0, *),  NS_AVAILABLE_IOS(11.0) も追加
-12345678910111213- (void)viewDidLoad&amp;#123;    [super viewDidLoad];    self.textView = [[UITextView alloc] initWithFrame:CGRectZero];    if (@available(iOS 11.0, *)) &amp;#123;        self.textView.textDragDelegate = self;    &amp;#125;&amp;#125;- (NSArray&amp;lt;UIDragItem *&amp;gt; *)textDraggableView:(UIView&amp;lt;UITextDraggable&amp;gt; *)textDraggableView itemsForDrag:(id&amp;lt;UITextDragRequest&amp;gt;)dragRequest NS_AVAILABLE_IOS(11.0)&amp;#123;    return @[];&amp;#125;</p>
 </a>
 
     

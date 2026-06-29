@@ -73,10 +73,23 @@ hmhv
 
   <div class="section-head">
     <h2>最近の<span class="marker">記録</span></h2>
-    <div class="side">recent · 49 posts</div>
+    <div class="side">recent · 50 posts</div>
   </div>
 
   <div class="col-list">
+    
+      <a class="card" href="/2018/01/disable-uitextvew-drag/">
+  <div class="card-meta">
+    <span>2018.01.10</span>
+    <span>·</span>
+    <span>1 min</span>
+    <span class="chip">#iOS</span><span class="chip">#UITextView</span><span class="chip">#UITextDragDelegate</span>
+  </div>
+  <h3 class="card-title">UITextViewのDragを無効にする</h3>
+  <p class="card-excerpt">UITextViewのUITextDragDelegateのメッソド[textDraggableView: textDraggableView: itemsForDrag:dragRequest]で空配列を返すiOS10以下も対応中なら@available(iOS 11.0, *),  NS_AVAILABLE_IOS(11.0) も追加
+12345678910111213- (void)viewDidLoad&amp;#123;    [super viewDidLoad];    self.textView = [[UITextView alloc] initWithFrame:CGRectZero];    if (@available(iOS 11.0, *)) &amp;#123;        self.textView.textDragDelegate = self;    &amp;#125;&amp;#125;- (NSArray&amp;lt;UIDragItem *&amp;gt; *)textDraggableView:(UIView&amp;lt;UITextDraggable&amp;gt; *)textDraggableView itemsForDrag:(id&amp;lt;UITextDragRequest&amp;gt;)dragRequest NS_AVAILABLE_IOS(11.0)&amp;#123;    return @[];&amp;#125;</p>
+</a>
+
     
       <a class="card" href="/2015/11/crashlytics-with-more-info/">
   <div class="card-meta">
@@ -96,7 +109,7 @@ hmhv
     <span>2015.11.10</span>
     <span>·</span>
     <span>3 min</span>
-    <span class="chip">#iOS</span><span class="chip">#Crashlytics</span><span class="chip">#Fabric</span>
+    <span class="chip">#iOS</span><span class="chip">#Fabric</span><span class="chip">#Crashlytics</span>
   </div>
   <h3 class="card-title">Fabric、Crashlyticsでエラー</h3>
   <p class="card-excerpt">Fabricのフレームワーク自動更新とgitブランチ移動のタイミングがよくなかった場合などFabric、Crashlytics.frameworkがちゃんとあるのにエラーになる時の解決策</p>
@@ -190,19 +203,6 @@ Force Properties</p>
   <h3 class="card-title">Objective-Cのメッセージフォワード順</h3>
   <p class="card-excerpt">12345resolveInstanceMethod - nonoforwardingTargetForSelector - nonomethodSignatureForSelector - nonoforwardInvocation - nonodoesNotRecognizeSelector - nono
 上の順で呼ばれるので必要なところに処理を入れる</p>
-</a>
-
-    
-      <a class="card" href="/2015/05/import-module-when-ios-debug/">
-  <div class="card-meta">
-    <span>2015.05.18</span>
-    <span>·</span>
-    <span>1 min</span>
-    <span class="chip">#iOS</span><span class="chip">#debug</span>
-  </div>
-  <h3 class="card-title">iOSデバッグ時のモジュールインポート</h3>
-  <p class="card-excerpt">iOSデバッグ時にたまに直面する問題
-123(lldb) p self.view.window.boundserror: property &amp;#x27;bounds&amp;#x27; not found on object of type &amp;#x27;id&amp;#x27;error: 1 errors parsing expression</p>
 </a>
 
     
