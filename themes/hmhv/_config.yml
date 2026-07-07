@@ -73,7 +73,7 @@ tag_chip:
 # ----- Assets -----
 # Set to a relative path in source/images/ OR a full URL. Empty = hide icon, text-only.
 logo: ''
-favicon: /images/favicon.svg
+favicon: /favicon.ico
 
 # ----- Fonts (Google Fonts) -----
 # Change these to swap the type system. Families must exist on Google Fonts.

@@ -7,8 +7,6 @@ Quiet, diary-style blog layout with a sun-washed pastel palette, Japanese-first
 typography (Zen Kaku Gothic New / Shippori Mincho / Outfit), apricot marker
 highlights, and soft pinned feature cards.
 
-![theme preview](source/images/logo-mark.svg)
-
 ---
 
 ## Install
@@ -92,8 +90,8 @@ tag_chip:
   tokyo:  lilac
   notes:  mint
 
-logo:    /images/logo-mark.svg
-favicon: /images/favicon.svg
+logo:    ''
+favicon: /favicon.ico
 ```
 
 All keys have sensible defaults — nothing is strictly required.
