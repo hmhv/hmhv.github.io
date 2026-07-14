@@ -1,4 +1,4 @@
-title: 日常の「あれ、いくつだっけ」を消す無料ツール27選（Benri.dev・計算/生活）
+title: 日常の「あれ、いくつだっけ」を消す無料ツール27選
 category:
   - Tech
 tags:

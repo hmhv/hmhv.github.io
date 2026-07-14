@@ -1,4 +1,4 @@
-title: 開発の小作業をタブ1枚で片づける無料ツール28選（Benri.dev・開発者）
+title: 開発の小作業をタブ1枚で片づける無料ツール28選
 category:
   - Tech
 tags:
