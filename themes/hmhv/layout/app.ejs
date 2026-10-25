@@ -1,0 +1,24 @@
+<main class="site">
+  <div class="reader">
+    <div class="app-hd">
+      <img class="app-icon" src="<%- url_for(page.icon) %>" alt="<%= page.title %>" width="112" height="112">
+      <div class="app-hd-text">
+        <h1><%= page.title %></h1>
+        <% if (page.subtitle) { %><p class="app-sub"><%= page.subtitle %></p><% } %>
+        <a class="app-store" href="<%- page.appstore %>" target="_blank" rel="noopener"><img src="<%- url_for('/images/appstore.png') %>" alt="App Store からダウンロード"></a>
+      </div>
+    </div>
+    <% if (page.screenshots && page.screenshots.length) { %>
+    <div class="app-shots">
+      <% page.screenshots.forEach(function (src, i) { %>
+      <img src="<%- url_for(src) %>" alt="<%= page.title %> のスクリーンショット <%= i + 1 %>" loading="lazy">
+      <% }) %>
+    </div>
+    <% } %>
+    <article class="prose">
+      <%- page.content %>
+      <h2>プライバシー</h2>
+      <p><%= page.privacy %></p>
+    </article>
+  </div>
+</main>
