@@ -358,8 +358,21 @@ a { color: var(--pastel-sky-d); text-underline-offset: 3px; text-decoration-thic
 .prose figure.highlight .strong { font-weight: 700; }
 .prose figure.highlight .emphasis { font-style: italic; }
 
+/* ========== APP PAGE ========== */
+.app-hd { display: flex; align-items: center; gap: 28px; padding: 64px 0 32px; }
+.app-icon { width: 112px; height: 112px; border-radius: 26px; flex-shrink: 0; box-shadow: 0 6px 20px rgba(45,58,79,0.12); }
+.app-hd h1 { font-family: var(--font-jp); font-weight: 900; font-size: 36px; line-height: 1.2; letter-spacing: -0.02em; margin: 0; color: var(--ink); }
+.app-sub { font-family: var(--font-jp); font-size: 16px; color: var(--ink-2); margin: 6px 0 14px; }
+.app-store img { height: 44px; width: auto; display: block; }
+.app-shots { display: flex; gap: 16px; overflow-x: auto; padding: 8px 0 24px; scroll-snap-type: x mandatory; border-bottom: 1px solid var(--line); }
+.app-shots img { height: 460px; width: auto; border-radius: 22px; flex-shrink: 0; scroll-snap-align: start; border: 1px solid var(--line); }
+
 /* ========== RESPONSIVE ========== */
 @media (max-width: 760px) {
+  .app-hd { gap: 18px; padding: 40px 0 24px; }
+  .app-icon { width: 84px; height: 84px; border-radius: 20px; }
+  .app-hd h1 { font-size: 26px; }
+  .app-shots img { height: 380px; }
   .site { padding: 0 20px; }
   .hero { padding: 48px 28px 56px; min-height: 380px; border-radius: 22px; margin: 20px 0 40px; }
   .hero-sun { width: 80px; height: 80px; top: 36px; right: 32px; }
