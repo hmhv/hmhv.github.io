@@ -10,6 +10,11 @@ screenshots:
   - /images/apps/readycall-2.jpg
   - /images/apps/readycall-3.jpg
   - /images/apps/readycall-4.jpg
+duo_screenshots:
+  - /images/apps/readycall-duo-1.jpg
+  - /images/apps/readycall-duo-2.jpg
+  - /images/apps/readycall-duo-3.jpg
+  - /images/apps/readycall-duo-4.jpg
 privacy: このアプリではデータの収集は行いません。
 ---
 

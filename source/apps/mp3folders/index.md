@@ -10,6 +10,10 @@ screenshots:
   - /images/apps/mp3folders-2.jpg
   - /images/apps/mp3folders-3.jpg
   - /images/apps/mp3folders-4.jpg
+duo_screenshots:
+  - /images/apps/mp3folders-duo-1.jpg
+  - /images/apps/mp3folders-duo-2.jpg
+  - /images/apps/mp3folders-duo-3.jpg
 privacy: このアプリではデータの収集は行いません。
 ---
 

@@ -10,6 +10,11 @@ screenshots:
   - /images/apps/yamasuki-2.jpg
   - /images/apps/yamasuki-3.jpg
   - /images/apps/yamasuki-4.jpg
+duo_screenshots:
+  - /images/apps/yamasuki-duo-1.jpg
+  - /images/apps/yamasuki-duo-2.jpg
+  - /images/apps/yamasuki-duo-3.jpg
+  - /images/apps/yamasuki-duo-4.jpg
 privacy: このアプリではデータの収集は行いません。
 ---
 

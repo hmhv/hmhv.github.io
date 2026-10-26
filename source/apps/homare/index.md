@@ -9,6 +9,10 @@ screenshots:
   - /images/apps/homare-1.jpg
   - /images/apps/homare-2.jpg
   - /images/apps/homare-3.jpg
+duo_screenshots:
+  - /images/apps/homare-duo-1.jpg
+  - /images/apps/homare-duo-2.jpg
+  - /images/apps/homare-duo-3.jpg
 privacy: アカウント不要。入力した内容はすべて端末内に保存され、外部へ送信しません。
 ---
 

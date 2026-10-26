@@ -9,6 +9,10 @@ screenshots:
   - /images/apps/passphoto-1.jpg
   - /images/apps/passphoto-2.jpg
   - /images/apps/passphoto-3.jpg
+duo_screenshots:
+  - /images/apps/passphoto-duo-1.jpg
+  - /images/apps/passphoto-duo-2.jpg
+  - /images/apps/passphoto-duo-3.jpg
 privacy: このアプリではデータの収集は行いません。
 ---
 

@@ -8,13 +8,16 @@
         <a class="app-store" href="<%- page.appstore %>" target="_blank" rel="noopener"><img src="<%- url_for('/images/appstore.png') %>" alt="App Store からダウンロード"></a>
       </div>
     </div>
-    <% if (page.screenshots && page.screenshots.length) { %>
-    <div class="app-shots">
-      <% page.screenshots.forEach(function (src, i) { %>
-      <img src="<%- url_for(src) %>" alt="<%= page.title %> のスクリーンショット <%= i + 1 %>" loading="lazy">
+    <div class="app-gallery">
+      <% [['iPhone', page.screenshots], ['iPhone Duo', page.duo_screenshots]].forEach(function (set) { if (!set[1] || !set[1].length) return; %>
+      <h2 class="app-shots-hd"><%= set[0] %></h2>
+      <div class="app-shots">
+        <% set[1].forEach(function (src, i) { %>
+        <img src="<%- url_for(src) %>" alt="<%= page.title %> の <%= set[0] %> スクリーンショット <%= i + 1 %>" loading="lazy">
+        <% }) %>
+      </div>
       <% }) %>
     </div>
-    <% } %>
     <article class="prose">
       <%- page.content %>
       <h2>プライバシー</h2>
