@@ -363,6 +363,7 @@ a { color: var(--pastel-sky-d); text-underline-offset: 3px; text-decoration-thic
 .app-icon { width: 112px; height: 112px; border-radius: 26px; flex-shrink: 0; box-shadow: 0 6px 20px rgba(45,58,79,0.12); }
 .app-hd h1 { font-family: var(--font-jp); font-weight: 900; font-size: 36px; line-height: 1.2; letter-spacing: -0.02em; margin: 0; color: var(--ink); }
 .app-sub { font-family: var(--font-jp); font-size: 16px; color: var(--ink-2); margin: 6px 0 14px; }
+.app-status { display: inline-block; margin: 0; padding: 5px 12px; border-radius: 999px; background: var(--pastel-mint-bg); color: var(--ink); font-size: 13px; font-weight: 700; }
 .app-store img { height: 44px; width: auto; display: block; }
 .app-gallery { padding-bottom: 8px; border-bottom: 1px solid var(--line); }
 .app-shots-hd { font-family: var(--font-latin); font-weight: 600; font-size: 14px; letter-spacing: 0.04em; color: var(--ink-3); margin: 8px 0 4px; }
